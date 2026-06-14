@@ -41,10 +41,28 @@ data/<country>/*.json
 
 ## Local Setup
 
+This repo uses the package manager declared in `package.json`:
+
+```json
+"packageManager": "pnpm@9.0.0"
+```
+
+Enable Corepack and activate the repo's pnpm version before installing:
+
 ```bash
+corepack enable
+corepack prepare pnpm@9.0.0 --activate
 pnpm install
 pnpm compile:data
 pnpm dev
+```
+
+If your shell cannot expose `pnpm` globally, use Corepack as the fallback command prefix:
+
+```bash
+corepack pnpm install
+corepack pnpm compile:data
+corepack pnpm dev
 ```
 
 Useful checks:
@@ -55,6 +73,16 @@ pnpm typecheck
 pnpm lint
 pnpm test
 pnpm build
+```
+
+Fallback form:
+
+```bash
+corepack pnpm validate:data
+corepack pnpm typecheck
+corepack pnpm lint
+corepack pnpm test
+corepack pnpm build
 ```
 
 ## Data Validation

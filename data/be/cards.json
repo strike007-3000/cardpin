@@ -10,8 +10,14 @@
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "beobank-q8-mc",
@@ -23,8 +29,14 @@
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "beobank-visa",
@@ -36,8 +48,14 @@
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "beobank-elite-travel-mc",
@@ -50,7 +68,8 @@
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
     },
     {
       "id": "amex-gold-be",
@@ -62,8 +81,14 @@
       "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "amex-classic-be",
@@ -75,8 +100,14 @@
       "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-classic/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "amex-platinum-be",
@@ -88,8 +119,14 @@
       "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "amex-brussels-airlines-classic",
@@ -101,8 +138,14 @@
       "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/classic-brussels-airlines/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "amex-brussels-airlines-premium",
@@ -114,12 +157,18 @@
       "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/premium-brussels-airlines/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "keytrade-visa",
-      "name": "Keytrade Visa",
+      "name": "Keytrade Visa Gold",
       "issuerId": "keytrade-bank",
       "country": "BE",
       "network": "visa",
@@ -127,8 +176,14 @@
       "fxFeePercentage": 0.014,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.keytradebank.be/en/pay/visa-gold-credit-card",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "bnp-paribas-visa-gold",
@@ -140,8 +195,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "bnp-paribas-visa-classic",
@@ -153,8 +214,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "bnp-paribas-mc-gold",
@@ -166,8 +233,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "belfius-mc-red",
@@ -179,8 +252,14 @@
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.belfius.be/common/FR/multimedia/Downloads/Conditions/fiches-produits/credit-cards/mastercard-red.pdf",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "belfius-mc-classic",
@@ -192,8 +271,14 @@
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard/index.aspx",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "belfius-mc-gold",
@@ -205,8 +290,14 @@
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard-gold/index.aspx",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "belfius-mc-platinum",
@@ -218,8 +309,14 @@
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard-platinum/index.aspx",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "kbc-credit-card",
@@ -231,8 +328,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.kbc.be/particulieren/nl/betalen/kredietkaarten/kbc-kredietkaart.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "kbc-mc-gold",
@@ -244,8 +347,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.kbc.be/particulieren/nl/betalen/kredietkaarten/kbc-gold-mastercard.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "cbc-credit-card",
@@ -257,8 +366,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.cbc.be/particuliers/fr/paiements/cartes-de-credit/carte-de-credit-cbc.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "cbc-mc-gold",
@@ -270,8 +385,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.cbc.be/particuliers/fr/paiements/cartes-de-credit/cbc-gold-mastercard.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "ing-card-classic",
@@ -280,11 +401,17 @@
       "country": "BE",
       "network": "visa",
       "annualFee": 22,
-      "fxFeePercentage": 0.020,
+      "fxFeePercentage": 0.02,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.ing.be/en/individuals/daily-banking/cards/credit-card",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "ing-card-gold",
@@ -293,11 +420,17 @@
       "country": "BE",
       "network": "visa",
       "annualFee": 48,
-      "fxFeePercentage": 0.020,
+      "fxFeePercentage": 0.02,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.ing.be/en/individuals/daily-banking/cards/gold-card",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "argenta-classic-mc",
@@ -309,8 +442,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.argenta.be/nl/kredietkaart.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "argenta-gold-card",
@@ -322,8 +461,14 @@
       "fxFeePercentage": 0.016,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.argenta.be/nl/kredietkaart-goud.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "axa-mc-classic",
@@ -336,7 +481,8 @@
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
     },
     {
       "id": "axa-mc-gold",
@@ -349,7 +495,8 @@
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
     },
     {
       "id": "deutsche-bank-db-card",
@@ -362,7 +509,8 @@
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
     },
     {
       "id": "revolut-standard",
@@ -371,11 +519,12 @@
       "country": "BE",
       "network": "visa",
       "annualFee": 0,
-      "fxFeePercentage": 0.010,
+      "fxFeePercentage": 0.01,
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
     },
     {
       "id": "revolut-metal",
@@ -383,12 +532,18 @@
       "issuerId": "revolut",
       "country": "BE",
       "network": "mastercard",
-      "annualFee": 168,
+      "annualFee": 191.88,
       "fxFeePercentage": 0,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.revolut.com/en-BE/metal/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "n26-standard",
@@ -401,7 +556,8 @@
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
     },
     {
       "id": "n26-metal",
@@ -409,18 +565,18 @@
       "issuerId": "n26",
       "country": "BE",
       "network": "mastercard",
-      "annualFee": 200,
+      "annualFee": 202.8,
       "fxFeePercentage": 0,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "audience": "business",
+      "source": "official-product-page",
+      "audience": "consumer",
       "sourceProof": {
         "sourceUrl": "https://n26.com/en-eu/metal",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "wise-card",
@@ -429,11 +585,17 @@
       "country": "BE",
       "network": "visa",
       "annualFee": 0,
-      "fxFeePercentage": 0.004,
+      "fxFeePercentage": 0,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://wise.com/be/card/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
     },
     {
       "id": "curve-standard",
@@ -442,11 +604,12 @@
       "country": "BE",
       "network": "mastercard",
       "annualFee": 0,
-      "fxFeePercentage": 0.010,
+      "fxFeePercentage": 0.01,
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
     }
   ]
 }
