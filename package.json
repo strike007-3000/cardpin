@@ -1,0 +1,25 @@
+{
+  "name": "cardpin",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.0.0",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev --parallel",
+    "build": "pnpm compile:data && turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "validate:data": "tsx scripts/compile-datasets.ts --validate-only",
+    "compile:data": "tsx scripts/compile-datasets.ts"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "turbo": "^2.4.0",
+    "typescript": "^5.6.3",
+    "vitest": "^4.1.8"
+  }
+}

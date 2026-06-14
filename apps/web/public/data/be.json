@@ -1,0 +1,1587 @@
+{
+  "country": "BE",
+  "issuers": [
+    {
+      "id": "beobank",
+      "name": "Beobank"
+    },
+    {
+      "id": "american-express",
+      "name": "American Express"
+    },
+    {
+      "id": "keytrade-bank",
+      "name": "Keytrade Bank"
+    },
+    {
+      "id": "bnp-paribas-fortis",
+      "name": "BNP Paribas Fortis"
+    },
+    {
+      "id": "belfius",
+      "name": "Belfius"
+    },
+    {
+      "id": "kbc",
+      "name": "KBC Bank"
+    },
+    {
+      "id": "ing-belgium",
+      "name": "ING Belgium"
+    },
+    {
+      "id": "argenta",
+      "name": "Argenta"
+    },
+    {
+      "id": "axa",
+      "name": "AXA Belgium"
+    },
+    {
+      "id": "deutsche-bank",
+      "name": "Deutsche Bank"
+    },
+    {
+      "id": "cbc",
+      "name": "CBC Banque"
+    },
+    {
+      "id": "revolut",
+      "name": "Revolut"
+    },
+    {
+      "id": "n26",
+      "name": "N26"
+    },
+    {
+      "id": "wise",
+      "name": "Wise"
+    },
+    {
+      "id": "curve",
+      "name": "Curve"
+    }
+  ],
+  "cards": [
+    {
+      "id": "beobank-extra-mc",
+      "name": "Beobank Extra Mastercard",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 5,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-q8-mc",
+      "name": "Beobank Q8 Mastercard",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 5,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-visa",
+      "name": "Beobank Visa",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 5,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-elite-travel-mc",
+      "name": "Beobank Elite Travel Mastercard",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 74,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-gold-be",
+      "name": "American Express Gold Belgium",
+      "issuerId": "american-express",
+      "country": "BE",
+      "network": "amex",
+      "annualFee": 195,
+      "fxFeePercentage": 0.025,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-classic-be",
+      "name": "American Express Classic Belgium",
+      "issuerId": "american-express",
+      "country": "BE",
+      "network": "amex",
+      "annualFee": 75,
+      "fxFeePercentage": 0.025,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-platinum-be",
+      "name": "American Express Platinum Belgium",
+      "issuerId": "american-express",
+      "country": "BE",
+      "network": "amex",
+      "annualFee": 720,
+      "fxFeePercentage": 0.025,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-brussels-airlines-classic",
+      "name": "Brussels Airlines Amex Classic",
+      "issuerId": "american-express",
+      "country": "BE",
+      "network": "amex",
+      "annualFee": 120,
+      "fxFeePercentage": 0.025,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-brussels-airlines-premium",
+      "name": "Brussels Airlines Amex Premium",
+      "issuerId": "american-express",
+      "country": "BE",
+      "network": "amex",
+      "annualFee": 250,
+      "fxFeePercentage": 0.025,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "keytrade-visa",
+      "name": "Keytrade Visa",
+      "issuerId": "keytrade-bank",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.014,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "bnp-paribas-visa-gold",
+      "name": "BNP Paribas Visa Gold",
+      "issuerId": "bnp-paribas-fortis",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 60,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "bnp-paribas-visa-classic",
+      "name": "BNP Paribas Visa Classic",
+      "issuerId": "bnp-paribas-fortis",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 24,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "bnp-paribas-mc-gold",
+      "name": "BNP Paribas Mastercard Gold",
+      "issuerId": "bnp-paribas-fortis",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 60,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "belfius-mc-red",
+      "name": "Belfius Mastercard Red",
+      "issuerId": "belfius",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 15,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "belfius-mc-classic",
+      "name": "Belfius Mastercard Classic",
+      "issuerId": "belfius",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 12,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "belfius-mc-gold",
+      "name": "Belfius Mastercard Gold",
+      "issuerId": "belfius",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 48,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "belfius-mc-platinum",
+      "name": "Belfius Mastercard Platinum",
+      "issuerId": "belfius",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 192,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "kbc-credit-card",
+      "name": "KBC Credit Card",
+      "issuerId": "kbc",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "kbc-mc-gold",
+      "name": "KBC Mastercard Gold",
+      "issuerId": "kbc",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 45,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "cbc-credit-card",
+      "name": "CBC Credit Card",
+      "issuerId": "cbc",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "cbc-mc-gold",
+      "name": "CBC Mastercard Gold",
+      "issuerId": "cbc",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 45,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ing-card-classic",
+      "name": "ING Card Classic",
+      "issuerId": "ing-belgium",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 22,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ing-card-gold",
+      "name": "ING Card Gold",
+      "issuerId": "ing-belgium",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 48,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "argenta-classic-mc",
+      "name": "Argenta Classic Mastercard",
+      "issuerId": "argenta",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "argenta-gold-card",
+      "name": "Argenta Gold Card",
+      "issuerId": "argenta",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "axa-mc-classic",
+      "name": "AXA Mastercard Classic",
+      "issuerId": "axa",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 12,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "axa-mc-gold",
+      "name": "AXA Mastercard Gold",
+      "issuerId": "axa",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 36,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "deutsche-bank-db-card",
+      "name": "Deutsche Bank DB Card",
+      "issuerId": "deutsche-bank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 20,
+      "fxFeePercentage": 0.015,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "revolut-standard",
+      "name": "Revolut Standard",
+      "issuerId": "revolut",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.01,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "revolut-metal",
+      "name": "Revolut Metal",
+      "issuerId": "revolut",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 168,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "n26-standard",
+      "name": "N26 Standard",
+      "issuerId": "n26",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "n26-metal",
+      "name": "N26 Metal",
+      "issuerId": "n26",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 200,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/en-eu/metal",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "wise-card",
+      "name": "Wise Card",
+      "issuerId": "wise",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.004,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "curve-standard",
+      "name": "Curve Standard",
+      "issuerId": "curve",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0.01,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01"
+    }
+  ],
+  "merchants": [
+    {
+      "id": "carrefour",
+      "name": "Carrefour",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.carrefour.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "delhaize",
+      "name": "Delhaize",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.delhaize.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "colruyt",
+      "name": "Colruyt",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.colruyt.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "albert-heijn",
+      "name": "Albert Heijn BE",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.ah.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "aldi",
+      "name": "Aldi",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.aldi.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "lidl",
+      "name": "Lidl",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.lidl.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "match",
+      "name": "Match Supermarkets",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.supermarche-match.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "cora",
+      "name": "Cora",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.cora.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "spar",
+      "name": "Spar",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.sparretail.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "okay",
+      "name": "OKay",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.okay.colruytgroup.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "booking",
+      "name": "Booking.com",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.booking.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "expedia",
+      "name": "Expedia",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.expedia.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "airbnb",
+      "name": "Airbnb",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.airbnb.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "brussels-airlines",
+      "name": "Brussels Airlines",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.brusselsairlines.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ryanair",
+      "name": "Ryanair",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.ryanair.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "klm",
+      "name": "KLM BE",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.klm.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "tui-fly",
+      "name": "TUI Fly Belgium",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.tuifly.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "center-parcs",
+      "name": "Center Parcs BE",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.centerparcs.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "landal",
+      "name": "Landal GreenPracs",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.landal.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "eurostar",
+      "name": "Eurostar Train",
+      "country": "BE",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.eurostar.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "mcdonalds",
+      "name": "McDonald's",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.mcdonalds.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "starbucks",
+      "name": "Starbucks",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.starbucks.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "burger-king",
+      "name": "Burger King",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.burgerking.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "quick",
+      "name": "Quick Burger",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.quick.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "panos",
+      "name": "Panos Sandwiches",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.panos.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "exki",
+      "name": "Exki Cafes",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.exki.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "pizza-hut",
+      "name": "Pizza Hut",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.pizzahut.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "dominoes",
+      "name": "Domino's Pizza",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.dominos.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "lunch-garden",
+      "name": "Lunch Garden Restaurants",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.lunchgarden.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "paul",
+      "name": "Paul Boulangerie",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.paul-belgium.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "q8",
+      "name": "Q8 Gas Station",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.q8.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "totalenergies",
+      "name": "TotalEnergies",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.totalenergies.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "shell",
+      "name": "Shell Gas",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.shell.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "texaco",
+      "name": "Texaco Stations",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.texaco.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "lukoil",
+      "name": "Lukoil BE",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.lukoil.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "dats24",
+      "name": "DATS 24",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.dats24.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "esso",
+      "name": "Esso",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.esso.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "avia",
+      "name": "Avia Fuel",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.avia-belgium.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "proximus",
+      "name": "Proximus",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.proximus.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "orange-telecom",
+      "name": "Orange Telecom",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.orange.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "base",
+      "name": "Base Telecom",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.base.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "engie",
+      "name": "Engie Electrabel",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.engie.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "luminus",
+      "name": "Luminus Energy",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.luminus.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ecopower",
+      "name": "Ecopower Green Energy",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.ecopower.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "water-link",
+      "name": "Water-Link",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.water-link.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "swde",
+      "name": "SWDE Water",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.swde.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "bol-com",
+      "name": "Bol.com",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.bol.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amazon",
+      "name": "Amazon BE",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.amazon.com.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "zalando",
+      "name": "Zalando",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.zalando.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "coolblue",
+      "name": "Coolblue",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.coolblue.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.mediamarkt.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "decathlon",
+      "name": "Decathlon",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.decathlon.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "vanden-borre",
+      "name": "Vanden Borre",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.vandenborre.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "krefel",
+      "name": "Krefel Appliances",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.krefel.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "fnac",
+      "name": "Fnac BE",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.fr.fnac.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "h-m",
+      "name": "H&M BE",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.hm.com/be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "sncb",
+      "name": "SNCB NMBS Train",
+      "country": "BE",
+      "categories": [
+        "transport",
+        "travel"
+      ],
+      "website": "https://www.belgiantrain.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "delijn",
+      "name": "De Lijn Bus",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.delijn.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "tec",
+      "name": "TEC Transit Wallonia",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.letec.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "mivb-stib",
+      "name": "MIVB STIB Brussels",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.stib-mivb.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "uber",
+      "name": "Uber Taxi",
+      "country": "BE",
+      "categories": [
+        "transport",
+        "travel"
+      ],
+      "website": "https://www.uber.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "bolt",
+      "name": "Bolt Ride-hail",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.bolt.eu",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "poppy",
+      "name": "Poppy Car Sharing",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.poppy.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "cambio",
+      "name": "Cambio Auto Sharing",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.cambio.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "netflix",
+      "name": "Netflix Streaming",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.netflix.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify Music",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.spotify.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "kinepolis",
+      "name": "Kinepolis Cinemas",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.kinepolis.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ugc-cinemas",
+      "name": "UGC Cinema BE",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.ugc.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "disney-plus",
+      "name": "Disney+",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.disneyplus.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.youtube.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "playstation-network",
+      "name": "PlayStation Network",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.playstation.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "steam",
+      "name": "Steam Store",
+      "country": "BE",
+      "categories": [
+        "entertainment",
+        "online-shopping"
+      ],
+      "website": "https://store.steampowered.com",
+      "lastUpdated": "2026-01-01"
+    }
+  ],
+  "rewardRules": [
+    {
+      "id": "beobank-extra-groceries-cashback",
+      "cardId": "beobank-extra-mc",
+      "country": "BE",
+      "category": "groceries",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.01,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-extra-dining-cashback",
+      "cardId": "beobank-extra-mc",
+      "country": "BE",
+      "category": "dining",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.01,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-extra-fallback-cashback",
+      "cardId": "beobank-extra-mc",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.005,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-q8-fuel-cashback",
+      "cardId": "beobank-q8-mc",
+      "country": "BE",
+      "category": "fuel",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.02,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-q8-fallback-cashback",
+      "cardId": "beobank-q8-mc",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.005,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-visa-online-cashback",
+      "cardId": "beobank-visa",
+      "country": "BE",
+      "category": "online-shopping",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.01,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-visa-fallback-cashback",
+      "cardId": "beobank-visa",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.005,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-elite-travel-cashback",
+      "cardId": "beobank-elite-travel-mc",
+      "country": "BE",
+      "category": "travel",
+      "rewardType": "miles",
+      "rewardValue": 1.5,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-elite-travel-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "beobank-elite-fallback-cashback",
+      "cardId": "beobank-elite-travel-mc",
+      "country": "BE",
+      "rewardType": "miles",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-elite-travel-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-gold-travel-points",
+      "cardId": "amex-gold-be",
+      "country": "BE",
+      "category": "travel",
+      "rewardType": "points",
+      "rewardValue": 2,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-gold-fallback-points",
+      "cardId": "amex-gold-be",
+      "country": "BE",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-classic-fallback-points",
+      "cardId": "amex-classic-be",
+      "country": "BE",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-classic/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-platinum-travel-points",
+      "cardId": "amex-platinum-be",
+      "country": "BE",
+      "category": "travel",
+      "rewardType": "points",
+      "rewardValue": 2,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-platinum-fallback-points",
+      "cardId": "amex-platinum-be",
+      "country": "BE",
+      "rewardType": "points",
+      "rewardValue": 1.5,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-ba-classic-fallback-miles",
+      "cardId": "amex-brussels-airlines-classic",
+      "country": "BE",
+      "rewardType": "miles",
+      "rewardValue": 1.2,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/classic-brussels-airlines/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-ba-premium-fallback-miles",
+      "cardId": "amex-brussels-airlines-premium",
+      "country": "BE",
+      "rewardType": "miles",
+      "rewardValue": 1.5,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/premium-brussels-airlines/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "keytrade-visa-fallback-cashback",
+      "cardId": "keytrade-visa",
+      "country": "BE",
+      "rewardType": "fixed_cashback",
+      "rewardValue": 0.05,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.keytradebank.be/en/pay/visa-gold-credit-card",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "bnp-visa-gold-travel-cashback",
+      "cardId": "bnp-paribas-visa-gold",
+      "country": "BE",
+      "category": "travel",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.005,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.bnpparibasfortis.be/en/paying/visa-gold",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "bnp-visa-gold-fallback-cashback",
+      "cardId": "bnp-paribas-visa-gold",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.bnpparibasfortis.be/en/paying/visa-gold",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "revolut-metal-fallback-cashback",
+      "cardId": "revolut-metal",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.001,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.revolut.com/en-BE/metal/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "n26-metal-fallback-cashback",
+      "cardId": "n26-metal",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.005,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://n26.com/en-eu/metal",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "belfius-red-fallback-cashback",
+      "cardId": "belfius-mc-red",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.belfius.be/common/FR/multimedia/Downloads/Conditions/fiches-produits/credit-cards/mastercard-red.pdf",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "argenta-gold-fallback-cashback",
+      "cardId": "argenta-gold-card",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.argenta.be/nl/kredietkaart-goud.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "kbc-credit-fallback-cashback",
+      "cardId": "kbc-credit-card",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.kbc.be/particulieren/nl/betalen/kredietkaarten/kbc-kredietkaart.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    }
+  ]
+}

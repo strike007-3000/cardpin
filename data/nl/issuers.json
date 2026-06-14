@@ -1,0 +1,15 @@
+{
+  "issuers": [
+    { "id": "ics", "name": "International Card Services" },
+    { "id": "american-express", "name": "American Express NL" },
+    { "id": "ing-nl", "name": "ING Netherlands" },
+    { "id": "abn-amro", "name": "ABN AMRO" },
+    { "id": "rabobank", "name": "Rabobank" },
+    { "id": "asn-bank", "name": "ASN Bank" },
+    { "id": "sns", "name": "SNS Bank" },
+    { "id": "bunq", "name": "bunq" },
+    { "id": "revolut", "name": "Revolut" },
+    { "id": "n26", "name": "N26" },
+    { "id": "wise", "name": "Wise" }
+  ]
+}

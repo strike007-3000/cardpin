@@ -1,0 +1,8 @@
+# CardPin CODEOWNERS
+# Default owners for the entire repository
+* @strike007-3000
+/ @strike007-3000
+
+# Country dataset directories
+/data/be/ @strike007-3000
+/data/nl/ @strike007-3000

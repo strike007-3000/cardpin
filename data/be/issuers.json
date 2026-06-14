@@ -1,0 +1,19 @@
+{
+  "issuers": [
+    { "id": "beobank", "name": "Beobank" },
+    { "id": "american-express", "name": "American Express" },
+    { "id": "keytrade-bank", "name": "Keytrade Bank" },
+    { "id": "bnp-paribas-fortis", "name": "BNP Paribas Fortis" },
+    { "id": "belfius", "name": "Belfius" },
+    { "id": "kbc", "name": "KBC Bank" },
+    { "id": "ing-belgium", "name": "ING Belgium" },
+    { "id": "argenta", "name": "Argenta" },
+    { "id": "axa", "name": "AXA Belgium" },
+    { "id": "deutsche-bank", "name": "Deutsche Bank" },
+    { "id": "cbc", "name": "CBC Banque" },
+    { "id": "revolut", "name": "Revolut" },
+    { "id": "n26", "name": "N26" },
+    { "id": "wise", "name": "Wise" },
+    { "id": "curve", "name": "Curve" }
+  ]
+}
