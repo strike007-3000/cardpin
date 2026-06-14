@@ -341,311 +341,315 @@ export default function HomePage() {
           )}
 
           <main className="flow-layout">
-            <section className="card step-card">
-              <div className="step-header">
-                <GlobeIcon />
-                <div className="step-title-block">
-                  <div className="step-kicker">Step 1</div>
-                  <h2>Choose Country & Audience</h2>
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="country-select">Country</label>
-                  <select id="country-select" value={country} onChange={(event) => setCountry(event.target.value)}>
-                    <option value="be">Belgium</option>
-                    <option value="nl">Netherlands</option>
-                  </select>
-                </div>
-
-                <div className="form-group">
-                  <label>Audience</label>
-                  <div className="segmented-control" aria-label="Audience">
-                    <button type="button" className={audience === "consumer" ? "active" : ""} onClick={() => setAudience("consumer")}>
-                      Personal
-                    </button>
-                    <button type="button" className={audience === "business" ? "active" : ""} onClick={() => setAudience("business")}>
-                      Business
-                    </button>
-                  </div>
-                  <p className="helper-text">Personal is for everyday cards. Business is for company cards.</p>
-                </div>
-              </div>
-            </section>
-
-            <section className="card step-card">
-              <div className="step-header">
-                <WalletIcon />
-                <div className="step-title-block">
-                  <div className="step-kicker">Step 2</div>
-                  <div className="section-title-row" style={{ gap: "12px" }}>
-                    <h2>Select Your Cards</h2>
-                    <span className="quiet-pill">{ownedCards.length} selected</span>
+            <div className="left-column">
+              <section className="card step-card">
+                <div className="step-header">
+                  <GlobeIcon />
+                  <div className="step-title-block">
+                    <div className="step-kicker">Step 1</div>
+                    <h2>Choose Country & Audience</h2>
                   </div>
                 </div>
-              </div>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="country-select">Country</label>
+                    <select id="country-select" value={country} onChange={(event) => setCountry(event.target.value)}>
+                      <option value="be">Belgium</option>
+                      <option value="nl">Netherlands</option>
+                    </select>
+                  </div>
 
-              <div className="card-search-container">
-                <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-                  <div style={{ position: "relative", flex: "1" }}>
-                    <input
-                      type="text"
-                      placeholder="Search cards or banks..."
-                      value={cardSearchQuery}
-                      onChange={(e) => setCardSearchQuery(e.target.value)}
-                      style={{ minHeight: "38px", fontSize: "0.9rem", padding: "8px 12px", paddingRight: "30px" }}
-                    />
-                    {cardSearchQuery && (
+                  <div className="form-group">
+                    <label>Audience</label>
+                    <div className="segmented-control" aria-label="Audience">
+                      <button type="button" className={audience === "consumer" ? "active" : ""} onClick={() => setAudience("consumer")}>
+                        Personal
+                      </button>
+                      <button type="button" className={audience === "business" ? "active" : ""} onClick={() => setAudience("business")}>
+                        Business
+                      </button>
+                    </div>
+                    <p className="helper-text">Personal is for everyday cards. Business is for company cards.</p>
+                  </div>
+                </div>
+              </section>
+
+              <section className="card step-card">
+                <div className="step-header">
+                  <WalletIcon />
+                  <div className="step-title-block">
+                    <div className="step-kicker">Step 2</div>
+                    <div className="section-title-row" style={{ gap: "12px" }}>
+                      <h2>Your Wallet</h2>
+                      <span className="quiet-pill">{ownedCards.length} selected</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="card-search-container">
+                  <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                    <div style={{ position: "relative", flex: "1" }}>
+                      <input
+                        type="text"
+                        placeholder="Search cards or banks..."
+                        value={cardSearchQuery}
+                        onChange={(e) => setCardSearchQuery(e.target.value)}
+                        style={{ minHeight: "38px", fontSize: "0.9rem", padding: "8px 12px", paddingRight: "30px" }}
+                      />
+                      {cardSearchQuery && (
+                        <button
+                          type="button"
+                          onClick={() => setCardSearchQuery("")}
+                          className="dismiss-btn"
+                          style={{
+                            position: "absolute",
+                            right: "8px",
+                            top: "50%",
+                            transform: "translateY(-50%)",
+                            fontSize: "1.1rem"
+                          }}
+                        >
+                          &times;
+                        </button>
+                      )}
+                    </div>
+                    {ownedCardIds.length > 0 && (
                       <button
                         type="button"
-                        onClick={() => setCardSearchQuery("")}
-                        className="dismiss-btn"
-                        style={{
-                          position: "absolute",
-                          right: "8px",
-                          top: "50%",
-                          transform: "translateY(-50%)",
-                          fontSize: "1.1rem"
+                        className="deselect-all-btn"
+                        onClick={() => {
+                          setOwnedCardIds([]);
+                          localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
                         }}
                       >
-                        &times;
+                        Clear
                       </button>
                     )}
                   </div>
-                  {ownedCardIds.length > 0 && (
-                    <button
-                      type="button"
-                      className="deselect-all-btn"
-                      onClick={() => {
-                        setOwnedCardIds([]);
-                        localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
-                      }}
-                    >
-                      Clear
-                    </button>
-                  )}
                 </div>
-              </div>
 
-              {availableCards.length === 0 ? (
-                <div className="empty-state compact">No {audience} cards available for {country.toUpperCase()}.</div>
-              ) : cardsByIssuer.length === 0 ? (
-                <div className="empty-state compact">No cards match &ldquo;{cardSearchQuery}&rdquo;.</div>
-              ) : (
-                <div className="issuer-accordion-list">
-                  {cardsByIssuer.map((group) => {
-                    const isCollapsed = collapsedIssuers.has(group.id);
-                    const selectedCount = group.cards.filter((c) => ownedCardIds.includes(c.id)).length;
-                    return (
-                      <div key={group.id} className={`issuer-group ${isCollapsed ? "collapsed" : ""}`}>
-                        <button
-                          type="button"
-                          className="issuer-group-header"
-                          onClick={() => handleToggleIssuer(group.id)}
-                        >
-                          <div className="issuer-header-left">
-                            <svg
-                              className={`chevron-icon ${isCollapsed ? "" : "rotated"}`}
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            >
-                              <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            <span className="issuer-name">{group.name}</span>
-                          </div>
-                          <span className="issuer-badge">
-                            {selectedCount > 0 ? `${selectedCount}/${group.cards.length}` : group.cards.length}
-                          </span>
-                        </button>
+                {availableCards.length === 0 ? (
+                  <div className="empty-state compact">No {audience} cards available for {country.toUpperCase()}.</div>
+                ) : cardsByIssuer.length === 0 ? (
+                  <div className="empty-state compact">No cards match &ldquo;{cardSearchQuery}&rdquo;.</div>
+                ) : (
+                  <div className="issuer-accordion-list">
+                    {cardsByIssuer.map((group) => {
+                      const isCollapsed = collapsedIssuers.has(group.id);
+                      const selectedCount = group.cards.filter((c) => ownedCardIds.includes(c.id)).length;
+                      return (
+                        <div key={group.id} className={`issuer-group ${isCollapsed ? "collapsed" : ""}`}>
+                          <button
+                            type="button"
+                            className="issuer-group-header"
+                            onClick={() => handleToggleIssuer(group.id)}
+                          >
+                            <div className="issuer-header-left">
+                              <svg
+                                className={`chevron-icon ${isCollapsed ? "" : "rotated"}`}
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                              >
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                              </svg>
+                              <span className="issuer-name">{group.name}</span>
+                            </div>
+                            <span className="issuer-badge">
+                              {selectedCount > 0 ? `${selectedCount}/${group.cards.length}` : group.cards.length}
+                            </span>
+                          </button>
 
-                        {!isCollapsed && (
-                          <div className="issuer-group-content">
-                            {group.cards.map((card) => {
-                              const isSelected = ownedCardIds.includes(card.id);
-                              return (
-                                <button
-                                  type="button"
-                                  key={card.id}
-                                  className={`card-item ${isSelected ? "selected" : ""}`}
-                                  onClick={() => handleToggleCard(card.id)}
-                                >
-                                  <span className="checkbox-custom" />
-                                  <span className="card-info">
-                                    <span className="card-name">{card.name}</span>
-                                    <span className="card-meta">
-                                      {card.network.toUpperCase()} · EUR {card.annualFee}/year · {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}% FX
+                          {!isCollapsed && (
+                            <div className="issuer-group-content">
+                              {group.cards.map((card) => {
+                                const isSelected = ownedCardIds.includes(card.id);
+                                return (
+                                  <button
+                                    type="button"
+                                    key={card.id}
+                                    className={`card-item ${isSelected ? "selected" : ""}`}
+                                    onClick={() => handleToggleCard(card.id)}
+                                  >
+                                    <span className="checkbox-custom" />
+                                    <span className="card-info">
+                                      <span className="card-name">{card.name}</span>
+                                      <span className="card-meta">
+                                        {card.network.toUpperCase()} · EUR {card.annualFee}/year · {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}% FX
+                                      </span>
                                     </span>
-                                  </span>
-                                </button>
-                              );
-                            })}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-            </section>
-
-            <section className="card step-card">
-              <div className="step-header">
-                <SearchIcon />
-                <div className="step-title-block">
-                  <div className="step-kicker">Step 3</div>
-                  <h2>Search Merchant & Spend</h2>
-                </div>
-              </div>
-              <p className="helper-text prominent">Search a merchant or choose a category. You can use either one.</p>
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="merchant-input">Merchant</label>
-                  <input
-                    id="merchant-input"
-                    type="text"
-                    placeholder="Carrefour, Q8, Booking.com"
-                    value={merchantQuery}
-                    onChange={(event) => setMerchantQuery(event.target.value)}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="category-select">Category</label>
-                  <select id="category-select" value={categoryQuery} onChange={(event) => setCategoryQuery(event.target.value)}>
-                    <option value="">Choose a category</option>
-                    {categoriesList.map((category) => (
-                      <option key={category} value={category}>
-                        {formatCategory(category)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="spend-input">Spend Amount</label>
-                  <div className="spend-input-wrapper">
-                    <span className="currency-prefix">EUR</span>
-                    <input
-                      id="spend-input"
-                      inputMode="decimal"
-                      type="number"
-                      min="0"
-                      value={spendInput}
-                      onBlur={handleSpendBlur}
-                      onChange={(event) => setSpendInput(event.target.value)}
-                    />
-                  </div>
-                </div>
-
-                <div className="toggle-switch-wrapper">
-                  <span className="toggle-switch-label">Foreign currency spend</span>
-                  <label className="switch" htmlFor="foreign-spend-checkbox">
-                    <input
-                      id="foreign-spend-checkbox"
-                      type="checkbox"
-                      checked={isForeignSpend}
-                      onChange={(event) => setIsForeignSpend(event.target.checked)}
-                    />
-                    <span className="slider"></span>
-                  </label>
-                </div>
-              </div>
-              <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
-                Enabling foreign spend calculates reward net values by subtracting card foreign exchange fees.
-              </p>
-            </section>
-
-            <section className="recommendation-area">
-              {ownedCards.length === 0 ? (
-                <div className="card empty-state">
-                  <CreditCardPlaceholder />
-                  <strong>No cards selected.</strong>
-                  <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
-                    Select cards in your wallet under <strong>Step 2</strong> to start comparing rewards.
-                  </p>
-                </div>
-              ) : !hasSearch ? (
-                <div className="card empty-state">
-                  <CreditCardPlaceholder />
-                  <strong>Ready to search.</strong>
-                  <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
-                    Enter a merchant or choose a category under <strong>Step 3</strong> to calculate expected rewards.
-                  </p>
-                </div>
-              ) : bestResult ? (
-                <div className="result-box">
-                  <div className="result-header">
-                    <div>
-                      <span className="badge">Best card</span>
-                      <h2>{bestResult.card.name}</h2>
-                      <p className="card-meta">
-                        {bestResult.card.network.toUpperCase()} · {bestResult.label}
-                      </p>
-                    </div>
-                    <div className="val-display">
-                      <div className="val-amount">{rewardAmount(bestResult)}</div>
-                      <div className="val-label">Expected reward</div>
-                    </div>
-                  </div>
-
-                  <div className="result-grid">
-                    <div>
-                      <h3>Why this card</h3>
-                      <p style={{ fontSize: "0.9rem" }}>{bestResult.rec.explanation}</p>
-                    </div>
-                    <div>
-                      <h3>Spend calculation</h3>
-                      <p style={{ fontSize: "0.9rem" }}>
-                        EUR {spendAmount.toFixed(2)} spend · {rewardLabel(bestResult)}
-                        {isForeignSpend ? ` · EUR ${bestResult.fxFee.toFixed(2)} FX fee` : ""}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="source-strip">
-                    {bestResult.rule && (
-                      <a href={bestResult.rule.source.sourceUrl} target="_blank" rel="noopener noreferrer">
-                        Reward source
-                      </a>
-                    )}
-                    {bestResult.card.sourceProof && (
-                      <a href={bestResult.card.sourceProof.sourceUrl} target="_blank" rel="noopener noreferrer">
-                        Card source
-                      </a>
-                    )}
-                    <span>Verified {bestResult.rule?.source.verifiedAt ?? bestResult.card.sourceProof?.verifiedAt ?? "unknown"}</span>
-                  </div>
-
-                  {alternatives.length > 0 && (
-                    <div className="alternatives-container">
-                      <h3 style={{ marginTop: "8px" }}>Alternatives</h3>
-                      {alternatives.map((result) => (
-                        <div className="alt-card" key={result.card.id}>
-                          <span className="alt-name">{result.card.name}</span>
-                          <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
+                                  </button>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
+                      );
+                    })}
+                  </div>
+                )}
+              </section>
+            </div>
+
+            <div className="right-column">
+              <section className="card step-card step-card--search">
+                <div className="step-header">
+                  <SearchIcon />
+                  <div className="step-title-block">
+                    <div className="step-kicker">Step 3</div>
+                    <h2>Search Purchase</h2>
+                  </div>
+                </div>
+                <p className="helper-text prominent">Search a merchant or choose a category. You can use either one.</p>
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="merchant-input">Merchant</label>
+                    <input
+                      id="merchant-input"
+                      type="text"
+                      placeholder="Carrefour, Q8, Booking.com"
+                      value={merchantQuery}
+                      onChange={(event) => setMerchantQuery(event.target.value)}
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="category-select">Category</label>
+                    <select id="category-select" value={categoryQuery} onChange={(event) => setCategoryQuery(event.target.value)}>
+                      <option value="">Choose a category</option>
+                      {categoriesList.map((category) => (
+                        <option key={category} value={category}>
+                          {formatCategory(category)}
+                        </option>
                       ))}
+                    </select>
+                  </div>
+                </div>
+
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="spend-input">Spend Amount</label>
+                    <div className="spend-input-wrapper">
+                      <span className="currency-prefix">EUR</span>
+                      <input
+                        id="spend-input"
+                        inputMode="decimal"
+                        type="number"
+                        min="0"
+                        value={spendInput}
+                        onBlur={handleSpendBlur}
+                        onChange={(event) => setSpendInput(event.target.value)}
+                      />
                     </div>
-                  )}
+                  </div>
+
+                  <div className="toggle-switch-wrapper">
+                    <span className="toggle-switch-label">Foreign currency spend</span>
+                    <label className="switch" htmlFor="foreign-spend-checkbox">
+                      <input
+                        id="foreign-spend-checkbox"
+                        type="checkbox"
+                        checked={isForeignSpend}
+                        onChange={(event) => setIsForeignSpend(event.target.checked)}
+                      />
+                      <span className="slider"></span>
+                    </label>
+                  </div>
                 </div>
-              ) : (
-                <div className="card empty-state" style={{ textAlign: "left" }}>
-                  <strong style={{ display: "block", marginBottom: "6px" }}>No matching reward rules found.</strong>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: "8px" }}>
-                    Unsupported cards or rewards are intentionally omitted rather than assumed or guessed.
-                  </p>
-                  <p style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>
-                    Please verify terms with your issuer before relying on any benefit.
-                  </p>
-                </div>
-              )}
-            </section>
+                <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
+                  Enabling foreign spend calculates reward net values by subtracting card foreign exchange fees.
+                </p>
+              </section>
+
+              <section className="recommendation-area">
+                {ownedCards.length === 0 ? (
+                  <div className="card empty-state">
+                    <CreditCardPlaceholder />
+                    <strong>No cards selected.</strong>
+                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                      Select cards in your wallet under <strong>Step 2</strong> to start comparing rewards.
+                    </p>
+                  </div>
+                ) : !hasSearch ? (
+                  <div className="card empty-state">
+                    <CreditCardPlaceholder />
+                    <strong>Ready to search.</strong>
+                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                      Enter a merchant or choose a category under <strong>Step 3</strong> to calculate expected rewards.
+                    </p>
+                  </div>
+                ) : bestResult ? (
+                  <div className="result-box">
+                    <div className="result-header">
+                      <div>
+                        <span className="badge">Best Card</span>
+                        <h2>{bestResult.card.name}</h2>
+                        <p className="card-meta">
+                          {bestResult.card.network.toUpperCase()} · {bestResult.label}
+                        </p>
+                      </div>
+                      <div className="val-display">
+                        <div className="val-amount">{rewardAmount(bestResult)}</div>
+                        <div className="val-label">Expected reward</div>
+                      </div>
+                    </div>
+
+                    <div className="result-grid">
+                      <div>
+                        <h3>Why this card</h3>
+                        <p style={{ fontSize: "0.9rem" }}>{bestResult.rec.explanation}</p>
+                      </div>
+                      <div>
+                        <h3>Spend calculation</h3>
+                        <p style={{ fontSize: "0.9rem" }}>
+                          EUR {spendAmount.toFixed(2)} spend · {rewardLabel(bestResult)}
+                          {isForeignSpend ? ` · EUR ${bestResult.fxFee.toFixed(2)} FX fee` : ""}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="source-strip">
+                      {bestResult.rule && (
+                        <a href={bestResult.rule.source.sourceUrl} target="_blank" rel="noopener noreferrer">
+                          Reward source
+                        </a>
+                      )}
+                      {bestResult.card.sourceProof && (
+                        <a href={bestResult.card.sourceProof.sourceUrl} target="_blank" rel="noopener noreferrer">
+                          Card source
+                        </a>
+                      )}
+                      <span>Verified {bestResult.rule?.source.verifiedAt ?? bestResult.card.sourceProof?.verifiedAt ?? "unknown"}</span>
+                    </div>
+
+                    {alternatives.length > 0 && (
+                      <div className="alternatives-container">
+                        <h3 style={{ marginTop: "8px" }}>Alternatives</h3>
+                        {alternatives.map((result) => (
+                          <div className="alt-card" key={result.card.id}>
+                            <span className="alt-name">{result.card.name}</span>
+                            <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="card empty-state" style={{ textAlign: "left" }}>
+                    <strong style={{ display: "block", marginBottom: "6px" }}>No matching reward rules found.</strong>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: "8px" }}>
+                      Unsupported cards or rewards are intentionally omitted rather than assumed or guessed.
+                    </p>
+                    <p style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>
+                      Please verify terms with your issuer before relying on any benefit.
+                    </p>
+                  </div>
+                )}
+              </section>
+            </div>
           </main>
         </>
       )}
