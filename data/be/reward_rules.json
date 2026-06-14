@@ -1,17 +1,39 @@
 {
   "rewardRules": [
     {
-      "id": "beobank-extra-dining-cashback",
-      "cardId": "beobank-extra-mc",
+      "id": "beobank-brussels-airlines-altitude-miles",
+      "cardId": "beobank-brussels-airlines-altitude",
       "country": "BE",
-      "category": "dining",
-      "rewardType": "cashback_percentage",
-      "rewardValue": 0.01,
-      "conditions": {
-        "cap": 100
-      },
+      "rewardType": "miles",
+      "rewardValue": 2,
       "source": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
+        "sourceUrl": "https://www.brusselsairlines.com/be/nl/extra-services/beobank-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "beobank-brussels-airlines-explore-miles",
+      "cardId": "beobank-brussels-airlines-explore",
+      "country": "BE",
+      "rewardType": "miles",
+      "rewardValue": 1,
+      "source": {
+        "sourceUrl": "https://www.brusselsairlines.com/be/nl/extra-services/beobank-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "beobank-brussels-airlines-horizon-miles",
+      "cardId": "beobank-brussels-airlines-horizon",
+      "country": "BE",
+      "rewardType": "miles",
+      "rewardValue": 1.5,
+      "source": {
+        "sourceUrl": "https://www.brusselsairlines.com/be/nl/extra-services/beobank-mastercard",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
@@ -22,29 +44,12 @@
       "cardId": "beobank-extra-mc",
       "country": "BE",
       "rewardType": "cashback_percentage",
-      "rewardValue": 0.005,
-      "conditions": {
-        "cap": 100
-      },
-      "source": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "beobank-extra-groceries-cashback",
-      "cardId": "beobank-extra-mc",
-      "country": "BE",
-      "category": "groceries",
-      "rewardType": "cashback_percentage",
       "rewardValue": 0.01,
       "conditions": {
         "cap": 100
       },
       "source": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
+        "sourceUrl": "https://www.beobank.be/fr/payer/cartes-de-credit/extra-mastercard.html",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
@@ -60,7 +65,7 @@
         "cap": 100
       },
       "source": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
+        "sourceUrl": "https://www.beobank.be/nl/betalen/kredietkaarten/mastercard-q8.html",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
@@ -77,7 +82,7 @@
         "cap": 100
       },
       "source": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
+        "sourceUrl": "https://www.beobank.be/nl/betalen/kredietkaarten/mastercard-q8.html",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
@@ -111,6 +116,58 @@
       },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "keytrade-visa-transaction-bonus",
+      "cardId": "keytrade-visa",
+      "country": "BE",
+      "rewardType": "fixed_cashback",
+      "rewardValue": 0.05,
+      "source": {
+        "sourceUrl": "https://www.keytradebank.be/en/banking/creditcards",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "n26-business-metal-cashback",
+      "cardId": "n26-business-metal",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.005,
+      "source": {
+        "sourceUrl": "https://n26.com/en-be/plans",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "revolut-metal-points",
+      "cardId": "revolut-metal",
+      "country": "BE",
+      "rewardType": "miles",
+      "rewardValue": 0.5,
+      "source": {
+        "sourceUrl": "https://www.revolut.com/en-BE/metal/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "revolut-pro-cashback",
+      "cardId": "revolut-pro-be",
+      "country": "BE",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.008,
+      "source": {
+        "sourceUrl": "https://www.revolut.com/en-BE/metal/",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },

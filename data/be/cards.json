@@ -1,44 +1,6 @@
 {
   "cards": [
     {
-      "id": "amex-brussels-airlines-classic",
-      "name": "Brussels Airlines Amex Classic",
-      "issuerId": "american-express",
-      "country": "BE",
-      "network": "amex",
-      "annualFee": 120,
-      "fxFeePercentage": 0.025,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/classic-brussels-airlines/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "amex-brussels-airlines-premium",
-      "name": "Brussels Airlines Amex Premium",
-      "issuerId": "american-express",
-      "country": "BE",
-      "network": "amex",
-      "annualFee": 250,
-      "fxFeePercentage": 0.025,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/premium-brussels-airlines/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
       "id": "amex-classic-be",
       "name": "American Express Classic Belgium",
       "issuerId": "american-express",
@@ -63,7 +25,7 @@
       "issuerId": "american-express",
       "country": "BE",
       "network": "amex",
-      "annualFee": 195,
+      "annualFee": 240,
       "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
@@ -71,7 +33,7 @@
       "lastUpdated": "2026-06-14",
       "audience": "consumer",
       "sourceProof": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
+        "sourceUrl": "https://www.americanexpress.com/fr-be/",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
@@ -82,7 +44,7 @@
       "issuerId": "american-express",
       "country": "BE",
       "network": "amex",
-      "annualFee": 720,
+      "annualFee": 780,
       "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
@@ -90,7 +52,7 @@
       "lastUpdated": "2026-06-14",
       "audience": "consumer",
       "sourceProof": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
+        "sourceUrl": "https://www.americanexpress.com/fr-be/",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
@@ -132,34 +94,6 @@
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
-    },
-    {
-      "id": "axa-mc-classic",
-      "name": "AXA Mastercard Classic",
-      "issuerId": "axa",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 12,
-      "fxFeePercentage": 0.016,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
-    },
-    {
-      "id": "axa-mc-gold",
-      "name": "AXA Mastercard Gold",
-      "issuerId": "axa",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 36,
-      "fxFeePercentage": 0.016,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
     },
     {
       "id": "belfius-mc-classic",
@@ -238,18 +172,61 @@
       }
     },
     {
-      "id": "beobank-elite-travel-mc",
-      "name": "Beobank Elite Travel Mastercard",
+      "id": "beobank-brussels-airlines-altitude",
+      "name": "Beobank Brussels Airlines Altitude Mastercard",
       "issuerId": "beobank",
       "country": "BE",
       "network": "mastercard",
-      "annualFee": 74,
+      "annualFee": 180,
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.brusselsairlines.com/be/nl/extra-services/beobank-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "beobank-brussels-airlines-explore",
+      "name": "Beobank Brussels Airlines Explore Mastercard",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 20,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.brusselsairlines.com/be/nl/extra-services/beobank-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "beobank-brussels-airlines-horizon",
+      "name": "Beobank Brussels Airlines Horizon Mastercard",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 100,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.brusselsairlines.com/be/nl/extra-services/beobank-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "beobank-extra-mc",
@@ -257,7 +234,7 @@
       "issuerId": "beobank",
       "country": "BE",
       "network": "mastercard",
-      "annualFee": 5,
+      "annualFee": 20,
       "fxFeePercentage": 0.021,
       "currency": "EUR",
       "rewardRules": [],
@@ -265,7 +242,7 @@
       "lastUpdated": "2026-06-14",
       "audience": "consumer",
       "sourceProof": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
+        "sourceUrl": "https://www.beobank.be/fr/payer/cartes-de-credit/extra-mastercard.html",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
@@ -284,7 +261,7 @@
       "lastUpdated": "2026-06-14",
       "audience": "consumer",
       "sourceProof": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
+        "sourceUrl": "https://www.beobank.be/nl/betalen/kredietkaarten/mastercard-q8.html",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
@@ -404,34 +381,6 @@
       }
     },
     {
-      "id": "curve-standard",
-      "name": "Curve Standard",
-      "issuerId": "curve",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 0,
-      "fxFeePercentage": 0.01,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
-    },
-    {
-      "id": "deutsche-bank-db-card",
-      "name": "Deutsche Bank DB Card",
-      "issuerId": "deutsche-bank",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 20,
-      "fxFeePercentage": 0.015,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
-    },
-    {
       "id": "ing-card-classic",
       "name": "ING Card Classic",
       "issuerId": "ing-belgium",
@@ -527,6 +476,25 @@
       }
     },
     {
+      "id": "n26-business-metal",
+      "name": "N26 Business Metal",
+      "issuerId": "n26",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 202.8,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/en-be/plans",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
       "id": "n26-metal",
       "name": "N26 Metal",
       "issuerId": "n26",
@@ -546,26 +514,12 @@
       "lastUpdated": "2026-06-14"
     },
     {
-      "id": "n26-standard",
-      "name": "N26 Standard",
-      "issuerId": "n26",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 0,
-      "fxFeePercentage": 0,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
-    },
-    {
       "id": "revolut-metal",
       "name": "Revolut Metal",
       "issuerId": "revolut",
       "country": "BE",
       "network": "mastercard",
-      "annualFee": 191.88,
+      "annualFee": 215.88,
       "fxFeePercentage": 0,
       "currency": "EUR",
       "rewardRules": [],
@@ -579,8 +533,8 @@
       }
     },
     {
-      "id": "revolut-standard",
-      "name": "Revolut Standard",
+      "id": "revolut-pro-be",
+      "name": "Revolut Pro",
       "issuerId": "revolut",
       "country": "BE",
       "network": "visa",
@@ -588,9 +542,14 @@
       "fxFeePercentage": 0.01,
       "currency": "EUR",
       "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
+      "source": "official-product-page",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.revolut.com/en-BE/metal/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "wise-card",
@@ -599,14 +558,14 @@
       "country": "BE",
       "network": "visa",
       "annualFee": 0,
-      "fxFeePercentage": 0,
+      "fxFeePercentage": 0.0033,
       "currency": "EUR",
       "rewardRules": [],
       "source": "official-product-page",
       "lastUpdated": "2026-06-14",
       "audience": "consumer",
       "sourceProof": {
-        "sourceUrl": "https://wise.com/be/card/",
+        "sourceUrl": "https://wise.com/gb/pricing/card-fees",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
