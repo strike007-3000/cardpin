@@ -1,0 +1,41 @@
+name: "🏬 Request a New Merchant or Category"
+description: "Suggest adding common merchants or categories to Belgium, Netherlands, France, Germany, or UK datasets."
+title: "Merchant Request: [Merchant Name]"
+labels: ["dataset", "new-merchant"]
+body:
+  - type: input
+    id: merchant_name
+    attributes:
+      label: "Merchant Name"
+      placeholder: "e.g., Deliveroo, Shell, Albert Heijn, Decathlon"
+    validations:
+      required: true
+  - type: dropdown
+    id: country
+    attributes:
+      label: "Country"
+      description: "Select which country dataset this merchant is active in."
+      options:
+        - "BE (Belgium)"
+        - "NL (Netherlands)"
+        - "FR (France)"
+        - "DE (Germany)"
+        - "GB (United Kingdom)"
+        - "Multiple / All"
+    validations:
+      required: true
+  - type: input
+    id: category
+    attributes:
+      label: "Merchant Category"
+      description: "Suggest a category from the registry (groceries, travel, dining, fuel, utilities, online-shopping, transport, entertainment)."
+      placeholder: "e.g., groceries, fuel, dining"
+    validations:
+      required: true
+  - type: input
+    id: website
+    attributes:
+      label: "Merchant Website (optional)"
+      placeholder: "https://www.example-merchant.com"
+    validations:
+      required: false

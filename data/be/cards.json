@@ -1,134 +1,6 @@
 {
   "cards": [
     {
-      "id": "beobank-extra-mc",
-      "name": "Beobank Extra Mastercard",
-      "issuerId": "beobank",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 5,
-      "fxFeePercentage": 0.021,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "beobank-q8-mc",
-      "name": "Beobank Q8 Mastercard",
-      "issuerId": "beobank",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 5,
-      "fxFeePercentage": 0.021,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "beobank-visa",
-      "name": "Beobank Visa",
-      "issuerId": "beobank",
-      "country": "BE",
-      "network": "visa",
-      "annualFee": 5,
-      "fxFeePercentage": 0.021,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "beobank-elite-travel-mc",
-      "name": "Beobank Elite Travel Mastercard",
-      "issuerId": "beobank",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 74,
-      "fxFeePercentage": 0.021,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
-    },
-    {
-      "id": "amex-gold-be",
-      "name": "American Express Gold Belgium",
-      "issuerId": "american-express",
-      "country": "BE",
-      "network": "amex",
-      "annualFee": 195,
-      "fxFeePercentage": 0.025,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "amex-classic-be",
-      "name": "American Express Classic Belgium",
-      "issuerId": "american-express",
-      "country": "BE",
-      "network": "amex",
-      "annualFee": 75,
-      "fxFeePercentage": 0.025,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-classic/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "amex-platinum-be",
-      "name": "American Express Platinum Belgium",
-      "issuerId": "american-express",
-      "country": "BE",
-      "network": "amex",
-      "annualFee": 720,
-      "fxFeePercentage": 0.025,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
       "id": "amex-brussels-airlines-classic",
       "name": "Brussels Airlines Amex Classic",
       "issuerId": "american-express",
@@ -167,267 +39,58 @@
       }
     },
     {
-      "id": "keytrade-visa",
-      "name": "Keytrade Visa Gold",
-      "issuerId": "keytrade-bank",
+      "id": "amex-classic-be",
+      "name": "American Express Classic Belgium",
+      "issuerId": "american-express",
       "country": "BE",
-      "network": "visa",
-      "annualFee": 0,
-      "fxFeePercentage": 0.014,
+      "network": "amex",
+      "annualFee": 75,
+      "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
       "source": "official-product-page",
       "lastUpdated": "2026-06-14",
       "audience": "consumer",
       "sourceProof": {
-        "sourceUrl": "https://www.keytradebank.be/en/pay/visa-gold-credit-card",
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-classic/",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
     },
     {
-      "id": "bnp-paribas-visa-gold",
-      "name": "BNP Paribas Visa Gold",
-      "issuerId": "bnp-paribas-fortis",
+      "id": "amex-gold-be",
+      "name": "American Express Gold Belgium",
+      "issuerId": "american-express",
       "country": "BE",
-      "network": "visa",
-      "annualFee": 60,
-      "fxFeePercentage": 0.016,
+      "network": "amex",
+      "annualFee": 195,
+      "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
       "source": "official-product-page",
       "lastUpdated": "2026-06-14",
       "audience": "consumer",
       "sourceProof": {
-        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
     },
     {
-      "id": "bnp-paribas-visa-classic",
-      "name": "BNP Paribas Visa Classic",
-      "issuerId": "bnp-paribas-fortis",
+      "id": "amex-platinum-be",
+      "name": "American Express Platinum Belgium",
+      "issuerId": "american-express",
       "country": "BE",
-      "network": "visa",
-      "annualFee": 24,
-      "fxFeePercentage": 0.016,
+      "network": "amex",
+      "annualFee": 720,
+      "fxFeePercentage": 0.025,
       "currency": "EUR",
       "rewardRules": [],
       "source": "official-product-page",
       "lastUpdated": "2026-06-14",
       "audience": "consumer",
       "sourceProof": {
-        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "bnp-paribas-mc-gold",
-      "name": "BNP Paribas Mastercard Gold",
-      "issuerId": "bnp-paribas-fortis",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 60,
-      "fxFeePercentage": 0.016,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "belfius-mc-red",
-      "name": "Belfius Mastercard Red",
-      "issuerId": "belfius",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 15,
-      "fxFeePercentage": 0.021,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.belfius.be/common/FR/multimedia/Downloads/Conditions/fiches-produits/credit-cards/mastercard-red.pdf",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "belfius-mc-classic",
-      "name": "Belfius Mastercard Classic",
-      "issuerId": "belfius",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 12,
-      "fxFeePercentage": 0.021,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard/index.aspx",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "belfius-mc-gold",
-      "name": "Belfius Mastercard Gold",
-      "issuerId": "belfius",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 48,
-      "fxFeePercentage": 0.021,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard-gold/index.aspx",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "belfius-mc-platinum",
-      "name": "Belfius Mastercard Platinum",
-      "issuerId": "belfius",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 192,
-      "fxFeePercentage": 0.021,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard-platinum/index.aspx",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "kbc-credit-card",
-      "name": "KBC Credit Card",
-      "issuerId": "kbc",
-      "country": "BE",
-      "network": "visa",
-      "annualFee": 0,
-      "fxFeePercentage": 0.016,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.kbc.be/particulieren/nl/betalen/kredietkaarten/kbc-kredietkaart.html",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "kbc-mc-gold",
-      "name": "KBC Mastercard Gold",
-      "issuerId": "kbc",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 45,
-      "fxFeePercentage": 0.016,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.kbc.be/particulieren/nl/betalen/kredietkaarten/kbc-gold-mastercard.html",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "cbc-credit-card",
-      "name": "CBC Credit Card",
-      "issuerId": "cbc",
-      "country": "BE",
-      "network": "visa",
-      "annualFee": 0,
-      "fxFeePercentage": 0.016,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.cbc.be/particuliers/fr/paiements/cartes-de-credit/carte-de-credit-cbc.html",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "cbc-mc-gold",
-      "name": "CBC Mastercard Gold",
-      "issuerId": "cbc",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 45,
-      "fxFeePercentage": 0.016,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.cbc.be/particuliers/fr/paiements/cartes-de-credit/cbc-gold-mastercard.html",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "ing-card-classic",
-      "name": "ING Card Classic",
-      "issuerId": "ing-belgium",
-      "country": "BE",
-      "network": "visa",
-      "annualFee": 22,
-      "fxFeePercentage": 0.02,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.ing.be/en/individuals/daily-banking/cards/credit-card",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      }
-    },
-    {
-      "id": "ing-card-gold",
-      "name": "ING Card Gold",
-      "issuerId": "ing-belgium",
-      "country": "BE",
-      "network": "visa",
-      "annualFee": 48,
-      "fxFeePercentage": 0.02,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "lastUpdated": "2026-06-14",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://www.ing.be/en/individuals/daily-banking/cards/gold-card",
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
@@ -499,6 +162,262 @@
       "audience": "consumer"
     },
     {
+      "id": "belfius-mc-classic",
+      "name": "Belfius Mastercard Classic",
+      "issuerId": "belfius",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 12,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard/index.aspx",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "belfius-mc-gold",
+      "name": "Belfius Mastercard Gold",
+      "issuerId": "belfius",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 48,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard-gold/index.aspx",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "belfius-mc-platinum",
+      "name": "Belfius Mastercard Platinum",
+      "issuerId": "belfius",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 192,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.belfius.be/retail/fr/produits/payer/cartes/mastercard-platinum/index.aspx",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "belfius-mc-red",
+      "name": "Belfius Mastercard Red",
+      "issuerId": "belfius",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 15,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.belfius.be/common/FR/multimedia/Downloads/Conditions/fiches-produits/credit-cards/mastercard-red.pdf",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "beobank-elite-travel-mc",
+      "name": "Beobank Elite Travel Mastercard",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 74,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
+    },
+    {
+      "id": "beobank-extra-mc",
+      "name": "Beobank Extra Mastercard",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 5,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "beobank-q8-mc",
+      "name": "Beobank Q8 Mastercard",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 5,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "beobank-visa",
+      "name": "Beobank Visa",
+      "issuerId": "beobank",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 5,
+      "fxFeePercentage": 0.021,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "bnp-paribas-mc-gold",
+      "name": "BNP Paribas Mastercard Gold",
+      "issuerId": "bnp-paribas-fortis",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 60,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "bnp-paribas-visa-classic",
+      "name": "BNP Paribas Visa Classic",
+      "issuerId": "bnp-paribas-fortis",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 24,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "bnp-paribas-visa-gold",
+      "name": "BNP Paribas Visa Gold",
+      "issuerId": "bnp-paribas-fortis",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 60,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bnpparibasfortis.be/en/public/individuals/payments/cards/credit-cards",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "cbc-credit-card",
+      "name": "CBC Credit Card",
+      "issuerId": "cbc",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.cbc.be/particuliers/fr/paiements/cartes-de-credit/carte-de-credit-cbc.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "cbc-mc-gold",
+      "name": "CBC Mastercard Gold",
+      "issuerId": "cbc",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 45,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.cbc.be/particuliers/fr/paiements/cartes-de-credit/cbc-gold-mastercard.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "curve-standard",
+      "name": "Curve Standard",
+      "issuerId": "curve",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0.01,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "seed",
+      "lastUpdated": "2026-01-01",
+      "audience": "consumer"
+    },
+    {
       "id": "deutsche-bank-db-card",
       "name": "Deutsche Bank DB Card",
       "issuerId": "deutsche-bank",
@@ -513,13 +432,127 @@
       "audience": "consumer"
     },
     {
-      "id": "revolut-standard",
-      "name": "Revolut Standard",
-      "issuerId": "revolut",
+      "id": "ing-card-classic",
+      "name": "ING Card Classic",
+      "issuerId": "ing-belgium",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 22,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.ing.be/en/individuals/daily-banking/cards/credit-card",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "ing-card-gold",
+      "name": "ING Card Gold",
+      "issuerId": "ing-belgium",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 48,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.ing.be/en/individuals/daily-banking/cards/gold-card",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "kbc-credit-card",
+      "name": "KBC Credit Card",
+      "issuerId": "kbc",
       "country": "BE",
       "network": "visa",
       "annualFee": 0,
-      "fxFeePercentage": 0.01,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.kbc.be/particulieren/nl/betalen/kredietkaarten/kbc-kredietkaart.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "kbc-mc-gold",
+      "name": "KBC Mastercard Gold",
+      "issuerId": "kbc",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 45,
+      "fxFeePercentage": 0.016,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.kbc.be/particulieren/nl/betalen/kredietkaarten/kbc-gold-mastercard.html",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "keytrade-visa",
+      "name": "Keytrade Visa Gold",
+      "issuerId": "keytrade-bank",
+      "country": "BE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.014,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-06-14",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.keytradebank.be/en/pay/visa-gold-credit-card",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      }
+    },
+    {
+      "id": "n26-metal",
+      "name": "N26 Metal",
+      "issuerId": "n26",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 202.8,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/en-eu/metal",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "n26-standard",
+      "name": "N26 Standard",
+      "issuerId": "n26",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
@@ -546,37 +579,18 @@
       }
     },
     {
-      "id": "n26-standard",
-      "name": "N26 Standard",
-      "issuerId": "n26",
+      "id": "revolut-standard",
+      "name": "Revolut Standard",
+      "issuerId": "revolut",
       "country": "BE",
-      "network": "mastercard",
+      "network": "visa",
       "annualFee": 0,
-      "fxFeePercentage": 0,
+      "fxFeePercentage": 0.01,
       "currency": "EUR",
       "rewardRules": [],
       "source": "seed",
       "lastUpdated": "2026-01-01",
       "audience": "consumer"
-    },
-    {
-      "id": "n26-metal",
-      "name": "N26 Metal",
-      "issuerId": "n26",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 202.8,
-      "fxFeePercentage": 0,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "official-product-page",
-      "audience": "consumer",
-      "sourceProof": {
-        "sourceUrl": "https://n26.com/en-eu/metal",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-06-14"
     },
     {
       "id": "wise-card",
@@ -596,20 +610,6 @@
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       }
-    },
-    {
-      "id": "curve-standard",
-      "name": "Curve Standard",
-      "issuerId": "curve",
-      "country": "BE",
-      "network": "mastercard",
-      "annualFee": 0,
-      "fxFeePercentage": 0.01,
-      "currency": "EUR",
-      "rewardRules": [],
-      "source": "seed",
-      "lastUpdated": "2026-01-01",
-      "audience": "consumer"
     }
   ]
 }

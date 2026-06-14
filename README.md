@@ -87,7 +87,8 @@ corepack pnpm dev
 
 Run the following commands to validate the data and build the application:
 
-- **Validate Datasets**: `pnpm validate:data` (validates Zod schemas and relational integrity)
+- **Format Datasets**: `pnpm format:data` (alphabetizes data collections and applies standard spacing)
+- **Validate Datasets**: `pnpm validate:data` (checks schema rules, duplicates, relational integrity, and formatting)
 - **TypeScript Typecheck**: `pnpm typecheck`
 - **Lint Codebase**: `pnpm lint`
 - **Run Unit Tests**: `pnpm test`
@@ -96,6 +97,7 @@ Run the following commands to validate the data and build the application:
 Fallback forms:
 
 ```bash
+corepack pnpm format:data
 corepack pnpm validate:data
 corepack pnpm typecheck
 corepack pnpm lint

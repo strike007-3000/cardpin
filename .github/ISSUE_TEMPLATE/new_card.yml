@@ -1,0 +1,86 @@
+name: "💳 Request to Add a New Card"
+description: "Submit a structured request to add a personal or business payment card to CardPin datasets."
+title: "New Card: [Issuer Name] - [Card Name]"
+labels: ["dataset", "new-card"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to CardPin! Please provide the details of the card you would like to add.
+        Every card MUST be backed by an official source URL (issuer terms sheet, fee structure page, or official product page).
+  - type: input
+    id: issuer
+    attributes:
+      label: "Bank / Issuer Name"
+      placeholder: "e.g., Beobank, KBC, Bunq, American Express"
+    validations:
+      required: true
+  - type: input
+    id: card_name
+    attributes:
+      label: "Card Name"
+      placeholder: "e.g., Visa Extra, Mastercard Gold, Flying Blue World Elite"
+    validations:
+      required: true
+  - type: dropdown
+    id: country
+    attributes:
+      label: "Country"
+      description: "Select the country dataset this card belongs to."
+      options:
+        - "BE (Belgium)"
+        - "NL (Netherlands)"
+        - "FR (France)"
+        - "DE (Germany)"
+        - "GB (United Kingdom)"
+        - "Other"
+    validations:
+      required: true
+  - type: dropdown
+    id: audience
+    attributes:
+      label: "Audience"
+      options:
+        - "personal (consumer)"
+        - "business"
+    validations:
+      required: true
+  - type: input
+    id: annual_fee
+    attributes:
+      label: "Annual Fee (EUR/GBP)"
+      placeholder: "e.g., 0.00, 15.00, 75.00"
+    validations:
+      required: true
+  - type: input
+    id: fx_fee
+    attributes:
+      label: "Foreign Exchange (FX) Markup Fee %"
+      placeholder: "e.g., 1.5% (0.015), 2.0% (0.02), or 0% (0.0)"
+    validations:
+      required: true
+  - type: textarea
+    id: rewards_description
+    attributes:
+      label: "Rewards Breakdown"
+      description: "Briefly explain the reward scheme (e.g. 1% cashback on supermarkets, 1 point per 1 EUR spent everywhere)."
+      placeholder: "e.g.,\n- fallback: 1% cashback\n- groceries: 1.5% cashback\n- fuel: 0.5% cashback"
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: "Official Bank Source URL"
+      description: "A secure HTTPS link to the issuer's terms of service, fee list, or product info page."
+      placeholder: "https://www.example-bank.com/terms/card-fees"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Contributor Verification"
+      options:
+        - label: "I have verified that this card does not already exist in the target dataset."
+          required: true
+        - label: "I understand that missing or non-HTTPS source links will cause the request to be rejected."
+          required: true

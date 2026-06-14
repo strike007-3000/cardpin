@@ -23,6 +23,73 @@ function assertExists(filePath: string) {
   }
 }
 
+function checkFormattingAndSorting(filePath: string, arrayKey: string) {
+  const content = fs.readFileSync(filePath, "utf-8");
+  let parsed: any;
+  try {
+    parsed = JSON.parse(content);
+  } catch (err) {
+    throw new Error(`Syntax Error: File ${filePath} is not valid JSON.`);
+  }
+
+  if (!parsed || !Array.isArray(parsed[arrayKey])) {
+    throw new Error(`Invalid schema structure: File ${filePath} missing array key "${arrayKey}".`);
+  }
+
+  const items = parsed[arrayKey];
+
+  // Check duplicate IDs
+  const seenIds = new Set<string>();
+  for (const item of items) {
+    if (!item.id || typeof item.id !== "string") {
+      throw new Error(`Duplicate ID/Schema Error: Item in ${filePath} is missing a valid string ID.`);
+    }
+    if (seenIds.has(item.id)) {
+      throw new Error(`Duplicate ID Error: ID "${item.id}" is defined multiple times in ${filePath}`);
+    }
+    seenIds.add(item.id);
+  }
+
+  // Check sorting
+  for (let i = 0; i < items.length - 1; i++) {
+    if (items[i].id > items[i + 1].id) {
+      throw new Error(
+        `Dataset Format Error: File ${filePath} is not sorted alphabetically by ID.\n` +
+        `Line with ID "${items[i + 1].id}" should come before "${items[i].id}".\n` +
+        `Please run 'pnpm format:data' to fix automatically.`
+      );
+    }
+  }
+
+  // Check pretty-printing format
+  const expectedContent = JSON.stringify(parsed, null, 2) + "\n";
+  if (content !== expectedContent) {
+    throw new Error(
+      `Dataset Format Error: File ${filePath} is not formatted correctly.\n` +
+      `Please run 'pnpm format:data' to format and clean files automatically.`
+    );
+  }
+}
+
+function validateSourceAttribution(source: { sourceUrl: string; verifiedAt: string; verifiedBy: string }, locationInfo: string) {
+  if (!source.sourceUrl.startsWith("https://")) {
+    throw new Error(`[Attribution Error] ${locationInfo}: Source URL must use HTTPS (secured)`);
+  }
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/;
+  if (!dateRegex.test(source.verifiedAt)) {
+    throw new Error(`[Attribution Error] ${locationInfo}: Verified date "${source.verifiedAt}" must be in YYYY-MM-DD format`);
+  }
+  const timestamp = Date.parse(source.verifiedAt);
+  if (Number.isNaN(timestamp)) {
+    throw new Error(`[Attribution Error] ${locationInfo}: Verified date "${source.verifiedAt}" is not a valid date`);
+  }
+  const dateObj = new Date(source.verifiedAt);
+  const now = new Date();
+  if (dateObj.getTime() > now.getTime() + 86400000) {
+    throw new Error(`[Attribution Error] ${locationInfo}: Verified date "${source.verifiedAt}" cannot be in the future`);
+  }
+}
+
 async function main() {
   const countries = fs
     .readdirSync(DATA_DIR, { withFileTypes: true })
@@ -46,6 +113,12 @@ async function main() {
     assertExists(cardsPath);
     assertExists(merchantsPath);
     assertExists(rewardRulesPath);
+
+    // Enforce sorting, duplicate checks, and formatting verification
+    checkFormattingAndSorting(issuersPath, "issuers");
+    checkFormattingAndSorting(cardsPath, "cards");
+    checkFormattingAndSorting(merchantsPath, "merchants");
+    checkFormattingAndSorting(rewardRulesPath, "rewardRules");
 
     const issuersJsonRaw = JSON.parse(fs.readFileSync(issuersPath, "utf-8"));
     const cardsJsonRaw = JSON.parse(fs.readFileSync(cardsPath, "utf-8"));
@@ -72,6 +145,9 @@ async function main() {
         throw new Error(
           `Relational Integrity Error: Card "${card.id}" references non-existent issuerId "${card.issuerId}".`
         );
+      }
+      if (card.sourceProof) {
+        validateSourceAttribution(card.sourceProof, `Card "${card.id}" source proof`);
       }
     }
 
@@ -101,6 +177,8 @@ async function main() {
           `Relational Integrity Error: RewardRule "${rule.id}" references non-existent merchantId "${rule.merchantId}".`
         );
       }
+
+      validateSourceAttribution(rule.source, `RewardRule "${rule.id}" source`);
     }
 
     // Full bundle validation

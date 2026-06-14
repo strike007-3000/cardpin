@@ -1,15 +1,48 @@
 {
   "issuers": [
-    { "id": "ics", "name": "International Card Services" },
-    { "id": "american-express", "name": "American Express NL" },
-    { "id": "ing-nl", "name": "ING Netherlands" },
-    { "id": "abn-amro", "name": "ABN AMRO" },
-    { "id": "rabobank", "name": "Rabobank" },
-    { "id": "asn-bank", "name": "ASN Bank" },
-    { "id": "sns", "name": "SNS Bank" },
-    { "id": "bunq", "name": "bunq" },
-    { "id": "revolut", "name": "Revolut" },
-    { "id": "n26", "name": "N26" },
-    { "id": "wise", "name": "Wise" }
+    {
+      "id": "abn-amro",
+      "name": "ABN AMRO"
+    },
+    {
+      "id": "american-express",
+      "name": "American Express NL"
+    },
+    {
+      "id": "asn-bank",
+      "name": "ASN Bank"
+    },
+    {
+      "id": "bunq",
+      "name": "bunq"
+    },
+    {
+      "id": "ics",
+      "name": "International Card Services"
+    },
+    {
+      "id": "ing-nl",
+      "name": "ING Netherlands"
+    },
+    {
+      "id": "n26",
+      "name": "N26"
+    },
+    {
+      "id": "rabobank",
+      "name": "Rabobank"
+    },
+    {
+      "id": "revolut",
+      "name": "Revolut"
+    },
+    {
+      "id": "sns",
+      "name": "SNS Bank"
+    },
+    {
+      "id": "wise",
+      "name": "Wise"
+    }
   ]
 }

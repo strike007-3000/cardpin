@@ -40,7 +40,8 @@ corepack pnpm install
 
 Run the following commands to validate the data and build the application:
 
-- **Validate Datasets**: `pnpm validate:data` (checks schemas and relationships without writing compiled bundles)
+- **Format Datasets**: `pnpm format:data` (automatically alphabetizes dataset files by ID and standardizes spacing)
+- **Validate Datasets**: `pnpm validate:data` (checks schemas, relational integrity, formatting, and duplicate IDs)
 - **Compile Datasets**: `pnpm compile:data` (performs validation and compiles to static JSON bundles)
 - **TypeScript Typecheck**: `pnpm typecheck`
 - **Lint Codebase**: `pnpm lint`
@@ -119,6 +120,7 @@ To add a reward rule, edit `reward_rules.json`, reference an existing card, and 
 After data edits, run:
 
 ```bash
+pnpm format:data
 pnpm validate:data
 pnpm compile:data
 ```
@@ -137,7 +139,8 @@ Keep code changes aligned with the static architecture:
 
 Before requesting review, confirm:
 
-- `pnpm validate:data` passes.
+- `pnpm format:data` was run to sort and clean JSON files.
+- `pnpm validate:data` passes (validates schema, relational integrity, duplicates, and formatting).
 - `pnpm typecheck` passes.
 - `pnpm lint` passes.
 - `pnpm test` passes.
