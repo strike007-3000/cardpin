@@ -7,13 +7,15 @@
       "category": "groceries",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.01,
-      "conditions": {},
+      "conditions": {
+        "cap": 100
+      },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "beobank-extra-dining-cashback",
@@ -22,13 +24,15 @@
       "category": "dining",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.01,
-      "conditions": {},
+      "conditions": {
+        "cap": 100
+      },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "beobank-extra-fallback-cashback",
@@ -36,13 +40,15 @@
       "country": "BE",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.005,
-      "conditions": {},
+      "conditions": {
+        "cap": 100
+      },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-extra-mastercard",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "beobank-q8-fuel-cashback",
@@ -51,13 +57,15 @@
       "category": "fuel",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.02,
-      "conditions": {},
+      "conditions": {
+        "cap": 100
+      },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "beobank-q8-fallback-cashback",
@@ -65,13 +73,15 @@
       "country": "BE",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.005,
-      "conditions": {},
+      "conditions": {
+        "cap": 100
+      },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-q8-mastercard",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "beobank-visa-online-cashback",
@@ -80,13 +90,15 @@
       "category": "online-shopping",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.01,
-      "conditions": {},
+      "conditions": {
+        "cap": 100
+      },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "beobank-visa-fallback-cashback",
@@ -94,142 +106,15 @@
       "country": "BE",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.005,
-      "conditions": {},
+      "conditions": {
+        "cap": 100
+      },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "beobank-elite-travel-cashback",
-      "cardId": "beobank-elite-travel-mc",
-      "country": "BE",
-      "category": "travel",
-      "rewardType": "miles",
-      "rewardValue": 1.5,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-elite-travel-mastercard",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "beobank-elite-fallback-cashback",
-      "cardId": "beobank-elite-travel-mc",
-      "country": "BE",
-      "rewardType": "miles",
-      "rewardValue": 1.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-elite-travel-mastercard",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-gold-travel-points",
-      "cardId": "amex-gold-be",
-      "country": "BE",
-      "category": "travel",
-      "rewardType": "points",
-      "rewardValue": 2.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-gold-fallback-points",
-      "cardId": "amex-gold-be",
-      "country": "BE",
-      "rewardType": "points",
-      "rewardValue": 1.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-classic-fallback-points",
-      "cardId": "amex-classic-be",
-      "country": "BE",
-      "rewardType": "points",
-      "rewardValue": 1.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-classic/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-platinum-travel-points",
-      "cardId": "amex-platinum-be",
-      "country": "BE",
-      "category": "travel",
-      "rewardType": "points",
-      "rewardValue": 2.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-platinum-fallback-points",
-      "cardId": "amex-platinum-be",
-      "country": "BE",
-      "rewardType": "points",
-      "rewardValue": 1.5,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-ba-classic-fallback-miles",
-      "cardId": "amex-brussels-airlines-classic",
-      "country": "BE",
-      "rewardType": "miles",
-      "rewardValue": 1.2,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/classic-brussels-airlines/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-ba-premium-fallback-miles",
-      "cardId": "amex-brussels-airlines-premium",
-      "country": "BE",
-      "rewardType": "miles",
-      "rewardValue": 1.5,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/premium-brussels-airlines/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     },
     {
       "id": "keytrade-visa-fallback-cashback",
@@ -243,106 +128,7 @@
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "bnp-visa-gold-travel-cashback",
-      "cardId": "bnp-paribas-visa-gold",
-      "country": "BE",
-      "category": "travel",
-      "rewardType": "cashback_percentage",
-      "rewardValue": 0.005,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.bnpparibasfortis.be/en/paying/visa-gold",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "bnp-visa-gold-fallback-cashback",
-      "cardId": "bnp-paribas-visa-gold",
-      "country": "BE",
-      "rewardType": "cashback_percentage",
-      "rewardValue": 0.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.bnpparibasfortis.be/en/paying/visa-gold",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "revolut-metal-fallback-cashback",
-      "cardId": "revolut-metal",
-      "country": "BE",
-      "rewardType": "cashback_percentage",
-      "rewardValue": 0.001,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.revolut.com/en-BE/metal/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "n26-metal-fallback-cashback",
-      "cardId": "n26-metal",
-      "country": "BE",
-      "rewardType": "cashback_percentage",
-      "rewardValue": 0.005,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://n26.com/en-eu/metal",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "belfius-red-fallback-cashback",
-      "cardId": "belfius-mc-red",
-      "country": "BE",
-      "rewardType": "cashback_percentage",
-      "rewardValue": 0.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.belfius.be/common/FR/multimedia/Downloads/Conditions/fiches-produits/credit-cards/mastercard-red.pdf",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "argenta-gold-fallback-cashback",
-      "cardId": "argenta-gold-card",
-      "country": "BE",
-      "rewardType": "cashback_percentage",
-      "rewardValue": 0.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.argenta.be/nl/kredietkaart-goud.html",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "kbc-credit-fallback-cashback",
-      "cardId": "kbc-credit-card",
-      "country": "BE",
-      "rewardType": "cashback_percentage",
-      "rewardValue": 0.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.kbc.be/particulieren/nl/betalen/kredietkaarten/kbc-kredietkaart.html",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
+      "lastUpdated": "2026-06-14"
     }
   ]
 }
