@@ -4,10 +4,24 @@ Thank you for helping improve CardPin. This project is a static-first, privacy-f
 
 ## Development Workflow
 
-Install dependencies:
+CardPin uses the package manager declared in `package.json`:
+
+```json
+"packageManager": "pnpm@9.0.0"
+```
+
+Enable Corepack and activate that version before installing dependencies:
 
 ```bash
+corepack enable
+corepack prepare pnpm@9.0.0 --activate
 pnpm install
+```
+
+If your shell cannot expose `pnpm` globally, use the Corepack fallback form:
+
+```bash
+corepack pnpm install
 ```
 
 Validate dataset changes without writing compiled bundles:
@@ -30,6 +44,16 @@ pnpm typecheck
 pnpm lint
 pnpm test
 pnpm build
+```
+
+Fallback form:
+
+```bash
+corepack pnpm validate:data
+corepack pnpm typecheck
+corepack pnpm lint
+corepack pnpm test
+corepack pnpm build
 ```
 
 ## Dataset Contributions
