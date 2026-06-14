@@ -4,49 +4,50 @@ Thank you for helping improve CardPin. This project is a static-first, privacy-f
 
 ## Development Workflow
 
-CardPin uses the package manager declared in `package.json`:
+### Prerequisites
+
+- **Node.js**: Version `20` (LTS is recommended. A `.nvmrc` is provided).
+- **Corepack**: Required to manage the package manager version automatically.
+
+### Installation & Development
+
+This project uses the package manager declared in `package.json`:
 
 ```json
 "packageManager": "pnpm@9.0.0"
 ```
 
-Enable Corepack and activate that version before installing dependencies:
+To set up the project locally:
 
-```bash
-corepack enable
-corepack prepare pnpm@9.0.0 --activate
-pnpm install
-```
+1. Ensure you are using Node.js 20.
+2. Enable Corepack and activate the configured `pnpm` version:
+   ```bash
+   corepack enable
+   corepack prepare pnpm@9.0.0 --activate
+   ```
+3. Install dependencies:
+   ```bash
+   pnpm install
+   ```
 
-If your shell cannot expose `pnpm` globally, use the Corepack fallback form:
+If your environment or shell does not expose `pnpm` globally, use the Corepack fallback prefix:
 
 ```bash
 corepack pnpm install
 ```
 
-Validate dataset changes without writing compiled bundles:
+### Validation & Build
 
-```bash
-pnpm validate:data
-```
+Run the following commands to validate the data and build the application:
 
-Compile validated datasets for the web app:
+- **Validate Datasets**: `pnpm validate:data` (checks schemas and relationships without writing compiled bundles)
+- **Compile Datasets**: `pnpm compile:data` (performs validation and compiles to static JSON bundles)
+- **TypeScript Typecheck**: `pnpm typecheck`
+- **Lint Codebase**: `pnpm lint`
+- **Run Unit Tests**: `pnpm test`
+- **Build Production App**: `pnpm build`
 
-```bash
-pnpm compile:data
-```
-
-Run the main checks before opening a pull request:
-
-```bash
-pnpm validate:data
-pnpm typecheck
-pnpm lint
-pnpm test
-pnpm build
-```
-
-Fallback form:
+Fallback forms:
 
 ```bash
 corepack pnpm validate:data

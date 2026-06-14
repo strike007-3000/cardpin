@@ -41,23 +41,41 @@ data/<country>/*.json
 
 ## Local Setup
 
-This repo uses the package manager declared in `package.json`:
+### Prerequisites
+
+- **Node.js**: Version `20` (LTS is recommended. A `.nvmrc` is provided).
+- **Corepack**: Required to manage the package manager version automatically.
+
+### Installation & Development
+
+This project uses the package manager declared in `package.json`:
 
 ```json
 "packageManager": "pnpm@9.0.0"
 ```
 
-Enable Corepack and activate the repo's pnpm version before installing:
+To set up the project locally:
 
-```bash
-corepack enable
-corepack prepare pnpm@9.0.0 --activate
-pnpm install
-pnpm compile:data
-pnpm dev
-```
+1. Ensure you are using Node.js 20 (e.g. run `nvm use` if using NVM).
+2. Enable Corepack and activate the configured `pnpm` version:
+   ```bash
+   corepack enable
+   corepack prepare pnpm@9.0.0 --activate
+   ```
+3. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+4. Compile the datasets into static frontend JSON bundles:
+   ```bash
+   pnpm compile:data
+   ```
+5. Run the development server:
+   ```bash
+   pnpm dev
+   ```
 
-If your shell cannot expose `pnpm` globally, use Corepack as the fallback command prefix:
+If your environment or shell does not expose `pnpm` globally, use the Corepack fallback prefix:
 
 ```bash
 corepack pnpm install
@@ -65,17 +83,17 @@ corepack pnpm compile:data
 corepack pnpm dev
 ```
 
-Useful checks:
+### Validation & Build
 
-```bash
-pnpm validate:data
-pnpm typecheck
-pnpm lint
-pnpm test
-pnpm build
-```
+Run the following commands to validate the data and build the application:
 
-Fallback form:
+- **Validate Datasets**: `pnpm validate:data` (validates Zod schemas and relational integrity)
+- **TypeScript Typecheck**: `pnpm typecheck`
+- **Lint Codebase**: `pnpm lint`
+- **Run Unit Tests**: `pnpm test`
+- **Build Production App**: `pnpm build` (this compiles the datasets and builds the static Next.js export in `apps/web/out`)
+
+Fallback forms:
 
 ```bash
 corepack pnpm validate:data
