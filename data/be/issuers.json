@@ -9,10 +9,6 @@
       "name": "Argenta"
     },
     {
-      "id": "axa",
-      "name": "AXA Belgium"
-    },
-    {
       "id": "belfius",
       "name": "Belfius"
     },
@@ -27,14 +23,6 @@
     {
       "id": "cbc",
       "name": "CBC Banque"
-    },
-    {
-      "id": "curve",
-      "name": "Curve"
-    },
-    {
-      "id": "deutsche-bank",
-      "name": "Deutsche Bank"
     },
     {
       "id": "ing-belgium",
