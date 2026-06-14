@@ -1,14 +1,42 @@
 {
   "rewardRules": [
     {
-      "id": "amex-green-nl-fallback-points",
-      "cardId": "amex-green-nl",
+      "id": "amex-fb-gold-fallback-miles",
+      "cardId": "amex-flying-blue-gold",
       "country": "NL",
-      "rewardType": "points",
-      "rewardValue": 1.0,
+      "rewardType": "miles",
+      "rewardValue": 1.5,
       "conditions": {},
       "source": {
-        "sourceUrl": "https://www.americanexpress.com/nl/creditcards/green-card/",
+        "sourceUrl": "https://www.americanexpress.com/nl/creditcards/flying-blue-gold-card/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-fb-platinum-fallback-miles",
+      "cardId": "amex-flying-blue-platinum",
+      "country": "NL",
+      "rewardType": "miles",
+      "rewardValue": 2,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/nl/creditcards/flying-blue-platinum-card/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "amex-fb-silver-fallback-miles",
+      "cardId": "amex-flying-blue-silver",
+      "country": "NL",
+      "rewardType": "miles",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/nl/creditcards/flying-blue-silver-card/",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
@@ -29,6 +57,20 @@
       "lastUpdated": "2026-01-01"
     },
     {
+      "id": "amex-green-nl-fallback-points",
+      "cardId": "amex-green-nl",
+      "country": "NL",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/nl/creditcards/green-card/",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
       "id": "amex-platinum-nl-fallback-points",
       "cardId": "amex-platinum-nl",
       "country": "NL",
@@ -43,56 +85,29 @@
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "amex-fb-silver-fallback-miles",
-      "cardId": "amex-flying-blue-silver",
+      "id": "bunq-dining-cashback",
+      "cardId": "bunq-credit-card",
       "country": "NL",
-      "rewardType": "miles",
-      "rewardValue": 1.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/nl/creditcards/flying-blue-silver-card/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-fb-gold-fallback-miles",
-      "cardId": "amex-flying-blue-gold",
-      "country": "NL",
-      "rewardType": "miles",
-      "rewardValue": 1.5,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/nl/creditcards/flying-blue-gold-card/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "amex-fb-platinum-fallback-miles",
-      "cardId": "amex-flying-blue-platinum",
-      "country": "NL",
-      "rewardType": "miles",
-      "rewardValue": 2.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.americanexpress.com/nl/creditcards/flying-blue-platinum-card/",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "revolut-metal-nl-fallback",
-      "cardId": "revolut-metal",
-      "country": "NL",
+      "category": "dining",
       "rewardType": "cashback_percentage",
-      "rewardValue": 0.001,
+      "rewardValue": 0.01,
       "conditions": {},
       "source": {
-        "sourceUrl": "https://www.revolut.com/nl-NL/metal/",
+        "sourceUrl": "https://www.bunq.com/benefits/cashback",
+        "verifiedAt": "2026-06-14",
+        "verifiedBy": "community-editor"
+      },
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ics-black-fallback-points",
+      "cardId": "ics-mastercard-black",
+      "country": "NL",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.icscards.nl/zwarte-kaart",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
@@ -113,29 +128,14 @@
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "ics-black-fallback-points",
-      "cardId": "ics-mastercard-black",
+      "id": "revolut-metal-nl-fallback",
+      "cardId": "revolut-metal",
       "country": "NL",
-      "rewardType": "points",
-      "rewardValue": 1.0,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.icscards.nl/zwarte-kaart",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "bunq-dining-cashback",
-      "cardId": "bunq-credit-card",
-      "country": "NL",
-      "category": "dining",
       "rewardType": "cashback_percentage",
-      "rewardValue": 0.01,
+      "rewardValue": 0.001,
       "conditions": {},
       "source": {
-        "sourceUrl": "https://www.bunq.com/benefits/cashback",
+        "sourceUrl": "https://www.revolut.com/nl-NL/metal/",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },

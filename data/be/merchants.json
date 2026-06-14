@@ -1,33 +1,13 @@
 {
   "merchants": [
     {
-      "id": "carrefour",
-      "name": "Carrefour",
+      "id": "airbnb",
+      "name": "Airbnb",
       "country": "BE",
       "categories": [
-        "groceries"
+        "travel"
       ],
-      "website": "https://www.carrefour.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "delhaize",
-      "name": "Delhaize",
-      "country": "BE",
-      "categories": [
-        "groceries"
-      ],
-      "website": "https://www.delhaize.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "colruyt",
-      "name": "Colruyt",
-      "country": "BE",
-      "categories": [
-        "groceries"
-      ],
-      "website": "https://www.colruyt.be",
+      "website": "https://www.airbnb.be",
       "lastUpdated": "2026-01-01"
     },
     {
@@ -51,325 +31,14 @@
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "lidl",
-      "name": "Lidl",
+      "id": "amazon",
+      "name": "Amazon Belgium",
       "country": "BE",
       "categories": [
-        "groceries"
+        "online-shopping"
       ],
-      "website": "https://www.lidl.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "match",
-      "name": "Match",
-      "country": "BE",
-      "categories": [
-        "groceries"
-      ],
-      "website": "https://www.supermarche-match.be",
+      "website": "https://www.amazon.com.be",
       "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "cora",
-      "name": "Cora",
-      "country": "BE",
-      "categories": [
-        "groceries"
-      ],
-      "website": "https://www.cora.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "spar",
-      "name": "Spar",
-      "country": "BE",
-      "categories": [
-        "groceries"
-      ],
-      "website": "https://www.sparretail.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "okay",
-      "name": "OKay",
-      "country": "BE",
-      "categories": [
-        "groceries"
-      ],
-      "website": "https://www.okay.colruytgroup.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "booking",
-      "name": "Booking.com",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.booking.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "expedia",
-      "name": "Expedia",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.expedia.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "airbnb",
-      "name": "Airbnb",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.airbnb.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "brussels-airlines",
-      "name": "Brussels Airlines",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.brusselsairlines.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "ryanair",
-      "name": "Ryanair",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.ryanair.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "klm",
-      "name": "KLM BE",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.klm.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "tui-fly",
-      "name": "TUI Fly Belgium",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.tuifly.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "center-parcs",
-      "name": "Center Parcs BE",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.centerparcs.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "landal",
-      "name": "Landal GreenParks",
-      "country": "BE",
-      "categories": [
-        "travel"
-      ],
-      "website": "https://www.landal.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "eurostar",
-      "name": "Eurostar",
-      "country": "BE",
-      "categories": [
-        "travel",
-        "transport"
-      ],
-      "website": "https://www.eurostar.com",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "mcdonalds",
-      "name": "McDonald's",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.mcdonalds.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "starbucks",
-      "name": "Starbucks",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.starbucks.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "burger-king",
-      "name": "Burger King",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.burgerking.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "quick",
-      "name": "Quick",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.quick.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "panos",
-      "name": "Panos",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.panos.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "exki",
-      "name": "EXKi",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.exki.com",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "pizza-hut",
-      "name": "Pizza Hut",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.pizzahut.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "dominoes",
-      "name": "Domino's Pizza",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.dominos.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "lunch-garden",
-      "name": "Lunch Garden Restaurants",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.lunchgarden.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "paul",
-      "name": "Paul Boulangerie",
-      "country": "BE",
-      "categories": [
-        "dining"
-      ],
-      "website": "https://www.paul-belgium.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "q8",
-      "name": "Q8",
-      "country": "BE",
-      "categories": [
-        "fuel"
-      ],
-      "website": "https://www.q8.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "totalenergies",
-      "name": "TotalEnergies",
-      "country": "BE",
-      "categories": [
-        "fuel"
-      ],
-      "website": "https://www.totalenergies.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "shell",
-      "name": "Shell",
-      "country": "BE",
-      "categories": [
-        "fuel"
-      ],
-      "website": "https://www.shell.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "texaco",
-      "name": "Texaco Stations",
-      "country": "BE",
-      "categories": [
-        "fuel"
-      ],
-      "website": "https://www.texaco.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "lukoil",
-      "name": "Lukoil",
-      "country": "BE",
-      "categories": [
-        "fuel"
-      ],
-      "website": "https://www.lukoil.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "dats24",
-      "name": "DATS 24",
-      "country": "BE",
-      "categories": [
-        "fuel"
-      ],
-      "website": "https://www.dats24.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "esso",
-      "name": "Esso",
-      "country": "BE",
-      "categories": [
-        "fuel"
-      ],
-      "website": "https://www.esso.be",
-      "lastUpdated": "2026-01-01"
     },
     {
       "id": "avia",
@@ -382,26 +51,6 @@
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "proximus",
-      "name": "Proximus",
-      "country": "BE",
-      "categories": [
-        "utilities"
-      ],
-      "website": "https://www.proximus.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "orange-telecom",
-      "name": "Orange Belgium",
-      "country": "BE",
-      "categories": [
-        "utilities"
-      ],
-      "website": "https://www.orange.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
       "id": "base",
       "name": "BASE",
       "country": "BE",
@@ -409,56 +58,6 @@
         "utilities"
       ],
       "website": "https://www.base.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "engie",
-      "name": "Engie",
-      "country": "BE",
-      "categories": [
-        "utilities"
-      ],
-      "website": "https://www.engie.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "luminus",
-      "name": "Luminus Energy",
-      "country": "BE",
-      "categories": [
-        "utilities"
-      ],
-      "website": "https://www.luminus.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "ecopower",
-      "name": "Ecopower Green Energy",
-      "country": "BE",
-      "categories": [
-        "utilities"
-      ],
-      "website": "https://www.ecopower.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "water-link",
-      "name": "Water-Link",
-      "country": "BE",
-      "categories": [
-        "utilities"
-      ],
-      "website": "https://www.water-link.be",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "swde",
-      "name": "SWDE",
-      "country": "BE",
-      "categories": [
-        "utilities"
-      ],
-      "website": "https://www.swde.be",
       "lastUpdated": "2026-06-14"
     },
     {
@@ -472,23 +71,83 @@
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "amazon",
-      "name": "Amazon Belgium",
+      "id": "bolt",
+      "name": "Bolt",
       "country": "BE",
       "categories": [
-        "online-shopping"
+        "transport"
       ],
-      "website": "https://www.amazon.com.be",
+      "website": "https://www.bolt.eu",
       "lastUpdated": "2026-06-14"
     },
     {
-      "id": "zalando",
-      "name": "Zalando",
+      "id": "booking",
+      "name": "Booking.com",
       "country": "BE",
       "categories": [
-        "online-shopping"
+        "travel"
       ],
-      "website": "https://www.zalando.be",
+      "website": "https://www.booking.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "brussels-airlines",
+      "name": "Brussels Airlines",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.brusselsairlines.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "burger-king",
+      "name": "Burger King",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.burgerking.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "cambio",
+      "name": "Cambio",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.cambio.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "carrefour",
+      "name": "Carrefour",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.carrefour.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "center-parcs",
+      "name": "Center Parcs BE",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.centerparcs.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "colruyt",
+      "name": "Colruyt",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.colruyt.be",
       "lastUpdated": "2026-01-01"
     },
     {
@@ -502,13 +161,23 @@
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "mediamarkt",
-      "name": "MediaMarkt",
+      "id": "cora",
+      "name": "Cora",
       "country": "BE",
       "categories": [
-        "online-shopping"
+        "groceries"
       ],
-      "website": "https://www.mediamarkt.be",
+      "website": "https://www.cora.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "dats24",
+      "name": "DATS 24",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.dats24.be",
       "lastUpdated": "2026-01-01"
     },
     {
@@ -522,24 +191,105 @@
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "vanden-borre",
-      "name": "Vanden Borre",
+      "id": "delhaize",
+      "name": "Delhaize",
       "country": "BE",
       "categories": [
-        "online-shopping"
+        "groceries"
       ],
-      "website": "https://www.vandenborre.be",
+      "website": "https://www.delhaize.be",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "krefel",
-      "name": "Krefel",
+      "id": "delijn",
+      "name": "De Lijn",
       "country": "BE",
       "categories": [
-        "online-shopping"
+        "transport"
       ],
-      "website": "https://www.krefel.be",
+      "website": "https://www.delijn.be",
       "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "disney-plus",
+      "name": "Disney+",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.disneyplus.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "dominoes",
+      "name": "Domino's Pizza",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.dominos.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "ecopower",
+      "name": "Ecopower Green Energy",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.ecopower.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "engie",
+      "name": "Engie",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.engie.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "esso",
+      "name": "Esso",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.esso.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "eurostar",
+      "name": "Eurostar",
+      "country": "BE",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.eurostar.com",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "exki",
+      "name": "EXKi",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.exki.com",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "expedia",
+      "name": "Expedia",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.expedia.be",
+      "lastUpdated": "2026-01-01"
     },
     {
       "id": "fnac",
@@ -562,35 +312,114 @@
       "lastUpdated": "2026-06-14"
     },
     {
-      "id": "sncb",
-      "name": "SNCB / NMBS",
+      "id": "kinepolis",
+      "name": "Kinepolis",
       "country": "BE",
       "categories": [
-        "transport",
+        "entertainment"
+      ],
+      "website": "https://www.kinepolis.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "klm",
+      "name": "KLM BE",
+      "country": "BE",
+      "categories": [
         "travel"
       ],
-      "website": "https://www.belgiantrain.be",
+      "website": "https://www.klm.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "krefel",
+      "name": "Krefel",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.krefel.be",
       "lastUpdated": "2026-06-14"
     },
     {
-      "id": "delijn",
-      "name": "De Lijn",
+      "id": "landal",
+      "name": "Landal GreenParks",
       "country": "BE",
       "categories": [
-        "transport"
+        "travel"
       ],
-      "website": "https://www.delijn.be",
+      "website": "https://www.landal.be",
       "lastUpdated": "2026-06-14"
     },
     {
-      "id": "tec",
-      "name": "TEC",
+      "id": "lidl",
+      "name": "Lidl",
       "country": "BE",
       "categories": [
-        "transport"
+        "groceries"
       ],
-      "website": "https://www.letec.be",
+      "website": "https://www.lidl.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "lukoil",
+      "name": "Lukoil",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.lukoil.be",
       "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "luminus",
+      "name": "Luminus Energy",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.luminus.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "lunch-garden",
+      "name": "Lunch Garden Restaurants",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.lunchgarden.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "match",
+      "name": "Match",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.supermarche-match.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "mcdonalds",
+      "name": "McDonald's",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.mcdonalds.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.mediamarkt.be",
+      "lastUpdated": "2026-01-01"
     },
     {
       "id": "mivb-stib",
@@ -600,47 +429,6 @@
         "transport"
       ],
       "website": "https://www.stib-mivb.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "uber",
-      "name": "Uber",
-      "country": "BE",
-      "categories": [
-        "transport",
-        "travel"
-      ],
-      "website": "https://www.uber.com",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "bolt",
-      "name": "Bolt",
-      "country": "BE",
-      "categories": [
-        "transport"
-      ],
-      "website": "https://www.bolt.eu",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "poppy",
-      "name": "Poppy",
-      "country": "BE",
-      "categories": [
-        "transport"
-      ],
-      "website": "https://www.poppy.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "cambio",
-      "name": "Cambio",
-      "country": "BE",
-      "categories": [
-        "transport"
-      ],
-      "website": "https://www.cambio.be",
       "lastUpdated": "2026-06-14"
     },
     {
@@ -654,53 +442,53 @@
       "lastUpdated": "2026-06-14"
     },
     {
-      "id": "spotify",
-      "name": "Spotify",
+      "id": "okay",
+      "name": "OKay",
       "country": "BE",
       "categories": [
-        "entertainment"
+        "groceries"
       ],
-      "website": "https://www.spotify.com",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "kinepolis",
-      "name": "Kinepolis",
-      "country": "BE",
-      "categories": [
-        "entertainment"
-      ],
-      "website": "https://www.kinepolis.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "ugc-cinemas",
-      "name": "UGC Cinemas",
-      "country": "BE",
-      "categories": [
-        "entertainment"
-      ],
-      "website": "https://www.ugc.be",
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "disney-plus",
-      "name": "Disney+",
-      "country": "BE",
-      "categories": [
-        "entertainment"
-      ],
-      "website": "https://www.disneyplus.com",
+      "website": "https://www.okay.colruytgroup.be",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "youtube-premium",
-      "name": "YouTube Premium",
+      "id": "orange-telecom",
+      "name": "Orange Belgium",
       "country": "BE",
       "categories": [
-        "entertainment"
+        "utilities"
       ],
-      "website": "https://www.youtube.com",
+      "website": "https://www.orange.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "panos",
+      "name": "Panos",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.panos.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "paul",
+      "name": "Paul Boulangerie",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.paul-belgium.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "pizza-hut",
+      "name": "Pizza Hut",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.pizzahut.be",
       "lastUpdated": "2026-01-01"
     },
     {
@@ -714,6 +502,107 @@
       "lastUpdated": "2026-06-14"
     },
     {
+      "id": "poppy",
+      "name": "Poppy",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.poppy.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "proximus",
+      "name": "Proximus",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.proximus.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "q8",
+      "name": "Q8",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.q8.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "quick",
+      "name": "Quick",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.quick.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "ryanair",
+      "name": "Ryanair",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.ryanair.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "shell",
+      "name": "Shell",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.shell.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "sncb",
+      "name": "SNCB / NMBS",
+      "country": "BE",
+      "categories": [
+        "transport",
+        "travel"
+      ],
+      "website": "https://www.belgiantrain.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "spar",
+      "name": "Spar",
+      "country": "BE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.sparretail.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.spotify.com",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "starbucks",
+      "name": "Starbucks",
+      "country": "BE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.starbucks.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
       "id": "steam",
       "name": "Steam",
       "country": "BE",
@@ -723,6 +612,117 @@
       ],
       "website": "https://store.steampowered.com",
       "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "swde",
+      "name": "SWDE",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.swde.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "tec",
+      "name": "TEC",
+      "country": "BE",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.letec.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "texaco",
+      "name": "Texaco Stations",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.texaco.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "totalenergies",
+      "name": "TotalEnergies",
+      "country": "BE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.totalenergies.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "tui-fly",
+      "name": "TUI Fly Belgium",
+      "country": "BE",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.tuifly.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "uber",
+      "name": "Uber",
+      "country": "BE",
+      "categories": [
+        "transport",
+        "travel"
+      ],
+      "website": "https://www.uber.com",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "ugc-cinemas",
+      "name": "UGC Cinemas",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.ugc.be",
+      "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "vanden-borre",
+      "name": "Vanden Borre",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.vandenborre.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "water-link",
+      "name": "Water-Link",
+      "country": "BE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.water-link.be",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "youtube-premium",
+      "name": "YouTube Premium",
+      "country": "BE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.youtube.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "zalando",
+      "name": "Zalando",
+      "country": "BE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.zalando.be",
+      "lastUpdated": "2026-01-01"
     }
   ]
 }

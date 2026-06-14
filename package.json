@@ -13,6 +13,7 @@
     "typecheck": "turbo run typecheck",
     "lint": "turbo run lint",
     "test": "turbo run test",
+    "format:data": "tsx scripts/format-datasets.ts",
     "validate:data": "tsx scripts/compile-datasets.ts --validate-only",
     "compile:data": "tsx scripts/compile-datasets.ts"
   },

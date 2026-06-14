@@ -1,0 +1,53 @@
+name: "🔄 Update Existing Card Rewards or Fees"
+description: "Report a change or correction in fees, reward multipliers, or FX rates for an existing card."
+title: "Update Card: [Issuer Name] - [Card Name]"
+labels: ["dataset", "update-card"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please use this template to notify us about changes to cards that are already in CardPin.
+        All changes must be accompanied by an official bank source link.
+  - type: input
+    id: card_id
+    attributes:
+      label: "Card ID (or Issuer & Card Name)"
+      placeholder: "e.g., beobank-visa-extra, or Beobank Visa Extra"
+    validations:
+      required: true
+  - type: dropdown
+    id: country
+    attributes:
+      label: "Country Dataset"
+      options:
+        - "BE (Belgium)"
+        - "NL (Netherlands)"
+        - "FR (France)"
+        - "DE (Germany)"
+        - "GB (United Kingdom)"
+        - "Other"
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: "Proposed Changes"
+      description: "Specify exactly what has changed (e.g., annual fee increased, reward category updated, new conditions applied)."
+      placeholder: "e.g., Annual fee changed from EUR 5 to EUR 15. Groceries cashback changed to 1% instead of 1.5%."
+    validations:
+      required: true
+  - type: input
+    id: source_url
+    attributes:
+      label: "Official Bank Source URL"
+      description: "A secure HTTPS link verifying this update."
+      placeholder: "https://www.example-bank.com/cards/gold/tariffs"
+    validations:
+      required: true
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: "Verification Checklist"
+      options:
+        - label: "I have checked that the official terms support this change."
+          required: true

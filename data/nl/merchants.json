@@ -1,347 +1,435 @@
 {
   "merchants": [
     {
+      "id": "airbnb",
+      "name": "Airbnb",
+      "country": "NL",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.airbnb.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
       "id": "albert-heijn",
       "name": "Albert Heijn",
       "country": "NL",
-      "categories": ["groceries"],
+      "categories": [
+        "groceries"
+      ],
       "website": "https://www.ah.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "jumbo",
-      "name": "Jumbo",
-      "country": "NL",
-      "categories": ["groceries"],
-      "website": "https://www.jumbo.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "lidl",
-      "name": "Lidl NL",
-      "country": "NL",
-      "categories": ["groceries"],
-      "website": "https://www.lidl.nl",
       "lastUpdated": "2026-01-01"
     },
     {
       "id": "aldi",
       "name": "Aldi NL",
       "country": "NL",
-      "categories": ["groceries"],
+      "categories": [
+        "groceries"
+      ],
       "website": "https://www.aldi.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "plus",
-      "name": "Plus Supermarkets",
-      "country": "NL",
-      "categories": ["groceries"],
-      "website": "https://www.plus.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "dirk",
-      "name": "Dirk vanden Broek",
-      "country": "NL",
-      "categories": ["groceries"],
-      "website": "https://www.dirk.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "coop",
-      "name": "Coop NL",
-      "country": "NL",
-      "categories": ["groceries"],
-      "website": "https://www.coop.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "ekoplaza",
-      "name": "Ekoplaza",
-      "country": "NL",
-      "categories": ["groceries"],
-      "website": "https://www.ekoplaza.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "klm",
-      "name": "KLM Royal Dutch Airlines",
-      "country": "NL",
-      "categories": ["travel"],
-      "website": "https://www.klm.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "transavia",
-      "name": "Transavia Airlines",
-      "country": "NL",
-      "categories": ["travel"],
-      "website": "https://www.transavia.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "ns-international",
-      "name": "NS International Train",
-      "country": "NL",
-      "categories": ["travel", "transport"],
-      "website": "https://www.nsinternational.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "booking",
-      "name": "Booking.com",
-      "country": "NL",
-      "categories": ["travel"],
-      "website": "https://www.booking.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "airbnb",
-      "name": "Airbnb",
-      "country": "NL",
-      "categories": ["travel"],
-      "website": "https://www.airbnb.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "ns",
-      "name": "Nederlandse Spoorwegen Train",
-      "country": "NL",
-      "categories": ["transport"],
-      "website": "https://www.ns.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "gvb",
-      "name": "GVB Amsterdam",
-      "country": "NL",
-      "categories": ["transport"],
-      "website": "https://www.gvb.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "ret",
-      "name": "RET Rotterdam",
-      "country": "NL",
-      "categories": ["transport"],
-      "website": "https://www.ret.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "htm",
-      "name": "HTM Den Haag",
-      "country": "NL",
-      "categories": ["transport"],
-      "website": "https://www.htm.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "uber",
-      "name": "Uber Taxi",
-      "country": "NL",
-      "categories": ["transport", "travel"],
-      "website": "https://www.uber.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "bolt",
-      "name": "Bolt Ride-hail",
-      "country": "NL",
-      "categories": ["transport"],
-      "website": "https://www.bolt.eu",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "shell",
-      "name": "Shell Gas Station",
-      "country": "NL",
-      "categories": ["fuel"],
-      "website": "https://www.shell.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "bp",
-      "name": "BP Stations",
-      "country": "NL",
-      "categories": ["fuel"],
-      "website": "https://www.bp.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "esso",
-      "name": "Esso NL",
-      "country": "NL",
-      "categories": ["fuel"],
-      "website": "https://www.esso.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "totalenergies",
-      "name": "TotalEnergies",
-      "country": "NL",
-      "categories": ["fuel"],
-      "website": "https://www.totalenergies.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "tango",
-      "name": "Tango Stations",
-      "country": "NL",
-      "categories": ["fuel"],
-      "website": "https://www.tango.nl",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "fastned",
-      "name": "Fastned EV Charging",
-      "country": "NL",
-      "categories": ["fuel"],
-      "website": "https://www.fastnedcharging.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "bol-com",
-      "name": "bol.com",
-      "country": "NL",
-      "categories": ["online-shopping"],
-      "website": "https://www.bol.com",
-      "lastUpdated": "2026-01-01"
-    },
-    {
-      "id": "coolblue",
-      "name": "Coolblue",
-      "country": "NL",
-      "categories": ["online-shopping"],
-      "website": "https://www.coolblue.nl",
       "lastUpdated": "2026-01-01"
     },
     {
       "id": "amazon-nl",
       "name": "Amazon Netherlands",
       "country": "NL",
-      "categories": ["online-shopping"],
+      "categories": [
+        "online-shopping"
+      ],
       "website": "https://www.amazon.nl",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "mediamarkt",
-      "name": "MediaMarkt NL",
+      "id": "bol-com",
+      "name": "bol.com",
       "country": "NL",
-      "categories": ["online-shopping"],
-      "website": "https://www.mediamarkt.nl",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.bol.com",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "zalando",
-      "name": "Zalando",
+      "id": "bolt",
+      "name": "Bolt Ride-hail",
       "country": "NL",
-      "categories": ["online-shopping"],
-      "website": "https://www.zalando.nl",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.bolt.eu",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "wehkamp",
-      "name": "Wehkamp Department Store",
+      "id": "booking",
+      "name": "Booking.com",
       "country": "NL",
-      "categories": ["online-shopping"],
-      "website": "https://www.wehkamp.nl",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.booking.com",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "kpn",
-      "name": "KPN Telecom",
+      "id": "bp",
+      "name": "BP Stations",
       "country": "NL",
-      "categories": ["utilities"],
-      "website": "https://www.kpn.com",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.bp.com",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "vodafoneziggo",
-      "name": "VodafoneZiggo",
+      "id": "coolblue",
+      "name": "Coolblue",
       "country": "NL",
-      "categories": ["utilities"],
-      "website": "https://www.vodafone.nl",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.coolblue.nl",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "odido",
-      "name": "Odido Telecom",
+      "id": "coop",
+      "name": "Coop NL",
       "country": "NL",
-      "categories": ["utilities"],
-      "website": "https://www.odido.nl",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.coop.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "dirk",
+      "name": "Dirk vanden Broek",
+      "country": "NL",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.dirk.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ekoplaza",
+      "name": "Ekoplaza",
+      "country": "NL",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.ekoplaza.nl",
       "lastUpdated": "2026-01-01"
     },
     {
       "id": "eneco",
       "name": "Eneco Energy",
       "country": "NL",
-      "categories": ["utilities"],
+      "categories": [
+        "utilities"
+      ],
       "website": "https://www.eneco.nl",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "vattenfall",
-      "name": "Vattenfall Energy",
+      "id": "esso",
+      "name": "Esso NL",
       "country": "NL",
-      "categories": ["utilities"],
-      "website": "https://www.vattenfall.nl",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.esso.nl",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "netflix",
-      "name": "Netflix Streaming",
+      "id": "fastned",
+      "name": "Fastned EV Charging",
       "country": "NL",
-      "categories": ["entertainment"],
-      "website": "https://www.netflix.com",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.fastnedcharging.com",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "spotify",
-      "name": "Spotify Music",
+      "id": "gvb",
+      "name": "GVB Amsterdam",
       "country": "NL",
-      "categories": ["entertainment"],
-      "website": "https://www.spotify.com",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.gvb.nl",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "pathe",
-      "name": "Pathé Cinemas",
+      "id": "htm",
+      "name": "HTM Den Haag",
       "country": "NL",
-      "categories": ["entertainment"],
-      "website": "https://www.pathe.nl",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.htm.nl",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "videoland",
-      "name": "Videoland Streaming",
+      "id": "jumbo",
+      "name": "Jumbo",
       "country": "NL",
-      "categories": ["entertainment"],
-      "website": "https://www.videoland.com",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.jumbo.com",
       "lastUpdated": "2026-01-01"
     },
     {
-      "id": "thuisbezorgd",
-      "name": "Thuisbezorgd.nl",
+      "id": "klm",
+      "name": "KLM Royal Dutch Airlines",
       "country": "NL",
-      "categories": ["dining"],
-      "website": "https://www.thuisbezorgd.nl",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.klm.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "kpn",
+      "name": "KPN Telecom",
+      "country": "NL",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.kpn.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "lidl",
+      "name": "Lidl NL",
+      "country": "NL",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.lidl.nl",
       "lastUpdated": "2026-01-01"
     },
     {
       "id": "mcdonalds",
       "name": "McDonald's NL",
       "country": "NL",
-      "categories": ["dining"],
+      "categories": [
+        "dining"
+      ],
       "website": "https://www.mcdonalds.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "mediamarkt",
+      "name": "MediaMarkt NL",
+      "country": "NL",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.mediamarkt.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "netflix",
+      "name": "Netflix Streaming",
+      "country": "NL",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.netflix.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ns",
+      "name": "Nederlandse Spoorwegen Train",
+      "country": "NL",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.ns.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ns-international",
+      "name": "NS International Train",
+      "country": "NL",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.nsinternational.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "odido",
+      "name": "Odido Telecom",
+      "country": "NL",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.odido.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "pathe",
+      "name": "Pathé Cinemas",
+      "country": "NL",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.pathe.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "plus",
+      "name": "Plus Supermarkets",
+      "country": "NL",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.plus.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "ret",
+      "name": "RET Rotterdam",
+      "country": "NL",
+      "categories": [
+        "transport"
+      ],
+      "website": "https://www.ret.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "shell",
+      "name": "Shell Gas Station",
+      "country": "NL",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.shell.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify Music",
+      "country": "NL",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.spotify.com",
       "lastUpdated": "2026-01-01"
     },
     {
       "id": "starbucks",
       "name": "Starbucks Coffee NL",
       "country": "NL",
-      "categories": ["dining"],
+      "categories": [
+        "dining"
+      ],
       "website": "https://www.starbucks.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "tango",
+      "name": "Tango Stations",
+      "country": "NL",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.tango.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "thuisbezorgd",
+      "name": "Thuisbezorgd.nl",
+      "country": "NL",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.thuisbezorgd.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "totalenergies",
+      "name": "TotalEnergies",
+      "country": "NL",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.totalenergies.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "transavia",
+      "name": "Transavia Airlines",
+      "country": "NL",
+      "categories": [
+        "travel"
+      ],
+      "website": "https://www.transavia.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "uber",
+      "name": "Uber Taxi",
+      "country": "NL",
+      "categories": [
+        "transport",
+        "travel"
+      ],
+      "website": "https://www.uber.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "vattenfall",
+      "name": "Vattenfall Energy",
+      "country": "NL",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.vattenfall.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "videoland",
+      "name": "Videoland Streaming",
+      "country": "NL",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.videoland.com",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "vodafoneziggo",
+      "name": "VodafoneZiggo",
+      "country": "NL",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.vodafone.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "wehkamp",
+      "name": "Wehkamp Department Store",
+      "country": "NL",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.wehkamp.nl",
+      "lastUpdated": "2026-01-01"
+    },
+    {
+      "id": "zalando",
+      "name": "Zalando",
+      "country": "NL",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.zalando.nl",
       "lastUpdated": "2026-01-01"
     }
   ]

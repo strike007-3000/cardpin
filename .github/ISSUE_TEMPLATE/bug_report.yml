@@ -1,0 +1,35 @@
+name: "🐛 Report a Bug (UX, Calculation, or App Error)"
+description: "Report incorrect reward calculations, layout rendering issues, broken links, or visual interface bugs."
+title: "Bug: [Brief description of the issue]"
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: "Describe the Bug"
+      description: "A clear and concise description of what the bug is."
+      placeholder: "e.g., When I choose card X and search merchant Y, the net reward calculation displays EUR 5.00 but it should be EUR 2.00 due to conditions Z."
+    validations:
+      required: true
+  - type: input
+    id: steps_to_reproduce
+    attributes:
+      label: "Steps to Reproduce"
+      description: "How did you trigger this bug? Please list country selected, cards selected, merchant searched, and spend input."
+      placeholder: "1. Select Belgium. 2. Select card A. 3. Search merchant B. 4. Toggle foreign spend. 5. Visual results show Z."
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: "Expected Behavior"
+      placeholder: "Explain what should have happened instead."
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: "Environment Information"
+      placeholder: "e.g., Chrome on Windows 11, Safari on iOS 17"
+    validations:
+      required: false
