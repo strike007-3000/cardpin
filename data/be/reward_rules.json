@@ -115,20 +115,6 @@
         "verifiedBy": "community-editor"
       },
       "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "keytrade-visa-fallback-cashback",
-      "cardId": "keytrade-visa",
-      "country": "BE",
-      "rewardType": "fixed_cashback",
-      "rewardValue": 0.05,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.keytradebank.be/en/pay/visa-gold-credit-card",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-06-14"
     }
   ]
 }

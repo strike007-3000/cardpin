@@ -231,7 +231,7 @@
     },
     {
       "id": "keytrade-visa",
-      "name": "Keytrade Visa",
+      "name": "Keytrade Visa Gold",
       "issuerId": "keytrade-bank",
       "country": "BE",
       "network": "visa",
@@ -595,7 +595,7 @@
       "issuerId": "revolut",
       "country": "BE",
       "network": "mastercard",
-      "annualFee": 168,
+      "annualFee": 191.88,
       "fxFeePercentage": 0,
       "currency": "EUR",
       "rewardRules": [],
@@ -628,7 +628,7 @@
       "issuerId": "n26",
       "country": "BE",
       "network": "mastercard",
-      "annualFee": 200,
+      "annualFee": 202.8,
       "fxFeePercentage": 0,
       "currency": "EUR",
       "rewardRules": [],
@@ -648,7 +648,7 @@
       "country": "BE",
       "network": "visa",
       "annualFee": 0,
-      "fxFeePercentage": 0.004,
+      "fxFeePercentage": 0,
       "currency": "EUR",
       "rewardRules": [],
       "source": "official-product-page",
@@ -1513,20 +1513,6 @@
       },
       "source": {
         "sourceUrl": "https://www.beobank.be/nl/particulier/betalen/kredietkaarten/beobank-visa",
-        "verifiedAt": "2026-06-14",
-        "verifiedBy": "community-editor"
-      },
-      "lastUpdated": "2026-06-14"
-    },
-    {
-      "id": "keytrade-visa-fallback-cashback",
-      "cardId": "keytrade-visa",
-      "country": "BE",
-      "rewardType": "fixed_cashback",
-      "rewardValue": 0.05,
-      "conditions": {},
-      "source": {
-        "sourceUrl": "https://www.keytradebank.be/en/pay/visa-gold-credit-card",
         "verifiedAt": "2026-06-14",
         "verifiedBy": "community-editor"
       },
