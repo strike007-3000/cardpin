@@ -877,4 +877,189 @@ a:hover {
   color: var(--text-main);
 }
 
+/* Visual Wallet & Cards Overhaul */
+.wallet-deck-wrapper {
+  margin: 16px 0;
+}
+
+.wallet-deck {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.visual-card {
+  position: relative;
+  aspect-ratio: 1.586 / 1;
+  width: 100%;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.visual-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+}
+
+.visual-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.15), transparent 75%);
+  pointer-events: none;
+}
+
+.visual-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.card-issuer-name {
+  font-size: 0.72rem;
+  font-weight: 700;
+  opacity: 0.85;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.card-chip {
+  width: 28px;
+  height: 20px;
+  background: linear-gradient(135deg, #ecc880 0%, #c49948 100%);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.visual-card-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-name-display {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.card-network-logo {
+  align-self: flex-end;
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  opacity: 0.9;
+  font-family: var(--font-display);
+}
+
+/* Card Visual Gradients & Designs */
+.card-theme-amex-gold { background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%); }
+.card-theme-amex-platinum { background: linear-gradient(135deg, #f0f0f0 0%, #b0b0b0 100%); color: #111; }
+.card-theme-amex-platinum .card-issuer-name { color: #111; }
+.card-theme-amex-platinum .card-name-display { color: #111; text-shadow: none; }
+.card-theme-amex-platinum .card-network-logo { color: #111; }
+.card-theme-amex-green { background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); }
+.card-theme-n26-metal { background: linear-gradient(135deg, #37474f 0%, #101010 100%); }
+.card-theme-n26-standard { background: linear-gradient(135deg, #1d2b3a 0%, #080d14 100%); border: 1px solid rgba(255,255,255,0.1); }
+.card-theme-dkb { background: linear-gradient(135deg, #00a4e4 0%, #004b87 100%); }
+.card-theme-deutsche-bank { background: linear-gradient(135deg, #0018a8 0%, #000c54 100%); }
+.card-theme-commerzbank { background: linear-gradient(135deg, #ffe000 0%, #d89600 100%); color: #000; }
+.card-theme-commerzbank .card-issuer-name, .card-theme-commerzbank .card-name-display, .card-theme-commerzbank .card-network-logo { color: #000; text-shadow: none; }
+.card-theme-barclays { background: linear-gradient(135deg, #00aeef 0%, #005a9c 100%); }
+.card-theme-hanseatic { background: linear-gradient(135deg, #e30613 0%, #7e0007 100%); }
+.card-theme-advanzia { background: linear-gradient(135deg, #ffa726 0%, #d35400 100%); }
+.card-theme-fallback-visa { background: linear-gradient(135deg, #1a1f71 0%, #0055a5 100%); }
+.card-theme-fallback-mastercard { background: linear-gradient(135deg, #f79e1b 0%, #eb001b 100%); }
+.card-theme-fallback-amex { background: linear-gradient(135deg, #007bc1 0%, #003a6b 100%); }
+
+/* Catalog & Overlays styling */
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 14px;
+  max-height: 55vh;
+  overflow-y: auto;
+  padding: 8px 4px;
+  margin-top: 16px;
+}
+
+.catalog-card-item {
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.catalog-card-item:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.catalog-card-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.catalog-card-issuer {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.catalog-card-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.catalog-card-badge {
+  font-size: 0.72rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--border-color);
+  font-weight: bold;
+}
+
+.search-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-input-field {
+  width: 100%;
+  padding: 10px 14px;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.search-input-field:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+
 

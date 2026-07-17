@@ -81,6 +81,29 @@ function CreditCardPlaceholder() {
   );
 }
 
+function getCardThemeClass(issuerId: string, network: string) {
+  const normalized = issuerId.toLowerCase();
+  if (normalized.includes("american-express")) {
+    if (normalized.includes("gold")) return "card-theme-amex-gold";
+    if (normalized.includes("platinum")) return "card-theme-amex-platinum";
+    return "card-theme-amex-green";
+  }
+  if (normalized.includes("n26")) {
+    if (normalized.includes("metal")) return "card-theme-n26-metal";
+    return "card-theme-n26-standard";
+  }
+  if (normalized.includes("dkb")) return "card-theme-dkb";
+  if (normalized.includes("deutsche-bank") || normalized.includes("miles-and-more")) return "card-theme-deutsche-bank";
+  if (normalized.includes("commerzbank")) return "card-theme-commerzbank";
+  if (normalized.includes("barclays")) return "card-theme-barclays";
+  if (normalized.includes("hanseatic")) return "card-theme-hanseatic";
+  if (normalized.includes("advanzia")) return "card-theme-advanzia";
+  
+  if (network === "visa") return "card-theme-fallback-visa";
+  if (network === "mastercard") return "card-theme-fallback-mastercard";
+  return "card-theme-fallback-amex";
+}
+
 export default function HomePage() {
   const [country, setCountry] = useState<string>("be");
   const [dataset, setDataset] = useState<CountryDataset | null>(null);
@@ -95,8 +118,10 @@ export default function HomePage() {
 
   const [showWelcome, setShowWelcome] = useState<boolean>(false);
   const [showFullInstructions, setShowFullInstructions] = useState<boolean>(false);
-  const [cardSearchQuery, setCardSearchQuery] = useState<string>("");
-  const [collapsedIssuers, setCollapsedIssuers] = useState<Set<string>>(new Set());
+
+  // Catalog & Portability States
+  const [showCatalog, setShowCatalog] = useState<boolean>(false);
+  const [catalogSearch, setCatalogSearch] = useState<string>("");
 
   // Developer Mode States
   const [isDevMode, setIsDevMode] = useState<boolean>(false);
@@ -166,31 +191,14 @@ export default function HomePage() {
     [dataset]
   );
 
-  const cardsByIssuer = useMemo(() => {
-    const filtered = availableCards.filter((card) => {
-      if (!cardSearchQuery.trim()) return true;
-      const q = cardSearchQuery.toLowerCase();
+  const catalogCards = useMemo(() => {
+    return availableCards.filter((card) => {
+      if (!catalogSearch.trim()) return true;
+      const q = catalogSearch.toLowerCase();
       const issuer = dataset?.issuers.find((i) => i.id === card.issuerId);
       return card.name.toLowerCase().includes(q) || (issuer?.name.toLowerCase().includes(q) ?? false);
     });
-
-    const groups: Record<string, { name: string; cards: Card[] }> = {};
-
-    dataset?.issuers.forEach((issuer) => {
-      groups[issuer.id] = { name: issuer.name, cards: [] };
-    });
-
-    filtered.forEach((card) => {
-      if (!groups[card.issuerId]) {
-        groups[card.issuerId] = { name: "Other", cards: [] };
-      }
-      groups[card.issuerId].cards.push(card);
-    });
-
-    return Object.entries(groups)
-      .filter(([_, group]) => group.cards.length > 0)
-      .map(([id, group]) => ({ id, ...group }));
-  }, [availableCards, cardSearchQuery, dataset]);
+  }, [availableCards, catalogSearch, dataset]);
 
   function handleToggleCard(cardId: string) {
     const updated = ownedCardIds.includes(cardId)
@@ -205,16 +213,35 @@ export default function HomePage() {
     localStorage.setItem("cardpin:welcome_dismissed", "true");
   }
 
-  function handleToggleIssuer(issuerId: string) {
-    setCollapsedIssuers((prev) => {
-      const next = new Set(prev);
-      if (next.has(issuerId)) {
-        next.delete(issuerId);
-      } else {
-        next.add(issuerId);
-      }
-      return next;
-    });
+  function handleExportWallet() {
+    const dataStr = JSON.stringify({ cardIds: ownedCardIds });
+    const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+    const exportFileDefaultName = `cardpin_wallet_${country}_${audience}.json`;
+    const linkElement = document.createElement("a");
+    linkElement.setAttribute("href", dataUri);
+    linkElement.setAttribute("download", exportFileDefaultName);
+    linkElement.click();
+  }
+
+  function handleImportWallet(e: React.ChangeEvent<HTMLInputElement>) {
+    const fileReader = new FileReader();
+    if (e.target.files && e.target.files[0]) {
+      fileReader.readAsText(e.target.files[0], "UTF-8");
+      fileReader.onload = (event) => {
+        try {
+          const parsed = JSON.parse(event.target?.result as string);
+          if (parsed && Array.isArray(parsed.cardIds)) {
+            const validIds = parsed.cardIds.filter((id: string) => dataset?.cards.some((card) => card.id === id));
+            setOwnedCardIds(validIds);
+            localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify(validIds));
+          } else {
+            alert("Invalid backup file structure.");
+          }
+        } catch (err) {
+          alert("Failed to parse the backup file.");
+        }
+      };
+    }
   }
 
   function handleSpendBlur() {
@@ -431,118 +458,88 @@ export default function HomePage() {
                   <WalletIcon />
                   <div className="step-title-block">
                     <div className="step-kicker">Step 2</div>
-                    <div className="section-title-row" style={{ gap: "12px" }}>
+                    <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
                       <h2>Your Wallet</h2>
-                      <span className="quiet-pill">{ownedCards.length} selected</span>
+                      <span className="quiet-pill">{ownedCards.length} in wallet</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="card-search-container">
-                  <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-                    <div style={{ position: "relative", flex: "1" }}>
-                      <input
-                        type="text"
-                        placeholder="Search cards or banks..."
-                        value={cardSearchQuery}
-                        onChange={(e) => setCardSearchQuery(e.target.value)}
-                        style={{ minHeight: "38px", fontSize: "0.9rem", padding: "8px 12px", paddingRight: "30px" }}
-                      />
-                      {cardSearchQuery && (
-                        <button
-                          type="button"
-                          onClick={() => setCardSearchQuery("")}
-                          className="dismiss-btn"
-                          style={{
-                            position: "absolute",
-                            right: "8px",
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                            fontSize: "1.1rem"
-                          }}
-                        >
-                          &times;
-                        </button>
-                      )}
-                    </div>
-                    {ownedCardIds.length > 0 && (
-                      <button
-                        type="button"
-                        className="deselect-all-btn"
-                        onClick={() => {
-                          setOwnedCardIds([]);
-                          localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
-                        }}
-                      >
-                        Clear
-                      </button>
-                    )}
+                {ownedCards.length === 0 ? (
+                  <div className="empty-state" style={{ margin: "20px 0" }}>
+                    Your wallet is empty. Add some cards to get started!
                   </div>
-                </div>
-
-                {availableCards.length === 0 ? (
-                  <div className="empty-state compact">No {audience} cards available for {country.toUpperCase()}.</div>
-                ) : cardsByIssuer.length === 0 ? (
-                  <div className="empty-state compact">No cards match &ldquo;{cardSearchQuery}&rdquo;.</div>
                 ) : (
-                  <div className="issuer-accordion-list">
-                    {cardsByIssuer.map((group) => {
-                      const isCollapsed = collapsedIssuers.has(group.id);
-                      const selectedCount = group.cards.filter((c) => ownedCardIds.includes(c.id)).length;
+                  <div className="wallet-deck">
+                    {ownedCards.map((card) => {
+                      const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
                       return (
-                        <div key={group.id} className={`issuer-group ${isCollapsed ? "collapsed" : ""}`}>
-                          <button
-                            type="button"
-                            className="issuer-group-header"
-                            onClick={() => handleToggleIssuer(group.id)}
-                          >
-                            <div className="issuer-header-left">
-                              <svg
-                                className={`chevron-icon ${isCollapsed ? "" : "rotated"}`}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                              </svg>
-                              <span className="issuer-name">{group.name}</span>
-                            </div>
-                            <span className="issuer-badge">
-                              {selectedCount > 0 ? `${selectedCount}/${group.cards.length}` : group.cards.length}
-                            </span>
-                          </button>
-
-                          {!isCollapsed && (
-                            <div className="issuer-group-content">
-                              {group.cards.map((card) => {
-                                const isSelected = ownedCardIds.includes(card.id);
-                                return (
-                                  <button
-                                    type="button"
-                                    key={card.id}
-                                    className={`card-item ${isSelected ? "selected" : ""}`}
-                                    onClick={() => handleToggleCard(card.id)}
-                                  >
-                                    <span className="checkbox-custom" />
-                                    <span className="card-info">
-                                      <span className="card-name">{card.name}</span>
-                                      <span className="card-meta">
-                                        {card.network.toUpperCase()} · EUR {card.annualFee}/year · {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}% FX
-                                      </span>
-                                    </span>
-                                  </button>
-                                );
-                              })}
-                            </div>
-                          )}
+                        <div
+                          key={card.id}
+                          className={`visual-card ${getCardThemeClass(card.id, card.network)}`}
+                          onClick={() => handleToggleCard(card.id)}
+                          title="Click to remove from wallet"
+                        >
+                          <div className="visual-card-top">
+                            <span className="card-issuer-name">{issuerName}</span>
+                            <div className="card-chip" />
+                          </div>
+                          <div className="visual-card-bottom">
+                            <span className="card-name-display">{card.name}</span>
+                            <span className="card-network-logo">{card.network}</span>
+                          </div>
                         </div>
                       );
                     })}
                   </div>
                 )}
+
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginTop: "16px" }}>
+                  <button
+                    type="button"
+                    className="btn btn--primary"
+                    onClick={() => setShowCatalog(true)}
+                    style={{ padding: "8px 16px", fontSize: "0.85rem" }}
+                  >
+                    + Add Cards
+                  </button>
+
+                  {ownedCardIds.length > 0 && (
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn--secondary"
+                        onClick={handleExportWallet}
+                        style={{ padding: "8px 12px", fontSize: "0.85rem" }}
+                      >
+                        Export Wallet
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn--secondary"
+                        onClick={() => {
+                          if (confirm("Are you sure you want to clear your wallet?")) {
+                            setOwnedCardIds([]);
+                            localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
+                          }
+                        }}
+                        style={{ padding: "8px 12px", fontSize: "0.85rem", color: "var(--color-danger)" }}
+                      >
+                        Clear
+                      </button>
+                    </>
+                  )}
+
+                  <label className="btn btn--secondary" style={{ padding: "8px 12px", fontSize: "0.85rem", cursor: "pointer", display: "inline-flex", alignItems: "center" }}>
+                    Import Wallet
+                    <input
+                      type="file"
+                      accept=".json"
+                      onChange={handleImportWallet}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                </div>
               </section>
             </div>
 
@@ -814,6 +811,68 @@ export default function HomePage() {
               >
                 Merge & Recompile Datasets
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showCatalog && (
+        <div className="modal-overlay" onClick={() => setShowCatalog(false)}>
+          <div className="dev-panel" onClick={(e) => e.stopPropagation()} style={{ maxWidth: "700px" }}>
+            <div className="dev-panel-header">
+              <h3>Card Catalog ({country.toUpperCase()})</h3>
+              <button type="button" className="dev-close-btn" onClick={() => setShowCatalog(false)}>
+                &times;
+              </button>
+            </div>
+            <div className="dev-panel-body">
+              <div className="search-input-wrapper">
+                <input
+                  type="text"
+                  className="search-input-field"
+                  placeholder="Search by card name or issuer..."
+                  value={catalogSearch}
+                  onChange={(e) => setCatalogSearch(e.target.value)}
+                />
+              </div>
+
+              {catalogCards.length === 0 ? (
+                <div className="empty-state" style={{ margin: "20px 0" }}>
+                  No cards match your search.
+                </div>
+              ) : (
+                <div className="catalog-grid">
+                  {catalogCards.map((card) => {
+                    const isSelected = ownedCardIds.includes(card.id);
+                    const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
+                    return (
+                      <div
+                        key={card.id}
+                        className="catalog-card-item"
+                        onClick={() => handleToggleCard(card.id)}
+                        style={{
+                          border: isSelected ? "1px solid var(--color-primary)" : "1px solid var(--border-color)",
+                          backgroundColor: isSelected ? "rgba(88, 166, 255, 0.05)" : ""
+                        }}
+                      >
+                        <div className="catalog-card-info">
+                          <span className="catalog-card-issuer">{issuerName}</span>
+                          <span className="catalog-card-name">{card.name}</span>
+                          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "4px" }}>
+                            {card.network.toUpperCase()} · Fee: EUR {card.annualFee} · FX: {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}%
+                          </span>
+                        </div>
+                        <span className="catalog-card-badge" style={{
+                          backgroundColor: isSelected ? "var(--color-primary)" : "var(--border-color)",
+                          color: isSelected ? "#fff" : "var(--text-main)"
+                        }}>
+                          {isSelected ? "In Wallet" : "Add"}
+                        </span>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>
