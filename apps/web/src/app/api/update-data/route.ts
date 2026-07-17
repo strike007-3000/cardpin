@@ -15,6 +15,13 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Missing parameters" }, { status: 400 });
     }
 
+    const allowedCountries = ["be", "de", "nl"];
+    const allowedDataTypes = ["issuers", "cards", "merchants", "rewardRules"];
+
+    if (!allowedCountries.includes(country.toLowerCase()) || !allowedDataTypes.includes(dataType)) {
+      return NextResponse.json({ error: "Invalid parameter values" }, { status: 400 });
+    }
+
     // Resolve repository root
     let repoRoot = process.cwd();
     while (repoRoot !== "/" && !fs.existsSync(path.join(repoRoot, "pnpm-workspace.yaml"))) {
