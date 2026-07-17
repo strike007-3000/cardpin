@@ -1,0 +1,72 @@
+{
+  "issuers": [
+    {
+      "id": "advanzia-bank",
+      "name": "Advanzia Bank S.A."
+    },
+    {
+      "id": "american-express-de",
+      "name": "American Express Europe S.A. (Germany Branch)"
+    },
+    {
+      "id": "barclays-de",
+      "name": "Barclays Bank Ireland PLC, Hamburg Branch"
+    },
+    {
+      "id": "bw-bank",
+      "name": "Baden-Württembergische Bank"
+    },
+    {
+      "id": "commerzbank",
+      "name": "Commerzbank AG"
+    },
+    {
+      "id": "deutsche-bank",
+      "name": "Deutsche Bank AG"
+    },
+    {
+      "id": "dkb",
+      "name": "Deutsche Kreditbank AG"
+    },
+    {
+      "id": "hanseatic-bank",
+      "name": "Hanseatic Bank GmbH & Co KG"
+    },
+    {
+      "id": "hypovereinsbank",
+      "name": "UniCredit Bank GmbH"
+    },
+    {
+      "id": "lbb",
+      "name": "Landesbank Berlin AG"
+    },
+    {
+      "id": "n26",
+      "name": "N26 Bank SE"
+    },
+    {
+      "id": "postbank",
+      "name": "Postbank – eine Niederlassung der Deutsche Bank AG"
+    },
+    {
+      "id": "santander-consumer-bank",
+      "name": "Santander Consumer Bank AG"
+    },
+    {
+      "id": "sparkassen-finanzgruppe",
+      "name": "Sparkassen-Finanzgruppe"
+    },
+    {
+      "id": "tf-bank",
+      "name": "TF Bank AB, German Branch"
+    },
+    {
+      "id": "vr-banken",
+      "name": "Bundesverband der Deutschen Volksbanken und Raiffeisenbanken e.V."
+    },
+    {
+      "id": "zinia",
+      "name": "Open Bank S.A., Zweigniederlassung Deutschland"
+    }
+  ]
+}

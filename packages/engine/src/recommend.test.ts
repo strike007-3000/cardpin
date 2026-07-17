@@ -319,3 +319,28 @@ describe("Orphan Validation Tests", () => {
     expect(() => validateDataset(invalidDataset)).toThrow(/Orphan issuerId/);
   });
 });
+
+describe("Production Datasets Validation Tests", () => {
+  it("all production datasets in data/ folder must pass validation", () => {
+    const fs = require("node:fs");
+    const path = require("node:path");
+    const dataDir = path.resolve(__dirname, "../../../data");
+    const countries = fs.readdirSync(dataDir).filter((f: string) => fs.statSync(path.join(dataDir, f)).isDirectory());
+    for (const country of countries) {
+      const countryDir = path.join(dataDir, country);
+      const issuers = JSON.parse(fs.readFileSync(path.join(countryDir, "issuers.json"), "utf8")).issuers;
+      const cards = JSON.parse(fs.readFileSync(path.join(countryDir, "cards.json"), "utf8")).cards;
+      const merchants = JSON.parse(fs.readFileSync(path.join(countryDir, "merchants.json"), "utf8")).merchants;
+      const rewardRules = JSON.parse(fs.readFileSync(path.join(countryDir, "reward_rules.json"), "utf8")).rewardRules;
+      const dataset: CountryDataset = {
+        country: country.toUpperCase(),
+        issuers,
+        cards,
+        merchants,
+        rewardRules
+      };
+      expect(validateDataset(dataset)).toBe(true);
+    }
+  });
+});
+

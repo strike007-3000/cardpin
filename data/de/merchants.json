@@ -1,0 +1,252 @@
+{
+  "merchants": [
+    {
+      "id": "aldi-nord",
+      "name": "ALDI Nord",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.aldi-nord.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "aldi-sued",
+      "name": "ALDI SÜD",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.aldi-sued.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amazon-de",
+      "name": "Amazon.de",
+      "country": "DE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.amazon.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "aral",
+      "name": "Aral",
+      "country": "DE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.aral.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "cinemaxx",
+      "name": "CinemaxX",
+      "country": "DE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.cinemaxx.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bahn",
+      "name": "Deutsche Bahn",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.bahn.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-telekom",
+      "name": "Deutsche Telekom",
+      "country": "DE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.telekom.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "dm",
+      "name": "dm-drogerie markt",
+      "country": "DE",
+      "categories": [
+        "groceries",
+        "online-shopping"
+      ],
+      "website": "https://www.dm.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "edeka",
+      "name": "EDEKA",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.edeka.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "eon-de",
+      "name": "E.ON Deutschland",
+      "country": "DE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.eon.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "flix",
+      "name": "Flix",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.flix.com/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "kaufland",
+      "name": "Kaufland",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.kaufland.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "lidl",
+      "name": "Lidl",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.lidl.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "lieferando",
+      "name": "Lieferando.de",
+      "country": "DE",
+      "categories": [
+        "dining",
+        "online-shopping"
+      ],
+      "website": "https://www.lieferando.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "lufthansa",
+      "name": "Lufthansa",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.lufthansa.com/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "mcdonalds-de",
+      "name": "McDonald's Deutschland",
+      "country": "DE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.mcdonalds.com/de/de-de.html",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "country": "DE",
+      "categories": [
+        "online-shopping",
+        "entertainment"
+      ],
+      "website": "https://www.mediamarkt.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "netto-marken-discount",
+      "name": "Netto Marken-Discount",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.netto-online.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "otto",
+      "name": "OTTO",
+      "country": "DE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.otto.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "rewe",
+      "name": "REWE",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.rewe.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "rossmann",
+      "name": "ROSSMANN",
+      "country": "DE",
+      "categories": [
+        "groceries",
+        "online-shopping"
+      ],
+      "website": "https://www.rossmann.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "saturn",
+      "name": "SATURN",
+      "country": "DE",
+      "categories": [
+        "online-shopping",
+        "entertainment"
+      ],
+      "website": "https://www.saturn.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "shell-de",
+      "name": "Shell Deutschland",
+      "country": "DE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.shell.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "zalando",
+      "name": "Zalando",
+      "country": "DE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.zalando.de/",
+      "lastUpdated": "2026-07-17"
+    }
+  ]
+}

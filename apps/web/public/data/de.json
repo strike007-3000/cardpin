@@ -1,0 +1,801 @@
+{
+  "country": "DE",
+  "issuers": [
+    {
+      "id": "advanzia-bank",
+      "name": "Advanzia Bank S.A."
+    },
+    {
+      "id": "american-express-de",
+      "name": "American Express Europe S.A. (Germany Branch)"
+    },
+    {
+      "id": "barclays-de",
+      "name": "Barclays Bank Ireland PLC, Hamburg Branch"
+    },
+    {
+      "id": "bw-bank",
+      "name": "Baden-Württembergische Bank"
+    },
+    {
+      "id": "commerzbank",
+      "name": "Commerzbank AG"
+    },
+    {
+      "id": "deutsche-bank",
+      "name": "Deutsche Bank AG"
+    },
+    {
+      "id": "dkb",
+      "name": "Deutsche Kreditbank AG"
+    },
+    {
+      "id": "hanseatic-bank",
+      "name": "Hanseatic Bank GmbH & Co KG"
+    },
+    {
+      "id": "hypovereinsbank",
+      "name": "UniCredit Bank GmbH"
+    },
+    {
+      "id": "lbb",
+      "name": "Landesbank Berlin AG"
+    },
+    {
+      "id": "n26",
+      "name": "N26 Bank SE"
+    },
+    {
+      "id": "postbank",
+      "name": "Postbank – eine Niederlassung der Deutsche Bank AG"
+    },
+    {
+      "id": "santander-consumer-bank",
+      "name": "Santander Consumer Bank AG"
+    },
+    {
+      "id": "sparkassen-finanzgruppe",
+      "name": "Sparkassen-Finanzgruppe"
+    },
+    {
+      "id": "tf-bank",
+      "name": "TF Bank AB, German Branch"
+    },
+    {
+      "id": "vr-banken",
+      "name": "Bundesverband der Deutschen Volksbanken und Raiffeisenbanken e.V."
+    },
+    {
+      "id": "zinia",
+      "name": "Open Bank S.A., Zweigniederlassung Deutschland"
+    }
+  ],
+  "cards": [
+    {
+      "id": "advanzia-gebuehrenfrei-mastercard-gold",
+      "name": "Gebührenfrei Mastercard Gold",
+      "issuerId": "advanzia-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.gebuhrenfrei.com/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amex-gold-de",
+      "name": "American Express Gold Card",
+      "issuerId": "american-express-de",
+      "country": "DE",
+      "network": "amex",
+      "annualFee": 240,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [
+        "amex-gold-membership-rewards-base"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/kreditkarte/goldcard/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amex-green-de",
+      "name": "American Express Card",
+      "issuerId": "american-express-de",
+      "country": "DE",
+      "network": "amex",
+      "annualFee": 55,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [
+        "amex-green-membership-rewards-base"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/amexcited/benefits/american-express-karte-kosten-12434",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amex-platinum-de",
+      "name": "American Express Platinum Card",
+      "issuerId": "american-express-de",
+      "country": "DE",
+      "network": "amex",
+      "annualFee": 720,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [
+        "amex-platinum-membership-rewards-base"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/amexcited/cards/platinum-card",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "barclays-visa",
+      "name": "Barclays Visa",
+      "issuerId": "barclays-de",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.barclays.de/kreditkarten/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "dkb-visa-debit",
+      "name": "DKB Visa Debitkarte",
+      "issuerId": "dkb",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.dkb.de/privatkunden/karten/debitkarte",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "hanseatic-bank-genialcard",
+      "name": "Hanseatic Bank GenialCard",
+      "issuerId": "hanseatic-bank",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.hanseaticbank.de/kreditkarte/genialcard",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-blue",
+      "name": "Miles & More Blue Credit Card",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 66,
+      "fxFeePercentage": 0.0195,
+      "currency": "EUR",
+      "rewardRules": [
+        "miles-and-more-blue-base-miles"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden/kreditkarten/miles-and-more-blue-credit-card.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-gold",
+      "name": "Miles & More Gold Credit Card",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 138,
+      "fxFeePercentage": 0.0195,
+      "currency": "EUR",
+      "rewardRules": [
+        "miles-and-more-gold-base-miles"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-myflex",
+      "name": "Miles & More MyFlex Credit Card",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0.0195,
+      "currency": "EUR",
+      "rewardRules": [
+        "miles-and-more-myflex-base-miles"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden/kreditkarten/miles-and-more-myflex-credit-card.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "n26-business-metal",
+      "name": "N26 Business Metal",
+      "issuerId": "n26",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 202.8,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [
+        "n26-business-metal-base-cashback"
+      ],
+      "source": "official-product-page",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/de-de/kosten-business",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "n26-business-standard",
+      "name": "N26 Business Standard",
+      "issuerId": "n26",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [
+        "n26-business-standard-base-cashback"
+      ],
+      "source": "official-product-page",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/de-de/kostenloses-geschaeftskonto",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "n26-metal",
+      "name": "N26 Metal",
+      "issuerId": "n26",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 202.8,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/de-de/metal",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "n26-standard",
+      "name": "N26 Standard",
+      "issuerId": "n26",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/de-de/kostenloses-girokonto",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "payback-amex",
+      "name": "PAYBACK American Express Karte",
+      "issuerId": "american-express-de",
+      "country": "DE",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [
+        "payback-amex-base-points"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.payback.de/kreditkarten-vergleich",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "payback-visa",
+      "name": "PAYBACK Visa Kreditkarte",
+      "issuerId": "bw-bank",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 29,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [
+        "payback-visa-base-points"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.payback.de/info/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    }
+  ],
+  "merchants": [
+    {
+      "id": "aldi-nord",
+      "name": "ALDI Nord",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.aldi-nord.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "aldi-sued",
+      "name": "ALDI SÜD",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.aldi-sued.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amazon-de",
+      "name": "Amazon.de",
+      "country": "DE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.amazon.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "aral",
+      "name": "Aral",
+      "country": "DE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.aral.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "cinemaxx",
+      "name": "CinemaxX",
+      "country": "DE",
+      "categories": [
+        "entertainment"
+      ],
+      "website": "https://www.cinemaxx.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bahn",
+      "name": "Deutsche Bahn",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.bahn.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-telekom",
+      "name": "Deutsche Telekom",
+      "country": "DE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.telekom.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "dm",
+      "name": "dm-drogerie markt",
+      "country": "DE",
+      "categories": [
+        "groceries",
+        "online-shopping"
+      ],
+      "website": "https://www.dm.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "edeka",
+      "name": "EDEKA",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.edeka.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "eon-de",
+      "name": "E.ON Deutschland",
+      "country": "DE",
+      "categories": [
+        "utilities"
+      ],
+      "website": "https://www.eon.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "flix",
+      "name": "Flix",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.flix.com/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "kaufland",
+      "name": "Kaufland",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.kaufland.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "lidl",
+      "name": "Lidl",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.lidl.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "lieferando",
+      "name": "Lieferando.de",
+      "country": "DE",
+      "categories": [
+        "dining",
+        "online-shopping"
+      ],
+      "website": "https://www.lieferando.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "lufthansa",
+      "name": "Lufthansa",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "transport"
+      ],
+      "website": "https://www.lufthansa.com/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "mcdonalds-de",
+      "name": "McDonald's Deutschland",
+      "country": "DE",
+      "categories": [
+        "dining"
+      ],
+      "website": "https://www.mcdonalds.com/de/de-de.html",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "mediamarkt",
+      "name": "MediaMarkt",
+      "country": "DE",
+      "categories": [
+        "online-shopping",
+        "entertainment"
+      ],
+      "website": "https://www.mediamarkt.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "netto-marken-discount",
+      "name": "Netto Marken-Discount",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.netto-online.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "otto",
+      "name": "OTTO",
+      "country": "DE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.otto.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "rewe",
+      "name": "REWE",
+      "country": "DE",
+      "categories": [
+        "groceries"
+      ],
+      "website": "https://www.rewe.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "rossmann",
+      "name": "ROSSMANN",
+      "country": "DE",
+      "categories": [
+        "groceries",
+        "online-shopping"
+      ],
+      "website": "https://www.rossmann.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "saturn",
+      "name": "SATURN",
+      "country": "DE",
+      "categories": [
+        "online-shopping",
+        "entertainment"
+      ],
+      "website": "https://www.saturn.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "shell-de",
+      "name": "Shell Deutschland",
+      "country": "DE",
+      "categories": [
+        "fuel"
+      ],
+      "website": "https://www.shell.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "zalando",
+      "name": "Zalando",
+      "country": "DE",
+      "categories": [
+        "online-shopping"
+      ],
+      "website": "https://www.zalando.de/",
+      "lastUpdated": "2026-07-17"
+    }
+  ],
+  "rewardRules": [
+    {
+      "id": "amex-gold-membership-rewards-base",
+      "cardId": "amex-gold-de",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/rewards/membership-rewards/about-program",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amex-green-membership-rewards-base",
+      "cardId": "amex-green-de",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/rewards/membership-rewards/about-program",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amex-platinum-membership-rewards-base",
+      "cardId": "amex-platinum-de",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/rewards/membership-rewards/about-program",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-blue-base-miles",
+      "cardId": "miles-and-more-blue",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "miles",
+      "rewardValue": 0.5,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-gold-base-miles",
+      "cardId": "miles-and-more-gold",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "miles",
+      "rewardValue": 0.5,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-myflex-base-miles",
+      "cardId": "miles-and-more-myflex",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "miles",
+      "rewardValue": 0.5,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden/kreditkarten/miles-and-more-myflex-credit-card.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "n26-business-metal-base-cashback",
+      "cardId": "n26-business-metal",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.005,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://n26.com/de-de/kosten-business",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "n26-business-standard-base-cashback",
+      "cardId": "n26-business-standard",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.001,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://n26.com/de-de/kostenloses-geschaeftskonto",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "payback-amex-base-points",
+      "cardId": "payback-amex",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 0.3333333333,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.payback.de/kreditkarten-vergleich",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "payback-visa-base-points",
+      "cardId": "payback-visa",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 0.2,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.payback.de/info/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    }
+  ]
+}
