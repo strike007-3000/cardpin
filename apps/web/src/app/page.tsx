@@ -565,40 +565,48 @@ export default function HomePage() {
                   </div>
                 ) : (
                   <>
-                    <div className="wallet-deck">
-                      {ownedCards.map((card, index) => {
-                        const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
-                        const isActive = activeCardId === card.id;
-                        const zIndex = isActive ? 50 : index + 1;
+                    <div
+                      className="wallet-deck"
+                      style={{
+                        height: `${(ownedCards.length - 1) * 22 + (activeCardId ? 100 : 0) + 183}px`,
+                      }}
+                    >
+                      {(() => {
                         const activeIdx = ownedCards.findIndex(c => c.id === activeCardId);
-                        const top = index > activeIdx && activeIdx !== -1 ? index * 28 + 135 : index * 28;
-                        const rotate = (index - (activeIdx === -1 ? 0 : activeIdx)) * 1.5;
-                        const translateX = (index - (activeIdx === -1 ? 0 : activeIdx)) * 3;
-                        return (
-                          <div
-                            key={card.id}
-                            className={`visual-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "active-card-highlight" : ""}`}
-                            onClick={() => setActiveCardId(card.id)}
-                            title="Click to select/configure card"
-                            style={{
-                              zIndex,
-                              top: `${top}px`,
-                              transform: isActive
-                                ? `scale(1.04) rotate(0deg) translateY(-5px)`
-                                : `rotate(${rotate}deg) translateX(${translateX}px)`
-                            }}
-                          >
-                            <div className="visual-card-top">
-                              <span className="card-issuer-name">{issuerName}</span>
-                              <div className="card-chip" />
+                        return ownedCards.map((card, index) => {
+                          const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
+                          const isActive = activeCardId === card.id;
+                          const zIndex = isActive ? 50 : index + 1;
+                          const top = index > activeIdx && activeIdx !== -1 ? index * 22 + 100 : index * 22;
+                          const offset = index - (activeIdx === -1 ? 0 : activeIdx);
+                          const rotate = offset * 1;
+                          const translateX = offset * 2;
+                          return (
+                            <div
+                              key={card.id}
+                              className={`visual-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "active-card-highlight" : ""}`}
+                              onClick={() => setActiveCardId(card.id)}
+                              title="Click to select/configure card"
+                              style={{
+                                zIndex,
+                                top: `${top}px`,
+                                transform: isActive
+                                  ? `scale(1.04) rotate(0deg) translateY(-5px)`
+                                  : `rotate(${rotate}deg) translateX(${translateX}px)`
+                              }}
+                            >
+                              <div className="visual-card-top">
+                                <span className="card-issuer-name">{issuerName}</span>
+                                <div className="card-chip" />
+                              </div>
+                              <div className="visual-card-bottom">
+                                <span className="card-name-display">{card.name}</span>
+                                <span className="card-network-logo">{card.network}</span>
+                              </div>
                             </div>
-                            <div className="visual-card-bottom">
-                              <span className="card-name-display">{card.name}</span>
-                              <span className="card-network-logo">{card.network}</span>
-                            </div>
-                          </div>
-                        );
-                      })}
+                          );
+                        });
+                      })()}
                     </div>
 
                     {activeCard && (
