@@ -4,7 +4,6 @@
       "id": "amex-gold-membership-rewards-base",
       "cardId": "amex-gold-de",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 1,
       "conditions": {
@@ -30,7 +29,6 @@
       "id": "amex-green-membership-rewards-base",
       "cardId": "amex-green-de",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 1,
       "conditions": {
@@ -56,7 +54,6 @@
       "id": "amex-platinum-membership-rewards-base",
       "cardId": "amex-platinum-de",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 1,
       "conditions": {
@@ -82,7 +79,6 @@
       "id": "miles-and-more-blue-base-miles",
       "cardId": "miles-and-more-blue",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "miles",
       "rewardValue": 0.5,
       "conditions": {
@@ -112,7 +108,6 @@
       "id": "miles-and-more-gold-base-miles",
       "cardId": "miles-and-more-gold",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "miles",
       "rewardValue": 0.5,
       "conditions": {
@@ -142,7 +137,6 @@
       "id": "miles-and-more-myflex-base-miles",
       "cardId": "miles-and-more-myflex",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "miles",
       "rewardValue": 0.5,
       "conditions": {
@@ -171,7 +165,6 @@
       "id": "n26-business-metal-base-cashback",
       "cardId": "n26-business-metal",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.005,
       "conditions": {
@@ -195,7 +188,6 @@
       "id": "n26-business-standard-base-cashback",
       "cardId": "n26-business-standard",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.001,
       "conditions": {
@@ -219,7 +211,6 @@
       "id": "payback-amex-base-points",
       "cardId": "payback-amex",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 0.3333333333,
       "conditions": {
@@ -247,7 +238,6 @@
       "id": "payback-visa-base-points",
       "cardId": "payback-visa",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 0.2,
       "conditions": {
