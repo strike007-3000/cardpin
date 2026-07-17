@@ -566,15 +566,17 @@ export default function HomePage() {
                 ) : (
                   <>
                     <div className="wallet-deck">
-                      {ownedCards.map((card) => {
+                      {ownedCards.map((card, index) => {
                         const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
                         const isActive = activeCardId === card.id;
+                        const zIndex = isActive ? 50 : index + 1;
                         return (
                           <div
                             key={card.id}
                             className={`visual-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "active-card-highlight" : ""}`}
                             onClick={() => setActiveCardId(card.id)}
                             title="Click to select/configure card"
+                            style={{ zIndex }}
                           >
                             <div className="visual-card-top">
                               <span className="card-issuer-name">{issuerName}</span>

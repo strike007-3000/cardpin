@@ -884,42 +884,47 @@ a:hover {
 
 .wallet-deck {
   display: flex;
-  overflow-x: auto;
-  gap: 16px;
-  padding: 16px 4px;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 0;
+  position: relative;
 }
 
 .visual-card {
   position: relative;
   aspect-ratio: 1.586 / 1;
-  width: 220px;
+  width: 100%;
+  max-width: 290px;
   flex-shrink: 0;
   border-radius: var(--radius-md);
   padding: 14px;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   cursor: pointer;
   user-select: none;
-  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s, border-color 0.2s;
+  transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), margin-bottom 0.3s, border-color 0.2s, box-shadow 0.3s;
   overflow: hidden;
   border: 2px solid transparent;
-  scroll-snap-align: start;
+  margin-bottom: -125px; /* overlap stack */
 }
 
 .visual-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transform: translateY(-10px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 .visual-card.active-card-highlight {
   border-color: var(--color-primary);
-  box-shadow: 0 0 12px var(--color-primary-semi), 0 6px 16px rgba(0,0,0,0.4);
-  transform: translateY(-4px);
+  box-shadow: 0 0 16px var(--color-primary-semi), 0 8px 24px rgba(0,0,0,0.5);
+  transform: scale(1.04) translateY(-4px);
+  margin-bottom: 12px;
+}
+
+.visual-card:last-child {
+  margin-bottom: 0;
 }
 
 .visual-card::before {
