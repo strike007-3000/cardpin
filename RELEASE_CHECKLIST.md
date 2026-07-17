@@ -1,4 +1,4 @@
-# CardPin Release Checklist (v1.2.0)
+# CardPin Release Checklist (v1.2.1)
 
 This checklist outlines the steps required to validate, deploy, and tag a release of CardPin.
 
@@ -66,8 +66,9 @@ After building locally or deploying to a preview environment, verify the followi
    * Under **Selected Card Settings**, input a monthly spend value.
    * Search for a category and verify that the recommendation result applies correct reward caps (headroom calculation).
 7. **Multi-Currency FX conversions**:
-   * Change transaction currency to `USD` or `GBP`.
+   * Change transaction currency to `USD`, `GBP`, or `JPY`.
    * Check that live rates are fetched from Fawaz Ahmed API and stored in `sessionStorage`.
+   * Clear the FX cache, block the rate request, and verify recommendations stay hidden instead of treating the foreign amount as EUR.
    * Verify the spend input prefix updates to the selected currency.
    * Verify that reward calculations (net of FX fees) are evaluated correctly.
 8. **Offline PWA Support**:

@@ -155,7 +155,7 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
-## Production Features (v1.2)
+## Production Features (v1.2.1)
 
 ### Apple Wallet-Inspired Card Stack
 Owned cards use a stable vertical stack with a consistent visible header for every collapsed card and one fully expanded selected card. Selecting a collapsed card moves it to the front without rotation, absolute positioning, manual height calculations, or scattered z-index rules. Selected-card settings stay attached to the stack, while import, export, and clear actions live in a compact wallet-options menu.
@@ -163,10 +163,10 @@ Owned cards use a stable vertical stack with a consistent visible header for eve
 ### Accessible, Responsive Workflow
 CardPin uses keyboard-visible focus states, semantic selectable cards, an accessible native card-catalog dialog, and touch-friendly actions. On small screens, wallet spacing is compressed so the purchase search remains close to the selected cards. Search controls stay disabled until a card is selected and provide a direct route to the catalog.
 
-The interface uses the operating system font stack to avoid a render-blocking third-party font request. Live exchange rates are fetched only after a non-EUR currency is selected; the existing session cache and offline fallback still apply.
+The interface uses the operating system font stack to avoid a render-blocking third-party font request. Live exchange rates are fetched only after a non-EUR currency is selected. Recommendations wait for a valid selected-currency rate, preventing missing or malformed rates from silently treating foreign spend as EUR.
 
 ### Offline-First PWA (Progressive Web App)
-CardPin is configured as a fully installable PWA. A Service Worker (`sw.js`) caches the application shell and country datasets (`/data/*.json`) locally. The application can open and calculate card reward recommendations **100% offline** (e.g., when you have poor network coverage at a checkout counter).
+CardPin is configured as a fully installable PWA. A Service Worker (`sw.js`) caches the application shell and country datasets (`/data/*.json`) locally. EUR recommendations work offline; foreign-currency recommendations also work when a valid rate is available in the session cache.
 
 ### Multi-Currency FX Conversions
 Users can select transaction currencies (EUR, USD, GBP, CHF, JPY) in Step 3. When a non-EUR currency is selected, CardPin fetches live rates from the Fawaz Ahmed Exchange Rates API, converts the transaction value into the card's native currency, calculates the reward value, deducts the card's specific foreign transaction fee, and shows the net outcome. Fetch requests are cached in `sessionStorage` to prevent redundant network calls.

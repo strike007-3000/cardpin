@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { recommendBestCard } from "@cardpin/engine";
 import type { Card, CountryDataset, Merchant } from "@cardpin/engine";
-import { needsFxRates, orderCardsForWalletStack } from "../lib/utils";
+import { getFxRate, needsFxRates, orderCardsForWalletStack } from "../lib/utils";
 
 type CardCalc = {
   card: Card;
@@ -123,6 +123,7 @@ export default function CardPinCalculator() {
   // FX & Spend Caps States
   const [spendCurrency, setSpendCurrency] = useState<string>("EUR");
   const [fxRates, setFxRates] = useState<Record<string, number>>({ eur: 1, usd: 1.08, gbp: 0.85, chf: 0.94 });
+  const [fxStatus, setFxStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
   const [cardMonthlySpends, setCardMonthlySpends] = useState<Record<string, number>>({});
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
@@ -171,13 +172,21 @@ export default function CardPinCalculator() {
 
   // Fetch live FX rates only when a non-EUR transaction needs them.
   useEffect(() => {
-    if (!needsFxRates(spendCurrency)) return;
+    if (!needsFxRates(spendCurrency)) {
+      setFxStatus("idle");
+      return;
+    }
+
+    setFxStatus("loading");
 
     async function fetchFXRates() {
       const cached = sessionStorage.getItem("cardpin:fx_rates");
       if (cached) {
         try {
-          setFxRates(JSON.parse(cached));
+          const rates = JSON.parse(cached);
+          if (!getFxRate(rates, spendCurrency)) throw new Error("Cached rate unavailable");
+          setFxRates(rates);
+          setFxStatus("ready");
           return;
         } catch (e) {
           // ignore cache parse failure
@@ -190,11 +199,16 @@ export default function CardPinCalculator() {
         const data = await res.json();
         if (data && data.eur) {
           const rates = { eur: 1, ...data.eur };
+          if (!getFxRate(rates, spendCurrency)) throw new Error("Selected rate unavailable");
           setFxRates(rates);
+          setFxStatus("ready");
           sessionStorage.setItem("cardpin:fx_rates", JSON.stringify(rates));
+          return;
         }
+        throw new Error("Invalid rates response");
       } catch (err) {
-        console.warn("Using offline fallback FX rates");
+        console.warn("FX rates unavailable");
+        setFxStatus("error");
       }
     }
     fetchFXRates();
@@ -364,7 +378,8 @@ export default function CardPinCalculator() {
   const cardResults: CardCalc[] = useMemo(() => {
     if (!dataset || !ownedCards.length) return [];
 
-    const rate = fxRates[spendCurrency.toLowerCase()] || 1;
+    const rate = getFxRate(fxRates, spendCurrency);
+    if (rate === null) return [];
     const convertedSpend = spendCurrency !== "EUR" ? spendAmount / rate : spendAmount;
     const isForeign = spendCurrency !== "EUR" || isForeignSpend;
 
@@ -442,6 +457,7 @@ export default function CardPinCalculator() {
   }, [categoryQuery, country, dataset, isForeignSpend, merchantQuery, ownedCards, spendAmount, cardMonthlySpends, fxRates, spendCurrency]);
 
   const hasSearch = merchantQuery.trim() !== "" || categoryQuery !== "";
+  const isFxRateMissing = getFxRate(fxRates, spendCurrency) === null;
   const bestResult = cardResults.find((result) => result.rule) ?? null;
   const alternatives = cardResults.filter((result) => result.card.id !== bestResult?.card.id).slice(0, 4);
   const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
@@ -772,6 +788,16 @@ export default function CardPinCalculator() {
                     <strong>Ready to search.</strong>
                     <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
                       Enter a merchant or choose a category under <strong>Step 3</strong> to calculate expected rewards.
+                    </p>
+                  </div>
+                ) : isFxRateMissing ? (
+                  <div className="card empty-state" role="status">
+                    <CreditCardPlaceholder />
+                    <strong>{fxStatus === "error" ? "Exchange rate unavailable." : "Loading exchange rate…"}</strong>
+                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                      {fxStatus === "error"
+                        ? "Reconnect and select the currency again to calculate accurate rewards."
+                        : `Waiting for the ${spendCurrency} rate before calculating rewards.`}
                     </p>
                   </div>
                 ) : bestResult ? (
