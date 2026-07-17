@@ -123,6 +123,7 @@ export default function HomePage() {
   const [spendCurrency, setSpendCurrency] = useState<string>("EUR");
   const [fxRates, setFxRates] = useState<Record<string, number>>({ eur: 1, usd: 1.08, gbp: 0.85, chf: 0.94 });
   const [cardMonthlySpends, setCardMonthlySpends] = useState<Record<string, number>>({});
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
   // Catalog & Portability States
   const [showCatalog, setShowCatalog] = useState<boolean>(false);
@@ -239,6 +240,14 @@ export default function HomePage() {
     () => availableCards.filter((card) => ownedCardIds.includes(card.id)),
     [availableCards, ownedCardIds]
   );
+
+  useEffect(() => {
+    if (ownedCards.length > 0 && (!activeCardId || !ownedCardIds.includes(activeCardId))) {
+      setActiveCardId(ownedCards[0].id);
+    } else if (ownedCards.length === 0) {
+      setActiveCardId(null);
+    }
+  }, [ownedCards, activeCardId, ownedCardIds]);
 
   const categoriesList = useMemo(
     () => Array.from(new Set(dataset?.merchants.flatMap((merchant: Merchant) => merchant.categories) ?? [])).sort(),
@@ -424,6 +433,7 @@ export default function HomePage() {
   const hasSearch = merchantQuery.trim() !== "" || categoryQuery !== "";
   const bestResult = cardResults.find((result) => result.rule) ?? null;
   const alternatives = cardResults.filter((result) => result.card.id !== bestResult?.card.id).slice(0, 4);
+  const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
 
   return (
     <div className="container">
@@ -554,55 +564,69 @@ export default function HomePage() {
                     Your wallet is empty. Add some cards to get started!
                   </div>
                 ) : (
-                  <div className="wallet-deck">
-                    {ownedCards.map((card) => {
-                      const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
-                      return (
-                        <div
-                          key={card.id}
-                          className={`visual-card ${getCardThemeClass(card.id, card.network)}`}
-                          onClick={() => handleToggleCard(card.id)}
-                          title="Click to remove from wallet"
-                          style={{ minHeight: "185px" }}
-                        >
-                          <div className="visual-card-top">
-                            <span className="card-issuer-name">{issuerName}</span>
-                            <div className="card-chip" />
-                          </div>
-
+                  <>
+                    <div className="wallet-deck">
+                      {ownedCards.map((card) => {
+                        const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
+                        const isActive = activeCardId === card.id;
+                        return (
                           <div
-                            style={{ margin: "8px 0", display: "flex", flexDirection: "column", gap: "2px" }}
-                            onClick={(e) => e.stopPropagation()}
+                            key={card.id}
+                            className={`visual-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "active-card-highlight" : ""}`}
+                            onClick={() => setActiveCardId(card.id)}
+                            title="Click to select/configure card"
                           >
-                            <label style={{ fontSize: "0.68rem", opacity: "0.85", fontWeight: "bold" }}>
-                              Spent this month (EUR):
-                            </label>
+                            <div className="visual-card-top">
+                              <span className="card-issuer-name">{issuerName}</span>
+                              <div className="card-chip" />
+                            </div>
+                            <div className="visual-card-bottom">
+                              <span className="card-name-display">{card.name}</span>
+                              <span className="card-network-logo">{card.network}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {activeCard && (
+                      <div className="card-config-box">
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <span style={{ fontSize: "0.8rem", fontWeight: "bold", color: "var(--text-main)" }}>
+                            Selected Card Settings
+                          </span>
+                          <button
+                            type="button"
+                            onClick={() => handleToggleCard(activeCard.id)}
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "var(--color-danger)",
+                              fontSize: "0.78rem",
+                              cursor: "pointer",
+                              padding: "0"
+                            }}
+                          >
+                            Remove from Wallet
+                          </button>
+                        </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "4px", flexWrap: "wrap" }}>
+                          <span style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>Spent this month:</span>
+                          <div className="spend-input-wrapper" style={{ maxWidth: "120px", display: "flex", alignItems: "center" }}>
+                            <span className="currency-prefix">EUR</span>
                             <input
                               type="number"
                               min="0"
-                              value={cardMonthlySpends[card.id] || ""}
-                              onChange={(e) => handleUpdateMonthlySpend(card.id, Number(e.target.value) || 0)}
-                              style={{
-                                background: "rgba(255, 255, 255, 0.25)",
-                                border: "1px solid rgba(255, 255, 255, 0.4)",
-                                borderRadius: "4px",
-                                color: "#fff",
-                                padding: "3px 6px",
-                                fontSize: "0.8rem",
-                                width: "100%"
-                              }}
+                              value={cardMonthlySpends[activeCard.id] || ""}
+                              onChange={(e) => handleUpdateMonthlySpend(activeCard.id, Number(e.target.value) || 0)}
                               placeholder="0"
+                              style={{ padding: "4px 8px", fontSize: "0.8rem" }}
                             />
                           </div>
-
-                          <div className="visual-card-bottom">
-                            <span className="card-name-display">{card.name}</span>
-                            <span className="card-network-logo">{card.network}</span>
-                          </div>
                         </div>
-                      );
-                    })}
-                  </div>
+                      </div>
+                    )}
+                  </>
                 )}
 
                 <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginTop: "16px" }}>
