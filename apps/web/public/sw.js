@@ -57,7 +57,9 @@ self.addEventListener("fetch", (event) => {
 
         return networkResponse;
       }).catch(() => {
-        return caches.match("/");
+        if (event.request.mode === "navigate") {
+          return caches.match("/");
+        }
       });
     })
   );

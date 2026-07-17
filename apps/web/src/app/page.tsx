@@ -403,9 +403,9 @@ export default function HomePage() {
           ? Math.max(0, grossValue - fxFee)
           : grossValue;
 
-        const displayGross = grossValue * rate;
-        const displayNet = netValue * rate;
-        const displayFxFee = fxFee * rate;
+        const displayGross = grossValue;
+        const displayNet = netValue;
+        const displayFxFee = fxFee;
 
         return {
           card,
