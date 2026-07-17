@@ -959,13 +959,15 @@ export default function HomePage() {
                     const isSelected = ownedCardIds.includes(card.id);
                     const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
                     return (
-                      <div
+                      <button
+                        type="button"
                         key={card.id}
                         className="catalog-card-item"
                         onClick={() => handleToggleCard(card.id)}
                         style={{
                           border: isSelected ? "1px solid var(--color-primary)" : "1px solid var(--border-color)",
-                          backgroundColor: isSelected ? "rgba(88, 166, 255, 0.05)" : ""
+                          backgroundColor: isSelected ? "rgba(88, 166, 255, 0.05)" : "",
+                          textAlign: "left"
                         }}
                       >
                         <div className="catalog-card-info">
@@ -981,7 +983,7 @@ export default function HomePage() {
                         }}>
                           {isSelected ? "In Wallet" : "Add"}
                         </span>
-                      </div>
+                      </button>
                     );
                   })}
                 </div>

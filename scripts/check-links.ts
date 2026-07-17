@@ -49,8 +49,10 @@ async function main() {
         const items = Array.isArray(json[arrayKey]) ? json[arrayKey] : [];
 
         for (const item of items) {
-          if (item.source && item.source.startsWith("http")) {
+          if (typeof item.source === "string" && item.source.startsWith("http")) {
             urlsToCheck.push({ url: item.source, file: path.relative(repoRoot, filePath) });
+          } else if (item.source && typeof item.source.sourceUrl === "string" && item.source.sourceUrl.startsWith("http")) {
+            urlsToCheck.push({ url: item.source.sourceUrl, file: path.relative(repoRoot, filePath) });
           }
           if (item.sourceProof && typeof item.sourceProof.sourceUrl === "string" && item.sourceProof.sourceUrl.startsWith("http")) {
             urlsToCheck.push({ url: item.sourceProof.sourceUrl, file: path.relative(repoRoot, filePath) });
