@@ -1,4 +1,4 @@
-const CACHE_NAME = "cardpin-v1.1";
+const CACHE_NAME = "cardpin-v1.2";
 const ASSETS = [
   "/",
   "/favicon.ico",

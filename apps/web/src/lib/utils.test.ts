@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { needsFxRates } from "./utils";
+import { needsFxRates, orderCardsForWalletStack } from "./utils";
 
 describe("needsFxRates", () => {
   it("does not request rates for euro transactions", () => {
@@ -12,5 +12,18 @@ describe("needsFxRates", () => {
     expect(needsFxRates("GBP")).toBe(true);
     expect(needsFxRates("CHF")).toBe(true);
     expect(needsFxRates("JPY")).toBe(true);
+  });
+});
+
+describe("orderCardsForWalletStack", () => {
+  const cards = [{ id: "amex" }, { id: "visa" }, { id: "n26" }];
+
+  it("places the selected card at the expanded front of the stack", () => {
+    expect(orderCardsForWalletStack(cards, "visa").map((card) => card.id)).toEqual(["amex", "n26", "visa"]);
+  });
+
+  it("keeps the existing order when there is no valid selection", () => {
+    expect(orderCardsForWalletStack(cards, null)).toBe(cards);
+    expect(orderCardsForWalletStack(cards, "missing")).toBe(cards);
   });
 });

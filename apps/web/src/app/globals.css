@@ -77,6 +77,7 @@ h3 {
 .flow-layout {
   display: grid;
   gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .card,
@@ -89,6 +90,7 @@ h3 {
 }
 
 .step-card {
+  min-width: 0;
   scroll-margin-top: 16px;
 }
 
@@ -156,7 +158,7 @@ input:focus {
 button:focus-visible,
 .btn:focus-visible,
 .catalog-card-item:focus-visible,
-.visual-card:focus-visible,
+.wallet-card:focus-visible,
 label.btn:focus-within {
   outline: 3px solid var(--color-primary);
   outline-offset: 3px;
@@ -472,6 +474,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
 }
 
 @media (min-width: 760px) {
@@ -1024,66 +1027,68 @@ a:hover {
   color: var(--text-main);
 }
 
-/* Visual Wallet & Cards Overhaul */
-.wallet-deck-wrapper {
-  margin: 16px 0;
-}
-
-.wallet-deck {
-  position: relative;
-  width: 100%;
-  max-width: 290px;
-  margin: 16px auto;
-  /* height is set via inline style from JS */
-}
-
-.visual-card {
-  position: absolute;
-  left: 0;
-  right: 0;
-  aspect-ratio: 1.586 / 1;
-  width: 100%;
-  border-radius: var(--radius-md);
-  padding: 14px;
-  color: #ffffff;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+/* Apple Wallet-inspired card stack */
+.wallet-stack {
+  --wallet-card-height: clamp(184px, 31vw, 300px);
+  --wallet-card-peek: 54px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  isolation: isolate;
+  margin: 18px auto 20px;
+  max-width: 520px;
+  width: 100%;
+}
+
+.wallet-card {
+  appearance: none;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.18), 0 8px 22px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #fff;
   cursor: pointer;
-  user-select: none;
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s, box-shadow 0.3s;
-  overflow: hidden;
-  border: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
   font: inherit;
+  height: var(--wallet-card-peek);
+  justify-content: space-between;
+  margin-top: -1px;
+  overflow: hidden;
+  padding: 17px 18px;
+  position: relative;
   text-align: left;
+  transition: border-color 0.2s, box-shadow 0.2s, height 0.25s ease;
+  user-select: none;
+  width: 100%;
 }
 
-.visual-card:hover {
-  transform: translateY(-8px) scale(1.02) !important;
-  z-index: 45 !important;
+.wallet-card:first-child {
+  margin-top: 0;
 }
 
-.visual-card.active-card-highlight {
+.wallet-card--active {
   border-color: var(--color-primary);
-  box-shadow: 0 0 16px var(--color-primary-semi), 0 12px 28px rgba(0,0,0,0.45);
+  box-shadow: 0 0 0 1px var(--color-primary-semi), 0 14px 32px rgba(0, 0, 0, 0.42);
+  height: var(--wallet-card-height);
 }
 
-.visual-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+.wallet-card::before {
+  background: radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.16), transparent 72%);
   bottom: 0;
-  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.15), transparent 75%);
+  content: "";
+  left: 0;
   pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-.visual-card-top {
+.wallet-card__topline {
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  min-height: 22px;
+  position: relative;
+  z-index: 1;
 }
 
 .card-issuer-name {
@@ -1106,9 +1111,11 @@ a:hover {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-.visual-card-bottom {
+.wallet-card__details {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .card-name-display {
@@ -1119,7 +1126,13 @@ a:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 180px;
+  max-width: min(85%, 360px);
+}
+
+.wallet-card--active .card-name-display {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .card-network-logo {
@@ -1132,7 +1145,8 @@ a:hover {
 }
 
 .card-config-box {
-  margin-top: 14px;
+  margin: 0 auto;
+  max-width: 520px;
   padding: 12px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-color);
@@ -1140,6 +1154,80 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.wallet-actions {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  position: relative;
+}
+
+.wallet-menu {
+  position: relative;
+}
+
+.wallet-menu__trigger {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  font-size: 1.1rem;
+  height: 44px;
+  justify-content: center;
+  letter-spacing: 0.12em;
+  list-style: none;
+  width: 48px;
+}
+
+.wallet-menu__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.wallet-menu__trigger:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.wallet-menu__popover {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-panel);
+  display: grid;
+  min-width: 180px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 20;
+}
+
+.wallet-menu__popover button,
+.wallet-menu__popover label {
+  background: transparent;
+  border: 0;
+  color: var(--text-main);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  margin: 0;
+  min-height: 44px;
+  padding: 11px 14px;
+  text-align: left;
+}
+
+.wallet-menu__popover button:hover,
+.wallet-menu__popover label:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.wallet-menu__popover .wallet-menu__danger {
+  color: var(--color-danger);
 }
 
 
@@ -1241,4 +1329,3 @@ a:hover {
 .card-theme-fallback-visa { background: linear-gradient(135deg, #1a1f71 0%, #0055a5 100%); }
 .card-theme-fallback-mastercard { background: linear-gradient(135deg, #f79e1b 0%, #eb001b 100%); }
 .card-theme-fallback-amex { background: linear-gradient(135deg, #007bc1 0%, #003a6b 100%); }
-

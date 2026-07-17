@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { recommendBestCard } from "@cardpin/engine";
 import type { Card, CountryDataset, Merchant } from "@cardpin/engine";
-import { needsFxRates } from "../lib/utils";
+import { needsFxRates, orderCardsForWalletStack } from "../lib/utils";
 
 type CardCalc = {
   card: Card;
@@ -445,6 +445,7 @@ export default function CardPinCalculator() {
   const bestResult = cardResults.find((result) => result.rule) ?? null;
   const alternatives = cardResults.filter((result) => result.card.id !== bestResult?.card.id).slice(0, 4);
   const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
+  const stackedCards = orderCardsForWalletStack(ownedCards, activeCardId);
 
   return (
     <>
@@ -571,50 +572,31 @@ export default function CardPinCalculator() {
                   </div>
                 ) : (
                   <>
-                    <div
-                      className="wallet-deck"
-                      style={{
-                        height: `${(ownedCards.length - 1) * 22 + (ownedCards.length > 1 && activeCardId ? 54 : 0) + 183}px`,
-                      }}
-                    >
-                      {(() => {
-                        const activeIdx = ownedCards.findIndex(c => c.id === activeCardId);
-                        return ownedCards.map((card, index) => {
-                          const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
-                          const isActive = activeCardId === card.id;
-                          const zIndex = isActive ? 50 : index + 1;
-                          const top = index > activeIdx && activeIdx !== -1 ? index * 22 + 54 : index * 22;
-                          const offset = index - (activeIdx === -1 ? 0 : activeIdx);
-                          const rotate = offset * 1;
-                          const translateX = offset * 2;
-                          return (
-                            <button
-                              type="button"
-                              key={card.id}
-                              className={`visual-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "active-card-highlight" : ""}`}
-                              onClick={() => setActiveCardId(card.id)}
-                              aria-pressed={isActive}
-                              aria-label={`Configure ${card.name}`}
-                              style={{
-                                zIndex,
-                                top: `${top}px`,
-                                transform: isActive
-                                  ? `scale(1.04) rotate(0deg) translateY(-5px)`
-                                  : `rotate(${rotate}deg) translateX(${translateX}px)`
-                              }}
-                            >
-                              <div className="visual-card-top">
-                                <span className="card-issuer-name">{issuerName}</span>
-                                <div className="card-chip" />
-                              </div>
-                              <div className="visual-card-bottom">
-                                <span className="card-name-display">{card.name}</span>
-                                <span className="card-network-logo">{card.network}</span>
-                              </div>
-                            </button>
-                          );
-                        });
-                      })()}
+                    <div className="wallet-stack">
+                      {stackedCards.map((card) => {
+                        const issuerName = dataset?.issuers.find((issuer) => issuer.id === card.issuerId)?.name || "";
+                        const isActive = activeCardId === card.id;
+
+                        return (
+                          <button
+                            type="button"
+                            key={card.id}
+                            className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : ""}`}
+                            onClick={() => setActiveCardId(card.id)}
+                            aria-pressed={isActive}
+                            aria-label={isActive ? `${card.name}, selected` : `Select ${card.name}`}
+                          >
+                            <span className="wallet-card__topline">
+                              <span className="card-issuer-name">{issuerName}</span>
+                              <span className="card-chip" aria-hidden="true" />
+                            </span>
+                            <span className="wallet-card__details">
+                              <span className="card-name-display">{card.name}</span>
+                              <span className="card-network-logo">{card.network}</span>
+                            </span>
+                          </button>
+                        );
+                      })}
                     </div>
 
                     {activeCard && (
@@ -652,7 +634,7 @@ export default function CardPinCalculator() {
                   </>
                 )}
 
-                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginTop: "16px" }}>
+                <div className="wallet-actions">
                   <button
                     type="button"
                     className="btn btn--primary"
@@ -661,39 +643,37 @@ export default function CardPinCalculator() {
                     + Add Cards
                   </button>
 
-                  {ownedCardIds.length > 0 && (
-                    <>
-                      <button
-                        type="button"
-                        className="btn btn--secondary"
-                        onClick={handleExportWallet}
-                      >
-                        Export Wallet
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn--danger"
-                        onClick={() => {
-                          if (confirm("Are you sure you want to clear your wallet?")) {
-                            setOwnedCardIds([]);
-                            localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
-                          }
-                        }}
-                      >
-                        Clear Wallet
-                      </button>
-                    </>
-                  )}
-
-                  <label className="btn btn--secondary">
-                    Import Wallet
-                    <input
-                      type="file"
-                      accept=".json"
-                      onChange={handleImportWallet}
-                      className="visually-hidden"
-                    />
-                  </label>
+                  <details className="wallet-menu">
+                    <summary className="wallet-menu__trigger" role="button" aria-label="Wallet options">•••</summary>
+                    <div className="wallet-menu__popover">
+                      {ownedCardIds.length > 0 && (
+                        <>
+                          <button type="button" onClick={handleExportWallet}>Export wallet</button>
+                          <button
+                            type="button"
+                            className="wallet-menu__danger"
+                            onClick={() => {
+                              if (confirm("Are you sure you want to clear your wallet?")) {
+                                setOwnedCardIds([]);
+                                localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
+                              }
+                            }}
+                          >
+                            Clear wallet
+                          </button>
+                        </>
+                      )}
+                      <label>
+                        Import wallet
+                        <input
+                          type="file"
+                          accept=".json"
+                          onChange={handleImportWallet}
+                          className="visually-hidden"
+                        />
+                      </label>
+                    </div>
+                  </details>
                 </div>
               </section>
             </div>
