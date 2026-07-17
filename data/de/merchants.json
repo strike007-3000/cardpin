@@ -62,6 +62,17 @@
       "lastUpdated": "2026-07-17"
     },
     {
+      "id": "deutsche-bank-kartenreiseservice",
+      "name": "Deutsche Bank Kartenreiseservice",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "online-shopping"
+      ],
+      "website": "https://www.kartenreiseservice.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
       "id": "deutsche-telekom",
       "name": "Deutsche Telekom",
       "country": "DE",
@@ -197,6 +208,17 @@
       "lastUpdated": "2026-07-17"
     },
     {
+      "id": "postbank-urlaubsplus",
+      "name": "Postbank Urlaubsplus Reiseservice",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "online-shopping"
+      ],
+      "website": "https://postbank.urlaubsplus.com/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
       "id": "rewe",
       "name": "REWE",
       "country": "DE",
@@ -218,6 +240,17 @@
       "lastUpdated": "2026-07-17"
     },
     {
+      "id": "santander-reiseservice",
+      "name": "Santander Reiseservice",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "online-shopping"
+      ],
+      "website": "https://www.santander-reiseservice.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
       "id": "saturn",
       "name": "SATURN",
       "country": "DE",
@@ -236,6 +269,17 @@
         "fuel"
       ],
       "website": "https://www.shell.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "travelcentive",
+      "name": "Travelcentive",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "online-shopping"
+      ],
+      "website": "https://www.travelcentive.com/",
       "lastUpdated": "2026-07-17"
     },
     {

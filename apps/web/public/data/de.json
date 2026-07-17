@@ -46,6 +46,10 @@
       "name": "N26 Bank SE"
     },
     {
+      "id": "openbank-de",
+      "name": "Openbank Deutschland AG"
+    },
+    {
       "id": "postbank",
       "name": "Postbank – eine Niederlassung der Deutsche Bank AG"
     },
@@ -85,6 +89,29 @@
       "audience": "consumer",
       "sourceProof": {
         "sourceUrl": "https://www.gebuhrenfrei.com/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amazon-visa-de",
+      "name": "Amazon Visa",
+      "issuerId": "zinia",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.015,
+      "currency": "EUR",
+      "rewardRules": [
+        "amazon-visa-amazon-base-points",
+        "amazon-visa-general-base-points",
+        "amazon-visa-prime-event-points"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.amazon.de/visa",
         "verifiedAt": "2026-07-17",
         "verifiedBy": "online-research"
       },
@@ -167,6 +194,185 @@
       "audience": "consumer",
       "sourceProof": {
         "sourceUrl": "https://www.barclays.de/kreditkarten/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "commerzbank-classic-kreditkarte",
+      "name": "Commerzbank ClassicKreditkarte",
+      "issuerId": "commerzbank",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 39.9,
+      "fxFeePercentage": 0.0175,
+      "currency": "EUR",
+      "rewardRules": [
+        "commerzbank-classic-travelcentive-discount"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/classic-kreditkarte/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "commerzbank-gold-kreditkarte",
+      "name": "Commerzbank GoldKreditkarte",
+      "issuerId": "commerzbank",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 99.9,
+      "fxFeePercentage": 0.0175,
+      "currency": "EUR",
+      "rewardRules": [
+        "commerzbank-gold-travelcentive-discount"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/gold-kreditkarte/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "commerzbank-mastercard-debit",
+      "name": "Commerzbank Mastercard Debit",
+      "issuerId": "commerzbank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 42,
+      "fxFeePercentage": 0.0175,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/mastercard-debit/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "commerzbank-prepaid-kreditkarte",
+      "name": "Commerzbank Prepaid Kreditkarte",
+      "issuerId": "commerzbank",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 39.9,
+      "fxFeePercentage": 0.0175,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/prepaid-karte/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "commerzbank-young-visa",
+      "name": "Commerzbank Young Visa",
+      "issuerId": "commerzbank",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.0175,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/young-visa/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-mastercard-gold",
+      "name": "Deutsche Bank Mastercard Gold",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 82,
+      "fxFeePercentage": 0.0175,
+      "currency": "EUR",
+      "rewardRules": [
+        "deutsche-bank-mastercard-gold-travel-refund"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.deutsche-bank.de/ms/pc/cards0.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-mastercard-platin",
+      "name": "Deutsche Bank Mastercard Platin",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 200,
+      "fxFeePercentage": 0.0175,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.deutsche-bank.de/ms/pc/cards0.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-mastercard-standard",
+      "name": "Deutsche Bank Mastercard Standard",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 39,
+      "fxFeePercentage": 0.0175,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.deutsche-bank.de/ms/pc/cards0.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-mastercard-travel",
+      "name": "Deutsche Bank Mastercard Travel",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 94,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [
+        "deutsche-bank-mastercard-travel-refund"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.deutsche-bank.de/ms/pc/cards0.html",
         "verifiedAt": "2026-07-17",
         "verifiedBy": "online-research"
       },
@@ -394,6 +600,105 @@
         "verifiedBy": "online-research"
       },
       "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "postbank-mastercard",
+      "name": "Postbank Mastercard",
+      "issuerId": "postbank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 29,
+      "fxFeePercentage": 0.0185,
+      "currency": "EUR",
+      "rewardRules": [
+        "postbank-mastercard-travel-bonus"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.postbank.de/privatkunden/produkte/konten-karten/kreditkarten/mastercard.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "santander-bestcard-basic",
+      "name": "Santander BestCard Basic",
+      "issuerId": "openbank-de",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.015,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.santander.de/privatkunden/konten-und-karten/karten/kostenlose-kreditkarte/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "santander-bestcard-premium",
+      "name": "Santander BestCard Premium",
+      "issuerId": "openbank-de",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [
+        "santander-bestcard-premium-travel-refund"
+      ],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.santander.de/privatkunden/konten-und-karten/karten/premium-kreditkarte/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "santander-bestcard-smart",
+      "name": "Santander BestCard Smart",
+      "issuerId": "openbank-de",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0.015,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.santander.de/privatkunden/konten-und-karten/karten/shopping-kreditkarte/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "tf-bank-mastercard-gold",
+      "name": "TF Bank Mastercard Gold",
+      "issuerId": "tf-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://tfbank.de/mastercard-gold",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
     }
   ],
   "merchants": [
@@ -456,6 +761,17 @@
         "transport"
       ],
       "website": "https://www.bahn.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-kartenreiseservice",
+      "name": "Deutsche Bank Kartenreiseservice",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "online-shopping"
+      ],
+      "website": "https://www.kartenreiseservice.de/",
       "lastUpdated": "2026-07-17"
     },
     {
@@ -594,6 +910,17 @@
       "lastUpdated": "2026-07-17"
     },
     {
+      "id": "postbank-urlaubsplus",
+      "name": "Postbank Urlaubsplus Reiseservice",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "online-shopping"
+      ],
+      "website": "https://postbank.urlaubsplus.com/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
       "id": "rewe",
       "name": "REWE",
       "country": "DE",
@@ -612,6 +939,17 @@
         "online-shopping"
       ],
       "website": "https://www.rossmann.de/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "santander-reiseservice",
+      "name": "Santander Reiseservice",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "online-shopping"
+      ],
+      "website": "https://www.santander-reiseservice.de/",
       "lastUpdated": "2026-07-17"
     },
     {
@@ -636,6 +974,17 @@
       "lastUpdated": "2026-07-17"
     },
     {
+      "id": "travelcentive",
+      "name": "Travelcentive",
+      "country": "DE",
+      "categories": [
+        "travel",
+        "online-shopping"
+      ],
+      "website": "https://www.travelcentive.com/",
+      "lastUpdated": "2026-07-17"
+    },
+    {
       "id": "zalando",
       "name": "Zalando",
       "country": "DE",
@@ -647,6 +996,53 @@
     }
   ],
   "rewardRules": [
+    {
+      "id": "amazon-visa-amazon-base-points",
+      "cardId": "amazon-visa-de",
+      "country": "DE",
+      "category": "online-shopping",
+      "merchantId": "amazon-de",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.amazon.de/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amazon-visa-general-base-points",
+      "cardId": "amazon-visa-de",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 0.5,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.amazon.de/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amazon-visa-prime-event-points",
+      "cardId": "amazon-visa-de",
+      "country": "DE",
+      "category": "online-shopping",
+      "merchantId": "amazon-de",
+      "rewardType": "points",
+      "rewardValue": 2,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.amazon.de/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
     {
       "id": "amex-gold-membership-rewards-base",
       "cardId": "amex-gold-de",
@@ -684,6 +1080,70 @@
       "conditions": {},
       "source": {
         "sourceUrl": "https://www.americanexpress.com/de-de/rewards/membership-rewards/about-program",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "commerzbank-classic-travelcentive-discount",
+      "cardId": "commerzbank-classic-kreditkarte",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "travelcentive",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.07,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "commerzbank-gold-travelcentive-discount",
+      "cardId": "commerzbank-gold-kreditkarte",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "travelcentive",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.07,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-mastercard-gold-travel-refund",
+      "cardId": "deutsche-bank-mastercard-gold",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "deutsche-bank-kartenreiseservice",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.06,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.deutsche-bank.de/ms/pc/cards0.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-mastercard-travel-refund",
+      "cardId": "deutsche-bank-mastercard-travel",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "deutsche-bank-kartenreiseservice",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.06,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.deutsche-bank.de/ms/pc/cards0.html",
         "verifiedAt": "2026-07-17",
         "verifiedBy": "online-research"
       },
@@ -782,6 +1242,38 @@
       "conditions": {},
       "source": {
         "sourceUrl": "https://www.payback.de/info/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "postbank-mastercard-travel-bonus",
+      "cardId": "postbank-mastercard",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "postbank-urlaubsplus",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.05,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.postbank.de/privatkunden/produkte/konten-karten/kreditkarten/mastercard.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "santander-bestcard-premium-travel-refund",
+      "cardId": "santander-bestcard-premium",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "santander-reiseservice",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.07,
+      "conditions": {},
+      "source": {
+        "sourceUrl": "https://www.santander.de/privatkunden/konten-und-karten/karten/premium-kreditkarte/",
         "verifiedAt": "2026-07-17",
         "verifiedBy": "online-research"
       },
