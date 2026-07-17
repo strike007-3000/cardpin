@@ -886,8 +886,8 @@ a:hover {
   position: relative;
   width: 100%;
   max-width: 290px;
-  height: 330px;
   margin: 16px auto;
+  /* height is set via inline style from JS */
 }
 
 .visual-card {
