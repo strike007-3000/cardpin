@@ -1011,23 +1011,27 @@ a:hover {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 12px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.04);
   cursor: pointer;
   transition: border-color 0.2s, background-color 0.2s;
   display: flex;
   align-items: center;
   gap: 12px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: inherit;
 }
 
 .catalog-card-item:hover {
   border-color: var(--color-primary);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(255, 255, 255, 0.08);
 }
 
 .catalog-card-info {
   display: flex;
   flex-direction: column;
   flex: 1;
+  text-align: left;
 }
 
 .catalog-card-issuer {
@@ -1040,6 +1044,7 @@ a:hover {
 .catalog-card-name {
   font-size: 0.95rem;
   font-weight: 700;
+  color: #ffffff;
 }
 
 .catalog-card-badge {
