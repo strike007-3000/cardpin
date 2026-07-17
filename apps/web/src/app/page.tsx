@@ -81,6 +81,29 @@ function CreditCardPlaceholder() {
   );
 }
 
+function getCardThemeClass(issuerId: string, network: string) {
+  const normalized = issuerId.toLowerCase();
+  if (normalized.includes("american-express")) {
+    if (normalized.includes("gold")) return "card-theme-amex-gold";
+    if (normalized.includes("platinum")) return "card-theme-amex-platinum";
+    return "card-theme-amex-green";
+  }
+  if (normalized.includes("n26")) {
+    if (normalized.includes("metal")) return "card-theme-n26-metal";
+    return "card-theme-n26-standard";
+  }
+  if (normalized.includes("dkb")) return "card-theme-dkb";
+  if (normalized.includes("deutsche-bank") || normalized.includes("miles-and-more")) return "card-theme-deutsche-bank";
+  if (normalized.includes("commerzbank")) return "card-theme-commerzbank";
+  if (normalized.includes("barclays")) return "card-theme-barclays";
+  if (normalized.includes("hanseatic")) return "card-theme-hanseatic";
+  if (normalized.includes("advanzia")) return "card-theme-advanzia";
+  
+  if (network === "visa") return "card-theme-fallback-visa";
+  if (network === "mastercard") return "card-theme-fallback-mastercard";
+  return "card-theme-fallback-amex";
+}
+
 export default function HomePage() {
   const [country, setCountry] = useState<string>("be");
   const [dataset, setDataset] = useState<CountryDataset | null>(null);
@@ -95,8 +118,16 @@ export default function HomePage() {
 
   const [showWelcome, setShowWelcome] = useState<boolean>(false);
   const [showFullInstructions, setShowFullInstructions] = useState<boolean>(false);
-  const [cardSearchQuery, setCardSearchQuery] = useState<string>("");
-  const [collapsedIssuers, setCollapsedIssuers] = useState<Set<string>>(new Set());
+
+  // FX & Spend Caps States
+  const [spendCurrency, setSpendCurrency] = useState<string>("EUR");
+  const [fxRates, setFxRates] = useState<Record<string, number>>({ eur: 1, usd: 1.08, gbp: 0.85, chf: 0.94 });
+  const [cardMonthlySpends, setCardMonthlySpends] = useState<Record<string, number>>({});
+  const [activeCardId, setActiveCardId] = useState<string | null>(null);
+
+  // Catalog & Portability States
+  const [showCatalog, setShowCatalog] = useState<boolean>(false);
+  const [catalogSearch, setCatalogSearch] = useState<string>("");
 
   // Developer Mode States
   const [isDevMode, setIsDevMode] = useState<boolean>(false);
@@ -123,6 +154,55 @@ export default function HomePage() {
       setShowWelcome(true);
     }
   }, []);
+
+  // Load monthly spends from localStorage
+  useEffect(() => {
+    if (typeof window !== "undefined" && dataset) {
+      const spends: Record<string, number> = {};
+      dataset.cards.forEach((card) => {
+        const saved = localStorage.getItem(`cardpin:monthly_spend:${card.id}`);
+        if (saved) {
+          spends[card.id] = Number(saved) || 0;
+        }
+      });
+      setCardMonthlySpends(spends);
+    }
+  }, [dataset]);
+
+  // Fetch live FX rates on load, caching in sessionStorage
+  useEffect(() => {
+    async function fetchFXRates() {
+      const cached = sessionStorage.getItem("cardpin:fx_rates");
+      if (cached) {
+        try {
+          setFxRates(JSON.parse(cached));
+          return;
+        } catch (e) {
+          // ignore cache parse failure
+        }
+      }
+
+      try {
+        const res = await fetch("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json");
+        if (!res.ok) throw new Error("Failed to fetch rates");
+        const data = await res.json();
+        if (data && data.eur) {
+          const rates = { eur: 1, ...data.eur };
+          setFxRates(rates);
+          sessionStorage.setItem("cardpin:fx_rates", JSON.stringify(rates));
+        }
+      } catch (err) {
+        console.warn("Using offline fallback FX rates");
+      }
+    }
+    fetchFXRates();
+  }, []);
+
+  function handleUpdateMonthlySpend(cardId: string, value: number) {
+    const updated = { ...cardMonthlySpends, [cardId]: value };
+    setCardMonthlySpends(updated);
+    localStorage.setItem(`cardpin:monthly_spend:${cardId}`, String(value));
+  }
 
   useEffect(() => {
     async function fetchDataset() {
@@ -161,36 +241,27 @@ export default function HomePage() {
     [availableCards, ownedCardIds]
   );
 
+  useEffect(() => {
+    if (ownedCards.length > 0 && (!activeCardId || !ownedCardIds.includes(activeCardId))) {
+      setActiveCardId(ownedCards[0].id);
+    } else if (ownedCards.length === 0) {
+      setActiveCardId(null);
+    }
+  }, [ownedCards, activeCardId, ownedCardIds]);
+
   const categoriesList = useMemo(
     () => Array.from(new Set(dataset?.merchants.flatMap((merchant: Merchant) => merchant.categories) ?? [])).sort(),
     [dataset]
   );
 
-  const cardsByIssuer = useMemo(() => {
-    const filtered = availableCards.filter((card) => {
-      if (!cardSearchQuery.trim()) return true;
-      const q = cardSearchQuery.toLowerCase();
+  const catalogCards = useMemo(() => {
+    return availableCards.filter((card) => {
+      if (!catalogSearch.trim()) return true;
+      const q = catalogSearch.toLowerCase();
       const issuer = dataset?.issuers.find((i) => i.id === card.issuerId);
       return card.name.toLowerCase().includes(q) || (issuer?.name.toLowerCase().includes(q) ?? false);
     });
-
-    const groups: Record<string, { name: string; cards: Card[] }> = {};
-
-    dataset?.issuers.forEach((issuer) => {
-      groups[issuer.id] = { name: issuer.name, cards: [] };
-    });
-
-    filtered.forEach((card) => {
-      if (!groups[card.issuerId]) {
-        groups[card.issuerId] = { name: "Other", cards: [] };
-      }
-      groups[card.issuerId].cards.push(card);
-    });
-
-    return Object.entries(groups)
-      .filter(([_, group]) => group.cards.length > 0)
-      .map(([id, group]) => ({ id, ...group }));
-  }, [availableCards, cardSearchQuery, dataset]);
+  }, [availableCards, catalogSearch, dataset]);
 
   function handleToggleCard(cardId: string) {
     const updated = ownedCardIds.includes(cardId)
@@ -205,16 +276,35 @@ export default function HomePage() {
     localStorage.setItem("cardpin:welcome_dismissed", "true");
   }
 
-  function handleToggleIssuer(issuerId: string) {
-    setCollapsedIssuers((prev) => {
-      const next = new Set(prev);
-      if (next.has(issuerId)) {
-        next.delete(issuerId);
-      } else {
-        next.add(issuerId);
-      }
-      return next;
-    });
+  function handleExportWallet() {
+    const dataStr = JSON.stringify({ cardIds: ownedCardIds });
+    const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
+    const exportFileDefaultName = `cardpin_wallet_${country}_${audience}.json`;
+    const linkElement = document.createElement("a");
+    linkElement.setAttribute("href", dataUri);
+    linkElement.setAttribute("download", exportFileDefaultName);
+    linkElement.click();
+  }
+
+  function handleImportWallet(e: React.ChangeEvent<HTMLInputElement>) {
+    const fileReader = new FileReader();
+    if (e.target.files && e.target.files[0]) {
+      fileReader.readAsText(e.target.files[0], "UTF-8");
+      fileReader.onload = (event) => {
+        try {
+          const parsed = JSON.parse(event.target?.result as string);
+          if (parsed && Array.isArray(parsed.cardIds)) {
+            const validIds = parsed.cardIds.filter((id: string) => dataset?.cards.some((card) => card.id === id));
+            setOwnedCardIds(validIds);
+            localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify(validIds));
+          } else {
+            alert("Invalid backup file structure.");
+          }
+        } catch (err) {
+          alert("Failed to parse the backup file.");
+        }
+      };
+    }
   }
 
   function handleSpendBlur() {
@@ -263,6 +353,10 @@ export default function HomePage() {
   const cardResults: CardCalc[] = useMemo(() => {
     if (!dataset || !ownedCards.length) return [];
 
+    const rate = fxRates[spendCurrency.toLowerCase()] || 1;
+    const convertedSpend = spendCurrency !== "EUR" ? spendAmount / rate : spendAmount;
+    const isForeign = spendCurrency !== "EUR" || isForeignSpend;
+
     return ownedCards
       .map((card) => {
         const rec = recommendBestCard({
@@ -271,48 +365,75 @@ export default function HomePage() {
           ownedCards: [card],
           country: country.toUpperCase(),
           dataset,
-          spendAmount,
-          isForeignSpend,
+          spendAmount: convertedSpend,
+          isForeignSpend: isForeign,
+          cardMonthlySpends,
           valuations: { points: 1, miles: 1 }
         });
         const rule = rec.bestRule;
-        const fxFee = isForeignSpend ? spendAmount * (card.fxFeePercentage ?? 0) : 0;
+        const fxFee = isForeign ? convertedSpend * (card.fxFeePercentage ?? 0) : 0;
         let grossValue = 0;
 
-        if (rule?.rewardType === "cashback_percentage") grossValue = spendAmount * rule.rewardValue;
-        if (rule?.rewardType === "fixed_cashback") grossValue = rule.rewardValue;
-        if (rule?.rewardType === "points" || rule?.rewardType === "miles") grossValue = spendAmount * rule.rewardValue;
+        const capValue = rule?.cap ?? rule?.conditions?.cap;
+        const monthlySpend = cardMonthlySpends[card.id] ?? 0;
+
+        if (rule) {
+          if (capValue !== undefined) {
+            const earnedSoFar = monthlySpend * rule.rewardValue;
+            const remainingReward = Math.max(0, capValue - earnedSoFar);
+            if (remainingReward === 0) {
+              grossValue = 0;
+            } else {
+              if (rule.rewardType === "cashback_percentage") {
+                grossValue = Math.min(remainingReward, convertedSpend * rule.rewardValue);
+              } else if (rule.rewardType === "fixed_cashback") {
+                grossValue = Math.min(remainingReward, rule.rewardValue);
+              } else {
+                grossValue = Math.min(remainingReward, convertedSpend * rule.rewardValue);
+              }
+            }
+          } else {
+            if (rule.rewardType === "cashback_percentage") grossValue = convertedSpend * rule.rewardValue;
+            if (rule.rewardType === "fixed_cashback") grossValue = rule.rewardValue;
+            if (rule.rewardType === "points" || rule.rewardType === "miles") grossValue = convertedSpend * rule.rewardValue;
+          }
+        }
 
         const netValue = rule?.rewardType === "cashback_percentage" || rule?.rewardType === "fixed_cashback"
           ? Math.max(0, grossValue - fxFee)
           : grossValue;
+
+        const displayGross = grossValue;
+        const displayNet = netValue;
+        const displayFxFee = fxFee;
 
         return {
           card,
           rule,
           rec,
           rewardType: rec.rewardType,
-          grossValue,
-          fxFee,
-          netValue,
+          grossValue: displayGross,
+          fxFee: displayFxFee,
+          netValue: displayNet,
           label: rewardLabel({
             card,
             rule,
             rec,
             rewardType: rec.rewardType,
-            grossValue,
-            fxFee,
-            netValue,
+            grossValue: displayGross,
+            fxFee: displayFxFee,
+            netValue: displayNet,
             label: ""
           })
         };
       })
       .sort((a, b) => b.netValue - a.netValue);
-  }, [categoryQuery, country, dataset, isForeignSpend, merchantQuery, ownedCards, spendAmount]);
+  }, [categoryQuery, country, dataset, isForeignSpend, merchantQuery, ownedCards, spendAmount, cardMonthlySpends, fxRates, spendCurrency]);
 
   const hasSearch = merchantQuery.trim() !== "" || categoryQuery !== "";
   const bestResult = cardResults.find((result) => result.rule) ?? null;
   const alternatives = cardResults.filter((result) => result.card.id !== bestResult?.card.id).slice(0, 4);
+  const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
 
   return (
     <div className="container">
@@ -431,118 +552,141 @@ export default function HomePage() {
                   <WalletIcon />
                   <div className="step-title-block">
                     <div className="step-kicker">Step 2</div>
-                    <div className="section-title-row" style={{ gap: "12px" }}>
+                    <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
                       <h2>Your Wallet</h2>
-                      <span className="quiet-pill">{ownedCards.length} selected</span>
+                      <span className="quiet-pill">{ownedCards.length} in wallet</span>
                     </div>
                   </div>
                 </div>
 
-                <div className="card-search-container">
-                  <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
-                    <div style={{ position: "relative", flex: "1" }}>
-                      <input
-                        type="text"
-                        placeholder="Search cards or banks..."
-                        value={cardSearchQuery}
-                        onChange={(e) => setCardSearchQuery(e.target.value)}
-                        style={{ minHeight: "38px", fontSize: "0.9rem", padding: "8px 12px", paddingRight: "30px" }}
-                      />
-                      {cardSearchQuery && (
-                        <button
-                          type="button"
-                          onClick={() => setCardSearchQuery("")}
-                          className="dismiss-btn"
-                          style={{
-                            position: "absolute",
-                            right: "8px",
-                            top: "50%",
-                            transform: "translateY(-50%)",
-                            fontSize: "1.1rem"
-                          }}
-                        >
-                          &times;
-                        </button>
-                      )}
-                    </div>
-                    {ownedCardIds.length > 0 && (
-                      <button
-                        type="button"
-                        className="deselect-all-btn"
-                        onClick={() => {
-                          setOwnedCardIds([]);
-                          localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
-                        }}
-                      >
-                        Clear
-                      </button>
-                    )}
+                {ownedCards.length === 0 ? (
+                  <div className="empty-state" style={{ margin: "20px 0" }}>
+                    Your wallet is empty. Add some cards to get started!
                   </div>
-                </div>
-
-                {availableCards.length === 0 ? (
-                  <div className="empty-state compact">No {audience} cards available for {country.toUpperCase()}.</div>
-                ) : cardsByIssuer.length === 0 ? (
-                  <div className="empty-state compact">No cards match &ldquo;{cardSearchQuery}&rdquo;.</div>
                 ) : (
-                  <div className="issuer-accordion-list">
-                    {cardsByIssuer.map((group) => {
-                      const isCollapsed = collapsedIssuers.has(group.id);
-                      const selectedCount = group.cards.filter((c) => ownedCardIds.includes(c.id)).length;
-                      return (
-                        <div key={group.id} className={`issuer-group ${isCollapsed ? "collapsed" : ""}`}>
+                  <>
+                    <div className="wallet-deck">
+                      {ownedCards.map((card, index) => {
+                        const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
+                        const isActive = activeCardId === card.id;
+                        const zIndex = isActive ? 50 : index + 1;
+                        const activeIdx = ownedCards.findIndex(c => c.id === activeCardId);
+                        const top = index > activeIdx && activeIdx !== -1 ? index * 28 + 135 : index * 28;
+                        const rotate = (index - (activeIdx === -1 ? 0 : activeIdx)) * 1.5;
+                        const translateX = (index - (activeIdx === -1 ? 0 : activeIdx)) * 3;
+                        return (
+                          <div
+                            key={card.id}
+                            className={`visual-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "active-card-highlight" : ""}`}
+                            onClick={() => setActiveCardId(card.id)}
+                            title="Click to select/configure card"
+                            style={{
+                              zIndex,
+                              top: `${top}px`,
+                              transform: isActive
+                                ? `scale(1.04) rotate(0deg) translateY(-5px)`
+                                : `rotate(${rotate}deg) translateX(${translateX}px)`
+                            }}
+                          >
+                            <div className="visual-card-top">
+                              <span className="card-issuer-name">{issuerName}</span>
+                              <div className="card-chip" />
+                            </div>
+                            <div className="visual-card-bottom">
+                              <span className="card-name-display">{card.name}</span>
+                              <span className="card-network-logo">{card.network}</span>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {activeCard && (
+                      <div className="card-config-box">
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                          <span style={{ fontSize: "0.8rem", fontWeight: "bold", color: "var(--text-main)" }}>
+                            Selected Card Settings
+                          </span>
                           <button
                             type="button"
-                            className="issuer-group-header"
-                            onClick={() => handleToggleIssuer(group.id)}
+                            onClick={() => handleToggleCard(activeCard.id)}
+                            style={{
+                              background: "transparent",
+                              border: "none",
+                              color: "var(--color-danger)",
+                              fontSize: "0.78rem",
+                              cursor: "pointer",
+                              padding: "0"
+                            }}
                           >
-                            <div className="issuer-header-left">
-                              <svg
-                                className={`chevron-icon ${isCollapsed ? "" : "rotated"}`}
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                              >
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                              </svg>
-                              <span className="issuer-name">{group.name}</span>
-                            </div>
-                            <span className="issuer-badge">
-                              {selectedCount > 0 ? `${selectedCount}/${group.cards.length}` : group.cards.length}
-                            </span>
+                            Remove from Wallet
                           </button>
-
-                          {!isCollapsed && (
-                            <div className="issuer-group-content">
-                              {group.cards.map((card) => {
-                                const isSelected = ownedCardIds.includes(card.id);
-                                return (
-                                  <button
-                                    type="button"
-                                    key={card.id}
-                                    className={`card-item ${isSelected ? "selected" : ""}`}
-                                    onClick={() => handleToggleCard(card.id)}
-                                  >
-                                    <span className="checkbox-custom" />
-                                    <span className="card-info">
-                                      <span className="card-name">{card.name}</span>
-                                      <span className="card-meta">
-                                        {card.network.toUpperCase()} · EUR {card.annualFee}/year · {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}% FX
-                                      </span>
-                                    </span>
-                                  </button>
-                                );
-                              })}
-                            </div>
-                          )}
                         </div>
-                      );
-                    })}
-                  </div>
+                        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "4px", flexWrap: "wrap" }}>
+                          <span style={{ fontSize: "0.78rem", color: "var(--text-muted)" }}>Spent this month:</span>
+                          <div className="spend-input-wrapper" style={{ maxWidth: "120px", display: "flex", alignItems: "center" }}>
+                            <span className="currency-prefix">EUR</span>
+                            <input
+                              type="number"
+                              min="0"
+                              value={cardMonthlySpends[activeCard.id] || ""}
+                              onChange={(e) => handleUpdateMonthlySpend(activeCard.id, Number(e.target.value) || 0)}
+                              placeholder="0"
+                              style={{ padding: "4px 8px", fontSize: "0.8rem" }}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </>
                 )}
+
+                <div style={{ display: "flex", gap: "8px", flexWrap: "wrap", marginTop: "16px" }}>
+                  <button
+                    type="button"
+                    className="btn btn--primary"
+                    onClick={() => setShowCatalog(true)}
+                    style={{ padding: "8px 16px", fontSize: "0.85rem" }}
+                  >
+                    + Add Cards
+                  </button>
+
+                  {ownedCardIds.length > 0 && (
+                    <>
+                      <button
+                        type="button"
+                        className="btn btn--secondary"
+                        onClick={handleExportWallet}
+                        style={{ padding: "8px 12px", fontSize: "0.85rem" }}
+                      >
+                        Export Wallet
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn--secondary"
+                        onClick={() => {
+                          if (confirm("Are you sure you want to clear your wallet?")) {
+                            setOwnedCardIds([]);
+                            localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
+                          }
+                        }}
+                        style={{ padding: "8px 12px", fontSize: "0.85rem", color: "#ff4d4d", borderColor: "#ff4d4d", background: "transparent" }}
+                      >
+                        Clear Wallet
+                      </button>
+                    </>
+                  )}
+
+                  <label className="btn btn--secondary" style={{ padding: "8px 12px", fontSize: "0.85rem", cursor: "pointer", display: "inline-flex", alignItems: "center" }}>
+                    Import Wallet
+                    <input
+                      type="file"
+                      accept=".json"
+                      onChange={handleImportWallet}
+                      style={{ display: "none" }}
+                    />
+                  </label>
+                </div>
               </section>
             </div>
 
@@ -582,10 +726,10 @@ export default function HomePage() {
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group">
+                  <div className="form-group" style={{ flex: "2" }}>
                     <label htmlFor="spend-input">Spend Amount</label>
                     <div className="spend-input-wrapper">
-                      <span className="currency-prefix">EUR</span>
+                      <span className="currency-prefix">{spendCurrency}</span>
                       <input
                         id="spend-input"
                         inputMode="decimal"
@@ -598,21 +742,23 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <div className="toggle-switch-wrapper">
-                    <span className="toggle-switch-label">Foreign currency spend</span>
-                    <label className="switch" htmlFor="foreign-spend-checkbox">
-                      <input
-                        id="foreign-spend-checkbox"
-                        type="checkbox"
-                        checked={isForeignSpend}
-                        onChange={(event) => setIsForeignSpend(event.target.checked)}
-                      />
-                      <span className="slider"></span>
-                    </label>
+                  <div className="form-group" style={{ flex: "1" }}>
+                    <label htmlFor="currency-select">Currency</label>
+                    <select
+                      id="currency-select"
+                      value={spendCurrency}
+                      onChange={(e) => setSpendCurrency(e.target.value)}
+                    >
+                      <option value="EUR">EUR (€)</option>
+                      <option value="USD">USD ($)</option>
+                      <option value="GBP">GBP (£)</option>
+                      <option value="CHF">CHF (₣)</option>
+                      <option value="JPY">JPY (¥)</option>
+                    </select>
                   </div>
                 </div>
                 <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
-                  Enabling foreign spend calculates reward net values by subtracting card foreign exchange fees.
+                  Selecting a non-EUR currency fetches live exchange rates and automatically applies the card&apos;s foreign transaction fee.
                 </p>
               </section>
 
@@ -814,6 +960,70 @@ export default function HomePage() {
               >
                 Merge & Recompile Datasets
               </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showCatalog && (
+        <div className="modal-overlay" onClick={() => setShowCatalog(false)}>
+          <div className="dev-panel" onClick={(e) => e.stopPropagation()} style={{ maxWidth: "700px" }}>
+            <div className="dev-panel-header">
+              <h3>Card Catalog ({country.toUpperCase()})</h3>
+              <button type="button" className="dev-close-btn" onClick={() => setShowCatalog(false)}>
+                &times;
+              </button>
+            </div>
+            <div className="dev-panel-body">
+              <div className="search-input-wrapper">
+                <input
+                  type="text"
+                  className="search-input-field"
+                  placeholder="Search by card name or issuer..."
+                  value={catalogSearch}
+                  onChange={(e) => setCatalogSearch(e.target.value)}
+                />
+              </div>
+
+              {catalogCards.length === 0 ? (
+                <div className="empty-state" style={{ margin: "20px 0" }}>
+                  No cards match your search.
+                </div>
+              ) : (
+                <div className="catalog-grid">
+                  {catalogCards.map((card) => {
+                    const isSelected = ownedCardIds.includes(card.id);
+                    const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
+                    return (
+                      <button
+                        type="button"
+                        key={card.id}
+                        className="catalog-card-item"
+                        onClick={() => handleToggleCard(card.id)}
+                        style={{
+                          border: isSelected ? "1px solid var(--color-primary)" : "1px solid var(--border-color)",
+                          backgroundColor: isSelected ? "rgba(88, 166, 255, 0.05)" : "",
+                          textAlign: "left"
+                        }}
+                      >
+                        <div className="catalog-card-info">
+                          <span className="catalog-card-issuer">{issuerName}</span>
+                          <span className="catalog-card-name">{card.name}</span>
+                          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "4px" }}>
+                            {card.network.toUpperCase()} · Fee: EUR {card.annualFee} · FX: {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}%
+                          </span>
+                        </div>
+                        <span className="catalog-card-badge" style={{
+                          backgroundColor: isSelected ? "var(--color-primary)" : "var(--border-color)",
+                          color: isSelected ? "#fff" : "var(--text-main)"
+                        }}>
+                          {isSelected ? "In Wallet" : "Add"}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
         </div>

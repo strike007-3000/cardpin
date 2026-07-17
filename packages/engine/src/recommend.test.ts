@@ -321,6 +321,57 @@ describe("Orphan Validation Tests", () => {
     };
     expect(() => validateDataset(invalidDataset)).toThrow(/Orphan issuerId/);
   });
+
+  it("applies reward cap limits based on monthly spent", () => {
+    const capRule: RewardRule = {
+      id: "rule-capped",
+      cardId: "card-a",
+      country: "BE",
+      category: "groceries",
+      rewardType: "cashback_percentage",
+      rewardValue: 0.02,
+      conditions: {
+        cap: 10
+      },
+      source: { sourceUrl: "https://example.com", verifiedAt: "2026-01-01", verifiedBy: "test" },
+      lastUpdated: "2026-01-01"
+    };
+    const dataset: CountryDataset = {
+      ...mockDataset,
+      rewardRules: [capRule]
+    };
+
+    const rec1 = recommendBestCard({
+      category: "groceries",
+      ownedCards: [mockDataset.cards[0]],
+      country: "BE",
+      dataset,
+      spendAmount: 100,
+      cardMonthlySpends: { "card-a": 100 }
+    });
+    expect(rec1.estimatedValue).toBe(0.02);
+    expect(rec1.convertedValue).toBe(2);
+
+    const rec2 = recommendBestCard({
+      category: "groceries",
+      ownedCards: [mockDataset.cards[0]],
+      country: "BE",
+      dataset,
+      spendAmount: 100,
+      cardMonthlySpends: { "card-a": 450 }
+    });
+    expect(rec2.convertedValue).toBe(1);
+
+    const rec3 = recommendBestCard({
+      category: "groceries",
+      ownedCards: [mockDataset.cards[0]],
+      country: "BE",
+      dataset,
+      spendAmount: 100,
+      cardMonthlySpends: { "card-a": 500 }
+    });
+    expect(rec3.convertedValue).toBe(0);
+  });
 });
 
 describe("Production Datasets Validation Tests", () => {
