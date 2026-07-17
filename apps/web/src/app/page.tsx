@@ -570,13 +570,23 @@ export default function HomePage() {
                         const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
                         const isActive = activeCardId === card.id;
                         const zIndex = isActive ? 50 : index + 1;
+                        const activeIdx = ownedCards.findIndex(c => c.id === activeCardId);
+                        const top = index > activeIdx && activeIdx !== -1 ? index * 28 + 135 : index * 28;
+                        const rotate = (index - (activeIdx === -1 ? 0 : activeIdx)) * 1.5;
+                        const translateX = (index - (activeIdx === -1 ? 0 : activeIdx)) * 3;
                         return (
                           <div
                             key={card.id}
                             className={`visual-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "active-card-highlight" : ""}`}
                             onClick={() => setActiveCardId(card.id)}
                             title="Click to select/configure card"
-                            style={{ zIndex }}
+                            style={{
+                              zIndex,
+                              top: `${top}px`,
+                              transform: isActive
+                                ? `scale(1.04) rotate(0deg) translateY(-5px)`
+                                : `rotate(${rotate}deg) translateX(${translateX}px)`
+                            }}
                           >
                             <div className="visual-card-top">
                               <span className="card-issuer-name">{issuerName}</span>
@@ -660,9 +670,9 @@ export default function HomePage() {
                             localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
                           }
                         }}
-                        style={{ padding: "8px 12px", fontSize: "0.85rem", color: "var(--color-danger)" }}
+                        style={{ padding: "8px 12px", fontSize: "0.85rem", color: "#ff4d4d", borderColor: "#ff4d4d", background: "transparent" }}
                       >
-                        Clear
+                        Clear Wallet
                       </button>
                     </>
                   )}
