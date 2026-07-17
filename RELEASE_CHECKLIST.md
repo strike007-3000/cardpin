@@ -1,4 +1,4 @@
-# CardPin Release Checklist (v1.0.0)
+# CardPin Release Checklist (v1.1.0)
 
 This checklist outlines the steps required to validate, deploy, and tag a release of CardPin.
 

@@ -155,13 +155,18 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
-## Production Features (v1.0)
+## Production Features (v1.1)
+
+### Accessible, Responsive Workflow
+CardPin uses keyboard-visible focus states, semantic selectable cards, an accessible native card-catalog dialog, and touch-friendly actions. On small screens, wallet spacing is compressed so the purchase search remains close to the selected cards. Search controls stay disabled until a card is selected and provide a direct route to the catalog.
+
+The interface uses the operating system font stack to avoid a render-blocking third-party font request. Live exchange rates are fetched only after a non-EUR currency is selected; the existing session cache and offline fallback still apply.
 
 ### Offline-First PWA (Progressive Web App)
 CardPin is configured as a fully installable PWA. A Service Worker (`sw.js`) caches the application shell and country datasets (`/data/*.json`) locally. The application can open and calculate card reward recommendations **100% offline** (e.g., when you have poor network coverage at a checkout counter).
 
 ### Multi-Currency FX Conversions
-Users can select transaction currencies (EUR, USD, GBP, CHF, JPY) in Step 3. CardPin automatically fetches live rates from the Fawaz Ahmed Exchange Rates API, converts the transaction value into the card's native currency, calculates the reward value, deducts the card's specific foreign transaction fee, and shows the net outcome. Fetch requests are cached in `sessionStorage` to prevent redundant network calls.
+Users can select transaction currencies (EUR, USD, GBP, CHF, JPY) in Step 3. When a non-EUR currency is selected, CardPin fetches live rates from the Fawaz Ahmed Exchange Rates API, converts the transaction value into the card's native currency, calculates the reward value, deducts the card's specific foreign transaction fee, and shows the net outcome. Fetch requests are cached in `sessionStorage` to prevent redundant network calls.
 
 ### Earning Caps & Monthly Budget Tracking
 To prevent recommending cards that have reached their monthly reward limits, users can input their *Spent this month* value inside each card mockup. The recommendation engine dynamically tracks this against the card rule's `cap` (or `conditions.cap`) and applies fallback rates or zero points/miles on the portion of the purchase exceeding the limit.
