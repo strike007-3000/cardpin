@@ -236,7 +236,7 @@ export default function HomePage() {
         throw new Error("Invalid JSON: Please check the syntax.");
       }
 
-      const res = await fetch("/api/update-data", {
+      const res = await fetch("http://localhost:3001/api/update-data", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
