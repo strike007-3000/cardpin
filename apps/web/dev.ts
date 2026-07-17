@@ -64,7 +64,14 @@ const devServer = http.createServer((req, res) => {
         }
 
         const currentArray = currentJson[arrayKey];
-        const incomingItems = Array.isArray(data) ? data : [data];
+        let incomingItems = Array.isArray(data) ? data : [data];
+        if (!Array.isArray(data) && data) {
+          if (Array.isArray(data[dataType])) {
+            incomingItems = data[dataType];
+          } else if (Array.isArray(data[arrayKey])) {
+            incomingItems = data[arrayKey];
+          }
+        }
 
         for (const incoming of incomingItems) {
           if (!incoming.id) continue;
