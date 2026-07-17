@@ -36,6 +36,7 @@ data/<country>/*.json
 | `packages/engine/` | Pure TypeScript recommendation engine |
 | `packages/schemas/` | Zod schemas for datasets |
 | `data/be/` | Belgium dataset |
+| `data/de/` | Germany dataset |
 | `data/nl/` | Netherlands dataset |
 | `scripts/compile-datasets.ts` | Dataset validation and static bundle generation |
 
@@ -118,7 +119,7 @@ pnpm compile:data
 
 ## Adding Data
 
-CardPin currently has datasets for Belgium (`data/be/`) and the Netherlands (`data/nl/`). Each dataset contains:
+CardPin currently has datasets for Belgium (`data/be/`), Germany (`data/de/`), and the Netherlands (`data/nl/`). Each dataset contains:
 
 - `issuers.json`
 - `cards.json`

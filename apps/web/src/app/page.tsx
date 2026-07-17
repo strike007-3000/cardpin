@@ -354,9 +354,10 @@ export default function HomePage() {
                   <div className="form-group">
                     <label htmlFor="country-select">Country</label>
                     <select id="country-select" value={country} onChange={(event) => setCountry(event.target.value)}>
-                      <option value="be">Belgium</option>
-                      <option value="nl">Netherlands</option>
-                    </select>
+                                    <option value="be">Belgium</option>
+                                    <option value="de">Germany</option>
+                                    <option value="nl">Netherlands</option>
+                                  </select>
                   </div>
 
                   <div className="form-group">

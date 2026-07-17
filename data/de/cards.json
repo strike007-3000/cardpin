@@ -1,0 +1,328 @@
+{
+  "cards": [
+    {
+      "id": "advanzia-gebuehrenfrei-mastercard-gold",
+      "name": "Gebührenfrei Mastercard Gold",
+      "issuerId": "advanzia-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.gebuhrenfrei.com/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "amex-gold-de",
+      "name": "American Express Gold Card",
+      "issuerId": "american-express-de",
+      "country": "DE",
+      "network": "amex",
+      "annualFee": 240,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [
+        "amex-gold-membership-rewards-base"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/kreditkarte/goldcard/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "amex-green-de",
+      "name": "American Express Card",
+      "issuerId": "american-express-de",
+      "country": "DE",
+      "network": "amex",
+      "annualFee": 55,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [
+        "amex-green-membership-rewards-base"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/amexcited/benefits/american-express-karte-kosten-12434",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "amex-platinum-de",
+      "name": "American Express Platinum Card",
+      "issuerId": "american-express-de",
+      "country": "DE",
+      "network": "amex",
+      "annualFee": 720,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [
+        "amex-platinum-membership-rewards-base"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/amexcited/cards/platinum-card",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "barclays-visa",
+      "name": "Barclays Visa",
+      "issuerId": "barclays-de",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.barclays.de/kreditkarten/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "dkb-visa-debit",
+      "name": "DKB Visa Debitkarte",
+      "issuerId": "dkb",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.dkb.de/privatkunden/karten/debitkarte",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "hanseatic-bank-genialcard",
+      "name": "Hanseatic Bank GenialCard",
+      "issuerId": "hanseatic-bank",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.hanseaticbank.de/kreditkarte/genialcard",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "miles-and-more-blue",
+      "name": "Miles & More Blue Credit Card",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 66,
+      "fxFeePercentage": 0.0195,
+      "currency": "EUR",
+      "rewardRules": [
+        "miles-and-more-blue-base-miles"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden/kreditkarten/miles-and-more-blue-credit-card.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "miles-and-more-gold",
+      "name": "Miles & More Gold Credit Card",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 138,
+      "fxFeePercentage": 0.0195,
+      "currency": "EUR",
+      "rewardRules": [
+        "miles-and-more-gold-base-miles"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "miles-and-more-myflex",
+      "name": "Miles & More MyFlex Credit Card",
+      "issuerId": "deutsche-bank",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0.0195,
+      "currency": "EUR",
+      "rewardRules": [
+        "miles-and-more-myflex-base-miles"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden/kreditkarten/miles-and-more-myflex-credit-card.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "n26-business-metal",
+      "name": "N26 Business Metal",
+      "issuerId": "n26",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 202.8,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [
+        "n26-business-metal-base-cashback"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/de-de/kosten-business",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "n26-business-standard",
+      "name": "N26 Business Standard",
+      "issuerId": "n26",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [
+        "n26-business-standard-base-cashback"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/de-de/kostenloses-geschaeftskonto",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "n26-metal",
+      "name": "N26 Metal",
+      "issuerId": "n26",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 202.8,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/de-de/metal",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "n26-standard",
+      "name": "N26 Standard",
+      "issuerId": "n26",
+      "country": "DE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://n26.com/de-de/kostenloses-girokonto",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "payback-amex",
+      "name": "PAYBACK American Express Karte",
+      "issuerId": "american-express-de",
+      "country": "DE",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [
+        "payback-amex-base-points"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.payback.de/kreditkarten-vergleich",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    },
+    {
+      "id": "payback-visa",
+      "name": "PAYBACK Visa Kreditkarte",
+      "issuerId": "bw-bank",
+      "country": "DE",
+      "network": "visa",
+      "annualFee": 29,
+      "fxFeePercentage": 0,
+      "currency": "EUR",
+      "rewardRules": [
+        "payback-visa-base-points"
+      ],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-17",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.payback.de/info/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      }
+    }
+  ]
+}

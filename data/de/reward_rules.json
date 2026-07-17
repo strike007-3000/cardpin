@@ -1,0 +1,275 @@
+{
+  "rewardRules": [
+    {
+      "id": "amex-gold-membership-rewards-base",
+      "cardId": "amex-gold-de",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {
+        "program": "Membership Rewards",
+        "spendUnit": 1,
+        "spendCurrency": "EUR",
+        "earningDescription": "1 Membership Rewards point per EUR 1 of eligible spend",
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/rewards/membership-rewards/about-program",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amex-green-membership-rewards-base",
+      "cardId": "amex-green-de",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {
+        "program": "Membership Rewards",
+        "spendUnit": 1,
+        "spendCurrency": "EUR",
+        "earningDescription": "1 Membership Rewards point per EUR 1 of eligible spend",
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/rewards/membership-rewards/about-program",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amex-platinum-membership-rewards-base",
+      "cardId": "amex-platinum-de",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {
+        "program": "Membership Rewards",
+        "spendUnit": 1,
+        "spendCurrency": "EUR",
+        "earningDescription": "1 Membership Rewards point per EUR 1 of eligible spend",
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/de-de/rewards/membership-rewards/about-program",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-blue-base-miles",
+      "cardId": "miles-and-more-blue",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "miles",
+      "rewardValue": 0.5,
+      "conditions": {
+        "program": "Miles & More",
+        "spendUnit": 2,
+        "spendCurrency": "EUR",
+        "milesPerSpendUnit": 1,
+        "earningDescription": "1 award mile per EUR 2 of eligible card spend",
+        "mileageExpiryProtection": true,
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "gambling transactions",
+          "money transfers",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-gold-base-miles",
+      "cardId": "miles-and-more-gold",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "miles",
+      "rewardValue": 0.5,
+      "conditions": {
+        "program": "Miles & More",
+        "spendUnit": 2,
+        "spendCurrency": "EUR",
+        "milesPerSpendUnit": 1,
+        "earningDescription": "1 award mile per EUR 2 of eligible card spend",
+        "mileageExpiryProtection": true,
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "gambling transactions",
+          "money transfers",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "miles-and-more-myflex-base-miles",
+      "cardId": "miles-and-more-myflex",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "miles",
+      "rewardValue": 0.5,
+      "conditions": {
+        "program": "Miles & More",
+        "spendUnit": 2,
+        "spendCurrency": "EUR",
+        "milesPerSpendUnit": 1,
+        "earningDescription": "1 award mile per EUR 2 of eligible card spend",
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "gambling transactions",
+          "money transfers",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.miles-and-more-kreditkarte.com/de/privatkunden/kreditkarten/miles-and-more-myflex-credit-card.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "n26-business-metal-base-cashback",
+      "cardId": "n26-business-metal",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.005,
+      "conditions": {
+        "eligibleTransactions": "eligible card purchases",
+        "settlement": "monthly",
+        "exclusions": [
+          "cash withdrawals",
+          "cash-equivalent transactions",
+          "fees",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://n26.com/de-de/kosten-business",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "n26-business-standard-base-cashback",
+      "cardId": "n26-business-standard",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.001,
+      "conditions": {
+        "eligibleTransactions": "eligible card purchases",
+        "settlement": "monthly",
+        "exclusions": [
+          "cash withdrawals",
+          "cash-equivalent transactions",
+          "fees",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://n26.com/de-de/kostenloses-geschaeftskonto",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "payback-amex-base-points",
+      "cardId": "payback-amex",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 0.3333333333,
+      "conditions": {
+        "program": "PAYBACK",
+        "spendUnit": 3,
+        "spendCurrency": "EUR",
+        "pointsPerSpendUnit": 1,
+        "earningDescription": "1 PAYBACK point per EUR 3 of eligible card spend",
+        "partnerPoints": "Regular PAYBACK partner points may be earned separately when the PAYBACK account is presented or linked.",
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.payback.de/kreditkarten-vergleich",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "payback-visa-base-points",
+      "cardId": "payback-visa",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 0.2,
+      "conditions": {
+        "program": "PAYBACK",
+        "spendUnit": 5,
+        "spendCurrency": "EUR",
+        "pointsPerSpendUnit": 1,
+        "earningDescription": "1 PAYBACK point per EUR 5 of eligible card spend",
+        "partnerPoints": "Regular PAYBACK partner points may be earned separately when the PAYBACK account is presented or linked.",
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "reversed or refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.payback.de/info/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    }
+  ]
+}
