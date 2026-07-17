@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-
 :root {
-  --font-primary: 'Plus Jakarta Sans', sans-serif;
-  --font-display: 'Outfit', sans-serif;
+  --font-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-primary);
   --bg-base: #0c1117;
   --bg-surface: #151d27;
   --bg-card: #1b2532;
@@ -10,6 +8,8 @@
   --border-focus: rgba(88, 166, 255, 0.7);
   --color-primary: #58a6ff;
   --color-accent: #2ea043;
+  --color-danger: #ff7b72;
+  --color-primary-semi: rgba(88, 166, 255, 0.35);
   --text-main: #f0f6fc;
   --text-muted: #9aa7b5;
   --text-inverse: #07111f;
@@ -44,7 +44,7 @@ header {
 
 h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.3rem, 4vw, 3.4rem);
+  font-size: clamp(2.25rem, 3vw, 2.75rem);
   letter-spacing: 0;
 }
 
@@ -77,6 +77,7 @@ h3 {
 .flow-layout {
   display: grid;
   gap: 18px;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .card,
@@ -89,7 +90,13 @@ h3 {
 }
 
 .step-card {
+  min-width: 0;
   scroll-margin-top: 16px;
+}
+
+.step-card--search {
+  border-color: rgba(88, 166, 255, 0.28);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
 }
 
 .step-kicker {
@@ -146,6 +153,87 @@ select:focus,
 input:focus {
   border-color: var(--border-focus);
   box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.18);
+}
+
+button:focus-visible,
+.btn:focus-visible,
+.catalog-card-item:focus-visible,
+.wallet-card:focus-visible,
+label.btn:focus-within {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.btn {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  justify-content: center;
+  min-height: 44px;
+  padding: 10px 14px;
+}
+
+.btn--primary {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--text-inverse);
+}
+
+.btn--secondary:hover {
+  border-color: var(--color-primary);
+}
+
+.btn--danger {
+  background: transparent;
+  border-color: var(--color-danger);
+  color: var(--color-danger);
+}
+
+.text-action {
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  min-height: 44px;
+  padding: 8px;
+}
+
+.text-action--danger {
+  color: var(--color-danger);
+}
+
+.search-fields {
+  border: 0;
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.search-fields:disabled {
+  opacity: 0.55;
+}
+
+.prerequisite-action {
+  margin-top: 16px;
+  width: 100%;
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 .segmented-control {
@@ -386,6 +474,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 24px;
+  min-width: 0;
 }
 
 @media (min-width: 760px) {
@@ -440,6 +529,35 @@ a:hover {
   .card-list {
     max-height: 52vh;
   }
+
+  header {
+    margin-bottom: 20px;
+  }
+
+  .welcome-banner-summary {
+    align-items: flex-start;
+    padding: 14px;
+  }
+
+  .welcome-banner-left {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .learn-more-btn,
+  .dismiss-btn,
+  .dev-close-btn {
+    min-height: 44px;
+  }
+
+  .step-title-block {
+    min-width: 0;
+  }
+
+  .section-title-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
 }
 
 /* Premium Welcome Banner */
@@ -479,8 +597,9 @@ a:hover {
   border: 1px solid rgba(88, 166, 255, 0.2);
   color: var(--color-primary);
   border-radius: 4px;
-  padding: 3px 8px;
-  font-size: 0.8rem;
+  min-height: 44px;
+  padding: 8px 10px;
+  font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -496,7 +615,9 @@ a:hover {
   color: var(--text-muted);
   font-size: 1.4rem;
   cursor: pointer;
-  padding: 0 4px;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0;
   line-height: 1;
   transition: color 0.2s;
 }
@@ -790,6 +911,28 @@ a:hover {
   backdrop-filter: blur(4px);
 }
 
+.catalog-dialog {
+  background: transparent;
+  border: 0;
+  color: var(--text-main);
+  height: 100%;
+  margin: auto;
+  max-height: none;
+  max-width: none;
+  padding: 5vh 5vw;
+  width: 100%;
+}
+
+.catalog-dialog::backdrop {
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.catalog-panel {
+  margin: auto;
+  max-width: 700px;
+}
+
 .dev-panel {
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
@@ -814,6 +957,11 @@ a:hover {
 .dev-panel-header h3 {
   margin: 0;
   font-size: 1.25rem;
+}
+
+.dev-panel-header h2 {
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .dev-panel-body {
@@ -870,6 +1018,8 @@ a:hover {
   border: none;
   color: var(--text-muted);
   font-size: 1.5rem;
+  min-height: 44px;
+  min-width: 44px;
   cursor: pointer;
 }
 
@@ -877,64 +1027,68 @@ a:hover {
   color: var(--text-main);
 }
 
-/* Visual Wallet & Cards Overhaul */
-.wallet-deck-wrapper {
-  margin: 16px 0;
-}
-
-.wallet-deck {
-  position: relative;
-  width: 100%;
-  max-width: 290px;
-  margin: 16px auto;
-  /* height is set via inline style from JS */
-}
-
-.visual-card {
-  position: absolute;
-  left: 0;
-  right: 0;
-  aspect-ratio: 1.586 / 1;
-  width: 100%;
-  border-radius: var(--radius-md);
-  padding: 14px;
-  color: #ffffff;
-  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+/* Apple Wallet-inspired card stack */
+.wallet-stack {
+  --wallet-card-height: clamp(184px, 31vw, 300px);
+  --wallet-card-peek: 54px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  isolation: isolate;
+  margin: 18px auto 20px;
+  max-width: 520px;
+  width: 100%;
+}
+
+.wallet-card {
+  appearance: none;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-md);
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.18), 0 8px 22px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: #fff;
   cursor: pointer;
-  user-select: none;
-  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.2s, box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  font: inherit;
+  height: var(--wallet-card-peek);
+  justify-content: space-between;
+  margin-top: -1px;
   overflow: hidden;
-  border: 2px solid transparent;
+  padding: 17px 18px;
+  position: relative;
+  text-align: left;
+  transition: border-color 0.2s, box-shadow 0.2s, height 0.25s ease;
+  user-select: none;
+  width: 100%;
 }
 
-.visual-card:hover {
-  transform: translateY(-8px) scale(1.02) !important;
-  z-index: 45 !important;
+.wallet-card:first-child {
+  margin-top: 0;
 }
 
-.visual-card.active-card-highlight {
+.wallet-card--active {
   border-color: var(--color-primary);
-  box-shadow: 0 0 16px var(--color-primary-semi), 0 12px 28px rgba(0,0,0,0.45);
+  box-shadow: 0 0 0 1px var(--color-primary-semi), 0 14px 32px rgba(0, 0, 0, 0.42);
+  height: var(--wallet-card-height);
 }
 
-.visual-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+.wallet-card::before {
+  background: radial-gradient(circle at 12% 8%, rgba(255, 255, 255, 0.16), transparent 72%);
   bottom: 0;
-  background: radial-gradient(circle at 10% 10%, rgba(255, 255, 255, 0.15), transparent 75%);
+  content: "";
+  left: 0;
   pointer-events: none;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
-.visual-card-top {
+.wallet-card__topline {
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  min-height: 22px;
+  position: relative;
+  z-index: 1;
 }
 
 .card-issuer-name {
@@ -957,9 +1111,11 @@ a:hover {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
 }
 
-.visual-card-bottom {
+.wallet-card__details {
   display: flex;
   flex-direction: column;
+  position: relative;
+  z-index: 1;
 }
 
 .card-name-display {
@@ -970,7 +1126,13 @@ a:hover {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 180px;
+  max-width: min(85%, 360px);
+}
+
+.wallet-card--active .card-name-display {
+  overflow: visible;
+  text-overflow: clip;
+  white-space: normal;
 }
 
 .card-network-logo {
@@ -983,7 +1145,8 @@ a:hover {
 }
 
 .card-config-box {
-  margin-top: 14px;
+  margin: 0 auto;
+  max-width: 520px;
   padding: 12px;
   background: rgba(255, 255, 255, 0.02);
   border: 1px solid var(--border-color);
@@ -991,6 +1154,80 @@ a:hover {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.wallet-actions {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  position: relative;
+}
+
+.wallet-menu {
+  position: relative;
+}
+
+.wallet-menu__trigger {
+  align-items: center;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  cursor: pointer;
+  display: flex;
+  font-size: 1.1rem;
+  height: 44px;
+  justify-content: center;
+  letter-spacing: 0.12em;
+  list-style: none;
+  width: 48px;
+}
+
+.wallet-menu__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.wallet-menu__trigger:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.wallet-menu__popover {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-panel);
+  display: grid;
+  min-width: 180px;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  z-index: 20;
+}
+
+.wallet-menu__popover button,
+.wallet-menu__popover label {
+  background: transparent;
+  border: 0;
+  color: var(--text-main);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.88rem;
+  margin: 0;
+  min-height: 44px;
+  padding: 11px 14px;
+  text-align: left;
+}
+
+.wallet-menu__popover button:hover,
+.wallet-menu__popover label:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.wallet-menu__popover .wallet-menu__danger {
+  color: var(--color-danger);
 }
 
 
@@ -1046,8 +1283,8 @@ a:hover {
 }
 
 .catalog-card-badge {
-  font-size: 0.72rem;
-  padding: 2px 6px;
+  font-size: 0.8rem;
+  padding: 5px 8px;
   border-radius: 4px;
   background: var(--border-color);
   font-weight: bold;
@@ -1092,6 +1329,3 @@ a:hover {
 .card-theme-fallback-visa { background: linear-gradient(135deg, #1a1f71 0%, #0055a5 100%); }
 .card-theme-fallback-mastercard { background: linear-gradient(135deg, #f79e1b 0%, #eb001b 100%); }
 .card-theme-fallback-amex { background: linear-gradient(135deg, #007bc1 0%, #003a6b 100%); }
-
-
-
