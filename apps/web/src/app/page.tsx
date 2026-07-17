@@ -119,6 +119,11 @@ export default function HomePage() {
   const [showWelcome, setShowWelcome] = useState<boolean>(false);
   const [showFullInstructions, setShowFullInstructions] = useState<boolean>(false);
 
+  // FX & Spend Caps States
+  const [spendCurrency, setSpendCurrency] = useState<string>("EUR");
+  const [fxRates, setFxRates] = useState<Record<string, number>>({ eur: 1, usd: 1.08, gbp: 0.85, chf: 0.94 });
+  const [cardMonthlySpends, setCardMonthlySpends] = useState<Record<string, number>>({});
+
   // Catalog & Portability States
   const [showCatalog, setShowCatalog] = useState<boolean>(false);
   const [catalogSearch, setCatalogSearch] = useState<string>("");
@@ -148,6 +153,55 @@ export default function HomePage() {
       setShowWelcome(true);
     }
   }, []);
+
+  // Load monthly spends from localStorage
+  useEffect(() => {
+    if (typeof window !== "undefined" && dataset) {
+      const spends: Record<string, number> = {};
+      dataset.cards.forEach((card) => {
+        const saved = localStorage.getItem(`cardpin:monthly_spend:${card.id}`);
+        if (saved) {
+          spends[card.id] = Number(saved) || 0;
+        }
+      });
+      setCardMonthlySpends(spends);
+    }
+  }, [dataset]);
+
+  // Fetch live FX rates on load, caching in sessionStorage
+  useEffect(() => {
+    async function fetchFXRates() {
+      const cached = sessionStorage.getItem("cardpin:fx_rates");
+      if (cached) {
+        try {
+          setFxRates(JSON.parse(cached));
+          return;
+        } catch (e) {
+          // ignore cache parse failure
+        }
+      }
+
+      try {
+        const res = await fetch("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json");
+        if (!res.ok) throw new Error("Failed to fetch rates");
+        const data = await res.json();
+        if (data && data.eur) {
+          const rates = { eur: 1, ...data.eur };
+          setFxRates(rates);
+          sessionStorage.setItem("cardpin:fx_rates", JSON.stringify(rates));
+        }
+      } catch (err) {
+        console.warn("Using offline fallback FX rates");
+      }
+    }
+    fetchFXRates();
+  }, []);
+
+  function handleUpdateMonthlySpend(cardId: string, value: number) {
+    const updated = { ...cardMonthlySpends, [cardId]: value };
+    setCardMonthlySpends(updated);
+    localStorage.setItem(`cardpin:monthly_spend:${cardId}`, String(value));
+  }
 
   useEffect(() => {
     async function fetchDataset() {
@@ -290,6 +344,10 @@ export default function HomePage() {
   const cardResults: CardCalc[] = useMemo(() => {
     if (!dataset || !ownedCards.length) return [];
 
+    const rate = fxRates[spendCurrency.toLowerCase()] || 1;
+    const convertedSpend = spendCurrency !== "EUR" ? spendAmount / rate : spendAmount;
+    const isForeign = spendCurrency !== "EUR" || isForeignSpend;
+
     return ownedCards
       .map((card) => {
         const rec = recommendBestCard({
@@ -298,44 +356,70 @@ export default function HomePage() {
           ownedCards: [card],
           country: country.toUpperCase(),
           dataset,
-          spendAmount,
-          isForeignSpend,
+          spendAmount: convertedSpend,
+          isForeignSpend: isForeign,
+          cardMonthlySpends,
           valuations: { points: 1, miles: 1 }
         });
         const rule = rec.bestRule;
-        const fxFee = isForeignSpend ? spendAmount * (card.fxFeePercentage ?? 0) : 0;
+        const fxFee = isForeign ? convertedSpend * (card.fxFeePercentage ?? 0) : 0;
         let grossValue = 0;
 
-        if (rule?.rewardType === "cashback_percentage") grossValue = spendAmount * rule.rewardValue;
-        if (rule?.rewardType === "fixed_cashback") grossValue = rule.rewardValue;
-        if (rule?.rewardType === "points" || rule?.rewardType === "miles") grossValue = spendAmount * rule.rewardValue;
+        const capValue = rule?.cap ?? rule?.conditions?.cap;
+        const monthlySpend = cardMonthlySpends[card.id] ?? 0;
+
+        if (rule) {
+          if (capValue !== undefined) {
+            const earnedSoFar = monthlySpend * rule.rewardValue;
+            const remainingReward = Math.max(0, capValue - earnedSoFar);
+            if (remainingReward === 0) {
+              grossValue = 0;
+            } else {
+              if (rule.rewardType === "cashback_percentage") {
+                grossValue = Math.min(remainingReward, convertedSpend * rule.rewardValue);
+              } else if (rule.rewardType === "fixed_cashback") {
+                grossValue = Math.min(remainingReward, rule.rewardValue);
+              } else {
+                grossValue = Math.min(remainingReward, convertedSpend * rule.rewardValue);
+              }
+            }
+          } else {
+            if (rule.rewardType === "cashback_percentage") grossValue = convertedSpend * rule.rewardValue;
+            if (rule.rewardType === "fixed_cashback") grossValue = rule.rewardValue;
+            if (rule.rewardType === "points" || rule.rewardType === "miles") grossValue = convertedSpend * rule.rewardValue;
+          }
+        }
 
         const netValue = rule?.rewardType === "cashback_percentage" || rule?.rewardType === "fixed_cashback"
           ? Math.max(0, grossValue - fxFee)
           : grossValue;
+
+        const displayGross = grossValue * rate;
+        const displayNet = netValue * rate;
+        const displayFxFee = fxFee * rate;
 
         return {
           card,
           rule,
           rec,
           rewardType: rec.rewardType,
-          grossValue,
-          fxFee,
-          netValue,
+          grossValue: displayGross,
+          fxFee: displayFxFee,
+          netValue: displayNet,
           label: rewardLabel({
             card,
             rule,
             rec,
             rewardType: rec.rewardType,
-            grossValue,
-            fxFee,
-            netValue,
+            grossValue: displayGross,
+            fxFee: displayFxFee,
+            netValue: displayNet,
             label: ""
           })
         };
       })
       .sort((a, b) => b.netValue - a.netValue);
-  }, [categoryQuery, country, dataset, isForeignSpend, merchantQuery, ownedCards, spendAmount]);
+  }, [categoryQuery, country, dataset, isForeignSpend, merchantQuery, ownedCards, spendAmount, cardMonthlySpends, fxRates, spendCurrency]);
 
   const hasSearch = merchantQuery.trim() !== "" || categoryQuery !== "";
   const bestResult = cardResults.find((result) => result.rule) ?? null;
@@ -479,11 +563,38 @@ export default function HomePage() {
                           className={`visual-card ${getCardThemeClass(card.id, card.network)}`}
                           onClick={() => handleToggleCard(card.id)}
                           title="Click to remove from wallet"
+                          style={{ minHeight: "185px" }}
                         >
                           <div className="visual-card-top">
                             <span className="card-issuer-name">{issuerName}</span>
                             <div className="card-chip" />
                           </div>
+
+                          <div
+                            style={{ margin: "8px 0", display: "flex", flexDirection: "column", gap: "2px" }}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <label style={{ fontSize: "0.68rem", opacity: "0.85", fontWeight: "bold" }}>
+                              Spent this month (EUR):
+                            </label>
+                            <input
+                              type="number"
+                              min="0"
+                              value={cardMonthlySpends[card.id] || ""}
+                              onChange={(e) => handleUpdateMonthlySpend(card.id, Number(e.target.value) || 0)}
+                              style={{
+                                background: "rgba(255, 255, 255, 0.25)",
+                                border: "1px solid rgba(255, 255, 255, 0.4)",
+                                borderRadius: "4px",
+                                color: "#fff",
+                                padding: "3px 6px",
+                                fontSize: "0.8rem",
+                                width: "100%"
+                              }}
+                              placeholder="0"
+                            />
+                          </div>
+
                           <div className="visual-card-bottom">
                             <span className="card-name-display">{card.name}</span>
                             <span className="card-network-logo">{card.network}</span>
@@ -579,10 +690,10 @@ export default function HomePage() {
                 </div>
 
                 <div className="form-row">
-                  <div className="form-group">
+                  <div className="form-group" style={{ flex: "2" }}>
                     <label htmlFor="spend-input">Spend Amount</label>
                     <div className="spend-input-wrapper">
-                      <span className="currency-prefix">EUR</span>
+                      <span className="currency-prefix">{spendCurrency}</span>
                       <input
                         id="spend-input"
                         inputMode="decimal"
@@ -595,21 +706,23 @@ export default function HomePage() {
                     </div>
                   </div>
 
-                  <div className="toggle-switch-wrapper">
-                    <span className="toggle-switch-label">Foreign currency spend</span>
-                    <label className="switch" htmlFor="foreign-spend-checkbox">
-                      <input
-                        id="foreign-spend-checkbox"
-                        type="checkbox"
-                        checked={isForeignSpend}
-                        onChange={(event) => setIsForeignSpend(event.target.checked)}
-                      />
-                      <span className="slider"></span>
-                    </label>
+                  <div className="form-group" style={{ flex: "1" }}>
+                    <label htmlFor="currency-select">Currency</label>
+                    <select
+                      id="currency-select"
+                      value={spendCurrency}
+                      onChange={(e) => setSpendCurrency(e.target.value)}
+                    >
+                      <option value="EUR">EUR (€)</option>
+                      <option value="USD">USD ($)</option>
+                      <option value="GBP">GBP (£)</option>
+                      <option value="CHF">CHF (₣)</option>
+                      <option value="JPY">JPY (¥)</option>
+                    </select>
                   </div>
                 </div>
                 <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
-                  Enabling foreign spend calculates reward net values by subtracting card foreign exchange fees.
+                  Selecting a non-EUR currency fetches live exchange rates and automatically applies the card&apos;s foreign transaction fee.
                 </p>
               </section>
 

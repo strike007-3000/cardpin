@@ -155,6 +155,30 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
+## Production Features (v1.0)
+
+### Offline-First PWA (Progressive Web App)
+CardPin is configured as a fully installable PWA. A Service Worker (`sw.js`) caches the application shell and country datasets (`/data/*.json`) locally. The application can open and calculate card reward recommendations **100% offline** (e.g., when you have poor network coverage at a checkout counter).
+
+### Multi-Currency FX Conversions
+Users can select transaction currencies (EUR, USD, GBP, CHF, JPY) in Step 3. CardPin automatically fetches live rates from the Fawaz Ahmed Exchange Rates API, converts the transaction value into the card's native currency, calculates the reward value, deducts the card's specific foreign transaction fee, and shows the net outcome. Fetch requests are cached in `sessionStorage` to prevent redundant network calls.
+
+### Earning Caps & Monthly Budget Tracking
+To prevent recommending cards that have reached their monthly reward limits, users can input their *Spent this month* value inside each card mockup. The recommendation engine dynamically tracks this against the card rule's `cap` (or `conditions.cap`) and applies fallback rates or zero points/miles on the portion of the purchase exceeding the limit.
+
+### Automated Link Scanner
+To verify that database reference URLs remain active, run the link scanner utility:
+```bash
+npx tsx scripts/check-links.ts
+```
+This utility parallel-scans all reference URLs inside the datasets to identify broken (e.g. 404, 403, or failed) bank terms pages.
+
+### Local Developer Data Manager
+To easily merge or update data without manual text editing:
+1. Run the local dev server: `pnpm dev`
+2. Open `http://localhost:3000/?dev=true`
+3. Click **🔧 Dev Tools** at the bottom-right corner to open the bulk importer modal. You can paste raw JSON arrays or objects and click **Merge & Recompile Datasets** to write, format, validate, and compile changes to disk automatically.
+
 ## Disclaimer
 
 CardPin is not financial advice. Data is community-sourced and may be inaccurate or outdated. Always verify terms with official issuer sources before making decisions.

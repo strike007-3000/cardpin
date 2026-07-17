@@ -8,6 +8,7 @@ export type RecommendationInput = {
   dataset: CountryDataset;
   spendAmount?: number; // Defaults to 100 for percentage comparison
   isForeignSpend?: boolean; // Deducts fxFeePercentage * spend if true
+  cardMonthlySpends?: Record<string, number>; // Monthly spend in base currency for each card
   valuations?: {
     points?: number; // value of 1 point in currency (e.g. 0.01)
     miles?: number;  // value of 1 mile in currency (e.g. 0.01)
@@ -26,12 +27,14 @@ export type RecommendationOutput = {
   bestCard: Card | null;
   bestRule: RewardRule | null;
   estimatedValue: number;
+  convertedValue: number;
   rewardType: "cashback_percentage" | "fixed_cashback" | "points" | "miles" | null;
   explanation: string;
   alternatives: Array<{
     card: Card;
     rule: RewardRule | null;
     estimatedValue: number;
+    convertedValue: number;
     rewardType: "cashback_percentage" | "fixed_cashback" | "points" | "miles" | null;
   }>;
 };
@@ -41,7 +44,7 @@ function safeLower(s: string | undefined): string {
 }
 
 export function recommendBestCard(input: RecommendationInput): RecommendationOutput {
-  const { merchant, category, ownedCards, country, dataset, spendAmount, isForeignSpend, valuations } = input;
+  const { merchant, category, ownedCards, country, dataset, spendAmount, isForeignSpend, cardMonthlySpends, valuations } = input;
   const spend = spendAmount ?? 100;
 
   if (!ownedCards.length) {
@@ -49,6 +52,7 @@ export function recommendBestCard(input: RecommendationInput): RecommendationOut
       bestCard: null,
       bestRule: null,
       estimatedValue: 0,
+      convertedValue: 0,
       rewardType: null,
       explanation: "No owned cards provided.",
       alternatives: []
@@ -120,37 +124,86 @@ export function recommendBestCard(input: RecommendationInput): RecommendationOut
     }
 
     if (activeRule) {
-      // Calculate estimated value in native unit
       let estimatedValue = activeRule.rewardValue;
       let convertedValue = 0;
 
-      switch (activeRule.rewardType) {
-        case "cashback_percentage":
-          estimatedValue = activeRule.rewardValue; // native stays percentage
-          convertedValue = spend * activeRule.rewardValue; // convert to base currency
-          break;
-        case "fixed_cashback":
-          estimatedValue = activeRule.rewardValue;
-          convertedValue = activeRule.rewardValue;
-          break;
-        case "points":
-          // Points are multiplier-based: points = spend * rewardValue
-          estimatedValue = spend * activeRule.rewardValue;
-          if (valuations?.points !== undefined) {
-            convertedValue = estimatedValue * valuations.points;
-          } else {
-            convertedValue = 0; 
+      const capValue = activeRule.cap ?? activeRule.conditions?.cap;
+      const monthlySpend = cardMonthlySpends?.[card.id] ?? 0;
+
+      if (capValue !== undefined) {
+        const earnedSoFar = monthlySpend * activeRule.rewardValue;
+        const remainingReward = Math.max(0, capValue - earnedSoFar);
+
+        if (remainingReward === 0) {
+          estimatedValue = 0;
+          convertedValue = 0;
+        } else {
+          switch (activeRule.rewardType) {
+            case "cashback_percentage": {
+              let reward = spend * activeRule.rewardValue;
+              if (reward > remainingReward) reward = remainingReward;
+              estimatedValue = activeRule.rewardValue;
+              convertedValue = reward;
+              break;
+            }
+            case "fixed_cashback": {
+              let reward = activeRule.rewardValue;
+              if (reward > remainingReward) reward = remainingReward;
+              estimatedValue = reward;
+              convertedValue = reward;
+              break;
+            }
+            case "points": {
+              let reward = spend * activeRule.rewardValue;
+              if (reward > remainingReward) reward = remainingReward;
+              estimatedValue = reward;
+              if (valuations?.points !== undefined) {
+                convertedValue = reward * valuations.points;
+              } else {
+                convertedValue = 0;
+              }
+              break;
+            }
+            case "miles": {
+              let reward = spend * activeRule.rewardValue;
+              if (reward > remainingReward) reward = remainingReward;
+              estimatedValue = reward;
+              if (valuations?.miles !== undefined) {
+                convertedValue = reward * valuations.miles;
+              } else {
+                convertedValue = 0;
+              }
+              break;
+            }
           }
-          break;
-        case "miles":
-          // Miles are multiplier-based: miles = spend * rewardValue
-          estimatedValue = spend * activeRule.rewardValue;
-          if (valuations?.miles !== undefined) {
-            convertedValue = estimatedValue * valuations.miles;
-          } else {
-            convertedValue = 0;
-          }
-          break;
+        }
+      } else {
+        switch (activeRule.rewardType) {
+          case "cashback_percentage":
+            estimatedValue = activeRule.rewardValue;
+            convertedValue = spend * activeRule.rewardValue;
+            break;
+          case "fixed_cashback":
+            estimatedValue = activeRule.rewardValue;
+            convertedValue = activeRule.rewardValue;
+            break;
+          case "points":
+            estimatedValue = spend * activeRule.rewardValue;
+            if (valuations?.points !== undefined) {
+              convertedValue = estimatedValue * valuations.points;
+            } else {
+              convertedValue = 0;
+            }
+            break;
+          case "miles":
+            estimatedValue = spend * activeRule.rewardValue;
+            if (valuations?.miles !== undefined) {
+              convertedValue = estimatedValue * valuations.miles;
+            } else {
+              convertedValue = 0;
+            }
+            break;
+        }
       }
 
       // Deduct foreign transaction fee if applicable
@@ -217,14 +270,16 @@ export function recommendBestCard(input: RecommendationInput): RecommendationOut
     card: r.card,
     rule: r.rule,
     estimatedValue: r.estimatedValue,
+    convertedValue: r.convertedValue,
     rewardType: r.rewardType
   }));
 
   return {
-    bestCard: bestResult.rule ? bestResult.card : null,
+    bestCard: bestResult.card,
     bestRule: bestResult.rule,
-    estimatedValue: bestResult.rule ? bestResult.estimatedValue : 0,
-    rewardType: bestResult.rule ? bestResult.rewardType : null,
+    estimatedValue: bestResult.estimatedValue,
+    convertedValue: bestResult.convertedValue,
+    rewardType: bestResult.rewardType,
     explanation,
     alternatives
   };
