@@ -98,7 +98,24 @@ export default function HomePage() {
   const [cardSearchQuery, setCardSearchQuery] = useState<string>("");
   const [collapsedIssuers, setCollapsedIssuers] = useState<Set<string>>(new Set());
 
+  // Developer Mode States
+  const [isDevMode, setIsDevMode] = useState<boolean>(false);
+  const [showDevPanel, setShowDevPanel] = useState<boolean>(false);
+  const [devCountry, setDevCountry] = useState<string>("be");
+  const [devDataType, setDevDataType] = useState<string>("cards");
+  const [devJson, setDevJson] = useState<string>("");
+  const [devStatus, setDevStatus] = useState<{ type: "success" | "error" | "loading"; message: string } | null>(null);
+
   const spendAmount = normalizeSpend(spendInput);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get("dev") === "true") {
+        setIsDevMode(true);
+      }
+    }
+  }, []);
 
   useEffect(() => {
     const dismissed = localStorage.getItem("cardpin:welcome_dismissed");
@@ -206,6 +223,40 @@ export default function HomePage() {
       setSpendInput("50");
     } else {
       setSpendInput(String(parsed));
+    }
+  }
+
+  async function handleMergeSubmit() {
+    setDevStatus({ type: "loading", message: "Saving data and compiling..." });
+    try {
+      let parsed;
+      try {
+        parsed = JSON.parse(devJson);
+      } catch (e) {
+        throw new Error("Invalid JSON: Please check the syntax.");
+      }
+
+      const res = await fetch("http://localhost:3001/api/update-data", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          country: devCountry,
+          dataType: devDataType,
+          data: parsed
+        })
+      });
+
+      const result = await res.json();
+      if (!res.ok) {
+        throw new Error(result.error || "Failed to update data");
+      }
+
+      setDevStatus({ type: "success", message: "Saved, validated, and compiled successfully! Reloading..." });
+      setTimeout(() => {
+        window.location.reload();
+      }, 1500);
+    } catch (err: any) {
+      setDevStatus({ type: "error", message: err.message });
     }
   }
 
@@ -658,6 +709,115 @@ export default function HomePage() {
       <footer className="site-footer">
         CardPin is not financial advice. Sources and reward rules are community-sourced; always verify current terms with your issuer before use.
       </footer>
+
+      {isDevMode && (
+        <button className="dev-floating-btn" onClick={() => setShowDevPanel(true)}>
+          🔧 Dev Tools
+        </button>
+      )}
+
+      {showDevPanel && (
+        <div className="modal-overlay" onClick={() => setShowDevPanel(false)}>
+          <div className="dev-panel" onClick={(e) => e.stopPropagation()}>
+            <div className="dev-panel-header">
+              <h3>Developer Data Manager</h3>
+              <button className="dev-close-btn" onClick={() => setShowDevPanel(false)}>&times;</button>
+            </div>
+            <div className="dev-panel-body">
+              <div style={{ display: "flex", gap: "12px" }}>
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
+                  <label htmlFor="dev-country" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Country</label>
+                  <select
+                    id="dev-country"
+                    value={devCountry}
+                    onChange={(e) => setDevCountry(e.target.value)}
+                    style={{ padding: "8px", background: "var(--bg-surface)", border: "1px solid var(--border-color)", borderRadius: "4px", color: "var(--text-main)" }}
+                  >
+                    <option value="be">Belgium (BE)</option>
+                    <option value="de">Germany (DE)</option>
+                    <option value="nl">Netherlands (NL)</option>
+                  </select>
+                </div>
+                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
+                  <label htmlFor="dev-datatype" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Data Type</label>
+                  <select
+                    id="dev-datatype"
+                    value={devDataType}
+                    onChange={(e) => setDevDataType(e.target.value)}
+                    style={{ padding: "8px", background: "var(--bg-surface)", border: "1px solid var(--border-color)", borderRadius: "4px", color: "var(--text-main)" }}
+                  >
+                    <option value="issuers">Issuers</option>
+                    <option value="cards">Cards</option>
+                    <option value="merchants">Merchants</option>
+                    <option value="rewardRules">Reward Rules</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+                <label htmlFor="dev-json" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
+                  Paste JSON Array or Object
+                </label>
+                <textarea
+                  id="dev-json"
+                  className="dev-panel-textarea"
+                  value={devJson}
+                  onChange={(e) => setDevJson(e.target.value)}
+                  placeholder={`Example:\n{\n  "id": "new-item",\n  "name": "New Item"\n}`}
+                />
+              </div>
+
+              {devStatus && (
+                <div
+                  style={{
+                    padding: "10px 14px",
+                    borderRadius: "4px",
+                    fontSize: "0.9rem",
+                    backgroundColor:
+                      devStatus.type === "success"
+                        ? "rgba(63, 185, 80, 0.15)"
+                        : devStatus.type === "error"
+                        ? "rgba(248, 81, 73, 0.15)"
+                        : "rgba(88, 166, 255, 0.15)",
+                    border:
+                      devStatus.type === "success"
+                        ? "1px solid rgba(63, 185, 80, 0.3)"
+                        : devStatus.type === "error"
+                        ? "1px solid rgba(248, 81, 73, 0.3)"
+                        : "1px solid rgba(88, 166, 255, 0.3)",
+                    color:
+                      devStatus.type === "success"
+                        ? "#3fb950"
+                        : devStatus.type === "error"
+                        ? "#f85149"
+                        : "#58a6ff"
+                  }}
+                >
+                  {devStatus.message}
+                </div>
+              )}
+
+              <button
+                type="button"
+                onClick={handleMergeSubmit}
+                disabled={devStatus?.type === "loading"}
+                style={{
+                  padding: "12px",
+                  backgroundColor: "var(--color-primary)",
+                  color: "var(--text-inverse)",
+                  border: "none",
+                  borderRadius: "4px",
+                  fontWeight: "bold",
+                  cursor: devStatus?.type === "loading" ? "not-allowed" : "pointer",
+                  opacity: devStatus?.type === "loading" ? 0.7 : 1
+                }}
+              >
+                Merge & Recompile Datasets
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

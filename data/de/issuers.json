@@ -45,6 +45,10 @@
       "name": "N26 Bank SE"
     },
     {
+      "id": "openbank-de",
+      "name": "Openbank Deutschland AG"
+    },
+    {
       "id": "postbank",
       "name": "Postbank – eine Niederlassung der Deutsche Bank AG"
     },

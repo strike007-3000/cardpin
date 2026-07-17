@@ -1,10 +1,110 @@
 {
   "rewardRules": [
     {
+      "id": "amazon-visa-amazon-base-points",
+      "cardId": "amazon-visa-de",
+      "country": "DE",
+      "category": "online-shopping",
+      "merchantId": "amazon-de",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "conditions": {
+        "program": "Amazon Visa points",
+        "spendUnit": 1,
+        "spendCurrency": "EUR",
+        "pointsPerSpendUnit": 1,
+        "cashbackEquivalent": 0.01,
+        "earningDescription": "1 Amazon point per full EUR 1 of eligible Amazon.de spend.",
+        "redemptionValue": "Each point normally represents EUR 0.01 when redeemed under the program.",
+        "exclusions": [
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "reversed transactions",
+          "refunded transactions",
+          "transactions excluded by the card program"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.amazon.de/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amazon-visa-general-base-points",
+      "cardId": "amazon-visa-de",
+      "country": "DE",
+      "category": "fallback",
+      "rewardType": "points",
+      "rewardValue": 0.5,
+      "conditions": {
+        "program": "Amazon Visa points",
+        "spendUnit": 1,
+        "spendCurrency": "EUR",
+        "pointsPerSpendUnit": 0.5,
+        "cashbackEquivalent": 0.005,
+        "earningDescription": "Points equivalent to 0.5% on eligible purchases outside Amazon.de.",
+        "exclusions": [
+          "Amazon.de transactions covered by the separate Amazon earning rule",
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "money transfers",
+          "cash-equivalent transactions",
+          "reversed transactions",
+          "refunded transactions",
+          "transactions excluded by the card program"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.amazon.de/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "amazon-visa-prime-event-points",
+      "cardId": "amazon-visa-de",
+      "country": "DE",
+      "category": "online-shopping",
+      "merchantId": "amazon-de",
+      "rewardType": "points",
+      "rewardValue": 2,
+      "conditions": {
+        "program": "Amazon Visa points",
+        "spendUnit": 1,
+        "spendCurrency": "EUR",
+        "pointsPerSpendUnit": 2,
+        "cashbackEquivalent": 0.02,
+        "primeMembershipRequired": true,
+        "promotionScope": "Selected Amazon promotional event days designated by the program.",
+        "earningDescription": "2 Amazon points per full EUR 1 on qualifying Amazon.de purchases during selected promotional events.",
+        "stacking": "This promotional rate replaces the normal Amazon.de base rate for the qualifying transaction unless the applicable terms expressly provide otherwise.",
+        "exclusions": [
+          "non-Prime cardholders",
+          "purchases outside eligible event periods",
+          "non-qualifying Amazon purchases",
+          "cash withdrawals",
+          "fees",
+          "interest",
+          "reversed transactions",
+          "refunded transactions"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.amazon.de/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
       "id": "amex-gold-membership-rewards-base",
       "cardId": "amex-gold-de",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 1,
       "conditions": {
@@ -30,7 +130,6 @@
       "id": "amex-green-membership-rewards-base",
       "cardId": "amex-green-de",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 1,
       "conditions": {
@@ -56,7 +155,6 @@
       "id": "amex-platinum-membership-rewards-base",
       "cardId": "amex-platinum-de",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 1,
       "conditions": {
@@ -79,10 +177,121 @@
       "lastUpdated": "2026-07-17"
     },
     {
+      "id": "commerzbank-classic-travelcentive-discount",
+      "cardId": "commerzbank-classic-kreditkarte",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "travelcentive",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.07,
+      "conditions": {
+        "benefitForm": "booking-price discount",
+        "bookingChannel": "Travelcentive",
+        "paymentRequirement": "Pay with an eligible Commerzbank Visa credit card.",
+        "eligibleProducts": "Eligible travel products offered through the designated Travelcentive booking channel.",
+        "exclusions": [
+          "bookings made outside Travelcentive",
+          "cancelled bookings",
+          "refunded bookings",
+          "charges excluded by the booking-channel terms"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "commerzbank-gold-travelcentive-discount",
+      "cardId": "commerzbank-gold-kreditkarte",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "travelcentive",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.07,
+      "conditions": {
+        "benefitForm": "booking-price discount",
+        "bookingChannel": "Travelcentive",
+        "paymentRequirement": "Pay with an eligible Commerzbank Visa credit card.",
+        "eligibleProducts": "Eligible travel products offered through the designated Travelcentive booking channel.",
+        "exclusions": [
+          "bookings made outside Travelcentive",
+          "cancelled bookings",
+          "refunded bookings",
+          "charges excluded by the booking-channel terms"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.commerzbank.de/privatkunden/kreditkarten/",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-mastercard-gold-travel-refund",
+      "cardId": "deutsche-bank-mastercard-gold",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "deutsche-bank-kartenreiseservice",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.06,
+      "conditions": {
+        "benefitForm": "post-travel refund",
+        "bookingChannel": "Deutsche Bank Kartenreiseservice operated with its travel-service partner",
+        "paymentRequirement": "Use the eligible Deutsche Bank card or card details as required by the booking service.",
+        "creditTiming": "Generally credited after completion of the trip.",
+        "exclusions": [
+          "taxes",
+          "supplementary fees",
+          "similar surcharges",
+          "cancellation fees",
+          "bookings outside the designated service",
+          "cancelled or refunded bookings"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.deutsche-bank.de/ms/pc/cards0.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "deutsche-bank-mastercard-travel-refund",
+      "cardId": "deutsche-bank-mastercard-travel",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "deutsche-bank-kartenreiseservice",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.06,
+      "conditions": {
+        "benefitForm": "post-travel refund",
+        "bookingChannel": "Deutsche Bank Kartenreiseservice operated with its travel-service partner",
+        "paymentRequirement": "Use the eligible Deutsche Bank card or card details as required by the booking service.",
+        "creditTiming": "Generally credited after completion of the trip.",
+        "exclusions": [
+          "taxes",
+          "supplementary fees",
+          "similar surcharges",
+          "cancellation fees",
+          "bookings outside the designated service",
+          "cancelled or refunded bookings"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.deutsche-bank.de/ms/pc/cards0.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
       "id": "miles-and-more-blue-base-miles",
       "cardId": "miles-and-more-blue",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "miles",
       "rewardValue": 0.5,
       "conditions": {
@@ -112,7 +321,6 @@
       "id": "miles-and-more-gold-base-miles",
       "cardId": "miles-and-more-gold",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "miles",
       "rewardValue": 0.5,
       "conditions": {
@@ -142,7 +350,6 @@
       "id": "miles-and-more-myflex-base-miles",
       "cardId": "miles-and-more-myflex",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "miles",
       "rewardValue": 0.5,
       "conditions": {
@@ -171,7 +378,6 @@
       "id": "n26-business-metal-base-cashback",
       "cardId": "n26-business-metal",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.005,
       "conditions": {
@@ -195,7 +401,6 @@
       "id": "n26-business-standard-base-cashback",
       "cardId": "n26-business-standard",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "cashback_percentage",
       "rewardValue": 0.001,
       "conditions": {
@@ -219,7 +424,6 @@
       "id": "payback-amex-base-points",
       "cardId": "payback-amex",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 0.3333333333,
       "conditions": {
@@ -247,7 +451,6 @@
       "id": "payback-visa-base-points",
       "cardId": "payback-visa",
       "country": "DE",
-      "category": "fallback",
       "rewardType": "points",
       "rewardValue": 0.2,
       "conditions": {
@@ -266,6 +469,59 @@
       },
       "source": {
         "sourceUrl": "https://www.payback.de/info/visa",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "postbank-mastercard-travel-bonus",
+      "cardId": "postbank-mastercard",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "postbank-urlaubsplus",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.05,
+      "conditions": {
+        "benefitForm": "post-travel card-account credit",
+        "bookingChannel": "Postbank Urlaubsplus Reiseservice",
+        "paymentRequirement": "Pay with the Postbank Mastercard or provide the card number as the required booking reference.",
+        "creditTiming": "Credited to the card account in the month following completion of the trip.",
+        "exclusions": [
+          "bookings made outside the designated Postbank travel service",
+          "cancelled bookings",
+          "refunded bookings",
+          "components excluded under the travel-service terms"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.postbank.de/privatkunden/produkte/konten-karten/kreditkarten/mastercard.html",
+        "verifiedAt": "2026-07-17",
+        "verifiedBy": "online-research"
+      },
+      "lastUpdated": "2026-07-17"
+    },
+    {
+      "id": "santander-bestcard-premium-travel-refund",
+      "cardId": "santander-bestcard-premium",
+      "country": "DE",
+      "category": "travel",
+      "merchantId": "santander-reiseservice",
+      "rewardType": "cashback_percentage",
+      "rewardValue": 0.07,
+      "conditions": {
+        "benefitForm": "travel-price refund",
+        "bookingChannel": "Santander designated travel-booking service",
+        "paymentRequirement": "Book through the eligible service and comply with the card-payment requirements.",
+        "exclusions": [
+          "bookings outside the designated service",
+          "cancelled bookings",
+          "refunded bookings",
+          "taxes or fees excluded under the travel-service terms"
+        ]
+      },
+      "source": {
+        "sourceUrl": "https://www.santander.de/privatkunden/konten-und-karten/karten/premium-kreditkarte/",
         "verifiedAt": "2026-07-17",
         "verifiedBy": "online-research"
       },

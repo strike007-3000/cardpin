@@ -1,4 +1,7 @@
 import { describe, it, expect } from "vitest";
+import fs from "node:fs";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 import { recommendBestCard } from "./recommend";
 import type { Card, Merchant, RewardRule, CountryDataset, Issuer } from "@cardpin/schemas";
 
@@ -322,8 +325,8 @@ describe("Orphan Validation Tests", () => {
 
 describe("Production Datasets Validation Tests", () => {
   it("all production datasets in data/ folder must pass validation", () => {
-    const fs = require("node:fs");
-    const path = require("node:path");
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
     const dataDir = path.resolve(__dirname, "../../../data");
     const countries = fs.readdirSync(dataDir).filter((f: string) => fs.statSync(path.join(dataDir, f)).isDirectory());
     for (const country of countries) {
