@@ -1,24 +1,24 @@
-/* Enhanced CardPin Design System */
+/* Enhanced CardPin Design System - Direction A (Generative Fintech) */
 :root {
   --font-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: var(--font-primary);
-  --bg-base: #050506;
-  --bg-surface: #0a0a0c;
-  --bg-card: #0e0e11;
-  --border-color: rgba(255, 255, 255, 0.05);
-  --border-focus: rgba(255, 255, 255, 0.25);
-  --color-primary: #a78bfa;
+  --bg-base: #030303;
+  --bg-surface: rgba(13, 12, 22, 0.45);
+  --bg-card: rgba(20, 19, 33, 0.3);
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-focus: rgba(139, 92, 246, 0.4);
+  --color-primary: #8b5cf6;
   --color-accent: #10b981;
   --color-danger: #ef4444;
-  --color-primary-semi: rgba(167, 139, 250, 0.15);
+  --color-primary-semi: rgba(139, 92, 246, 0.15);
   --text-main: #f4f4f5;
   --text-muted: #828389;
-  --text-inverse: #050506;
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --shadow-panel: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --shadow-card: none;
-  --shadow-card-hover: none;
+  --text-inverse: #030303;
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --shadow-panel: 0 20px 48px rgba(0, 0, 0, 0.6);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: 0 10px 30px rgba(139, 92, 246, 0.05);
   --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   
@@ -30,11 +30,11 @@
   --color-fintech-red: #ef4444;
   
   /* Enhanced gradients */
-  --gradient-card-bg: #09090b;
-  --gradient-card-hover: #121216;
-  --gradient-primary: linear-gradient(135deg, #ffffff, #e4e4e7);
+  --gradient-card-bg: rgba(20, 19, 33, 0.4);
+  --gradient-card-hover: rgba(28, 27, 44, 0.55);
+  --gradient-primary: linear-gradient(135deg, #ffffff, #a3a3a3);
   --gradient-secondary: linear-gradient(135deg, #10b981, #059669);
-  --gradient-accent: linear-gradient(135deg, #f59e0b, #d97706);
+  --gradient-accent: linear-gradient(135deg, #8b5cf6, #d946ef);
 }
 
 * {
@@ -44,12 +44,14 @@
 }
 
 body {
-  background: var(--bg-base);
+  background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.08) 0%, #030303 60%);
+  background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
+  min-height: 100vh;
 }
 
 .container {
@@ -131,12 +133,13 @@ header {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   padding: 28px;
-  transition: all var(--transition-normal);
-  backdrop-filter: blur(10px);
+  transition: all var(--transition-normal), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  backdrop-filter: blur(20px) saturate(180%);
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: var(--shadow-card-hover);
 }
 
 /* Enhanced step card styling */
@@ -201,10 +204,10 @@ label {
 select,
 input {
   width: 100%;
-  min-height: 46px;
-  background: rgba(255, 255, 255, 0.015);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 6px;
+  min-height: 48px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
   color: var(--text-main);
   font: inherit;
   font-size: 0.95rem;
@@ -225,15 +228,15 @@ select {
 
 select:hover,
 input:hover {
-  background-color: rgba(255, 255, 255, 0.025);
-  border-color: rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.02);
+  border-color: rgba(139, 92, 246, 0.2);
 }
 
 select:focus,
 input:focus {
   border-color: var(--border-focus);
-  background-color: rgba(255, 255, 255, 0.02);
-  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
 }
 
 /* Enhanced button styling */
@@ -1304,16 +1307,17 @@ input[type="number"] {
 
 /* Result Box glowing & premium treatment */
 .result-box {
-  background: linear-gradient(135deg, rgba(167, 139, 250, 0.12) 0%, rgba(139, 92, 246, 0.04) 50%, rgba(0, 0, 0, 0.6) 100%), #131219;
-  border: 1px solid rgba(167, 139, 250, 0.35);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(16, 185, 129, 0.05) 50%, rgba(9, 9, 11, 0.95) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.25);
   box-shadow: 
-    0 20px 48px rgba(0, 0, 0, 0.5), 
-    0 0 24px rgba(167, 139, 250, 0.12),
-    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+    0 20px 48px rgba(0, 0, 0, 0.6), 
+    0 0 32px rgba(139, 92, 246, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 24px;
+  border-radius: var(--radius-md);
 }
 
 .result-box::before {
