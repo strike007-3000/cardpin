@@ -513,7 +513,7 @@ export default function CardPinCalculator() {
           compactControls={
             <div className="compact-controls-strip">
               <div className="compact-control-group">
-                <label htmlFor="country-select" className="sr-only">Country</label>
+                <label htmlFor="country-select" className="visually-hidden">Country</label>
                 <div className="select-wrapper-compact">
                   <GlobeIcon />
                   <select

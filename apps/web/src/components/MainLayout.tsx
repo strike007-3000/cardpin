@@ -22,18 +22,20 @@ export default function MainLayout({
   return (
     <div className="main-layout-container">
       {navigationBar}
-      {welcomeBanner}
-      {compactControls}
-      
-      <div className="columns-grid">
-        <div className="left-column">
-          {walletSetup}
+      <main className="flow-layout-stacked">
+        {welcomeBanner}
+        {compactControls}
+        
+        <div className="columns-grid">
+          <div className="left-column">
+            {walletSetup}
+          </div>
+          <div className="right-column">
+            {merchantSelector}
+            {cardDisplay}
+          </div>
         </div>
-        <div className="right-column">
-          {merchantSelector}
-          {cardDisplay}
-        </div>
-      </div>
+      </main>
     </div>
   );
 }
