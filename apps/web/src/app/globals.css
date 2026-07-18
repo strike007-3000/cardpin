@@ -56,27 +56,30 @@ header {
 .brand-name {
   font-family: var(--font-display);
   font-size: clamp(1.75rem, 2.5vw, 2.25rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
 }
 
 h1 {
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 3vw, 2.75rem);
-  letter-spacing: 0;
+  font-weight: 800;
+  letter-spacing: -0.04em;
 }
 
 h2 {
   font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 700;
+  letter-spacing: -0.02em;
   margin-bottom: 16px;
 }
 
 h3 {
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   color: var(--text-muted);
-  font-weight: 700;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   margin-bottom: 6px;
   text-transform: uppercase;
 }
@@ -98,13 +101,12 @@ h3 {
   grid-template-columns: minmax(0, 1fr);
 }
 
-.card,
-.result-box {
+.card {
   background: var(--bg-surface);
-  border: 1px solid var(--border-color);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-panel);
-  padding: 22px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+  padding: 24px;
 }
 
 .step-card {
@@ -113,8 +115,9 @@ h3 {
 }
 
 .step-card--search {
-  border-color: rgba(88, 166, 255, 0.28);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  background: linear-gradient(180deg, rgba(167, 139, 250, 0.02) 0%, transparent 100%), var(--bg-surface);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
 .step-kicker {
