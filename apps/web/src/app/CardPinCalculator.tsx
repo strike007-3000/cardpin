@@ -602,13 +602,44 @@ export default function CardPinCalculator() {
                             aria-pressed={isActive}
                             aria-label={isActive ? `${card.name}, selected` : `Select ${card.name}`}
                           >
+                            <span className="card-texture" aria-hidden="true" />
                             <span className="wallet-card__topline">
                               <span className="card-issuer-name">{issuerName}</span>
-                              <span className="card-chip" aria-hidden="true" />
+                              {!isActive && <span className="card-chip" aria-hidden="true" />}
+                              {isActive && (
+                                <svg className="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: "16px", height: "16px", opacity: 0.8 }}>
+                                  <path d="M5 17a8 8 0 0 1 0-10" />
+                                  <path d="M9 19a12 12 0 0 1 0-14" />
+                                  <path d="M13 21a16 16 0 0 1 0-18" />
+                                </svg>
+                              )}
                             </span>
+                            {isActive && (
+                              <span className="wallet-card__middle">
+                                <span className="card-chip" aria-hidden="true" />
+                                <span className="card-number-embossed">
+                                  •••• •••• •••• {card.id.length > 4 ? card.id.slice(-4) : (card.id.charCodeAt(0) % 10).toString() + (card.id.charCodeAt(card.id.length - 1) % 10).toString() + "42"}
+                                </span>
+                              </span>
+                            )}
                             <span className="wallet-card__details">
-                              <span className="card-name-display">{card.name}</span>
-                              <span className="card-network-logo">{card.network}</span>
+                              {isActive ? (
+                                <span className="wallet-card__bottom-row">
+                                  <span className="card-holder-info">
+                                    <span className="card-name-display">{card.name}</span>
+                                    <span className="card-expiry-embossed">
+                                      <span className="expiry-label">VALID THRU</span>
+                                      <span className="expiry-value">12/29</span>
+                                    </span>
+                                  </span>
+                                  <span className="card-network-logo">{card.network}</span>
+                                </span>
+                              ) : (
+                                <>
+                                  <span className="card-name-display">{card.name}</span>
+                                  <span className="card-network-logo">{card.network}</span>
+                                </>
+                              )}
                             </span>
                           </button>
                         );
