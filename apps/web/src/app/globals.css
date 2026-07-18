@@ -2354,49 +2354,40 @@ input[type="number"] {
 .cardpin-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 24px;
+}
+
+.cardpin-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.grid-area-hero {
+  order: 1; /* Result first on mobile */
 }
 
 .grid-area-top {
   order: 2;
 }
 
-.grid-area-hero {
-  order: 1;
-}
-
 .grid-area-bottom {
   order: 3;
-}
-
-.grid-area-wallet {
-  order: 4;
 }
 
 @media (min-width: 1024px) {
   .cardpin-grid {
     grid-template-columns: 1.6fr 1fr;
-    grid-template-rows: auto 1fr auto;
-    grid-template-areas:
-      "top wallet"
-      "hero wallet"
-      "bottom wallet";
+    align-items: start; /* Prevents height stretching and keeps columns naturally aligned */
   }
   .grid-area-top {
-    grid-area: top;
-    order: unset;
+    order: 1; /* Settings top on desktop */
   }
   .grid-area-hero {
-    grid-area: hero;
-    order: unset;
+    order: 2; /* Result in middle on desktop */
   }
   .grid-area-bottom {
-    grid-area: bottom;
-    order: unset;
-  }
-  .grid-area-wallet {
-    grid-area: wallet;
-    order: unset;
+    order: 3; /* Input strip bottom on desktop */
   }
 }
 
@@ -2421,9 +2412,28 @@ input[type="number"] {
 }
 
 .input-strip-row .form-group {
-  flex: 1;
-  min-width: 160px;
-  margin-bottom: 0;
+  margin-bottom: 0 !important;
 }
+
+.input-strip-row .form-group:nth-child(1) {
+  flex: 2;
+  min-width: 140px;
+}
+
+.input-strip-row .form-group:nth-child(2) {
+  flex: 2;
+  min-width: 140px;
+}
+
+.input-strip-row .form-group:nth-child(3) {
+  flex: 1.2;
+  min-width: 100px;
+}
+
+.input-strip-row .form-group:nth-child(4) {
+  flex: 0.8;
+  min-width: 80px;
+}
+
 
 

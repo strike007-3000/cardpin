@@ -47,19 +47,17 @@ export function rewardAmount(result: CardCalc) {
   if (result.rewardType === "miles") return `${result.grossValue.toFixed(0)} miles`;
   return `EUR ${result.netValue.toFixed(2)}`;
 }
-
 export function cleanExplanation(explanation: string) {
   if (explanation.startsWith('Fallback rule "')) {
-    const match = explanation.match(/Fallback rule "([^"]+)" matched for card (.+)/);
+    const match = explanation.match(/Fallback rule "([^"]+)" matched for card ([^.]+)(.*)/);
     if (match) {
-      const [, ruleName, cardName] = match;
+      const [, ruleName, cardName, rest] = match;
       const cleanRule = ruleName
         .replaceAll("-", " ")
         .replace("points", "rewards")
         .replace("base", "general spending");
-      return `Earns rewards on ${cleanRule} under your ${cardName} terms.`;
+      return `Earns rewards on ${cleanRule} under your ${cardName} terms.${rest}`;
     }
   }
   return explanation;
 }
-

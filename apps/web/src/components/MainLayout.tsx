@@ -26,17 +26,21 @@ export default function MainLayout({
         {welcomeBanner}
         
         <div className="cardpin-grid">
-          <div className="grid-area-top">
-            {countryAudienceSelector}
+          <div className="cardpin-left-col">
+            <div className="grid-area-top">
+              {countryAudienceSelector}
+            </div>
+            <div className="grid-area-hero">
+              {resultHeroOrStatus}
+            </div>
+            <div className="grid-area-bottom">
+              {inputStrip}
+            </div>
           </div>
-          <div className="grid-area-hero">
-            {resultHeroOrStatus}
-          </div>
-          <div className="grid-area-bottom">
-            {inputStrip}
-          </div>
-          <div className="grid-area-wallet">
-            {walletManager}
+          <div className="cardpin-right-col">
+            <div className="grid-area-wallet">
+              {walletManager}
+            </div>
           </div>
         </div>
       </main>
