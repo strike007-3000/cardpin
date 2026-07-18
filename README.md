@@ -155,10 +155,10 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
-## Production Features (v1.2.5)
+## Production Features (v1.2.8)
 
-### Enhanced CardPin Design System
-Includes a modern, professional premium dark-theme stylesheet with a curated fintech palette (blue, purple, green, orange, red), custom-tuned shadows, smooth transition variables, and advanced gradients for card backgrounds and interactive elements.
+### Premium Dark-Theme Layout styling
+Features a refined, high-end dark-mode visual theme with matte-black mockups for the card stack, subtle border-left accent lines highlighting individual card branding, and an integrated settings slide-out panel that sits flush beneath the active card.
 
 ### Apple Wallet-Inspired Card Stack
 Owned cards use a stable vertical stack with a consistent visible header for every collapsed card and one fully expanded selected card. Selecting a collapsed card moves it to the front without rotation, absolute positioning, manual height calculations, or scattered z-index rules. Selected-card settings stay attached to the stack, while import, export, and clear actions live in a compact wallet-options menu.
