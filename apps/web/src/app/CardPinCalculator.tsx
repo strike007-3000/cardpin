@@ -42,6 +42,21 @@ function rewardAmount(result: CardCalc) {
   return `EUR ${result.netValue.toFixed(2)}`;
 }
 
+function cleanExplanation(explanation: string) {
+  if (explanation.startsWith('Fallback rule "')) {
+    const match = explanation.match(/Fallback rule "([^"]+)" matched for card (.+)/);
+    if (match) {
+      const [, ruleName, cardName] = match;
+      const cleanRule = ruleName
+        .replaceAll("-", " ")
+        .replace("points", "rewards")
+        .replace("base", "general spending");
+      return `Earns rewards on ${cleanRule} under your ${cardName} terms.`;
+    }
+  }
+  return explanation;
+}
+
 function GlobeIcon() {
   return (
     <svg className="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -893,7 +908,7 @@ export default function CardPinCalculator() {
                     <div className="result-grid">
                       <div>
                         <h3>Why this card</h3>
-                        <p className="result-explanation">{bestResult.rec.explanation}</p>
+                        <p className="result-explanation">{cleanExplanation(bestResult.rec.explanation)}</p>
                       </div>
                       <div>
                         <h3>Spend calculation</h3>
@@ -921,12 +936,17 @@ export default function CardPinCalculator() {
                     {alternatives.length > 0 && (
                       <div className="alternatives-container">
                         <h3>Alternatives</h3>
-                        {alternatives.map((result) => (
-                           <div className="alt-card" key={result.card.id}>
-                             <span className="alt-name">{result.card.name}</span>
-                             <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
-                           </div>
-                        ))}
+                        {alternatives.map((result) => {
+                          const bestValue = bestResult ? bestResult.netValue : 0;
+                          const percentage = bestValue > 0 ? Math.min(100, Math.max(0, (result.netValue / bestValue) * 100)) : 0;
+                          return (
+                            <div className="alt-card" key={result.card.id}>
+                              <div className="alt-card-bar" style={{ width: `${percentage}%` }} />
+                              <span className="alt-name">{result.card.name}</span>
+                              <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
+                            </div>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
