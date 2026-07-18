@@ -1,13 +1,13 @@
 {
   "name": "@cardpin/web",
   "private": true,
-  "version": "1.2.2",
+  "version": "1.2.3",
   "type": "module",
   "scripts": {
     "dev": "tsx dev.ts",
     "build": "next build",
     "start": "next start",
-    "test": "vitest run src/lib/utils.test.ts",
+    "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "lint": "eslint ."
   },
