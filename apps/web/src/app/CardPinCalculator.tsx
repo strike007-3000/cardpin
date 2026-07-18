@@ -535,52 +535,57 @@ export default function CardPinCalculator() {
             </section>
           )}
 
-          <main className="flow-layout">
-            <div className="left-column">
-              <section className="card step-card">
-                <div className="step-header">
+          <main className="flow-layout-stacked">
+            <section className="card step-card step-card--horizontal">
+              <div className="step-header">
+                <div className="step-icon-wrapper">
                   <GlobeIcon />
-                  <div className="step-title-block">
-                    <div className="step-kicker">Step 1</div>
-                    <h2>Choose Country & Audience</h2>
-                  </div>
                 </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="country-select">Country</label>
-                    <select id="country-select" value={country} onChange={(event) => setCountry(event.target.value)}>
-                                    <option value="be">Belgium</option>
-                                    <option value="de">Germany</option>
-                                    <option value="nl">Netherlands</option>
-                                  </select>
-                  </div>
+                <div className="step-title-block">
+                  <div className="step-kicker">Step 1</div>
+                  <h2>Choose Country & Audience</h2>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="country-select">Country</label>
+                  <select id="country-select" value={country} onChange={(event) => setCountry(event.target.value)}>
+                                  <option value="be">Belgium</option>
+                                  <option value="de">Germany</option>
+                                  <option value="nl">Netherlands</option>
+                                </select>
+                </div>
 
-                  <div className="form-group">
-                    <label>Audience</label>
-                    <div className="segmented-control" role="group" aria-label="Audience">
-                      <button type="button" aria-pressed={audience === "consumer"} className={audience === "consumer" ? "active" : ""} onClick={() => setAudience("consumer")}>
-                        Personal
-                      </button>
-                      <button type="button" aria-pressed={audience === "business"} className={audience === "business" ? "active" : ""} onClick={() => setAudience("business")}>
-                        Business
-                      </button>
-                    </div>
-                    <p className="helper-text">Personal is for everyday cards. Business is for company cards.</p>
+                <div className="form-group">
+                  <label>Audience</label>
+                  <div className="segmented-control" role="group" aria-label="Audience">
+                    <button type="button" aria-pressed={audience === "consumer"} className={audience === "consumer" ? "active" : ""} onClick={() => setAudience("consumer")}>
+                      Personal
+                    </button>
+                    <button type="button" aria-pressed={audience === "business"} className={audience === "business" ? "active" : ""} onClick={() => setAudience("business")}>
+                      Business
+                    </button>
                   </div>
+                  <p className="helper-text">Personal is for everyday cards. Business is for company cards.</p>
                 </div>
-              </section>
+              </div>
+            </section>
 
-              <section className="card step-card">
-                <div className="step-header">
-                  <WalletIcon />
-                  <div className="step-title-block">
-                    <div className="step-kicker">Step 2</div>
-                    <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
-                      <h2>Your Wallet</h2>
-                      <span className="quiet-pill">{ownedCards.length} in wallet</span>
+            <div className="columns-grid">
+              <div className="left-column">
+                <section className="card step-card">
+                  <div className="step-header">
+                    <div className="step-icon-wrapper">
+                      <WalletIcon />
+                    </div>
+                    <div className="step-title-block" style={{ width: "100%" }}>
+                      <div className="step-kicker">Step 2</div>
+                      <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
+                        <h2>Your Wallet</h2>
+                        <span className="quiet-pill">{ownedCards.length} in wallet</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
                 {ownedCards.length === 0 ? (
                   <div className="empty-state" style={{ margin: "20px 0" }}>
@@ -728,80 +733,94 @@ export default function CardPinCalculator() {
             <div className="right-column">
               <section className="card step-card step-card--search">
                 <div className="step-header">
-                  <SearchIcon />
+                  <div className="step-icon-wrapper">
+                    <SearchIcon />
+                  </div>
                   <div className="step-title-block">
                     <div className="step-kicker">Step 3</div>
                     <h2>Search Purchase</h2>
                   </div>
                 </div>
                 <p className="helper-text prominent">Search a merchant or choose a category. You can use either one.</p>
-                <fieldset className="search-fields" disabled={ownedCards.length === 0}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="merchant-input">Merchant</label>
-                    <input
-                      id="merchant-input"
-                      type="text"
-                      placeholder="Carrefour, Q8, Booking.com"
-                      value={merchantQuery}
-                      onChange={(event) => setMerchantQuery(event.target.value)}
-                    />
-                  </div>
+                
+                <div className="search-card-content-wrapper">
+                  <fieldset className="search-fields" disabled={ownedCards.length === 0}>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="merchant-input">Merchant</label>
+                        <input
+                          id="merchant-input"
+                          type="text"
+                          placeholder="Carrefour, Q8, Booking.com"
+                          value={merchantQuery}
+                          onChange={(event) => setMerchantQuery(event.target.value)}
+                        />
+                      </div>
 
-                  <div className="form-group">
-                    <label htmlFor="category-select">Category</label>
-                    <select id="category-select" value={categoryQuery} onChange={(event) => setCategoryQuery(event.target.value)}>
-                      <option value="">Choose a category</option>
-                      {categoriesList.map((category) => (
-                        <option key={category} value={category}>
-                          {formatCategory(category)}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group" style={{ flex: "2" }}>
-                    <label htmlFor="spend-input">Spend Amount</label>
-                    <div className="spend-input-wrapper">
-                      <span className="currency-prefix">{spendCurrency}</span>
-                      <input
-                        id="spend-input"
-                        inputMode="decimal"
-                        type="number"
-                        min="0"
-                        value={spendInput}
-                        onBlur={handleSpendBlur}
-                        onChange={(event) => setSpendInput(event.target.value)}
-                      />
+                      <div className="form-group">
+                        <label htmlFor="category-select">Category</label>
+                        <select id="category-select" value={categoryQuery} onChange={(event) => setCategoryQuery(event.target.value)}>
+                          <option value="">Choose a category</option>
+                          {categoriesList.map((category) => (
+                            <option key={category} value={category}>
+                              {formatCategory(category)}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="form-group" style={{ flex: "1" }}>
-                    <label htmlFor="currency-select">Currency</label>
-                    <select
-                      id="currency-select"
-                      value={spendCurrency}
-                      onChange={(e) => setSpendCurrency(e.target.value)}
-                    >
-                      <option value="EUR">EUR (€)</option>
-                      <option value="USD">USD ($)</option>
-                      <option value="GBP">GBP (£)</option>
-                      <option value="CHF">CHF (₣)</option>
-                      <option value="JPY">JPY (¥)</option>
-                    </select>
-                  </div>
+                    <div className="form-row">
+                      <div className="form-group" style={{ flex: "2" }}>
+                        <label htmlFor="spend-input">Spend Amount</label>
+                        <div className="spend-input-wrapper">
+                          <span className="currency-prefix">{spendCurrency}</span>
+                          <input
+                            id="spend-input"
+                            inputMode="decimal"
+                            type="number"
+                            min="0"
+                            value={spendInput}
+                            onBlur={handleSpendBlur}
+                            onChange={(event) => setSpendInput(event.target.value)}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="form-group" style={{ flex: "1" }}>
+                        <label htmlFor="currency-select">Currency</label>
+                        <select
+                          id="currency-select"
+                          value={spendCurrency}
+                          onChange={(e) => setSpendCurrency(e.target.value)}
+                        >
+                          <option value="EUR">EUR (€)</option>
+                          <option value="USD">USD ($)</option>
+                          <option value="GBP">GBP (£)</option>
+                          <option value="CHF">CHF (₣)</option>
+                          <option value="JPY">JPY (¥)</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
+                      Selecting a non-EUR currency fetches live exchange rates and automatically applies the card&apos;s foreign transaction fee.
+                    </p>
+                  </fieldset>
+
+                  {ownedCards.length === 0 && (
+                    <div className="search-lock-overlay">
+                      <div className="search-lock-message">
+                        <span className="lock-icon" role="img" aria-label="lock">🔒</span>
+                        <h3>Search is Locked</h3>
+                        <p style={{ marginBottom: "16px" }}>Add at least one card to your wallet in Step 2 to search merchants and optimize rewards.</p>
+                        <button type="button" className="btn btn--primary prerequisite-action" onClick={handleOpenCatalog}>
+                          Add a Card to Unlock
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
-                  Selecting a non-EUR currency fetches live exchange rates and automatically applies the card&apos;s foreign transaction fee.
-                </p>
-                </fieldset>
-                {ownedCards.length === 0 && (
-                  <button type="button" className="btn btn--primary prerequisite-action" onClick={handleOpenCatalog}>
-                    Add a card to continue
-                  </button>
-                )}
               </section>
 
               <section className="recommendation-area">
@@ -900,7 +919,8 @@ export default function CardPinCalculator() {
                 )}
               </section>
             </div>
-          </main>
+          </div>
+        </main>
         </>
       )}
 
