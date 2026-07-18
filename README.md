@@ -155,7 +155,7 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
-## Production Features (v1.2.3)
+## Production Features (v1.2.4)
 
 ### Enhanced CardPin Design System
 Includes a modern, professional premium dark-theme stylesheet with a curated fintech palette (blue, purple, green, orange, red), custom-tuned shadows, smooth transition variables, and advanced gradients for card backgrounds and interactive elements.
