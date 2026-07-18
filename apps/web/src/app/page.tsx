@@ -1,15 +1,31 @@
+"use client";
+
 import CardPinCalculator from "./CardPinCalculator";
 import Logo from "./logo";
+import { useState, useEffect } from "react";
 
 export default function HomePage() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="container">
-      <header>
+      <header className={isScrolled ? "scrolled-header" : ""}>
         <div className="logo-header">
           <Logo />
           <h1 className="brand-name">CardPin</h1>
         </div>
-        <p className="subtitle">Find the best card from the cards you actually have.</p>
+        <p className="subtitle">
+          Maximize your credit card rewards. Compare cashback, points, and miles to find the best card in your wallet for groceries, travel, and shopping instantly.
+        </p>
       </header>
 
       <CardPinCalculator />
