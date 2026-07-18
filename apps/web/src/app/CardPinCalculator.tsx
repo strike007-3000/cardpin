@@ -124,6 +124,15 @@ function CardNetworkLogo({ network }: { network: string }) {
   return <span className="network-logo network-logo--generic">{network.toUpperCase()}</span>;
 }
 
+function getCardLastFour(id: string) {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = id.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const numeric = Math.abs(hash % 10000);
+  return numeric.toString().padStart(4, "4");
+}
+
 function getCardThemeClass(issuerId: string, network: string) {
   const normalized = issuerId.toLowerCase();
   if (normalized.includes("american-express")) {
@@ -666,7 +675,7 @@ export default function CardPinCalculator() {
                                 <span className="wallet-card__middle">
                                   <span className="card-chip" aria-hidden="true" />
                                   <span className="card-number-embossed">
-                                    •••• •••• •••• {card.id.length > 4 ? card.id.slice(-4) : (card.id.charCodeAt(0) % 10).toString() + (card.id.charCodeAt(card.id.length - 1) % 10).toString() + "42"}
+                                    •••• •••• •••• {getCardLastFour(card.id)}
                                   </span>
                                 </span>
                                 <span className="wallet-card__details">
