@@ -588,7 +588,7 @@ export default function CardPinCalculator() {
                   </div>
 
                 {ownedCards.length === 0 ? (
-                  <div className="empty-state" style={{ margin: "20px 0" }}>
+                  <div className="empty-state empty-state--spaced">
                     Your wallet is empty. Add some cards to get started!
                   </div>
                 ) : (
@@ -653,8 +653,8 @@ export default function CardPinCalculator() {
 
                     {activeCard && (
                       <div className="card-config-box">
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                          <span style={{ fontSize: "0.8rem", fontWeight: "bold", color: "var(--text-main)" }}>
+                        <div className="card-config-header">
+                          <span className="card-config-title">
                             Selected Card Settings
                           </span>
                           <button
@@ -665,9 +665,9 @@ export default function CardPinCalculator() {
                             Remove from Wallet
                           </button>
                         </div>
-                        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "4px", flexWrap: "wrap" }}>
-                          <label htmlFor={`monthly-spend-${activeCard.id}`} style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: 0 }}>Spent this month:</label>
-                          <div className="spend-input-wrapper" style={{ maxWidth: "120px", display: "flex", alignItems: "center" }}>
+                        <div className="card-config-spend-row">
+                          <label htmlFor={`monthly-spend-${activeCard.id}`} className="card-config-label">Spent this month:</label>
+                          <div className="spend-input-wrapper spend-input-wrapper--small">
                             <span className="currency-prefix">EUR</span>
                             <input
                               id={`monthly-spend-${activeCard.id}`}
@@ -677,7 +677,6 @@ export default function CardPinCalculator() {
                               value={cardMonthlySpends[activeCard.id] || ""}
                               onChange={(e) => handleUpdateMonthlySpend(activeCard.id, Number(e.target.value) || 0)}
                               placeholder="0"
-                              style={{ padding: "4px 8px", fontSize: "0.8rem" }}
                             />
                           </div>
                         </div>
@@ -828,7 +827,7 @@ export default function CardPinCalculator() {
                   <div className="card empty-state">
                     <CreditCardPlaceholder />
                     <strong>No cards selected.</strong>
-                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                    <p>
                       Select cards in your wallet under <strong>Step 2</strong> to start comparing rewards.
                     </p>
                   </div>
@@ -836,7 +835,7 @@ export default function CardPinCalculator() {
                   <div className="card empty-state">
                     <CreditCardPlaceholder />
                     <strong>Ready to search.</strong>
-                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                    <p>
                       Enter a merchant or choose a category under <strong>Step 3</strong> to calculate expected rewards.
                     </p>
                   </div>
@@ -844,7 +843,7 @@ export default function CardPinCalculator() {
                   <div className="card empty-state" role="status">
                     <CreditCardPlaceholder />
                     <strong>{fxStatus === "error" ? "Exchange rate unavailable." : "Loading exchange rate…"}</strong>
-                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                    <p>
                       {fxStatus === "error"
                         ? "Reconnect and select the currency again to calculate accurate rewards."
                         : `Waiting for the ${spendCurrency} rate before calculating rewards.`}
@@ -869,11 +868,11 @@ export default function CardPinCalculator() {
                     <div className="result-grid">
                       <div>
                         <h3>Why this card</h3>
-                        <p style={{ fontSize: "0.9rem" }}>{bestResult.rec.explanation}</p>
+                        <p className="result-explanation">{bestResult.rec.explanation}</p>
                       </div>
                       <div>
                         <h3>Spend calculation</h3>
-                        <p style={{ fontSize: "0.9rem" }}>
+                        <p className="result-calculation">
                           EUR {spendAmount.toFixed(2)} spend · {rewardLabel(bestResult)}
                           {isForeignSpend ? ` · EUR ${bestResult.fxFee.toFixed(2)} FX fee` : ""}
                         </p>
@@ -896,23 +895,23 @@ export default function CardPinCalculator() {
 
                     {alternatives.length > 0 && (
                       <div className="alternatives-container">
-                        <h3 style={{ marginTop: "8px" }}>Alternatives</h3>
+                        <h3>Alternatives</h3>
                         {alternatives.map((result) => (
-                          <div className="alt-card" key={result.card.id}>
-                            <span className="alt-name">{result.card.name}</span>
-                            <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
-                          </div>
+                           <div className="alt-card" key={result.card.id}>
+                             <span className="alt-name">{result.card.name}</span>
+                             <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
+                           </div>
                         ))}
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="card empty-state" style={{ textAlign: "left" }}>
-                    <strong style={{ display: "block", marginBottom: "6px" }}>No matching reward rules found.</strong>
-                    <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: "8px" }}>
+                  <div className="card empty-state empty-state--left">
+                    <strong>No matching reward rules found.</strong>
+                    <p>
                       Unsupported cards or rewards are intentionally omitted rather than assumed or guessed.
                     </p>
-                    <p style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>
+                    <p>
                       Please verify terms with your issuer before relying on any benefit.
                     </p>
                   </div>
@@ -938,27 +937,27 @@ export default function CardPinCalculator() {
               <button className="dev-close-btn" onClick={() => setShowDevPanel(false)}>&times;</button>
             </div>
             <div className="dev-panel-body">
-              <div style={{ display: "flex", gap: "12px" }}>
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
-                  <label htmlFor="dev-country" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Country</label>
+              <div className="dev-flex-row">
+                <div className="dev-flex-col">
+                  <label htmlFor="dev-country" className="dev-label">Country</label>
                   <select
                     id="dev-country"
                     value={devCountry}
                     onChange={(e) => setDevCountry(e.target.value)}
-                    style={{ padding: "8px", background: "var(--bg-surface)", border: "1px solid var(--border-color)", borderRadius: "4px", color: "var(--text-main)" }}
+                    className="dev-select"
                   >
                     <option value="be">Belgium (BE)</option>
                     <option value="de">Germany (DE)</option>
                     <option value="nl">Netherlands (NL)</option>
                   </select>
                 </div>
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
-                  <label htmlFor="dev-datatype" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Data Type</label>
+                <div className="dev-flex-col">
+                  <label htmlFor="dev-datatype" className="dev-label">Data Type</label>
                   <select
                     id="dev-datatype"
                     value={devDataType}
                     onChange={(e) => setDevDataType(e.target.value)}
-                    style={{ padding: "8px", background: "var(--bg-surface)", border: "1px solid var(--border-color)", borderRadius: "4px", color: "var(--text-main)" }}
+                    className="dev-select"
                   >
                     <option value="issuers">Issuers</option>
                     <option value="cards">Cards</option>
@@ -968,8 +967,8 @@ export default function CardPinCalculator() {
                 </div>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                <label htmlFor="dev-json" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
+              <div className="dev-flex-col">
+                <label htmlFor="dev-json" className="dev-label">
                   Paste JSON Array or Object
                 </label>
                 <textarea
@@ -983,29 +982,7 @@ export default function CardPinCalculator() {
 
               {devStatus && (
                 <div
-                  style={{
-                    padding: "10px 14px",
-                    borderRadius: "4px",
-                    fontSize: "0.9rem",
-                    backgroundColor:
-                      devStatus.type === "success"
-                        ? "rgba(63, 185, 80, 0.15)"
-                        : devStatus.type === "error"
-                        ? "rgba(248, 81, 73, 0.15)"
-                        : "rgba(88, 166, 255, 0.15)",
-                    border:
-                      devStatus.type === "success"
-                        ? "1px solid rgba(63, 185, 80, 0.3)"
-                        : devStatus.type === "error"
-                        ? "1px solid rgba(248, 81, 73, 0.3)"
-                        : "1px solid rgba(88, 166, 255, 0.3)",
-                    color:
-                      devStatus.type === "success"
-                        ? "#3fb950"
-                        : devStatus.type === "error"
-                        ? "#f85149"
-                        : "#58a6ff"
-                  }}
+                  className={`dev-status-msg dev-status-msg--${devStatus.type}`}
                 >
                   {devStatus.message}
                 </div>
@@ -1015,16 +992,7 @@ export default function CardPinCalculator() {
                 type="button"
                 onClick={handleMergeSubmit}
                 disabled={devStatus?.type === "loading"}
-                style={{
-                  padding: "12px",
-                  backgroundColor: "var(--color-primary)",
-                  color: "var(--text-inverse)",
-                  border: "none",
-                  borderRadius: "4px",
-                  fontWeight: "bold",
-                  cursor: devStatus?.type === "loading" ? "not-allowed" : "pointer",
-                  opacity: devStatus?.type === "loading" ? 0.7 : 1
-                }}
+                className="dev-submit-btn"
               >
                 Merge & Recompile Datasets
               </button>
@@ -1061,7 +1029,7 @@ export default function CardPinCalculator() {
               </div>
 
               {catalogCards.length === 0 ? (
-                <div className="empty-state" style={{ margin: "20px 0" }}>
+                <div className="empty-state empty-state--spaced">
                   No cards match your search.
                 </div>
               ) : (
@@ -1073,25 +1041,17 @@ export default function CardPinCalculator() {
                       <button
                         type="button"
                         key={card.id}
-                        className="catalog-card-item"
+                        className={`catalog-card-item ${isSelected ? "catalog-card-item--selected" : ""}`}
                         onClick={() => handleToggleCard(card.id)}
-                        style={{
-                          border: isSelected ? "1px solid var(--color-primary)" : "1px solid var(--border-color)",
-                          backgroundColor: isSelected ? "rgba(88, 166, 255, 0.05)" : "",
-                          textAlign: "left"
-                        }}
                       >
                         <div className="catalog-card-info">
                           <span className="catalog-card-issuer">{issuerName}</span>
                           <span className="catalog-card-name">{card.name}</span>
-                          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "4px" }}>
+                          <span className="catalog-card-meta">
                             {card.network.toUpperCase()} · Fee: EUR {card.annualFee} · FX: {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}%
                           </span>
                         </div>
-                        <span className="catalog-card-badge" style={{
-                          backgroundColor: isSelected ? "var(--color-primary)" : "var(--border-color)",
-                          color: isSelected ? "#fff" : "var(--text-main)"
-                        }}>
+                        <span className={`catalog-card-badge ${isSelected ? "catalog-card-badge--selected" : ""}`}>
                           {isSelected ? "In Wallet" : "Add"}
                         </span>
                       </button>
