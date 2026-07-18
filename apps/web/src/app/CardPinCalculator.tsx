@@ -3,7 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { recommendBestCard } from "@cardpin/engine";
 import type { Card, CountryDataset, Merchant } from "@cardpin/engine";
-import { getFxRate, needsFxRates, orderCardsForWalletStack } from "../lib/utils";
+import { getFxRate, needsFxRates } from "../lib/utils";
+import WalletManager from "../components/WalletManager";
+import CardPicker from "../components/CardPicker";
+import RewardDisplay from "../components/RewardDisplay";
 
 type CardCalc = {
   card: Card;
@@ -15,10 +18,6 @@ type CardCalc = {
   netValue: number;
   label: string;
 };
-
-function formatCategory(category: string) {
-  return category.replaceAll("-", " ");
-}
 
 function normalizeSpend(raw: string) {
   const parsed = Number(raw);
@@ -57,108 +56,6 @@ function cleanExplanation(explanation: string) {
   return explanation;
 }
 
-function GlobeIcon() {
-  return (
-    <svg className="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="12" cy="12" r="10" />
-      <line x1="2" y1="12" x2="22" y2="12" />
-      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-    </svg>
-  );
-}
-
-function WalletIcon() {
-  return (
-    <svg className="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
-      <line x1="2" y1="10" x2="22" y2="10" />
-    </svg>
-  );
-}
-
-function SearchIcon() {
-  return (
-    <svg className="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-      <circle cx="11" cy="11" r="8" />
-      <line x1="21" y1="21" x2="16.65" y2="16.65" />
-    </svg>
-  );
-}
-
-function CreditCardPlaceholder() {
-  return (
-    <div className="placeholder-card-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
-        <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
-        <line x1="2" y1="10" x2="22" y2="10" />
-        <line x1="6" y1="15" x2="12" y2="15" />
-      </svg>
-    </div>
-  );
-}
-
-function CardNetworkLogo({ network }: { network: string }) {
-  const net = network.toLowerCase();
-  if (net === "mastercard") {
-    return (
-      <span className="network-logo network-logo--mastercard" aria-label="Mastercard">
-        <span className="circle circle--red" />
-        <span className="circle circle--orange" />
-      </span>
-    );
-  }
-  if (net === "visa") {
-    return (
-      <span className="network-logo network-logo--visa" aria-label="Visa">
-        VISA
-      </span>
-    );
-  }
-  if (net === "amex" || net === "american-express") {
-    return (
-      <span className="network-logo network-logo--amex" aria-label="American Express">
-        AMEX
-      </span>
-    );
-  }
-  return <span className="network-logo network-logo--generic">{network.toUpperCase()}</span>;
-}
-
-function getCardLastFour(id: string) {
-  let hash = 0;
-  for (let i = 0; i < id.length; i++) {
-    hash = id.charCodeAt(i) + ((hash << 5) - hash);
-  }
-  const numeric = Math.abs(hash % 10000);
-  return numeric.toString().padStart(4, "4");
-}
-
-function getCardThemeClass(issuerId: string, network: string) {
-  const normalized = issuerId.toLowerCase();
-  if (normalized.includes("american-express")) {
-    if (normalized.includes("gold")) return "card-theme-amex-gold";
-    if (normalized.includes("platinum")) return "card-theme-amex-platinum";
-    return "card-theme-amex-green";
-  }
-  if (normalized.includes("n26")) {
-    if (normalized.includes("metal")) return "card-theme-n26-metal";
-    return "card-theme-n26-standard";
-  }
-  if (normalized.includes("dkb")) return "card-theme-dkb";
-  if (normalized.includes("deutsche-bank") || normalized.includes("miles-and-more")) return "card-theme-deutsche-bank";
-  if (normalized.includes("commerzbank")) return "card-theme-commerzbank";
-  if (normalized.includes("barclays")) return "card-theme-barclays";
-  if (normalized.includes("hanseatic")) return "card-theme-hanseatic";
-  if (normalized.includes("advanzia")) return "card-theme-advanzia";
-  if (normalized.includes("revolut")) {
-    if (normalized.includes("metal")) return "card-theme-revolut-metal";
-  }
-  
-  if (network === "visa") return "card-theme-fallback-visa";
-  if (network === "mastercard") return "card-theme-fallback-mastercard";
-  return "card-theme-fallback-amex";
-}
-
 export default function CardPinCalculator() {
   const [country, setCountry] = useState<string>("be");
   const [dataset, setDataset] = useState<CountryDataset | null>(null);
@@ -181,7 +78,7 @@ export default function CardPinCalculator() {
   const [cardMonthlySpends, setCardMonthlySpends] = useState<Record<string, number>>({});
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
-  // Catalog & Portability States
+  // Catalog States
   const [catalogSearch, setCatalogSearch] = useState<string>("");
   const catalogDialogRef = useRef<HTMLDialogElement>(null);
   const catalogSearchRef = useRef<HTMLInputElement>(null);
@@ -514,8 +411,6 @@ export default function CardPinCalculator() {
   const isFxRateMissing = getFxRate(fxRates, spendCurrency) === null;
   const bestResult = cardResults.find((result) => result.rule) ?? null;
   const alternatives = cardResults.filter((result) => result.card.id !== bestResult?.card.id).slice(0, 4);
-  const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
-  const stackedCards = orderCardsForWalletStack(ownedCards, activeCardId);
 
   return (
     <>
@@ -562,13 +457,13 @@ export default function CardPinCalculator() {
                     <div>
                       <h3>1. Select Owned Cards</h3>
                       <p>
-                        Choose country and audience, then select cards in <strong>Step 2</strong>. Your cards are stored in your browser&apos;s local storage.
+                        Choose country and audience, then select cards in the wallet. Your cards are stored in your browser&apos;s local storage.
                       </p>
                     </div>
                     <div>
                       <h3>2. Search & Compare</h3>
                       <p>
-                        Enter a merchant name or choose a category in <strong>Step 3</strong>. Enter your spend amount to calculate reward net value.
+                        Enter a merchant name or choose a category. Enter your spend amount to calculate reward net value.
                       </p>
                     </div>
                     <div>
@@ -589,394 +484,66 @@ export default function CardPinCalculator() {
             </section>
           )}
 
-          <main className="flow-layout-stacked">
-            <section className="card step-card step-card--horizontal">
-              <div className="step-header">
-                <div className="step-icon-wrapper">
-                  <GlobeIcon />
-                </div>
-                <div className="step-title-block">
-                  <div className="step-kicker">Step 1</div>
-                  <h2>Choose Country & Audience</h2>
-                </div>
-              </div>
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="country-select">Country</label>
-                  <select id="country-select" value={country} onChange={(event) => setCountry(event.target.value)}>
-                                  <option value="be">Belgium</option>
-                                  <option value="de">Germany</option>
-                                  <option value="nl">Netherlands</option>
-                                </select>
-                </div>
+          <div className="redesigned-grid-container">
+            {/* Top compact controls + Wallet panel */}
+            <WalletManager
+              country={country}
+              setCountry={setCountry}
+              audience={audience}
+              setAudience={setAudience}
+              ownedCardIds={ownedCardIds}
+              ownedCards={ownedCards}
+              availableCards={availableCards}
+              activeCardId={activeCardId}
+              setActiveCardId={setActiveCardId}
+              cardMonthlySpends={cardMonthlySpends}
+              handleUpdateMonthlySpend={handleUpdateMonthlySpend}
+              handleToggleCard={handleToggleCard}
+              handleExportWallet={handleExportWallet}
+              handleImportWallet={handleImportWallet}
+              setOwnedCardIds={setOwnedCardIds}
+              dataset={dataset}
+              catalogSearch={catalogSearch}
+              setCatalogSearch={setCatalogSearch}
+              catalogCards={catalogCards}
+              handleOpenCatalog={handleOpenCatalog}
+              handleCloseCatalog={handleCloseCatalog}
+              catalogDialogRef={catalogDialogRef}
+              catalogSearchRef={catalogSearchRef}
+            />
 
-                <div className="form-group">
-                  <label>Audience</label>
-                  <div className="segmented-control" role="group" aria-label="Audience">
-                    <button type="button" aria-pressed={audience === "consumer"} className={audience === "consumer" ? "active" : ""} onClick={() => setAudience("consumer")}>
-                      Personal
-                    </button>
-                    <button type="button" aria-pressed={audience === "business"} className={audience === "business" ? "active" : ""} onClick={() => setAudience("business")}>
-                      Business
-                    </button>
-                  </div>
-                  <p className="helper-text">Personal is for everyday cards. Business is for company cards.</p>
-                </div>
-              </div>
-            </section>
+            {/* Optimize Transaction Form */}
+            <CardPicker
+              merchantQuery={merchantQuery}
+              setMerchantQuery={setMerchantQuery}
+              categoryQuery={categoryQuery}
+              setCategoryQuery={setCategoryQuery}
+              spendInput={spendInput}
+              setSpendInput={setSpendInput}
+              spendCurrency={spendCurrency}
+              setSpendCurrency={setSpendCurrency}
+              categoriesList={categoriesList}
+              ownedCardsLength={ownedCards.length}
+              handleSpendBlur={handleSpendBlur}
+              handleOpenCatalog={handleOpenCatalog}
+            />
 
-            <div className="columns-grid">
-              <div className="left-column">
-                <section className="card step-card">
-                  <div className="step-header">
-                    <div className="step-icon-wrapper">
-                      <WalletIcon />
-                    </div>
-                    <div className="step-title-block" style={{ width: "100%" }}>
-                      <div className="step-kicker">Step 2</div>
-                      <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
-                        <h2>Your Wallet</h2>
-                        <span className="quiet-pill">{ownedCards.length} in wallet</span>
-                      </div>
-                    </div>
-                  </div>
-
-                {ownedCards.length === 0 ? (
-                  <div className="empty-state empty-state--spaced">
-                    Your wallet is empty. Add some cards to get started!
-                  </div>
-                ) : (
-                  <>
-                    <div className="wallet-stack">
-                      {stackedCards.map((card) => {
-                        const issuerName = dataset?.issuers.find((issuer) => issuer.id === card.issuerId)?.name || "";
-                        const isActive = activeCardId === card.id;
-
-                        return (
-                          <button
-                            type="button"
-                            key={card.id}
-                            className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : "wallet-card--collapsed"}`}
-                            onClick={() => setActiveCardId(card.id)}
-                            aria-pressed={isActive}
-                            aria-label={isActive ? `${card.name}, selected` : `Select ${card.name}`}
-                          >
-                            <span className="card-texture" aria-hidden="true" />
-                            {isActive ? (
-                              <>
-                                <span className="wallet-card__topline">
-                                  <span className="card-issuer-name">{issuerName}</span>
-                                  <svg className="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: "16px", height: "16px", opacity: 0.8 }}>
-                                    <path d="M5 17a8 8 0 0 1 0-10" />
-                                    <path d="M9 19a12 12 0 0 1 0-14" />
-                                    <path d="M13 21a16 16 0 0 1 0-18" />
-                                  </svg>
-                                </span>
-                                <span className="wallet-card__middle">
-                                  <span className="card-chip" aria-hidden="true" />
-                                  <span className="card-number-embossed">
-                                    •••• •••• •••• {getCardLastFour(card.id)}
-                                  </span>
-                                </span>
-                                <span className="wallet-card__details">
-                                  <span className="wallet-card__bottom-row">
-                                    <span className="card-holder-info">
-                                      <span className="card-name-display">{card.name}</span>
-                                      <span className="card-expiry-embossed">
-                                        <span className="expiry-label">VALID THRU</span>
-                                        <span className="expiry-value">12/29</span>
-                                      </span>
-                                    </span>
-                                    <CardNetworkLogo network={card.network} />
-                                  </span>
-                                </span>
-                              </>
-                            ) : (
-                              <span className="wallet-card__collapsed-row">
-                                <span className="card-issuer-name">{issuerName}</span>
-                                <span className="card-name-display">{card.name}</span>
-                                <CardNetworkLogo network={card.network} />
-                              </span>
-                            )}
-                          </button>
-                        );
-                      })}
-                    </div>
-
-                    {activeCard && (
-                      <div className="card-config-box">
-                        <div className="card-config-header">
-                          <span className="card-config-title">
-                            Selected Card Settings
-                          </span>
-                          <button
-                            type="button"
-                            className="text-action text-action--danger"
-                            onClick={() => handleToggleCard(activeCard.id)}
-                          >
-                            Remove from Wallet
-                          </button>
-                        </div>
-                        <div className="card-config-spend-row">
-                          <label htmlFor={`monthly-spend-${activeCard.id}`} className="card-config-label">Spent this month:</label>
-                          <div className="spend-input-wrapper spend-input-wrapper--small">
-                            <span className="currency-prefix">EUR</span>
-                            <input
-                              id={`monthly-spend-${activeCard.id}`}
-                              aria-label={`Spent this month on ${activeCard.name}`}
-                              type="number"
-                              min="0"
-                              value={cardMonthlySpends[activeCard.id] || ""}
-                              onChange={(e) => handleUpdateMonthlySpend(activeCard.id, Number(e.target.value) || 0)}
-                              placeholder="0"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-                  </>
-                )}
-
-                <div className="wallet-actions">
-                  <button
-                    type="button"
-                    className="btn btn--primary"
-                    onClick={handleOpenCatalog}
-                  >
-                    + Add Cards
-                  </button>
-
-                  <details className="wallet-menu">
-                    <summary className="wallet-menu__trigger" role="button" aria-label="Wallet options">•••</summary>
-                    <div className="wallet-menu__popover">
-                      {ownedCardIds.length > 0 && (
-                        <>
-                          <button type="button" onClick={handleExportWallet}>Export wallet</button>
-                          <button
-                            type="button"
-                            className="wallet-menu__danger"
-                            onClick={() => {
-                              if (confirm("Are you sure you want to clear your wallet?")) {
-                                setOwnedCardIds([]);
-                                localStorage.setItem(`cardpin:owned_cards:${country}`, JSON.stringify([]));
-                              }
-                            }}
-                          >
-                            Clear wallet
-                          </button>
-                        </>
-                      )}
-                      <label>
-                        Import wallet
-                        <input
-                          type="file"
-                          accept=".json"
-                          onChange={handleImportWallet}
-                          className="visually-hidden"
-                        />
-                      </label>
-                    </div>
-                  </details>
-                </div>
-              </section>
-            </div>
-
-            <div className="right-column">
-              <section className="card step-card step-card--search">
-                <div className="step-header">
-                  <div className="step-icon-wrapper">
-                    <SearchIcon />
-                  </div>
-                  <div className="step-title-block">
-                    <div className="step-kicker">Step 3</div>
-                    <h2>Search Purchase</h2>
-                  </div>
-                </div>
-                <p className="helper-text prominent">Search a merchant or choose a category. You can use either one.</p>
-                
-                <div className="search-card-content-wrapper">
-                  <fieldset className="search-fields" disabled={ownedCards.length === 0}>
-                    <div className="form-row">
-                      <div className="form-group">
-                        <label htmlFor="merchant-input">Merchant</label>
-                        <input
-                          id="merchant-input"
-                          type="text"
-                          placeholder="Carrefour, Q8, Booking.com"
-                          value={merchantQuery}
-                          onChange={(event) => setMerchantQuery(event.target.value)}
-                        />
-                      </div>
-
-                      <div className="form-group">
-                        <label htmlFor="category-select">Category</label>
-                        <select id="category-select" value={categoryQuery} onChange={(event) => setCategoryQuery(event.target.value)}>
-                          <option value="">Choose a category</option>
-                          {categoriesList.map((category) => (
-                            <option key={category} value={category}>
-                              {formatCategory(category)}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="form-row">
-                      <div className="form-group" style={{ flex: "2" }}>
-                        <label htmlFor="spend-input">Spend Amount</label>
-                        <div className="spend-input-wrapper">
-                          <span className="currency-prefix">{spendCurrency}</span>
-                          <input
-                            id="spend-input"
-                            inputMode="decimal"
-                            type="number"
-                            min="0"
-                            value={spendInput}
-                            onBlur={handleSpendBlur}
-                            onChange={(event) => setSpendInput(event.target.value)}
-                          />
-                        </div>
-                      </div>
-
-                      <div className="form-group" style={{ flex: "1" }}>
-                        <label htmlFor="currency-select">Currency</label>
-                        <select
-                          id="currency-select"
-                          value={spendCurrency}
-                          onChange={(e) => setSpendCurrency(e.target.value)}
-                        >
-                          <option value="EUR">EUR (€)</option>
-                          <option value="USD">USD ($)</option>
-                          <option value="GBP">GBP (£)</option>
-                          <option value="CHF">CHF (₣)</option>
-                          <option value="JPY">JPY (¥)</option>
-                        </select>
-                      </div>
-                    </div>
-                    
-                    <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
-                      Selecting a non-EUR currency fetches live exchange rates and automatically applies the card&apos;s foreign transaction fee.
-                    </p>
-                  </fieldset>
-
-                  {ownedCards.length === 0 && (
-                    <div className="search-lock-overlay">
-                      <div className="search-lock-message">
-                        <span className="lock-icon" role="img" aria-label="lock">🔒</span>
-                        <h3>Search is Locked</h3>
-                        <p style={{ marginBottom: "16px" }}>Add at least one card to your wallet in Step 2 to search merchants and optimize rewards.</p>
-                        <button type="button" className="btn btn--primary prerequisite-action" onClick={handleOpenCatalog}>
-                          Add a Card to Unlock
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </section>
-
-              <section className="recommendation-area">
-                {ownedCards.length === 0 ? (
-                  <div className="card empty-state">
-                    <CreditCardPlaceholder />
-                    <strong>No cards selected.</strong>
-                    <p>
-                      Select cards in your wallet under <strong>Step 2</strong> to start comparing rewards.
-                    </p>
-                  </div>
-                ) : !hasSearch ? (
-                  <div className="card empty-state">
-                    <CreditCardPlaceholder />
-                    <strong>Ready to search.</strong>
-                    <p>
-                      Enter a merchant or choose a category under <strong>Step 3</strong> to calculate expected rewards.
-                    </p>
-                  </div>
-                ) : isFxRateMissing ? (
-                  <div className="card empty-state" role="status">
-                    <CreditCardPlaceholder />
-                    <strong>{fxStatus === "error" ? "Exchange rate unavailable." : "Loading exchange rate…"}</strong>
-                    <p>
-                      {fxStatus === "error"
-                        ? "Reconnect and select the currency again to calculate accurate rewards."
-                        : `Waiting for the ${spendCurrency} rate before calculating rewards.`}
-                    </p>
-                  </div>
-                ) : bestResult ? (
-                  <div className="result-box">
-                    <div className="result-header">
-                      <div>
-                        <span className="badge">Best Card</span>
-                        <h2>{bestResult.card.name}</h2>
-                        <p className="card-meta">
-                          {bestResult.card.network.toUpperCase()} · {bestResult.label}
-                        </p>
-                      </div>
-                      <div className="val-display">
-                        <div className="val-amount">{rewardAmount(bestResult)}</div>
-                        <div className="val-label">Expected reward</div>
-                      </div>
-                    </div>
-
-                    <div className="result-grid">
-                      <div>
-                        <h3>Why this card</h3>
-                        <p className="result-explanation">{cleanExplanation(bestResult.rec.explanation)}</p>
-                      </div>
-                      <div>
-                        <h3>Spend calculation</h3>
-                        <p className="result-calculation">
-                          EUR {spendAmount.toFixed(2)} spend · {rewardLabel(bestResult)}
-                          {isForeignSpend ? ` · EUR ${bestResult.fxFee.toFixed(2)} FX fee` : ""}
-                        </p>
-                      </div>
-                    </div>
-
-                    <div className="source-strip">
-                      {bestResult.rule && (
-                        <a href={bestResult.rule.source.sourceUrl} target="_blank" rel="noopener noreferrer">
-                          Reward source
-                        </a>
-                      )}
-                      {bestResult.card.sourceProof && (
-                        <a href={bestResult.card.sourceProof.sourceUrl} target="_blank" rel="noopener noreferrer">
-                          Card source
-                        </a>
-                      )}
-                      <span>Verified {bestResult.rule?.source.verifiedAt ?? bestResult.card.sourceProof?.verifiedAt ?? "unknown"}</span>
-                    </div>
-
-                    {alternatives.length > 0 && (
-                      <div className="alternatives-container">
-                        <h3>Alternatives</h3>
-                        {alternatives.map((result) => {
-                          const bestValue = bestResult ? bestResult.netValue : 0;
-                          const percentage = bestValue > 0 ? Math.min(100, Math.max(0, (result.netValue / bestValue) * 100)) : 0;
-                          return (
-                            <div className="alt-card" key={result.card.id}>
-                              <div className="alt-card-bar" style={{ width: `${percentage}%` }} />
-                              <span className="alt-name">{result.card.name}</span>
-                              <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <div className="card empty-state empty-state--left">
-                    <strong>No matching reward rules found.</strong>
-                    <p>
-                      Unsupported cards or rewards are intentionally omitted rather than assumed or guessed.
-                    </p>
-                    <p>
-                      Please verify terms with your issuer before relying on any benefit.
-                    </p>
-                  </div>
-                )}
-              </section>
-            </div>
+            {/* Recommendation Outputs */}
+            <RewardDisplay
+              ownedCardsLength={ownedCards.length}
+              hasSearch={hasSearch}
+              isFxRateMissing={isFxRateMissing}
+              fxStatus={fxStatus}
+              spendCurrency={spendCurrency}
+              bestResult={bestResult}
+              rewardAmount={rewardAmount}
+              cleanExplanation={cleanExplanation}
+              rewardLabel={rewardLabel}
+              spendAmount={spendAmount}
+              isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
+              alternatives={alternatives}
+            />
           </div>
-        </main>
         </>
       )}
 
@@ -1057,68 +624,6 @@ export default function CardPinCalculator() {
           </div>
         </div>
       )}
-
-      <dialog
-        ref={catalogDialogRef}
-        className="catalog-dialog"
-        aria-labelledby="catalog-title"
-        onClick={(event) => {
-          if (event.target === event.currentTarget) handleCloseCatalog();
-        }}
-      >
-          <div className="dev-panel catalog-panel">
-            <div className="dev-panel-header">
-              <h2 id="catalog-title">Card Catalog ({country.toUpperCase()})</h2>
-              <button type="button" className="dev-close-btn" aria-label="Close card catalog" onClick={handleCloseCatalog}>
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div className="dev-panel-body">
-              <div className="search-input-wrapper">
-                <input
-                  ref={catalogSearchRef}
-                  type="text"
-                  className="search-input-field"
-                  placeholder="Search by card name or issuer..."
-                  value={catalogSearch}
-                  onChange={(e) => setCatalogSearch(e.target.value)}
-                />
-              </div>
-
-              {catalogCards.length === 0 ? (
-                <div className="empty-state empty-state--spaced">
-                  No cards match your search.
-                </div>
-              ) : (
-                <div className="catalog-grid">
-                  {catalogCards.map((card) => {
-                    const isSelected = ownedCardIds.includes(card.id);
-                    const issuerName = dataset?.issuers.find((i) => i.id === card.issuerId)?.name || "";
-                    return (
-                      <button
-                        type="button"
-                        key={card.id}
-                        className={`catalog-card-item ${isSelected ? "catalog-card-item--selected" : ""}`}
-                        onClick={() => handleToggleCard(card.id)}
-                      >
-                        <div className="catalog-card-info">
-                          <span className="catalog-card-issuer">{issuerName}</span>
-                          <span className="catalog-card-name">{card.name}</span>
-                          <span className="catalog-card-meta">
-                            {card.network.toUpperCase()} · Fee: EUR {card.annualFee} · FX: {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}%
-                          </span>
-                        </div>
-                        <span className={`catalog-card-badge ${isSelected ? "catalog-card-badge--selected" : ""}`}>
-                          {isSelected ? "In Wallet" : "Add"}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              )}
-            </div>
-          </div>
-      </dialog>
     </>
   );
 }

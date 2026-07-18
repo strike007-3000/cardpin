@@ -2238,3 +2238,151 @@ input[type="number"] {
   background-color: var(--color-primary) !important;
   color: var(--text-inverse) !important;
 }
+
+/* Redesigned Grid Container and Fintech Utilities Styles */
+
+.redesigned-grid-container {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+}
+
+@media (min-width: 960px) {
+  .redesigned-grid-container {
+    grid-template-columns: 360px 1fr;
+    align-items: start;
+  }
+  
+  /* Make the transaction optimization and reward displays sit in the main right-hand column */
+  .wallet-manager-layout {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+  }
+  
+  .search-card {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  
+  .recommendation-area {
+    grid-column: 2;
+    grid-row: 2;
+  }
+}
+
+.compact-controls-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  background: var(--bg-surface);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+
+.compact-control-group {
+  display: flex;
+  align-items: center;
+}
+
+.select-wrapper-compact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+}
+
+.compact-select {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 4px 20px 4px 4px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+}
+
+.compact-select:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+
+.segmented-control--compact {
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+
+.segmented-control--compact button {
+  padding: 4px 10px;
+  font-size: 0.82rem;
+  border-radius: 4px;
+}
+
+.wallet-panel {
+  border: 1px solid var(--border-color);
+  background: var(--bg-surface);
+}
+
+.wallet-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+
+.title-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-main);
+}
+
+.title-with-icon h2 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.title-with-icon svg {
+  color: var(--color-primary);
+}
+
+.wallet-count-badge {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.btn--add-cards {
+  flex-grow: 1;
+}
+
+.helper-text--compact {
+  margin-top: 8px;
+  font-size: 0.8rem;
+}
+
+.best-card-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.alternatives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
