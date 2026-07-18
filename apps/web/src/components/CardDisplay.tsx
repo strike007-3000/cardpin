@@ -14,7 +14,7 @@ type CardCalc = {
   label: string;
 };
 
-interface RewardDisplayProps {
+interface CardDisplayProps {
   ownedCardsLength: number;
   hasSearch: boolean;
   isFxRateMissing: boolean;
@@ -41,7 +41,7 @@ function CreditCardPlaceholder() {
   );
 }
 
-export default function RewardDisplay({
+export default function CardDisplay({
   ownedCardsLength,
   hasSearch,
   isFxRateMissing,
@@ -54,7 +54,7 @@ export default function RewardDisplay({
   spendAmount,
   isForeignSpend,
   alternatives,
-}: RewardDisplayProps) {
+}: CardDisplayProps) {
   if (ownedCardsLength === 0) {
     return (
       <div className="card empty-state">

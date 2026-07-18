@@ -4,9 +4,11 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { recommendBestCard } from "@cardpin/engine";
 import type { Card, CountryDataset, Merchant } from "@cardpin/engine";
 import { getFxRate, needsFxRates } from "../lib/utils";
-import WalletManager from "../components/WalletManager";
-import CardPicker from "../components/CardPicker";
-import RewardDisplay from "../components/RewardDisplay";
+import MainLayout from "../components/MainLayout";
+import NavigationBar from "../components/NavigationBar";
+import MerchantSelector from "../components/MerchantSelector";
+import CardDisplay from "../components/CardDisplay";
+import WalletSetup from "../components/WalletSetup";
 
 type CardCalc = {
   card: Card;
@@ -90,6 +92,16 @@ export default function CardPinCalculator() {
   const [devDataType, setDevDataType] = useState<string>("cards");
   const [devJson, setDevJson] = useState<string>("");
   const [devStatus, setDevStatus] = useState<{ type: "success" | "error" | "loading"; message: string } | null>(null);
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const spendAmount = normalizeSpend(spendInput);
 
@@ -252,6 +264,7 @@ export default function CardPinCalculator() {
     localStorage.setItem("cardpin:welcome_dismissed", "true");
   }
 
+  // Export/Import Wallet
   function handleExportWallet() {
     const dataStr = JSON.stringify({ cardIds: ownedCardIds });
     const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
@@ -484,66 +497,68 @@ export default function CardPinCalculator() {
             </section>
           )}
 
-          <div className="redesigned-grid-container">
-            {/* Top compact controls + Wallet panel */}
-            <WalletManager
-              country={country}
-              setCountry={setCountry}
-              audience={audience}
-              setAudience={setAudience}
-              ownedCardIds={ownedCardIds}
-              ownedCards={ownedCards}
-              availableCards={availableCards}
-              activeCardId={activeCardId}
-              setActiveCardId={setActiveCardId}
-              cardMonthlySpends={cardMonthlySpends}
-              handleUpdateMonthlySpend={handleUpdateMonthlySpend}
-              handleToggleCard={handleToggleCard}
-              handleExportWallet={handleExportWallet}
-              handleImportWallet={handleImportWallet}
-              setOwnedCardIds={setOwnedCardIds}
-              dataset={dataset}
-              catalogSearch={catalogSearch}
-              setCatalogSearch={setCatalogSearch}
-              catalogCards={catalogCards}
-              handleOpenCatalog={handleOpenCatalog}
-              handleCloseCatalog={handleCloseCatalog}
-              catalogDialogRef={catalogDialogRef}
-              catalogSearchRef={catalogSearchRef}
-            />
-
-            {/* Optimize Transaction Form */}
-            <CardPicker
-              merchantQuery={merchantQuery}
-              setMerchantQuery={setMerchantQuery}
-              categoryQuery={categoryQuery}
-              setCategoryQuery={setCategoryQuery}
-              spendInput={spendInput}
-              setSpendInput={setSpendInput}
-              spendCurrency={spendCurrency}
-              setSpendCurrency={setSpendCurrency}
-              categoriesList={categoriesList}
-              ownedCardsLength={ownedCards.length}
-              handleSpendBlur={handleSpendBlur}
-              handleOpenCatalog={handleOpenCatalog}
-            />
-
-            {/* Recommendation Outputs */}
-            <RewardDisplay
-              ownedCardsLength={ownedCards.length}
-              hasSearch={hasSearch}
-              isFxRateMissing={isFxRateMissing}
-              fxStatus={fxStatus}
-              spendCurrency={spendCurrency}
-              bestResult={bestResult}
-              rewardAmount={rewardAmount}
-              cleanExplanation={cleanExplanation}
-              rewardLabel={rewardLabel}
-              spendAmount={spendAmount}
-              isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
-              alternatives={alternatives}
-            />
-          </div>
+          <MainLayout
+            navigationBar={<NavigationBar isScrolled={isScrolled} />}
+            walletSetup={
+              <WalletSetup
+                country={country}
+                setCountry={setCountry}
+                audience={audience}
+                setAudience={setAudience}
+                ownedCardIds={ownedCardIds}
+                ownedCards={ownedCards}
+                availableCards={availableCards}
+                activeCardId={activeCardId}
+                setActiveCardId={setActiveCardId}
+                cardMonthlySpends={cardMonthlySpends}
+                handleUpdateMonthlySpend={handleUpdateMonthlySpend}
+                handleToggleCard={handleToggleCard}
+                handleExportWallet={handleExportWallet}
+                handleImportWallet={handleImportWallet}
+                setOwnedCardIds={setOwnedCardIds}
+                dataset={dataset}
+                catalogSearch={catalogSearch}
+                setCatalogSearch={setCatalogSearch}
+                catalogCards={catalogCards}
+                handleOpenCatalog={handleOpenCatalog}
+                handleCloseCatalog={handleCloseCatalog}
+                catalogDialogRef={catalogDialogRef}
+                catalogSearchRef={catalogSearchRef}
+              />
+            }
+            merchantSelector={
+              <MerchantSelector
+                merchantQuery={merchantQuery}
+                setMerchantQuery={setMerchantQuery}
+                categoryQuery={categoryQuery}
+                setCategoryQuery={setCategoryQuery}
+                spendInput={spendInput}
+                setSpendInput={setSpendInput}
+                spendCurrency={spendCurrency}
+                setSpendCurrency={setSpendCurrency}
+                categoriesList={categoriesList}
+                ownedCardsLength={ownedCards.length}
+                handleSpendBlur={handleSpendBlur}
+                handleOpenCatalog={handleOpenCatalog}
+              />
+            }
+            cardDisplay={
+              <CardDisplay
+                ownedCardsLength={ownedCards.length}
+                hasSearch={hasSearch}
+                isFxRateMissing={isFxRateMissing}
+                fxStatus={fxStatus}
+                spendCurrency={spendCurrency}
+                bestResult={bestResult}
+                rewardAmount={rewardAmount}
+                cleanExplanation={cleanExplanation}
+                rewardLabel={rewardLabel}
+                spendAmount={spendAmount}
+                isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
+                alternatives={alternatives}
+              />
+            }
+          />
         </>
       )}
 

@@ -85,7 +85,7 @@ function getCardThemeClass(issuerId: string, network: string) {
   return "card-theme-fallback-amex";
 }
 
-interface WalletManagerProps {
+interface WalletSetupProps {
   country: string;
   setCountry: (country: string) => void;
   audience: "consumer" | "business";
@@ -111,7 +111,7 @@ interface WalletManagerProps {
   catalogSearchRef: React.RefObject<HTMLInputElement | null>;
 }
 
-export default function WalletManager({
+export default function WalletSetup({
   country,
   setCountry,
   audience,
@@ -134,7 +134,7 @@ export default function WalletManager({
   handleCloseCatalog,
   catalogDialogRef,
   catalogSearchRef,
-}: WalletManagerProps) {
+}: WalletSetupProps) {
   const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
 
   return (

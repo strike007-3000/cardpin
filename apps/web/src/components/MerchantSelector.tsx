@@ -15,7 +15,7 @@ function formatCategory(category: string) {
   return category.replaceAll("-", " ");
 }
 
-interface CardPickerProps {
+interface MerchantSelectorProps {
   merchantQuery: string;
   setMerchantQuery: (q: string) => void;
   categoryQuery: string;
@@ -30,7 +30,7 @@ interface CardPickerProps {
   handleOpenCatalog: () => void;
 }
 
-export default function CardPicker({
+export default function MerchantSelector({
   merchantQuery,
   setMerchantQuery,
   categoryQuery,
@@ -43,7 +43,7 @@ export default function CardPicker({
   ownedCardsLength,
   handleSpendBlur,
   handleOpenCatalog,
-}: CardPickerProps) {
+}: MerchantSelectorProps) {
   return (
     <section className="card search-card">
       <div className="search-card-header">
