@@ -42,6 +42,21 @@ function rewardAmount(result: CardCalc) {
   return `EUR ${result.netValue.toFixed(2)}`;
 }
 
+function cleanExplanation(explanation: string) {
+  if (explanation.startsWith('Fallback rule "')) {
+    const match = explanation.match(/Fallback rule "([^"]+)" matched for card (.+)/);
+    if (match) {
+      const [, ruleName, cardName] = match;
+      const cleanRule = ruleName
+        .replaceAll("-", " ")
+        .replace("points", "rewards")
+        .replace("base", "general spending");
+      return `Earns rewards on ${cleanRule} under your ${cardName} terms.`;
+    }
+  }
+  return explanation;
+}
+
 function GlobeIcon() {
   return (
     <svg className="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -82,6 +97,42 @@ function CreditCardPlaceholder() {
   );
 }
 
+function CardNetworkLogo({ network }: { network: string }) {
+  const net = network.toLowerCase();
+  if (net === "mastercard") {
+    return (
+      <span className="network-logo network-logo--mastercard" aria-label="Mastercard">
+        <span className="circle circle--red" />
+        <span className="circle circle--orange" />
+      </span>
+    );
+  }
+  if (net === "visa") {
+    return (
+      <span className="network-logo network-logo--visa" aria-label="Visa">
+        VISA
+      </span>
+    );
+  }
+  if (net === "amex" || net === "american-express") {
+    return (
+      <span className="network-logo network-logo--amex" aria-label="American Express">
+        AMEX
+      </span>
+    );
+  }
+  return <span className="network-logo network-logo--generic">{network.toUpperCase()}</span>;
+}
+
+function getCardLastFour(id: string) {
+  let hash = 0;
+  for (let i = 0; i < id.length; i++) {
+    hash = id.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const numeric = Math.abs(hash % 10000);
+  return numeric.toString().padStart(4, "4");
+}
+
 function getCardThemeClass(issuerId: string, network: string) {
   const normalized = issuerId.toLowerCase();
   if (normalized.includes("american-express")) {
@@ -99,6 +150,9 @@ function getCardThemeClass(issuerId: string, network: string) {
   if (normalized.includes("barclays")) return "card-theme-barclays";
   if (normalized.includes("hanseatic")) return "card-theme-hanseatic";
   if (normalized.includes("advanzia")) return "card-theme-advanzia";
+  if (normalized.includes("revolut")) {
+    if (normalized.includes("metal")) return "card-theme-revolut-metal";
+  }
   
   if (network === "visa") return "card-theme-fallback-visa";
   if (network === "mastercard") return "card-theme-fallback-mastercard";
@@ -535,55 +589,60 @@ export default function CardPinCalculator() {
             </section>
           )}
 
-          <main className="flow-layout">
-            <div className="left-column">
-              <section className="card step-card">
-                <div className="step-header">
+          <main className="flow-layout-stacked">
+            <section className="card step-card step-card--horizontal">
+              <div className="step-header">
+                <div className="step-icon-wrapper">
                   <GlobeIcon />
-                  <div className="step-title-block">
-                    <div className="step-kicker">Step 1</div>
-                    <h2>Choose Country & Audience</h2>
-                  </div>
                 </div>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="country-select">Country</label>
-                    <select id="country-select" value={country} onChange={(event) => setCountry(event.target.value)}>
-                                    <option value="be">Belgium</option>
-                                    <option value="de">Germany</option>
-                                    <option value="nl">Netherlands</option>
-                                  </select>
-                  </div>
+                <div className="step-title-block">
+                  <div className="step-kicker">Step 1</div>
+                  <h2>Choose Country & Audience</h2>
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="country-select">Country</label>
+                  <select id="country-select" value={country} onChange={(event) => setCountry(event.target.value)}>
+                                  <option value="be">Belgium</option>
+                                  <option value="de">Germany</option>
+                                  <option value="nl">Netherlands</option>
+                                </select>
+                </div>
 
-                  <div className="form-group">
-                    <label>Audience</label>
-                    <div className="segmented-control" role="group" aria-label="Audience">
-                      <button type="button" aria-pressed={audience === "consumer"} className={audience === "consumer" ? "active" : ""} onClick={() => setAudience("consumer")}>
-                        Personal
-                      </button>
-                      <button type="button" aria-pressed={audience === "business"} className={audience === "business" ? "active" : ""} onClick={() => setAudience("business")}>
-                        Business
-                      </button>
-                    </div>
-                    <p className="helper-text">Personal is for everyday cards. Business is for company cards.</p>
+                <div className="form-group">
+                  <label>Audience</label>
+                  <div className="segmented-control" role="group" aria-label="Audience">
+                    <button type="button" aria-pressed={audience === "consumer"} className={audience === "consumer" ? "active" : ""} onClick={() => setAudience("consumer")}>
+                      Personal
+                    </button>
+                    <button type="button" aria-pressed={audience === "business"} className={audience === "business" ? "active" : ""} onClick={() => setAudience("business")}>
+                      Business
+                    </button>
                   </div>
+                  <p className="helper-text">Personal is for everyday cards. Business is for company cards.</p>
                 </div>
-              </section>
+              </div>
+            </section>
 
-              <section className="card step-card">
-                <div className="step-header">
-                  <WalletIcon />
-                  <div className="step-title-block">
-                    <div className="step-kicker">Step 2</div>
-                    <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
-                      <h2>Your Wallet</h2>
-                      <span className="quiet-pill">{ownedCards.length} in wallet</span>
+            <div className="columns-grid">
+              <div className="left-column">
+                <section className="card step-card">
+                  <div className="step-header">
+                    <div className="step-icon-wrapper">
+                      <WalletIcon />
+                    </div>
+                    <div className="step-title-block" style={{ width: "100%" }}>
+                      <div className="step-kicker">Step 2</div>
+                      <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
+                        <h2>Your Wallet</h2>
+                        <span className="quiet-pill">{ownedCards.length} in wallet</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
                 {ownedCards.length === 0 ? (
-                  <div className="empty-state" style={{ margin: "20px 0" }}>
+                  <div className="empty-state empty-state--spaced">
                     Your wallet is empty. Add some cards to get started!
                   </div>
                 ) : (
@@ -597,19 +656,48 @@ export default function CardPinCalculator() {
                           <button
                             type="button"
                             key={card.id}
-                            className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : ""}`}
+                            className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : "wallet-card--collapsed"}`}
                             onClick={() => setActiveCardId(card.id)}
                             aria-pressed={isActive}
                             aria-label={isActive ? `${card.name}, selected` : `Select ${card.name}`}
                           >
-                            <span className="wallet-card__topline">
-                              <span className="card-issuer-name">{issuerName}</span>
-                              <span className="card-chip" aria-hidden="true" />
-                            </span>
-                            <span className="wallet-card__details">
-                              <span className="card-name-display">{card.name}</span>
-                              <span className="card-network-logo">{card.network}</span>
-                            </span>
+                            <span className="card-texture" aria-hidden="true" />
+                            {isActive ? (
+                              <>
+                                <span className="wallet-card__topline">
+                                  <span className="card-issuer-name">{issuerName}</span>
+                                  <svg className="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: "16px", height: "16px", opacity: 0.8 }}>
+                                    <path d="M5 17a8 8 0 0 1 0-10" />
+                                    <path d="M9 19a12 12 0 0 1 0-14" />
+                                    <path d="M13 21a16 16 0 0 1 0-18" />
+                                  </svg>
+                                </span>
+                                <span className="wallet-card__middle">
+                                  <span className="card-chip" aria-hidden="true" />
+                                  <span className="card-number-embossed">
+                                    •••• •••• •••• {getCardLastFour(card.id)}
+                                  </span>
+                                </span>
+                                <span className="wallet-card__details">
+                                  <span className="wallet-card__bottom-row">
+                                    <span className="card-holder-info">
+                                      <span className="card-name-display">{card.name}</span>
+                                      <span className="card-expiry-embossed">
+                                        <span className="expiry-label">VALID THRU</span>
+                                        <span className="expiry-value">12/29</span>
+                                      </span>
+                                    </span>
+                                    <CardNetworkLogo network={card.network} />
+                                  </span>
+                                </span>
+                              </>
+                            ) : (
+                              <span className="wallet-card__collapsed-row">
+                                <span className="card-issuer-name">{issuerName}</span>
+                                <span className="card-name-display">{card.name}</span>
+                                <CardNetworkLogo network={card.network} />
+                              </span>
+                            )}
                           </button>
                         );
                       })}
@@ -617,8 +705,8 @@ export default function CardPinCalculator() {
 
                     {activeCard && (
                       <div className="card-config-box">
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                          <span style={{ fontSize: "0.8rem", fontWeight: "bold", color: "var(--text-main)" }}>
+                        <div className="card-config-header">
+                          <span className="card-config-title">
                             Selected Card Settings
                           </span>
                           <button
@@ -629,9 +717,9 @@ export default function CardPinCalculator() {
                             Remove from Wallet
                           </button>
                         </div>
-                        <div style={{ display: "flex", alignItems: "center", gap: "10px", marginTop: "4px", flexWrap: "wrap" }}>
-                          <label htmlFor={`monthly-spend-${activeCard.id}`} style={{ fontSize: "0.78rem", color: "var(--text-muted)", marginBottom: 0 }}>Spent this month:</label>
-                          <div className="spend-input-wrapper" style={{ maxWidth: "120px", display: "flex", alignItems: "center" }}>
+                        <div className="card-config-spend-row">
+                          <label htmlFor={`monthly-spend-${activeCard.id}`} className="card-config-label">Spent this month:</label>
+                          <div className="spend-input-wrapper spend-input-wrapper--small">
                             <span className="currency-prefix">EUR</span>
                             <input
                               id={`monthly-spend-${activeCard.id}`}
@@ -641,7 +729,6 @@ export default function CardPinCalculator() {
                               value={cardMonthlySpends[activeCard.id] || ""}
                               onChange={(e) => handleUpdateMonthlySpend(activeCard.id, Number(e.target.value) || 0)}
                               placeholder="0"
-                              style={{ padding: "4px 8px", fontSize: "0.8rem" }}
                             />
                           </div>
                         </div>
@@ -697,80 +784,94 @@ export default function CardPinCalculator() {
             <div className="right-column">
               <section className="card step-card step-card--search">
                 <div className="step-header">
-                  <SearchIcon />
+                  <div className="step-icon-wrapper">
+                    <SearchIcon />
+                  </div>
                   <div className="step-title-block">
                     <div className="step-kicker">Step 3</div>
                     <h2>Search Purchase</h2>
                   </div>
                 </div>
                 <p className="helper-text prominent">Search a merchant or choose a category. You can use either one.</p>
-                <fieldset className="search-fields" disabled={ownedCards.length === 0}>
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="merchant-input">Merchant</label>
-                    <input
-                      id="merchant-input"
-                      type="text"
-                      placeholder="Carrefour, Q8, Booking.com"
-                      value={merchantQuery}
-                      onChange={(event) => setMerchantQuery(event.target.value)}
-                    />
-                  </div>
+                
+                <div className="search-card-content-wrapper">
+                  <fieldset className="search-fields" disabled={ownedCards.length === 0}>
+                    <div className="form-row">
+                      <div className="form-group">
+                        <label htmlFor="merchant-input">Merchant</label>
+                        <input
+                          id="merchant-input"
+                          type="text"
+                          placeholder="Carrefour, Q8, Booking.com"
+                          value={merchantQuery}
+                          onChange={(event) => setMerchantQuery(event.target.value)}
+                        />
+                      </div>
 
-                  <div className="form-group">
-                    <label htmlFor="category-select">Category</label>
-                    <select id="category-select" value={categoryQuery} onChange={(event) => setCategoryQuery(event.target.value)}>
-                      <option value="">Choose a category</option>
-                      {categoriesList.map((category) => (
-                        <option key={category} value={category}>
-                          {formatCategory(category)}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </div>
-
-                <div className="form-row">
-                  <div className="form-group" style={{ flex: "2" }}>
-                    <label htmlFor="spend-input">Spend Amount</label>
-                    <div className="spend-input-wrapper">
-                      <span className="currency-prefix">{spendCurrency}</span>
-                      <input
-                        id="spend-input"
-                        inputMode="decimal"
-                        type="number"
-                        min="0"
-                        value={spendInput}
-                        onBlur={handleSpendBlur}
-                        onChange={(event) => setSpendInput(event.target.value)}
-                      />
+                      <div className="form-group">
+                        <label htmlFor="category-select">Category</label>
+                        <select id="category-select" value={categoryQuery} onChange={(event) => setCategoryQuery(event.target.value)}>
+                          <option value="">Choose a category</option>
+                          {categoriesList.map((category) => (
+                            <option key={category} value={category}>
+                              {formatCategory(category)}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="form-group" style={{ flex: "1" }}>
-                    <label htmlFor="currency-select">Currency</label>
-                    <select
-                      id="currency-select"
-                      value={spendCurrency}
-                      onChange={(e) => setSpendCurrency(e.target.value)}
-                    >
-                      <option value="EUR">EUR (€)</option>
-                      <option value="USD">USD ($)</option>
-                      <option value="GBP">GBP (£)</option>
-                      <option value="CHF">CHF (₣)</option>
-                      <option value="JPY">JPY (¥)</option>
-                    </select>
-                  </div>
+                    <div className="form-row">
+                      <div className="form-group" style={{ flex: "2" }}>
+                        <label htmlFor="spend-input">Spend Amount</label>
+                        <div className="spend-input-wrapper">
+                          <span className="currency-prefix">{spendCurrency}</span>
+                          <input
+                            id="spend-input"
+                            inputMode="decimal"
+                            type="number"
+                            min="0"
+                            value={spendInput}
+                            onBlur={handleSpendBlur}
+                            onChange={(event) => setSpendInput(event.target.value)}
+                          />
+                        </div>
+                      </div>
+
+                      <div className="form-group" style={{ flex: "1" }}>
+                        <label htmlFor="currency-select">Currency</label>
+                        <select
+                          id="currency-select"
+                          value={spendCurrency}
+                          onChange={(e) => setSpendCurrency(e.target.value)}
+                        >
+                          <option value="EUR">EUR (€)</option>
+                          <option value="USD">USD ($)</option>
+                          <option value="GBP">GBP (£)</option>
+                          <option value="CHF">CHF (₣)</option>
+                          <option value="JPY">JPY (¥)</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
+                      Selecting a non-EUR currency fetches live exchange rates and automatically applies the card&apos;s foreign transaction fee.
+                    </p>
+                  </fieldset>
+
+                  {ownedCards.length === 0 && (
+                    <div className="search-lock-overlay">
+                      <div className="search-lock-message">
+                        <span className="lock-icon" role="img" aria-label="lock">🔒</span>
+                        <h3>Search is Locked</h3>
+                        <p style={{ marginBottom: "16px" }}>Add at least one card to your wallet in Step 2 to search merchants and optimize rewards.</p>
+                        <button type="button" className="btn btn--primary prerequisite-action" onClick={handleOpenCatalog}>
+                          Add a Card to Unlock
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </div>
-                <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
-                  Selecting a non-EUR currency fetches live exchange rates and automatically applies the card&apos;s foreign transaction fee.
-                </p>
-                </fieldset>
-                {ownedCards.length === 0 && (
-                  <button type="button" className="btn btn--primary prerequisite-action" onClick={handleOpenCatalog}>
-                    Add a card to continue
-                  </button>
-                )}
               </section>
 
               <section className="recommendation-area">
@@ -778,7 +879,7 @@ export default function CardPinCalculator() {
                   <div className="card empty-state">
                     <CreditCardPlaceholder />
                     <strong>No cards selected.</strong>
-                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                    <p>
                       Select cards in your wallet under <strong>Step 2</strong> to start comparing rewards.
                     </p>
                   </div>
@@ -786,7 +887,7 @@ export default function CardPinCalculator() {
                   <div className="card empty-state">
                     <CreditCardPlaceholder />
                     <strong>Ready to search.</strong>
-                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                    <p>
                       Enter a merchant or choose a category under <strong>Step 3</strong> to calculate expected rewards.
                     </p>
                   </div>
@@ -794,7 +895,7 @@ export default function CardPinCalculator() {
                   <div className="card empty-state" role="status">
                     <CreditCardPlaceholder />
                     <strong>{fxStatus === "error" ? "Exchange rate unavailable." : "Loading exchange rate…"}</strong>
-                    <p style={{ marginTop: "6px", fontSize: "0.9rem" }}>
+                    <p>
                       {fxStatus === "error"
                         ? "Reconnect and select the currency again to calculate accurate rewards."
                         : `Waiting for the ${spendCurrency} rate before calculating rewards.`}
@@ -819,11 +920,11 @@ export default function CardPinCalculator() {
                     <div className="result-grid">
                       <div>
                         <h3>Why this card</h3>
-                        <p style={{ fontSize: "0.9rem" }}>{bestResult.rec.explanation}</p>
+                        <p className="result-explanation">{cleanExplanation(bestResult.rec.explanation)}</p>
                       </div>
                       <div>
                         <h3>Spend calculation</h3>
-                        <p style={{ fontSize: "0.9rem" }}>
+                        <p className="result-calculation">
                           EUR {spendAmount.toFixed(2)} spend · {rewardLabel(bestResult)}
                           {isForeignSpend ? ` · EUR ${bestResult.fxFee.toFixed(2)} FX fee` : ""}
                         </p>
@@ -846,30 +947,36 @@ export default function CardPinCalculator() {
 
                     {alternatives.length > 0 && (
                       <div className="alternatives-container">
-                        <h3 style={{ marginTop: "8px" }}>Alternatives</h3>
-                        {alternatives.map((result) => (
-                          <div className="alt-card" key={result.card.id}>
-                            <span className="alt-name">{result.card.name}</span>
-                            <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
-                          </div>
-                        ))}
+                        <h3>Alternatives</h3>
+                        {alternatives.map((result) => {
+                          const bestValue = bestResult ? bestResult.netValue : 0;
+                          const percentage = bestValue > 0 ? Math.min(100, Math.max(0, (result.netValue / bestValue) * 100)) : 0;
+                          return (
+                            <div className="alt-card" key={result.card.id}>
+                              <div className="alt-card-bar" style={{ width: `${percentage}%` }} />
+                              <span className="alt-name">{result.card.name}</span>
+                              <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
+                            </div>
+                          );
+                        })}
                       </div>
                     )}
                   </div>
                 ) : (
-                  <div className="card empty-state" style={{ textAlign: "left" }}>
-                    <strong style={{ display: "block", marginBottom: "6px" }}>No matching reward rules found.</strong>
-                    <p style={{ fontSize: "0.9rem", color: "var(--text-muted)", marginBottom: "8px" }}>
+                  <div className="card empty-state empty-state--left">
+                    <strong>No matching reward rules found.</strong>
+                    <p>
                       Unsupported cards or rewards are intentionally omitted rather than assumed or guessed.
                     </p>
-                    <p style={{ fontSize: "0.9rem", color: "var(--text-muted)" }}>
+                    <p>
                       Please verify terms with your issuer before relying on any benefit.
                     </p>
                   </div>
                 )}
               </section>
             </div>
-          </main>
+          </div>
+        </main>
         </>
       )}
 
@@ -887,27 +994,27 @@ export default function CardPinCalculator() {
               <button className="dev-close-btn" onClick={() => setShowDevPanel(false)}>&times;</button>
             </div>
             <div className="dev-panel-body">
-              <div style={{ display: "flex", gap: "12px" }}>
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
-                  <label htmlFor="dev-country" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Country</label>
+              <div className="dev-flex-row">
+                <div className="dev-flex-col">
+                  <label htmlFor="dev-country" className="dev-label">Country</label>
                   <select
                     id="dev-country"
                     value={devCountry}
                     onChange={(e) => setDevCountry(e.target.value)}
-                    style={{ padding: "8px", background: "var(--bg-surface)", border: "1px solid var(--border-color)", borderRadius: "4px", color: "var(--text-main)" }}
+                    className="dev-select"
                   >
                     <option value="be">Belgium (BE)</option>
                     <option value="de">Germany (DE)</option>
                     <option value="nl">Netherlands (NL)</option>
                   </select>
                 </div>
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "4px" }}>
-                  <label htmlFor="dev-datatype" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>Data Type</label>
+                <div className="dev-flex-col">
+                  <label htmlFor="dev-datatype" className="dev-label">Data Type</label>
                   <select
                     id="dev-datatype"
                     value={devDataType}
                     onChange={(e) => setDevDataType(e.target.value)}
-                    style={{ padding: "8px", background: "var(--bg-surface)", border: "1px solid var(--border-color)", borderRadius: "4px", color: "var(--text-main)" }}
+                    className="dev-select"
                   >
                     <option value="issuers">Issuers</option>
                     <option value="cards">Cards</option>
@@ -917,8 +1024,8 @@ export default function CardPinCalculator() {
                 </div>
               </div>
 
-              <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-                <label htmlFor="dev-json" style={{ fontSize: "0.8rem", color: "var(--text-muted)" }}>
+              <div className="dev-flex-col">
+                <label htmlFor="dev-json" className="dev-label">
                   Paste JSON Array or Object
                 </label>
                 <textarea
@@ -932,29 +1039,7 @@ export default function CardPinCalculator() {
 
               {devStatus && (
                 <div
-                  style={{
-                    padding: "10px 14px",
-                    borderRadius: "4px",
-                    fontSize: "0.9rem",
-                    backgroundColor:
-                      devStatus.type === "success"
-                        ? "rgba(63, 185, 80, 0.15)"
-                        : devStatus.type === "error"
-                        ? "rgba(248, 81, 73, 0.15)"
-                        : "rgba(88, 166, 255, 0.15)",
-                    border:
-                      devStatus.type === "success"
-                        ? "1px solid rgba(63, 185, 80, 0.3)"
-                        : devStatus.type === "error"
-                        ? "1px solid rgba(248, 81, 73, 0.3)"
-                        : "1px solid rgba(88, 166, 255, 0.3)",
-                    color:
-                      devStatus.type === "success"
-                        ? "#3fb950"
-                        : devStatus.type === "error"
-                        ? "#f85149"
-                        : "#58a6ff"
-                  }}
+                  className={`dev-status-msg dev-status-msg--${devStatus.type}`}
                 >
                   {devStatus.message}
                 </div>
@@ -964,16 +1049,7 @@ export default function CardPinCalculator() {
                 type="button"
                 onClick={handleMergeSubmit}
                 disabled={devStatus?.type === "loading"}
-                style={{
-                  padding: "12px",
-                  backgroundColor: "var(--color-primary)",
-                  color: "var(--text-inverse)",
-                  border: "none",
-                  borderRadius: "4px",
-                  fontWeight: "bold",
-                  cursor: devStatus?.type === "loading" ? "not-allowed" : "pointer",
-                  opacity: devStatus?.type === "loading" ? 0.7 : 1
-                }}
+                className="dev-submit-btn"
               >
                 Merge & Recompile Datasets
               </button>
@@ -1010,7 +1086,7 @@ export default function CardPinCalculator() {
               </div>
 
               {catalogCards.length === 0 ? (
-                <div className="empty-state" style={{ margin: "20px 0" }}>
+                <div className="empty-state empty-state--spaced">
                   No cards match your search.
                 </div>
               ) : (
@@ -1022,25 +1098,17 @@ export default function CardPinCalculator() {
                       <button
                         type="button"
                         key={card.id}
-                        className="catalog-card-item"
+                        className={`catalog-card-item ${isSelected ? "catalog-card-item--selected" : ""}`}
                         onClick={() => handleToggleCard(card.id)}
-                        style={{
-                          border: isSelected ? "1px solid var(--color-primary)" : "1px solid var(--border-color)",
-                          backgroundColor: isSelected ? "rgba(88, 166, 255, 0.05)" : "",
-                          textAlign: "left"
-                        }}
                       >
                         <div className="catalog-card-info">
                           <span className="catalog-card-issuer">{issuerName}</span>
                           <span className="catalog-card-name">{card.name}</span>
-                          <span style={{ fontSize: "0.75rem", color: "var(--text-muted)", marginTop: "4px" }}>
+                          <span className="catalog-card-meta">
                             {card.network.toUpperCase()} · Fee: EUR {card.annualFee} · FX: {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}%
                           </span>
                         </div>
-                        <span className="catalog-card-badge" style={{
-                          backgroundColor: isSelected ? "var(--color-primary)" : "var(--border-color)",
-                          color: isSelected ? "#fff" : "var(--text-main)"
-                        }}>
+                        <span className={`catalog-card-badge ${isSelected ? "catalog-card-badge--selected" : ""}`}>
                           {isSelected ? "In Wallet" : "Add"}
                         </span>
                       </button>

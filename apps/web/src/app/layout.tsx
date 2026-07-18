@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import Logo from "./logo";
 
 export const metadata: Metadata = {
   title: "CardPin — Open-Source Card Rewards Optimizer",
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        <meta name="theme-color" content="#58a6ff" />
+        <meta name="theme-color" content="#9f7aea" />
       </head>
       <body>
         {children}

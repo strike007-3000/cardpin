@@ -1,0 +1,1 @@
+CardPin is a free, open-source payment card reward helper. The vision is simple: when you are about to pay, CardPin should make it easy to choose the card that appears to earn the best reward for that merchant, category, and spend amount
