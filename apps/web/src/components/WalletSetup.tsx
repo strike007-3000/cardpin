@@ -3,6 +3,8 @@
 import React from "react";
 import type { Card, CountryDataset } from "@cardpin/engine";
 
+import { orderCardsForWalletStack } from "../lib/utils";
+
 // Simple UI icons to match fintech styling
 function GlobeIcon() {
   return (
@@ -197,7 +199,7 @@ export default function WalletSetup({
         ) : (
           <>
             <div className="wallet-stack">
-              {ownedCards.map((card) => {
+              {orderCardsForWalletStack(ownedCards, activeCardId).map((card) => {
                 const issuerName = dataset?.issuers.find((issuer) => issuer.id === card.issuerId)?.name || "";
                 const isActive = activeCardId === card.id;
 
