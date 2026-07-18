@@ -899,23 +899,52 @@ a:hover {
 }
 
 /* Spend input suffix & switches */
+/* Spend input suffix & switches */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 .spend-input-wrapper {
-  position: relative;
   display: flex;
   align-items: center;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0 14px;
+  width: 100%;
+  min-height: 48px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.spend-input-wrapper:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(167, 139, 250, 0.18);
 }
 
 .currency-prefix {
-  position: absolute;
-  left: 14px;
   color: var(--text-muted);
   font-weight: 700;
   font-size: 0.9rem;
-  pointer-events: none;
+  margin-right: 10px;
+  user-select: none;
 }
 
 .spend-input-wrapper input {
-  padding-left: 54px;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 12px 0 !important;
+  color: var(--text-main);
+  font: inherit;
+  font-size: 1rem;
+  outline: none;
+  width: 100%;
+  min-height: auto !important;
 }
 
 .toggle-switch-wrapper {
@@ -1002,6 +1031,7 @@ a:hover {
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 24px;
 }
 
 .result-box::before {
@@ -1613,18 +1643,25 @@ a:hover {
 }
 .card-theme-fallback-visa { 
   background: linear-gradient(135deg, #131622 0%, #0c0e16 100%); 
-  border-color: rgba(26, 31, 113, 0.3) !important;
+  border-color: rgba(65, 105, 225, 0.45) !important;
 }
 .card-theme-fallback-mastercard { 
   background: linear-gradient(135deg, #221713 0%, #150e0c 100%); 
-  border-color: rgba(247, 158, 27, 0.3) !important;
+  border-color: rgba(247, 158, 27, 0.45) !important;
 }
 .card-theme-fallback-amex { 
   background: linear-gradient(135deg, #111822 0%, #0a0f16 100%); 
-  border-color: rgba(0, 123, 193, 0.3) !important;
+  border-color: rgba(0, 197, 228, 0.45) !important;
 }
 
 /* Card Stack Collapsed Row */
+.wallet-card--collapsed {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px !important;
+}
+
 .wallet-card__collapsed-row {
   display: flex;
   align-items: center;
@@ -1636,17 +1673,27 @@ a:hover {
 }
 
 .wallet-card__collapsed-row .card-issuer-name {
-  max-width: 130px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  width: 120px;
+  flex-shrink: 0;
+  text-align: left;
 }
 
 .wallet-card__collapsed-row .card-name-display {
   font-size: 0.82rem;
   font-weight: 600;
-  max-width: 200px;
+  color: var(--text-main);
+  flex-grow: 1;
+  text-align: left;
   text-shadow: none;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  margin-bottom: 0;
 }
 
 /* Card Network Logo styles */
@@ -1664,8 +1711,9 @@ a:hover {
   font-family: "Times New Roman", Times, serif;
   font-style: italic;
   color: #fff;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   letter-spacing: 1px;
+  line-height: 1;
 }
 
 .network-logo--mastercard {
@@ -1702,6 +1750,7 @@ a:hover {
   border-radius: 2px;
   letter-spacing: 0px;
   color: #fff;
+  line-height: 1.2;
 }
 
 .network-logo--generic {
@@ -1737,15 +1786,23 @@ a:hover {
 }
 
 .spend-input-wrapper--small {
-  max-width: 120px;
-  display: flex;
-  align-items: center;
+  max-width: 110px;
+  min-height: 32px !important;
+  padding: 0 8px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+
+.spend-input-wrapper--small .currency-prefix {
+  font-size: 0.72rem;
+  margin-right: 6px;
 }
 
 .spend-input-wrapper--small input {
-  padding: 4px 8px;
-  font-size: 0.8rem;
-  min-height: auto;
+  padding: 4px 0 !important;
+  font-size: 0.8rem !important;
+  min-height: auto !important;
 }
 
 .empty-state p {
