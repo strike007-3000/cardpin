@@ -40,6 +40,11 @@ export default function Logo() {
       {/* Subtle brand dots on the right simulating card details */}
       <circle cx="34" cy="21" r="1.5" fill="var(--color-primary)" opacity="0.3" />
       <circle cx="39" cy="21" r="1.5" fill="var(--color-primary)" opacity="0.3" />
+      
+      {/* Enhanced decorative elements for premium look */}
+      <circle cx="12" cy="26" r="1.5" fill="var(--color-primary)" opacity="0.4" />
+      <circle cx="18" cy="26" r="1.5" fill="var(--color-primary)" opacity="0.4" />
+      <circle cx="24" cy="26" r="1.5" fill="var(--color-primary)" opacity="0.4" />
     </svg>
   );
 }
