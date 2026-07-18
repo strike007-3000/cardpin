@@ -4,6 +4,8 @@ import React from "react";
 
 interface MainLayoutProps {
   navigationBar: React.ReactNode;
+  welcomeBanner?: React.ReactNode;
+  compactControls: React.ReactNode;
   walletSetup: React.ReactNode;
   merchantSelector: React.ReactNode;
   cardDisplay: React.ReactNode;
@@ -11,6 +13,8 @@ interface MainLayoutProps {
 
 export default function MainLayout({
   navigationBar,
+  welcomeBanner,
+  compactControls,
   walletSetup,
   merchantSelector,
   cardDisplay,
@@ -18,10 +22,17 @@ export default function MainLayout({
   return (
     <div className="main-layout-container">
       {navigationBar}
-      <div className="redesigned-grid-container">
-        {walletSetup}
-        {merchantSelector}
-        {cardDisplay}
+      {welcomeBanner}
+      {compactControls}
+      
+      <div className="columns-grid">
+        <div className="left-column">
+          {walletSetup}
+        </div>
+        <div className="right-column">
+          {merchantSelector}
+          {cardDisplay}
+        </div>
       </div>
     </div>
   );

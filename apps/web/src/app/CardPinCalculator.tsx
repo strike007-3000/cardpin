@@ -58,6 +58,16 @@ function cleanExplanation(explanation: string) {
   return explanation;
 }
 
+function GlobeIcon() {
+  return (
+    <svg className="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
+      <circle cx="12" cy="12" r="10" />
+      <line x1="2" y1="12" x2="22" y2="12" />
+      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+    </svg>
+  );
+}
+
 export default function CardPinCalculator() {
   const [country, setCountry] = useState<string>("be");
   const [dataset, setDataset] = useState<CountryDataset | null>(null);
@@ -182,6 +192,7 @@ export default function CardPinCalculator() {
     catalogSearchRef.current?.focus();
   }
 
+  // Close Catalog
   function handleCloseCatalog() {
     catalogDialogRef.current?.close();
   }
@@ -264,7 +275,7 @@ export default function CardPinCalculator() {
     localStorage.setItem("cardpin:welcome_dismissed", "true");
   }
 
-  // Export/Import Wallet
+  // Backup Import/Export
   function handleExportWallet() {
     const dataStr = JSON.stringify({ cardIds: ownedCardIds });
     const dataUri = "data:application/json;charset=utf-8," + encodeURIComponent(dataStr);
@@ -364,13 +375,13 @@ export default function CardPinCalculator() {
         const fxFee = isForeign ? convertedSpend * (card.fxFeePercentage ?? 0) : 0;
         let grossValue = 0;
 
-        const capValue = rule?.cap ?? rule?.conditions?.cap;
+        const bgCap = rule?.cap ?? rule?.conditions?.cap;
         const monthlySpend = cardMonthlySpends[card.id] ?? 0;
 
         if (rule) {
-          if (capValue !== undefined) {
+          if (bgCap !== undefined) {
             const earnedSoFar = monthlySpend * rule.rewardValue;
-            const remainingReward = Math.max(0, capValue - earnedSoFar);
+            const remainingReward = Math.max(0, bgCap - earnedSoFar);
             if (remainingReward === 0) {
               grossValue = 0;
             } else {
@@ -437,129 +448,166 @@ export default function CardPinCalculator() {
       {loading || showWelcome === null ? (
         <div className="loading-container">Loading card datasets...</div>
       ) : (
-        <>
-          {showWelcome === true && (
-            <section className="welcome-banner">
-              <div className="welcome-banner-summary">
-                <div className="welcome-banner-left">
-                  <span className="welcome-icon">💡</span>
-                  <span>
-                    Select cards in your wallet &rarr; search merchant &rarr; find best rewards.
-                  </span>
+        <MainLayout
+          navigationBar={<NavigationBar isScrolled={isScrolled} />}
+          welcomeBanner={
+            showWelcome === true && (
+              <section className="welcome-banner">
+                <div className="welcome-banner-summary">
+                  <div className="welcome-banner-left">
+                    <span className="welcome-icon">💡</span>
+                    <span>
+                      Select cards in your wallet &rarr; search merchant &rarr; find best rewards.
+                    </span>
+                    <button
+                      type="button"
+                      className="learn-more-btn"
+                      onClick={() => setShowFullInstructions(!showFullInstructions)}
+                    >
+                      {showFullInstructions ? "Hide details" : "How it works"}
+                    </button>
+                  </div>
                   <button
                     type="button"
-                    className="learn-more-btn"
-                    onClick={() => setShowFullInstructions(!showFullInstructions)}
+                    className="dismiss-btn"
+                    onClick={handleDismissWelcome}
+                    aria-label="Dismiss guide"
                   >
-                    {showFullInstructions ? "Hide details" : "How it works"}
+                    &times;
                   </button>
                 </div>
-                <button
-                  type="button"
-                  className="dismiss-btn"
-                  onClick={handleDismissWelcome}
-                  aria-label="Dismiss guide"
-                >
-                  &times;
-                </button>
-              </div>
 
-              {showFullInstructions && (
-                <div className="welcome-banner-details">
-                  <div className="welcome-details-grid">
-                    <div>
-                      <h3>1. Select Owned Cards</h3>
-                      <p>
-                        Choose country and audience, then select cards in the wallet. Your cards are stored in your browser&apos;s local storage.
-                      </p>
-                    </div>
-                    <div>
-                      <h3>2. Search & Compare</h3>
-                      <p>
-                        Enter a merchant name or choose a category. Enter your spend amount to calculate reward net value.
-                      </p>
-                    </div>
-                    <div>
-                      <h3>3. Separated Rewards</h3>
-                      <p>
-                        Cashback, points, and miles are separated, not aggregated, since their ultimate value depends on redemption methods.
-                      </p>
-                    </div>
-                    <div>
-                      <h3>Community Sourced</h3>
-                      <p>
-                        Data is community-driven. Unsupported cards/rewards are intentionally omitted instead of guessed. Verify terms with your issuer.
-                      </p>
+                {showFullInstructions && (
+                  <div className="welcome-banner-details">
+                    <div className="welcome-details-grid">
+                      <div>
+                        <h3>1. Select Owned Cards</h3>
+                        <p>
+                          Choose country and audience, then select cards in the wallet. Your cards are stored in your browser&apos;s local storage.
+                        </p>
+                      </div>
+                      <div>
+                        <h3>2. Search & Compare</h3>
+                        <p>
+                          Enter a merchant name or choose a category. Enter your spend amount to calculate reward net value.
+                        </p>
+                      </div>
+                      <div>
+                        <h3>3. Separated Rewards</h3>
+                        <p>
+                          Cashback, points, and miles are separated, not aggregated, since their ultimate value depends on redemption methods.
+                        </p>
+                      </div>
+                      <div>
+                        <h3>Community Sourced</h3>
+                        <p>
+                          Data is community-driven. Unsupported cards/rewards are intentionally omitted instead of guessed. Verify terms with your issuer.
+                        </p>
+                      </div>
                     </div>
                   </div>
+                )}
+              </section>
+            )
+          }
+          compactControls={
+            <div className="compact-controls-strip">
+              <div className="compact-control-group">
+                <label htmlFor="country-select" className="sr-only">Country</label>
+                <div className="select-wrapper-compact">
+                  <GlobeIcon />
+                  <select
+                    id="country-select"
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
+                    className="compact-select"
+                  >
+                    <option value="be">BE (Belgium)</option>
+                    <option value="de">DE (Germany)</option>
+                    <option value="nl">NL (Netherlands)</option>
+                  </select>
                 </div>
-              )}
-            </section>
-          )}
+              </div>
 
-          <MainLayout
-            navigationBar={<NavigationBar isScrolled={isScrolled} />}
-            walletSetup={
-              <WalletSetup
-                country={country}
-                setCountry={setCountry}
-                audience={audience}
-                setAudience={setAudience}
-                ownedCardIds={ownedCardIds}
-                ownedCards={ownedCards}
-                availableCards={availableCards}
-                activeCardId={activeCardId}
-                setActiveCardId={setActiveCardId}
-                cardMonthlySpends={cardMonthlySpends}
-                handleUpdateMonthlySpend={handleUpdateMonthlySpend}
-                handleToggleCard={handleToggleCard}
-                handleExportWallet={handleExportWallet}
-                handleImportWallet={handleImportWallet}
-                setOwnedCardIds={setOwnedCardIds}
-                dataset={dataset}
-                catalogSearch={catalogSearch}
-                setCatalogSearch={setCatalogSearch}
-                catalogCards={catalogCards}
-                handleOpenCatalog={handleOpenCatalog}
-                handleCloseCatalog={handleCloseCatalog}
-                catalogDialogRef={catalogDialogRef}
-                catalogSearchRef={catalogSearchRef}
-              />
-            }
-            merchantSelector={
-              <MerchantSelector
-                merchantQuery={merchantQuery}
-                setMerchantQuery={setMerchantQuery}
-                categoryQuery={categoryQuery}
-                setCategoryQuery={setCategoryQuery}
-                spendInput={spendInput}
-                setSpendInput={setSpendInput}
-                spendCurrency={spendCurrency}
-                setSpendCurrency={setSpendCurrency}
-                categoriesList={categoriesList}
-                ownedCardsLength={ownedCards.length}
-                handleSpendBlur={handleSpendBlur}
-                handleOpenCatalog={handleOpenCatalog}
-              />
-            }
-            cardDisplay={
-              <CardDisplay
-                ownedCardsLength={ownedCards.length}
-                hasSearch={hasSearch}
-                isFxRateMissing={isFxRateMissing}
-                fxStatus={fxStatus}
-                spendCurrency={spendCurrency}
-                bestResult={bestResult}
-                rewardAmount={rewardAmount}
-                cleanExplanation={cleanExplanation}
-                rewardLabel={rewardLabel}
-                spendAmount={spendAmount}
-                isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
-                alternatives={alternatives}
-              />
-            }
-          />
-        </>
+              <div className="compact-control-group">
+                <div className="segmented-control segmented-control--compact" role="group" aria-label="Audience">
+                  <button
+                    type="button"
+                    aria-pressed={audience === "consumer"}
+                    className={audience === "consumer" ? "active" : ""}
+                    onClick={() => setAudience("consumer")}
+                  >
+                    Consumer
+                  </button>
+                  <button
+                    type="button"
+                    aria-pressed={audience === "business"}
+                    className={audience === "business" ? "active" : ""}
+                    onClick={() => setAudience("business")}
+                  >
+                    Business
+                  </button>
+                </div>
+              </div>
+            </div>
+          }
+          walletSetup={
+            <WalletSetup
+              country={country}
+              ownedCardIds={ownedCardIds}
+              ownedCards={ownedCards}
+              availableCards={availableCards}
+              activeCardId={activeCardId}
+              setActiveCardId={setActiveCardId}
+              cardMonthlySpends={cardMonthlySpends}
+              handleUpdateMonthlySpend={handleUpdateMonthlySpend}
+              handleToggleCard={handleToggleCard}
+              handleExportWallet={handleExportWallet}
+              handleImportWallet={handleImportWallet}
+              setOwnedCardIds={setOwnedCardIds}
+              dataset={dataset}
+              catalogSearch={catalogSearch}
+              setCatalogSearch={setCatalogSearch}
+              catalogCards={catalogCards}
+              handleOpenCatalog={handleOpenCatalog}
+              handleCloseCatalog={handleCloseCatalog}
+              catalogDialogRef={catalogDialogRef}
+              catalogSearchRef={catalogSearchRef}
+            />
+          }
+          merchantSelector={
+            <MerchantSelector
+              merchantQuery={merchantQuery}
+              setMerchantQuery={setMerchantQuery}
+              categoryQuery={categoryQuery}
+              setCategoryQuery={setCategoryQuery}
+              spendInput={spendInput}
+              setSpendInput={setSpendInput}
+              spendCurrency={spendCurrency}
+              setSpendCurrency={setSpendCurrency}
+              categoriesList={categoriesList}
+              ownedCardsLength={ownedCards.length}
+              handleSpendBlur={handleSpendBlur}
+              handleOpenCatalog={handleOpenCatalog}
+            />
+          }
+          cardDisplay={
+            <CardDisplay
+              ownedCardsLength={ownedCards.length}
+              hasSearch={hasSearch}
+              isFxRateMissing={isFxRateMissing}
+              fxStatus={fxStatus}
+              spendCurrency={spendCurrency}
+              bestResult={bestResult}
+              rewardAmount={rewardAmount}
+              cleanExplanation={cleanExplanation}
+              rewardLabel={rewardLabel}
+              spendAmount={spendAmount}
+              isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
+              alternatives={alternatives}
+            />
+          }
+        />
       )}
 
       {isDevMode && (

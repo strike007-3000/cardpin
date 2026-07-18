@@ -21,7 +21,7 @@ describe("CSS variables in globals.css", () => {
     expect(content).toContain(".visually-hidden");
     expect(content).toContain(".logo-header {");
     expect(content).toContain(".brand-name {");
-    expect(content).toContain(".redesigned-grid-container {");
+    expect(content).toContain(".columns-grid {");
     expect(content).toContain(".compact-controls-strip {");
   });
 });

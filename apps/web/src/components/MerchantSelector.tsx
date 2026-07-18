@@ -45,32 +45,36 @@ export default function MerchantSelector({
   handleOpenCatalog,
 }: MerchantSelectorProps) {
   return (
-    <section className="card search-card">
-      <div className="search-card-header">
-        <div className="title-with-icon">
+    <section className="card step-card step-card--search">
+      <div className="step-header">
+        <div className="step-icon-wrapper">
           <SearchIcon />
-          <h2>Optimize Transaction</h2>
+        </div>
+        <div className="step-title-block">
+          <div className="step-kicker">Step 3</div>
+          <h2>Search Purchase</h2>
         </div>
       </div>
+      <p className="helper-text prominent">Search a merchant or choose a category. You can use either one.</p>
       
       <div className="search-card-content-wrapper">
         <fieldset className="search-fields" disabled={ownedCardsLength === 0}>
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="merchant-input">Merchant name</label>
+              <label htmlFor="merchant-input">Merchant</label>
               <input
                 id="merchant-input"
                 type="text"
-                placeholder="e.g. Carrefour, Lidl, Booking.com"
+                placeholder="Carrefour, Q8, Booking.com"
                 value={merchantQuery}
                 onChange={(event) => setMerchantQuery(event.target.value)}
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="category-select">Or choose category</label>
+              <label htmlFor="category-select">Category</label>
               <select id="category-select" value={categoryQuery} onChange={(event) => setCategoryQuery(event.target.value)}>
-                <option value="">Select category...</option>
+                <option value="">Choose a category</option>
                 {categoriesList.map((category) => (
                   <option key={category} value={category}>
                     {formatCategory(category)}
@@ -82,7 +86,7 @@ export default function MerchantSelector({
 
           <div className="form-row">
             <div className="form-group" style={{ flex: "2" }}>
-              <label htmlFor="spend-input">Spend amount</label>
+              <label htmlFor="spend-input">Spend Amount</label>
               <div className="spend-input-wrapper">
                 <span className="currency-prefix">{spendCurrency}</span>
                 <input
@@ -113,8 +117,8 @@ export default function MerchantSelector({
             </div>
           </div>
           
-          <p className="helper-text helper-text--compact">
-            Non-EUR currency converts rates and includes issuer FX fees automatically.
+          <p className="helper-text" style={{ marginTop: "10px", fontSize: "0.82rem" }}>
+            Selecting a non-EUR currency fetches live exchange rates and automatically applies the card&apos;s foreign transaction fee.
           </p>
         </fieldset>
 
@@ -122,10 +126,10 @@ export default function MerchantSelector({
           <div className="search-lock-overlay">
             <div className="search-lock-message">
               <span className="lock-icon" role="img" aria-label="lock">🔒</span>
-              <h3>Setup Your Wallet First</h3>
-              <p>Add at least one card to your wallet to start optimizing rewards.</p>
-              <button type="button" className="btn btn--primary" onClick={handleOpenCatalog}>
-                Add Card to Unlock
+              <h3>Search is Locked</h3>
+              <p style={{ marginBottom: "16px" }}>Add at least one card to your wallet in Step 2 to search merchants and optimize rewards.</p>
+              <button type="button" className="btn btn--primary prerequisite-action" onClick={handleOpenCatalog}>
+                Add a Card to Unlock
               </button>
             </div>
           </div>

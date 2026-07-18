@@ -2241,36 +2241,6 @@ input[type="number"] {
 
 /* Redesigned Grid Container and Fintech Utilities Styles */
 
-.redesigned-grid-container {
-  display: grid;
-  gap: 24px;
-  grid-template-columns: minmax(0, 1fr);
-  width: 100%;
-}
-
-@media (min-width: 960px) {
-  .redesigned-grid-container {
-    grid-template-columns: 360px 1fr;
-    align-items: start;
-  }
-  
-  /* Make the transaction optimization and reward displays sit in the main right-hand column */
-  .wallet-manager-layout {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-  }
-  
-  .search-card {
-    grid-column: 2;
-    grid-row: 1;
-  }
-  
-  .recommendation-area {
-    grid-column: 2;
-    grid-row: 2;
-  }
-}
-
 .compact-controls-strip {
   display: flex;
   align-items: center;

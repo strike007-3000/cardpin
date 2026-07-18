@@ -2,19 +2,7 @@
 
 import React from "react";
 import type { Card, CountryDataset } from "@cardpin/engine";
-
 import { orderCardsForWalletStack } from "../lib/utils";
-
-// Simple UI icons to match fintech styling
-function GlobeIcon() {
-  return (
-    <svg className="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-      <circle cx="12" cy="12" r="10" />
-      <line x1="2" y1="12" x2="22" y2="12" />
-      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-    </svg>
-  );
-}
 
 function WalletIcon() {
   return (
@@ -89,9 +77,6 @@ function getCardThemeClass(issuerId: string, network: string) {
 
 interface WalletSetupProps {
   country: string;
-  setCountry: (country: string) => void;
-  audience: "consumer" | "business";
-  setAudience: (audience: "consumer" | "business") => void;
   ownedCardIds: string[];
   ownedCards: Card[];
   availableCards: Card[];
@@ -115,9 +100,6 @@ interface WalletSetupProps {
 
 export default function WalletSetup({
   country,
-  setCountry,
-  audience,
-  setAudience,
   ownedCardIds,
   ownedCards,
   activeCardId,
@@ -140,61 +122,24 @@ export default function WalletSetup({
   const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
 
   return (
-    <div className="wallet-manager-layout">
-      {/* Country and Audience Selection - COMPACT */}
-      <section className="compact-controls-strip">
-        <div className="compact-control-group">
-          <label htmlFor="country-select" className="sr-only">Country</label>
-          <div className="select-wrapper-compact">
-            <GlobeIcon />
-            <select
-              id="country-select"
-              value={country}
-              onChange={(e) => setCountry(e.target.value)}
-              className="compact-select"
-            >
-              <option value="be">BE (Belgium)</option>
-              <option value="de">DE (Germany)</option>
-              <option value="nl">NL (Netherlands)</option>
-            </select>
-          </div>
-        </div>
-
-        <div className="compact-control-group">
-          <div className="segmented-control segmented-control--compact" role="group" aria-label="Audience">
-            <button
-              type="button"
-              aria-pressed={audience === "consumer"}
-              className={audience === "consumer" ? "active" : ""}
-              onClick={() => setAudience("consumer")}
-            >
-              Consumer
-            </button>
-            <button
-              type="button"
-              aria-pressed={audience === "business"}
-              className={audience === "business" ? "active" : ""}
-              onClick={() => setAudience("business")}
-            >
-              Business
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Wallet Management Section */}
-      <section className="card wallet-panel">
-        <div className="wallet-panel-header">
-          <div className="title-with-icon">
+    <>
+      <section className="card step-card">
+        <div className="step-header">
+          <div className="step-icon-wrapper">
             <WalletIcon />
-            <h2>Cards Wallet</h2>
           </div>
-          <span className="wallet-count-badge">{ownedCards.length} Cards</span>
+          <div className="step-title-block" style={{ width: "100%" }}>
+            <div className="step-kicker">Step 2</div>
+            <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
+              <h2>Your Wallet</h2>
+              <span className="quiet-pill">{ownedCards.length} in wallet</span>
+            </div>
+          </div>
         </div>
 
         {ownedCards.length === 0 ? (
           <div className="empty-state empty-state--spaced">
-            <p>Your wallet is empty. Add your cards to start optimizing rewards.</p>
+            Your wallet is empty. Add some cards to get started!
           </div>
         ) : (
           <>
@@ -254,20 +199,18 @@ export default function WalletSetup({
               <div className="card-config-box">
                 <div className="card-config-header">
                   <span className="card-config-title">
-                    {activeCard.name} Settings
+                    Selected Card Settings
                   </span>
                   <button
                     type="button"
                     className="text-action text-action--danger"
                     onClick={() => handleToggleCard(activeCard.id)}
                   >
-                    Remove
+                    Remove from Wallet
                   </button>
                 </div>
                 <div className="card-config-spend-row">
-                  <label htmlFor={`monthly-spend-${activeCard.id}`} className="card-config-label">
-                    Monthly spent (EUR):
-                  </label>
+                  <label htmlFor={`monthly-spend-${activeCard.id}`} className="card-config-label">Spent this month:</label>
                   <div className="spend-input-wrapper spend-input-wrapper--small">
                     <span className="currency-prefix">EUR</span>
                     <input
@@ -289,7 +232,7 @@ export default function WalletSetup({
         <div className="wallet-actions">
           <button
             type="button"
-            className="btn btn--primary btn--add-cards"
+            className="btn btn--primary"
             onClick={handleOpenCatalog}
           >
             + Add Cards
@@ -300,7 +243,7 @@ export default function WalletSetup({
             <div className="wallet-menu__popover">
               {ownedCardIds.length > 0 && (
                 <>
-                  <button type="button" onClick={handleExportWallet}>Export Backup</button>
+                  <button type="button" onClick={handleExportWallet}>Export wallet</button>
                   <button
                     type="button"
                     className="wallet-menu__danger"
@@ -311,12 +254,12 @@ export default function WalletSetup({
                       }
                     }}
                   >
-                    Clear Wallet
+                    Clear wallet
                   </button>
                 </>
               )}
               <label>
-                Import Backup
+                Import wallet
                 <input
                   type="file"
                   accept=".json"
@@ -391,6 +334,6 @@ export default function WalletSetup({
           </div>
         </div>
       </dialog>
-    </div>
+    </>
   );
 }
