@@ -1641,21 +1641,24 @@ input[type="number"] {
 }
 
 /* Card Visual Gradients & Designs (Muted/Premium Dark Mode) */
+/* Card Visual Gradients & Designs (Muted/Premium Dark Mode) */
 .card-theme-amex-gold { 
   background: linear-gradient(135deg, #1d1b16 0%, #12110e 100%); 
-  border-color: rgba(212, 175, 55, 0.3) !important;
+  border-color: rgba(212, 175, 55, 0.35) !important;
 }
 .card-theme-amex-platinum { 
-  background: linear-gradient(135deg, #1d1e20 0%, #121314 100%); 
-  border-color: rgba(180, 180, 180, 0.35) !important;
+  background: linear-gradient(135deg, #24262b 0%, #131417 100%); 
+  border-color: rgba(220, 225, 235, 0.5) !important;
 }
 .card-theme-amex-green { 
   background: linear-gradient(135deg, #141a15 0%, #0d110e 100%); 
   border-color: rgba(46, 125, 50, 0.3) !important;
 }
-.card-theme-n26-metal { 
-  background: linear-gradient(135deg, #161718 0%, #0d0d0e 100%); 
-  border-color: rgba(255, 255, 255, 0.15) !important;
+.card-theme-n26-metal,
+.card-theme-revolut-metal { 
+  background: linear-gradient(135deg, #2a2e35 0%, #111316 100%); 
+  border-color: rgba(240, 240, 240, 0.6) !important;
+  box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.05), 0 12px 28px rgba(0, 0, 0, 0.4) !important;
 }
 .card-theme-n26-standard { 
   background: linear-gradient(135deg, #14171a 0%, #0d0f11 100%); 
@@ -1686,16 +1689,16 @@ input[type="number"] {
   border-color: rgba(255, 167, 38, 0.28) !important;
 }
 .card-theme-fallback-visa { 
-  background: linear-gradient(135deg, #131622 0%, #0c0e16 100%); 
-  border-color: rgba(65, 105, 225, 0.45) !important;
+  background: linear-gradient(135deg, #0e1a30 0%, #060d1b 100%); 
+  border-color: rgba(99, 102, 241, 0.5) !important;
 }
 .card-theme-fallback-mastercard { 
-  background: linear-gradient(135deg, #221713 0%, #150e0c 100%); 
-  border-color: rgba(247, 158, 27, 0.45) !important;
+  background: linear-gradient(135deg, #25120e 0%, #100806 100%); 
+  border-color: rgba(249, 115, 22, 0.5) !important;
 }
 .card-theme-fallback-amex { 
-  background: linear-gradient(135deg, #111822 0%, #0a0f16 100%); 
-  border-color: rgba(0, 197, 228, 0.45) !important;
+  background: linear-gradient(135deg, #0a252b 0%, #041014 100%); 
+  border-color: rgba(0, 197, 228, 0.55) !important;
 }
 
 /* Card Stack Collapsed Row */

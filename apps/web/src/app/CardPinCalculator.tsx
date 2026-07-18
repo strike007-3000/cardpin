@@ -141,6 +141,9 @@ function getCardThemeClass(issuerId: string, network: string) {
   if (normalized.includes("barclays")) return "card-theme-barclays";
   if (normalized.includes("hanseatic")) return "card-theme-hanseatic";
   if (normalized.includes("advanzia")) return "card-theme-advanzia";
+  if (normalized.includes("revolut")) {
+    if (normalized.includes("metal")) return "card-theme-revolut-metal";
+  }
   
   if (network === "visa") return "card-theme-fallback-visa";
   if (network === "mastercard") return "card-theme-fallback-mastercard";
