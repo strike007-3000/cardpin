@@ -42,6 +42,24 @@ header {
   margin-bottom: 28px;
 }
 
+.logo-header {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+}
+
+.logo-header svg {
+  height: 36px;
+  width: auto;
+}
+
+.brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
 h1 {
   font-family: var(--font-display);
   font-size: clamp(2.25rem, 3vw, 2.75rem);
