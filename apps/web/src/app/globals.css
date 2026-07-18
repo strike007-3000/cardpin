@@ -1,26 +1,26 @@
-/* Enhanced CardPin Design System - Direction A (Generative Fintech) */
+/* Enhanced CardPin Design System - Option 1 (Dieter Rams Industrial) */
 :root {
   --font-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: var(--font-primary);
-  --bg-base: #030303;
-  --bg-surface: rgba(13, 12, 22, 0.45);
-  --bg-card: rgba(20, 19, 33, 0.3);
-  --border-color: rgba(255, 255, 255, 0.06);
-  --border-focus: rgba(139, 92, 246, 0.4);
-  --color-primary: #8b5cf6;
-  --color-accent: #10b981;
+  --bg-base: #f9f9fa;
+  --bg-surface: #ffffff;
+  --bg-card: #f4f4f5;
+  --border-color: #e4e4e7;
+  --border-focus: #18181b;
+  --color-primary: #2563eb;
+  --color-accent: #ea580c;
   --color-danger: #ef4444;
-  --color-primary-semi: rgba(139, 92, 246, 0.15);
-  --text-main: #f4f4f5;
-  --text-muted: #828389;
-  --text-inverse: #030303;
-  --radius-sm: 10px;
-  --radius-md: 16px;
-  --shadow-panel: 0 20px 48px rgba(0, 0, 0, 0.6);
-  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4);
-  --shadow-card-hover: 0 10px 30px rgba(139, 92, 246, 0.05);
-  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --color-primary-semi: rgba(37, 99, 235, 0.08);
+  --text-main: #18181b;
+  --text-muted: #71717a;
+  --text-inverse: #ffffff;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-panel: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   
   /* Premium color palette */
   --color-fintech-blue: #3b82f6;
@@ -30,11 +30,11 @@
   --color-fintech-red: #ef4444;
   
   /* Enhanced gradients */
-  --gradient-card-bg: rgba(20, 19, 33, 0.4);
-  --gradient-card-hover: rgba(28, 27, 44, 0.55);
-  --gradient-primary: linear-gradient(135deg, #ffffff, #a3a3a3);
-  --gradient-secondary: linear-gradient(135deg, #10b981, #059669);
-  --gradient-accent: linear-gradient(135deg, #8b5cf6, #d946ef);
+  --gradient-card-bg: #ffffff;
+  --gradient-card-hover: #fafafa;
+  --gradient-primary: none;
+  --gradient-secondary: none;
+  --gradient-accent: none;
 }
 
 * {
@@ -44,7 +44,7 @@
 }
 
 body {
-  background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.08) 0%, #030303 60%);
+  background: var(--bg-base);
   background-attachment: fixed;
   color: var(--text-main);
   font-family: var(--font-primary);
@@ -85,7 +85,7 @@ header {
   font-size: clamp(1.8rem, 2.5vw, 2.2rem);
   font-weight: 700;
   letter-spacing: -0.03em;
-  color: #ffffff;
+  color: var(--text-main);
   margin: 0;
 }
 
@@ -101,9 +101,9 @@ header {
 }
 
 .scrolled-header {
-  background: rgba(5, 5, 6, 0.95);
+  background: rgba(249, 249, 250, 0.95);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
   padding: 12px 0;
   position: fixed;
   top: 0;
@@ -1307,12 +1307,9 @@ input[type="number"] {
 
 /* Result Box glowing & premium treatment */
 .result-box {
-  background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(16, 185, 129, 0.05) 50%, rgba(9, 9, 11, 0.95) 100%);
-  border: 1px solid rgba(139, 92, 246, 0.25);
-  box-shadow: 
-    0 20px 48px rgba(0, 0, 0, 0.6), 
-    0 0 32px rgba(139, 92, 246, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: var(--bg-surface);
+  border: 2px solid var(--color-primary);
+  box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1321,10 +1318,7 @@ input[type="number"] {
 }
 
 .result-box::before {
-  content: "";
-  position: absolute;
-  top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  display: none;
 }
 
 .result-box h2 {
@@ -1336,7 +1330,7 @@ input[type="number"] {
 
 .val-amount {
   color: var(--color-accent);
-  text-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+  text-shadow: none;
   font-size: 2.2rem;
   font-weight: 950;
   letter-spacing: -0.03em;
