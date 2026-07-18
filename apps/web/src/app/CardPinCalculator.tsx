@@ -2,70 +2,21 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { recommendBestCard } from "@cardpin/engine";
-import type { Card, CountryDataset, Merchant } from "@cardpin/engine";
-import { getFxRate, needsFxRates } from "../lib/utils";
+import type { Card, CountryDataset } from "@cardpin/engine";
+import { getFxRate, needsFxRates, rewardLabel, rewardAmount, cleanExplanation } from "../lib/utils";
+import type { CardCalc } from "../lib/utils";
 import MainLayout from "../components/MainLayout";
 import NavigationBar from "../components/NavigationBar";
-import MerchantSelector from "../components/MerchantSelector";
-import CardDisplay from "../components/CardDisplay";
-import WalletSetup from "../components/WalletSetup";
-
-type CardCalc = {
-  card: Card;
-  rule: ReturnType<typeof recommendBestCard>["bestRule"];
-  rec: ReturnType<typeof recommendBestCard>;
-  rewardType: ReturnType<typeof recommendBestCard>["rewardType"];
-  grossValue: number;
-  fxFee: number;
-  netValue: number;
-  label: string;
-};
+import CountryAudienceSelector from "../components/CountryAudienceSelector";
+import InputStrip from "../components/InputStrip";
+import ResultHero from "../components/ResultHero";
+import WalletManager from "../components/WalletManager";
+import StatusBanner from "../components/StatusBanner";
 
 function normalizeSpend(raw: string) {
   const parsed = Number(raw);
   if (!Number.isFinite(parsed) || parsed <= 0) return 50;
   return parsed;
-}
-
-function rewardLabel(result: CardCalc) {
-  if (!result.rule) return "No reward rule";
-  if (result.rewardType === "cashback_percentage") return `${(result.rule.rewardValue * 100).toFixed(1)}% cashback`;
-  if (result.rewardType === "fixed_cashback") return `EUR ${result.rule.rewardValue.toFixed(2)} per transaction`;
-  if (result.rewardType === "points") return `${result.rule.rewardValue}x points`;
-  if (result.rewardType === "miles") return `${result.rule.rewardValue}x miles`;
-  return "Reward";
-}
-
-function rewardAmount(result: CardCalc) {
-  if (!result.rule) return "EUR 0.00";
-  if (result.rewardType === "points") return `${result.grossValue.toFixed(0)} points`;
-  if (result.rewardType === "miles") return `${result.grossValue.toFixed(0)} miles`;
-  return `EUR ${result.netValue.toFixed(2)}`;
-}
-
-function cleanExplanation(explanation: string) {
-  if (explanation.startsWith('Fallback rule "')) {
-    const match = explanation.match(/Fallback rule "([^"]+)" matched for card (.+)/);
-    if (match) {
-      const [, ruleName, cardName] = match;
-      const cleanRule = ruleName
-        .replaceAll("-", " ")
-        .replace("points", "rewards")
-        .replace("base", "general spending");
-      return `Earns rewards on ${cleanRule} under your ${cardName} terms.`;
-    }
-  }
-  return explanation;
-}
-
-function GlobeIcon() {
-  return (
-    <svg className="step-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="18" height="18">
-      <circle cx="12" cy="12" r="10" />
-      <line x1="2" y1="12" x2="22" y2="12" />
-      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-    </svg>
-  );
 }
 
 export default function CardPinCalculator() {
@@ -249,7 +200,7 @@ export default function CardPinCalculator() {
   }, [ownedCards, activeCardId, ownedCardIds]);
 
   const categoriesList = useMemo(
-    () => Array.from(new Set(dataset?.merchants.flatMap((merchant: Merchant) => merchant.categories) ?? [])).sort(),
+    () => Array.from(new Set(dataset?.merchants.flatMap((merchant) => merchant.categories) ?? [])).sort(),
     [dataset]
   );
 
@@ -436,15 +387,48 @@ export default function CardPinCalculator() {
   const bestResult = cardResults.find((result) => result.rule) ?? null;
   const alternatives = cardResults.filter((result) => result.card.id !== bestResult?.card.id).slice(0, 4);
 
+  const resultHeroOrStatusElement = useMemo(() => {
+    if (error || ownedCards.length === 0 || !hasSearch || isFxRateMissing || !bestResult) {
+      return (
+        <StatusBanner
+          ownedCardsLength={ownedCards.length}
+          hasSearch={hasSearch}
+          isFxRateMissing={isFxRateMissing}
+          fxStatus={fxStatus}
+          spendCurrency={spendCurrency}
+          error={error}
+          bestResultExists={bestResult !== null}
+          handleOpenCatalog={handleOpenCatalog}
+        />
+      );
+    }
+
+    return (
+      <ResultHero
+        bestResult={bestResult}
+        spendAmount={spendAmount}
+        isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
+        rewardAmount={rewardAmount}
+        cleanExplanation={cleanExplanation}
+        rewardLabel={rewardLabel}
+        alternatives={alternatives}
+      />
+    );
+  }, [
+    error,
+    ownedCards.length,
+    hasSearch,
+    isFxRateMissing,
+    fxStatus,
+    spendCurrency,
+    bestResult,
+    spendAmount,
+    isForeignSpend,
+    alternatives,
+  ]);
+
   return (
     <>
-      {error && (
-        <div className="card error-card">
-          <h2>Error</h2>
-          <p>{error}</p>
-        </div>
-      )}
-
       {loading || showWelcome === null ? (
         <div className="loading-container">Loading card datasets...</div>
       ) : (
@@ -510,49 +494,32 @@ export default function CardPinCalculator() {
               </section>
             )
           }
-          compactControls={
-            <div className="compact-controls-strip">
-              <div className="compact-control-group">
-                <label htmlFor="country-select" className="visually-hidden">Country</label>
-                <div className="select-wrapper-compact">
-                  <GlobeIcon />
-                  <select
-                    id="country-select"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                    className="compact-select"
-                  >
-                    <option value="be">BE (Belgium)</option>
-                    <option value="de">DE (Germany)</option>
-                    <option value="nl">NL (Netherlands)</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="compact-control-group">
-                <div className="segmented-control segmented-control--compact" role="group" aria-label="Audience">
-                  <button
-                    type="button"
-                    aria-pressed={audience === "consumer"}
-                    className={audience === "consumer" ? "active" : ""}
-                    onClick={() => setAudience("consumer")}
-                  >
-                    Consumer
-                  </button>
-                  <button
-                    type="button"
-                    aria-pressed={audience === "business"}
-                    className={audience === "business" ? "active" : ""}
-                    onClick={() => setAudience("business")}
-                  >
-                    Business
-                  </button>
-                </div>
-              </div>
-            </div>
+          countryAudienceSelector={
+            <CountryAudienceSelector
+              country={country}
+              setCountry={setCountry}
+              audience={audience}
+              setAudience={setAudience}
+            />
           }
-          walletSetup={
-            <WalletSetup
+          resultHeroOrStatus={resultHeroOrStatusElement}
+          inputStrip={
+            <InputStrip
+              merchantQuery={merchantQuery}
+              setMerchantQuery={setMerchantQuery}
+              categoryQuery={categoryQuery}
+              setCategoryQuery={setCategoryQuery}
+              spendInput={spendInput}
+              setSpendInput={setSpendInput}
+              spendCurrency={spendCurrency}
+              setSpendCurrency={setSpendCurrency}
+              categoriesList={categoriesList}
+              handleSpendBlur={handleSpendBlur}
+              disabled={ownedCards.length === 0}
+            />
+          }
+          walletManager={
+            <WalletManager
               country={country}
               ownedCardIds={ownedCardIds}
               ownedCards={ownedCards}
@@ -573,38 +540,6 @@ export default function CardPinCalculator() {
               handleCloseCatalog={handleCloseCatalog}
               catalogDialogRef={catalogDialogRef}
               catalogSearchRef={catalogSearchRef}
-            />
-          }
-          merchantSelector={
-            <MerchantSelector
-              merchantQuery={merchantQuery}
-              setMerchantQuery={setMerchantQuery}
-              categoryQuery={categoryQuery}
-              setCategoryQuery={setCategoryQuery}
-              spendInput={spendInput}
-              setSpendInput={setSpendInput}
-              spendCurrency={spendCurrency}
-              setSpendCurrency={setSpendCurrency}
-              categoriesList={categoriesList}
-              ownedCardsLength={ownedCards.length}
-              handleSpendBlur={handleSpendBlur}
-              handleOpenCatalog={handleOpenCatalog}
-            />
-          }
-          cardDisplay={
-            <CardDisplay
-              ownedCardsLength={ownedCards.length}
-              hasSearch={hasSearch}
-              isFxRateMissing={isFxRateMissing}
-              fxStatus={fxStatus}
-              spendCurrency={spendCurrency}
-              bestResult={bestResult}
-              rewardAmount={rewardAmount}
-              cleanExplanation={cleanExplanation}
-              rewardLabel={rewardLabel}
-              spendAmount={spendAmount}
-              isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
-              alternatives={alternatives}
             />
           }
         />

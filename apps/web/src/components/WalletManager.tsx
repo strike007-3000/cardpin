@@ -75,7 +75,7 @@ function getCardThemeClass(issuerId: string, network: string) {
   return "card-theme-fallback-amex";
 }
 
-interface WalletSetupProps {
+interface WalletManagerProps {
   country: string;
   ownedCardIds: string[];
   ownedCards: Card[];
@@ -98,7 +98,7 @@ interface WalletSetupProps {
   catalogSearchRef: React.RefObject<HTMLInputElement | null>;
 }
 
-export default function WalletSetup({
+export default function WalletManager({
   country,
   ownedCardIds,
   ownedCards,
@@ -118,18 +118,17 @@ export default function WalletSetup({
   handleCloseCatalog,
   catalogDialogRef,
   catalogSearchRef,
-}: WalletSetupProps) {
+}: WalletManagerProps) {
   const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
 
   return (
     <>
-      <section className="card step-card">
+      <section className="card step-card wallet-manager-card">
         <div className="step-header">
           <div className="step-icon-wrapper">
             <WalletIcon />
           </div>
           <div className="step-title-block" style={{ width: "100%" }}>
-            <div className="step-kicker">Step 2</div>
             <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
               <h2>Your Wallet</h2>
               <span className="quiet-pill">{ownedCards.length} in wallet</span>

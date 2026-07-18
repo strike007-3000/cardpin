@@ -5,34 +5,38 @@ import React from "react";
 interface MainLayoutProps {
   navigationBar: React.ReactNode;
   welcomeBanner?: React.ReactNode;
-  compactControls: React.ReactNode;
-  walletSetup: React.ReactNode;
-  merchantSelector: React.ReactNode;
-  cardDisplay: React.ReactNode;
+  countryAudienceSelector: React.ReactNode;
+  resultHeroOrStatus: React.ReactNode;
+  inputStrip: React.ReactNode;
+  walletManager: React.ReactNode;
 }
 
 export default function MainLayout({
   navigationBar,
   welcomeBanner,
-  compactControls,
-  walletSetup,
-  merchantSelector,
-  cardDisplay,
+  countryAudienceSelector,
+  resultHeroOrStatus,
+  inputStrip,
+  walletManager,
 }: MainLayoutProps) {
   return (
     <div className="main-layout-container">
       {navigationBar}
       <main className="flow-layout-stacked">
         {welcomeBanner}
-        {compactControls}
         
-        <div className="columns-grid">
-          <div className="left-column">
-            {walletSetup}
+        <div className="cardpin-grid">
+          <div className="grid-area-top">
+            {countryAudienceSelector}
           </div>
-          <div className="right-column">
-            {merchantSelector}
-            {cardDisplay}
+          <div className="grid-area-hero">
+            {resultHeroOrStatus}
+          </div>
+          <div className="grid-area-bottom">
+            {inputStrip}
+          </div>
+          <div className="grid-area-wallet">
+            {walletManager}
           </div>
         </div>
       </main>

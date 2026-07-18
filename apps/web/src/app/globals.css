@@ -2350,3 +2350,80 @@ input[type="number"] {
   margin-top: 12px;
 }
 
+/* Redesigned single-screen layout and fintech utility styles */
+.cardpin-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.grid-area-top {
+  order: 2;
+}
+
+.grid-area-hero {
+  order: 1;
+}
+
+.grid-area-bottom {
+  order: 3;
+}
+
+.grid-area-wallet {
+  order: 4;
+}
+
+@media (min-width: 1024px) {
+  .cardpin-grid {
+    grid-template-columns: 1.6fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "top wallet"
+      "hero wallet"
+      "bottom wallet";
+  }
+  .grid-area-top {
+    grid-area: top;
+    order: unset;
+  }
+  .grid-area-hero {
+    grid-area: hero;
+    order: unset;
+  }
+  .grid-area-bottom {
+    grid-area: bottom;
+    order: unset;
+  }
+  .grid-area-wallet {
+    grid-area: wallet;
+    order: unset;
+  }
+}
+
+.input-strip-card {
+  padding: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+}
+
+.input-strip-card--disabled {
+  opacity: 0.6;
+}
+
+.input-strip-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.input-strip-row .form-group {
+  flex: 1;
+  min-width: 160px;
+  margin-bottom: 0;
+}
+
+

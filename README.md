@@ -155,10 +155,18 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
-## Production Features (v1.2.8)
+## Production Features (v1.2.9)
 
-### Premium Dark-Theme Layout styling
-Features a refined, high-end dark-mode visual theme with matte-black mockups for the card stack, subtle border-left accent lines highlighting individual card branding, and an integrated settings slide-out panel that sits flush beneath the active card.
+### Redesigned Single-Screen Dashboard Layout
+Reorganized the primary calculator interface into a single-screen responsive utility. On desktop, the result hero card is positioned at the top-left, transaction parameters entry input strip at the bottom-left, and the wallet manager resides in a sidecar column on the right. On mobile, the vertical flow prioritizes calculation results at the top, followed by transaction inputs, with wallet management stacked cleanly at the bottom.
+
+### Decomposed Component Architecture
+Refactored the previously monolithic `CardPinCalculator` page into five modular, typed components:
+- `CountryAudienceSelector` (compact top bar controls)
+- `InputStrip` (integrated purchase parameters row)
+- `ResultHero` (high-density recommendation display)
+- `WalletManager` (sidecar wallet setups and imports)
+- `StatusBanner` (unified state handlers for errors and empty/locked calculator states)
 
 ### Apple Wallet-Inspired Card Stack
 Owned cards use a stable vertical stack with a consistent visible header for every collapsed card and one fully expanded selected card. Selecting a collapsed card moves it to the front without rotation, absolute positioning, manual height calculations, or scattered z-index rules. Selected-card settings stay attached to the stack, while import, export, and clear actions live in a compact wallet-options menu.
