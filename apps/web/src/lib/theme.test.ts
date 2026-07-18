@@ -18,5 +18,6 @@ describe("CSS variables in globals.css", () => {
     expect(content).toContain("--gradient-primary");
     expect(content).toContain("--gradient-secondary");
     expect(content).toContain("--gradient-accent");
+    expect(content).toContain(".visually-hidden");
   });
 });
