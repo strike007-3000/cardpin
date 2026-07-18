@@ -19,5 +19,7 @@ describe("CSS variables in globals.css", () => {
     expect(content).toContain("--gradient-secondary");
     expect(content).toContain("--gradient-accent");
     expect(content).toContain(".visually-hidden");
+    expect(content).toContain(".logo-header {");
+    expect(content).toContain(".brand-name {");
   });
 });
