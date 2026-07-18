@@ -82,6 +82,33 @@ function CreditCardPlaceholder() {
   );
 }
 
+function CardNetworkLogo({ network }: { network: string }) {
+  const net = network.toLowerCase();
+  if (net === "mastercard") {
+    return (
+      <span className="network-logo network-logo--mastercard" aria-label="Mastercard">
+        <span className="circle circle--red" />
+        <span className="circle circle--orange" />
+      </span>
+    );
+  }
+  if (net === "visa") {
+    return (
+      <span className="network-logo network-logo--visa" aria-label="Visa">
+        VISA
+      </span>
+    );
+  }
+  if (net === "amex" || net === "american-express") {
+    return (
+      <span className="network-logo network-logo--amex" aria-label="American Express">
+        AMEX
+      </span>
+    );
+  }
+  return <span className="network-logo network-logo--generic">{network.toUpperCase()}</span>;
+}
+
 function getCardThemeClass(issuerId: string, network: string) {
   const normalized = issuerId.toLowerCase();
   if (normalized.includes("american-express")) {
@@ -602,50 +629,48 @@ export default function CardPinCalculator() {
                           <button
                             type="button"
                             key={card.id}
-                            className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : ""}`}
+                            className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : "wallet-card--collapsed"}`}
                             onClick={() => setActiveCardId(card.id)}
                             aria-pressed={isActive}
                             aria-label={isActive ? `${card.name}, selected` : `Select ${card.name}`}
                           >
                             <span className="card-texture" aria-hidden="true" />
-                            <span className="wallet-card__topline">
-                              <span className="card-issuer-name">{issuerName}</span>
-                              {!isActive && <span className="card-chip" aria-hidden="true" />}
-                              {isActive && (
-                                <svg className="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: "16px", height: "16px", opacity: 0.8 }}>
-                                  <path d="M5 17a8 8 0 0 1 0-10" />
-                                  <path d="M9 19a12 12 0 0 1 0-14" />
-                                  <path d="M13 21a16 16 0 0 1 0-18" />
-                                </svg>
-                              )}
-                            </span>
-                            {isActive && (
-                              <span className="wallet-card__middle">
-                                <span className="card-chip" aria-hidden="true" />
-                                <span className="card-number-embossed">
-                                  •••• •••• •••• {card.id.length > 4 ? card.id.slice(-4) : (card.id.charCodeAt(0) % 10).toString() + (card.id.charCodeAt(card.id.length - 1) % 10).toString() + "42"}
+                            {isActive ? (
+                              <>
+                                <span className="wallet-card__topline">
+                                  <span className="card-issuer-name">{issuerName}</span>
+                                  <svg className="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: "16px", height: "16px", opacity: 0.8 }}>
+                                    <path d="M5 17a8 8 0 0 1 0-10" />
+                                    <path d="M9 19a12 12 0 0 1 0-14" />
+                                    <path d="M13 21a16 16 0 0 1 0-18" />
+                                  </svg>
                                 </span>
+                                <span className="wallet-card__middle">
+                                  <span className="card-chip" aria-hidden="true" />
+                                  <span className="card-number-embossed">
+                                    •••• •••• •••• {card.id.length > 4 ? card.id.slice(-4) : (card.id.charCodeAt(0) % 10).toString() + (card.id.charCodeAt(card.id.length - 1) % 10).toString() + "42"}
+                                  </span>
+                                </span>
+                                <span className="wallet-card__details">
+                                  <span className="wallet-card__bottom-row">
+                                    <span className="card-holder-info">
+                                      <span className="card-name-display">{card.name}</span>
+                                      <span className="card-expiry-embossed">
+                                        <span className="expiry-label">VALID THRU</span>
+                                        <span className="expiry-value">12/29</span>
+                                      </span>
+                                    </span>
+                                    <CardNetworkLogo network={card.network} />
+                                  </span>
+                                </span>
+                              </>
+                            ) : (
+                              <span className="wallet-card__collapsed-row">
+                                <span className="card-issuer-name">{issuerName}</span>
+                                <span className="card-name-display">{card.name}</span>
+                                <CardNetworkLogo network={card.network} />
                               </span>
                             )}
-                            <span className="wallet-card__details">
-                              {isActive ? (
-                                <span className="wallet-card__bottom-row">
-                                  <span className="card-holder-info">
-                                    <span className="card-name-display">{card.name}</span>
-                                    <span className="card-expiry-embossed">
-                                      <span className="expiry-label">VALID THRU</span>
-                                      <span className="expiry-value">12/29</span>
-                                    </span>
-                                  </span>
-                                  <span className="card-network-logo">{card.network}</span>
-                                </span>
-                              ) : (
-                                <>
-                                  <span className="card-name-display">{card.name}</span>
-                                  <span className="card-network-logo">{card.network}</span>
-                                </>
-                              )}
-                            </span>
                           </button>
                         );
                       })}

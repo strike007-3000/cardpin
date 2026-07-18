@@ -546,9 +546,7 @@ a:hover {
   }
 
   .step-card--search {
-    position: sticky;
-    top: 24px;
-    z-index: 10;
+    border-color: rgba(167, 139, 250, 0.2);
   }
 
   .form-row,
@@ -1568,25 +1566,148 @@ a:hover {
   outline: none;
 }
 
-/* Card Visual Gradients & Designs */
-.card-theme-amex-gold { background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%); }
-.card-theme-amex-platinum { background: linear-gradient(135deg, #f0f0f0 0%, #b0b0b0 100%); color: #111; }
-.card-theme-amex-platinum .card-issuer-name { color: #111; }
-.card-theme-amex-platinum .card-name-display { color: #111; text-shadow: none; }
-.card-theme-amex-platinum .card-network-logo { color: #111; }
-.card-theme-amex-green { background: linear-gradient(135deg, #2e7d32 0%, #1b5e20 100%); }
-.card-theme-n26-metal { background: linear-gradient(135deg, #37474f 0%, #101010 100%); }
-.card-theme-n26-standard { background: linear-gradient(135deg, #1d2b3a 0%, #080d14 100%); border: 1px solid rgba(255,255,255,0.1); }
-.card-theme-dkb { background: linear-gradient(135deg, #00a4e4 0%, #004b87 100%); }
-.card-theme-deutsche-bank { background: linear-gradient(135deg, #0018a8 0%, #000c54 100%); }
-.card-theme-commerzbank { background: linear-gradient(135deg, #ffe000 0%, #d89600 100%); color: #000; }
-.card-theme-commerzbank .card-issuer-name, .card-theme-commerzbank .card-name-display, .card-theme-commerzbank .card-network-logo { color: #000; text-shadow: none; }
-.card-theme-barclays { background: linear-gradient(135deg, #00aeef 0%, #005a9c 100%); }
-.card-theme-hanseatic { background: linear-gradient(135deg, #e30613 0%, #7e0007 100%); }
-.card-theme-advanzia { background: linear-gradient(135deg, #ffa726 0%, #d35400 100%); }
-.card-theme-fallback-visa { background: linear-gradient(135deg, #1a1f71 0%, #0055a5 100%); }
-.card-theme-fallback-mastercard { background: linear-gradient(135deg, #f79e1b 0%, #eb001b 100%); }
-.card-theme-fallback-amex { background: linear-gradient(135deg, #007bc1 0%, #003a6b 100%); }
+/* Card Visual Gradients & Designs (Muted/Premium Dark Mode) */
+.card-theme-amex-gold { 
+  background: linear-gradient(135deg, #1d1b16 0%, #12110e 100%); 
+  border-color: rgba(212, 175, 55, 0.3) !important;
+}
+.card-theme-amex-platinum { 
+  background: linear-gradient(135deg, #1d1e20 0%, #121314 100%); 
+  border-color: rgba(180, 180, 180, 0.35) !important;
+}
+.card-theme-amex-green { 
+  background: linear-gradient(135deg, #141a15 0%, #0d110e 100%); 
+  border-color: rgba(46, 125, 50, 0.3) !important;
+}
+.card-theme-n26-metal { 
+  background: linear-gradient(135deg, #161718 0%, #0d0d0e 100%); 
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+.card-theme-n26-standard { 
+  background: linear-gradient(135deg, #14171a 0%, #0d0f11 100%); 
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+.card-theme-dkb { 
+  background: linear-gradient(135deg, #111a24 0%, #0a1017 100%); 
+  border-color: rgba(0, 164, 228, 0.3) !important;
+}
+.card-theme-deutsche-bank { 
+  background: linear-gradient(135deg, #101524 0%, #0a0d17 100%); 
+  border-color: rgba(0, 24, 168, 0.3) !important;
+}
+.card-theme-commerzbank { 
+  background: linear-gradient(135deg, #1e1d13 0%, #13120c 100%); 
+  border-color: rgba(255, 224, 0, 0.25) !important;
+}
+.card-theme-barclays { 
+  background: linear-gradient(135deg, #111a24 0%, #0a1017 100%); 
+  border-color: rgba(0, 174, 239, 0.3) !important;
+}
+.card-theme-hanseatic { 
+  background: linear-gradient(135deg, #221213 0%, #150b0c 100%); 
+  border-color: rgba(227, 6, 19, 0.28) !important;
+}
+.card-theme-advanzia { 
+  background: linear-gradient(135deg, #201712 0%, #140e0b 100%); 
+  border-color: rgba(255, 167, 38, 0.28) !important;
+}
+.card-theme-fallback-visa { 
+  background: linear-gradient(135deg, #131622 0%, #0c0e16 100%); 
+  border-color: rgba(26, 31, 113, 0.3) !important;
+}
+.card-theme-fallback-mastercard { 
+  background: linear-gradient(135deg, #221713 0%, #150e0c 100%); 
+  border-color: rgba(247, 158, 27, 0.3) !important;
+}
+.card-theme-fallback-amex { 
+  background: linear-gradient(135deg, #111822 0%, #0a0f16 100%); 
+  border-color: rgba(0, 123, 193, 0.3) !important;
+}
+
+/* Card Stack Collapsed Row */
+.wallet-card__collapsed-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.wallet-card__collapsed-row .card-issuer-name {
+  max-width: 130px;
+}
+
+.wallet-card__collapsed-row .card-name-display {
+  font-size: 0.82rem;
+  font-weight: 600;
+  max-width: 200px;
+  text-shadow: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Card Network Logo styles */
+.network-logo {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.network-logo--visa {
+  font-family: "Times New Roman", Times, serif;
+  font-style: italic;
+  color: #fff;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.network-logo--mastercard {
+  width: 26px;
+  height: 16px;
+  display: flex;
+  position: relative;
+}
+
+.network-logo--mastercard .circle {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  position: absolute;
+  top: 1px;
+}
+
+.network-logo--mastercard .circle--red {
+  background: rgba(235, 0, 27, 0.85);
+  left: 0;
+}
+
+.network-logo--mastercard .circle--orange {
+  background: rgba(247, 158, 27, 0.85);
+  right: 0;
+  mix-blend-mode: screen;
+}
+
+.network-logo--amex {
+  font-family: "Courier New", Courier, monospace;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 1px 4px;
+  font-size: 0.62rem;
+  border-radius: 2px;
+  letter-spacing: 0px;
+  color: #fff;
+}
+
+.network-logo--generic {
+  color: var(--text-muted);
+  font-size: 0.7rem;
+}
 
 /* Restructured CSS to clean up CardPinCalculator inline styles */
 .card-config-header {
