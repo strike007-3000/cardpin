@@ -1,10 +1,12 @@
 "use client";
 
 import CardPinCalculator from "./CardPinCalculator";
+import DarkModeToggle from "@/components/DarkModeToggle";
 
 export default function HomePage() {
   return (
     <div className="container">
+      <DarkModeToggle />
       <CardPinCalculator />
       
       <footer className="site-footer">
