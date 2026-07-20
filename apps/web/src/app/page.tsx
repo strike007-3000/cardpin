@@ -5,7 +5,7 @@ import DarkModeToggle from "../components/DarkModeToggle";
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen bg-background transition-all duration-500">
+    <div className="container relative min-h-screen transition-all duration-500">
       <DarkModeToggle />
       <CardPinCalculator />
 
