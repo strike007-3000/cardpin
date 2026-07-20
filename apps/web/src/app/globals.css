@@ -2,19 +2,19 @@
 :root {
   --font-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: var(--font-primary);
-
+  
   /* Light theme */
   --bg-base: #f9f9fa;
   --bg-surface: #ffffff;
   --bg-card: #f4f4f5;
-
+  
   /* Dark theme */
-  :dark {
-    --bg-base: #1a1a1b;
-    --bg-surface: #2d2d2e;
-    --bg-card: #1f1f1f;
-  }
-
+  --dark-bg-base: #1a1a1b;
+  --dark-bg-surface: #2d2d2e;
+  --dark-bg-card: #1f1f1f;
+  --dark-text-main: #ffffff;
+  --dark-text-muted: #a1a1aa;
+  
   --border-color: #e4e4e7;
   --border-focus: #18181b;
   --color-primary: #2563eb;
@@ -23,7 +23,7 @@
   --text-main: #18181b;
   --text-muted: #71717a;
   --text-inverse: #ffffff;
-
+  
   /* Premium color palette */
   --color-fintech-blue: #3b82f6;
   --color-fintech-purple: #8b5cf6;
@@ -32,11 +32,10 @@
   --color-fintech-red: #ef4444;
 
   /* Shadow states */
-  --shadow-panel: 0 10px 30px rgba(0, 0, 0, 0.05),
-  0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-panel: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
   --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
   --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.05);
-
+  
   /* Animation */
   --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
@@ -49,19 +48,9 @@
   --text-main: var(--dark-text-main);
   --text-muted: var(--dark-text-muted);
 }
-
-.dark-mode :where(.dark) {
-  /* This is an empty pseudo selector just to help with CSS organization */
-}
-
+  
 /* Enhanced gradients */
---gradient-card-bg: #ffffff;
---gradient-card-hover: #fafafa;
---gradient-primary: none;
---gradient-secondary: none;
---gradient-accent: none;
-
-
+/* The rest of the CSS remains unchanged */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -506,9 +495,7 @@ a:hover {
 
 .alt-card-bar {
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  top: 0; left: 0; bottom: 0;
   background: rgba(167, 139, 250, 0.06);
   z-index: -1;
   transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -722,7 +709,6 @@ a:hover {
     opacity: 0;
     transform: translateY(10px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -738,23 +724,23 @@ a:hover {
   .container {
     padding: 24px 16px 32px;
   }
-
+  
   .card {
     padding: 24px;
   }
-
+  
   .result-box {
     padding: 24px;
   }
-
+  
   h1 {
     font-size: 1.8rem;
   }
-
+  
   .brand-name {
     font-size: 1.75rem;
   }
-
+  
   .val-amount {
     font-size: 2rem;
   }
@@ -778,9 +764,7 @@ a:hover {
 
 .alt-card-bar {
   position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
+  top: 0; left: 0; bottom: 0;
   background: rgba(167, 139, 250, 0.06);
   z-index: -1;
   transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
@@ -1222,7 +1206,6 @@ input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -1322,11 +1305,11 @@ input[type="number"] {
   border-radius: 50%;
 }
 
-.switch input:checked+.slider {
+.switch input:checked + .slider {
   background-color: var(--color-primary);
 }
 
-.switch input:checked+.slider:before {
+.switch input:checked + .slider:before {
   transform: translateX(20px);
   background-color: var(--text-inverse);
 }
@@ -1595,25 +1578,26 @@ input[type="number"] {
 
 .card-texture {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: linear-gradient(125deg,
-      rgba(255, 255, 255, 0.1) 0%,
-      rgba(255, 255, 255, 0.03) 40%,
-      rgba(0, 0, 0, 0.1) 60%,
-      rgba(0, 0, 0, 0.35) 100%);
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.03) 40%,
+    rgba(0, 0, 0, 0.1) 60%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
   pointer-events: none;
   z-index: 0;
 }
 
 .wallet-card:hover .card-texture {
-  background-image: linear-gradient(125deg,
-      rgba(255, 255, 255, 0.18) 0%,
-      rgba(255, 255, 255, 0.06) 30%,
-      rgba(0, 0, 0, 0.05) 70%,
-      rgba(0, 0, 0, 0.28) 100%);
+  background-image: linear-gradient(
+    125deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.06) 30%,
+    rgba(0, 0, 0, 0.05) 70%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
 }
 
 .wallet-card__topline {
@@ -1652,12 +1636,9 @@ input[type="number"] {
 .card-chip::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  top: 0; left: 0; right: 0; bottom: 0;
   border: 1px solid rgba(0, 0, 0, 0.15);
-  background-image:
+  background-image: 
     linear-gradient(90deg, transparent 48%, rgba(0, 0, 0, 0.15) 48%, rgba(0, 0, 0, 0.15) 52%, transparent 52%),
     linear-gradient(0deg, transparent 48%, rgba(0, 0, 0, 0.15) 48%, rgba(0, 0, 0, 0.15) 52%, transparent 52%);
   background-size: 50% 50%;
@@ -1667,10 +1648,7 @@ input[type="number"] {
 .card-chip::after {
   content: "";
   position: absolute;
-  top: 7px;
-  left: 10px;
-  width: 18px;
-  height: 14px;
+  top: 7px; left: 10px; width: 18px; height: 14px;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 2px;
   background: transparent;
@@ -1939,86 +1917,73 @@ input[type="number"] {
 }
 
 /* Card Visual Gradients & Designs (Light/Premium Metallic Theme) */
-.card-theme-amex-gold {
+.card-theme-amex-gold { 
   background: linear-gradient(135deg, #fefae0 0%, #f3e5ab 100%) !important;
   color: #4a3c00 !important;
   border-left: 3.5px solid #d4af37 !important;
 }
-
-.card-theme-amex-platinum {
+.card-theme-amex-platinum { 
   background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%) !important;
   color: #1e293b !important;
   border-left: 3.5px solid #94a3b8 !important;
 }
-
-.card-theme-amex-green {
+.card-theme-amex-green { 
   background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%) !important;
   color: #14532d !important;
   border-left: 3.5px solid #10b981 !important;
 }
-
 .card-theme-n26-metal,
-.card-theme-revolut-metal {
+.card-theme-revolut-metal { 
   background: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%) !important;
   color: #0f172a !important;
   border-left: 3.5px solid #475569 !important;
 }
-
-.card-theme-n26-standard {
+.card-theme-n26-standard { 
   background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%) !important;
   color: #1e293b !important;
   border-left: 3.5px solid #3b82f6 !important;
 }
-
-.card-theme-dkb {
+.card-theme-dkb { 
   background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%) !important;
   color: #0369a1 !important;
   border-left: 3.5px solid #00a4e8 !important;
 }
-
-.card-theme-deutsche-bank {
+.card-theme-deutsche-bank { 
   background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
   color: #1d4ed8 !important;
   border-left: 3.5px solid #002fbe !important;
 }
-
-.card-theme-commerzbank {
+.card-theme-commerzbank { 
   background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%) !important;
   color: #78350f !important;
   border-left: 3.5px solid #ffd700 !important;
 }
-
-.card-theme-barclays {
+.card-theme-barclays { 
   background: linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%) !important;
   color: #0f766e !important;
   border-left: 3.5px solid #00aeef !important;
 }
-
-.card-theme-hanseatic {
+.card-theme-hanseatic { 
   background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%) !important;
   color: #c53030 !important;
   border-left: 3.5px solid #ff0000 !important;
 }
-
-.card-theme-advanzia {
+.card-theme-advanzia { 
   background: linear-gradient(135deg, #fffaf0 0%, #ffedd5 100%) !important;
   color: #c2410c !important;
   border-left: 3.5px solid #ff9800 !important;
 }
-
-.card-theme-fallback-visa {
+.card-theme-fallback-visa { 
   background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%) !important;
   color: #1e40af !important;
   border-left: 3.5px solid #4f46e5 !important;
 }
-
-.card-theme-fallback-mastercard {
+.card-theme-fallback-mastercard { 
   background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%) !important;
   color: #9a3412 !important;
   border-left: 3.5px solid #ea580c !important;
 }
-
-.card-theme-fallback-amex {
+.card-theme-fallback-amex { 
   background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%) !important;
   color: #0e7490 !important;
   border-left: 3.5px solid #06b6d4 !important;
@@ -2091,8 +2056,7 @@ input[type="number"] {
   font-family: "Cinzel", "Times New Roman", Times, serif;
   font-style: italic;
   font-weight: 800;
-  color: #1a1f71 !important;
-  /* Visa blue */
+  color: #1a1f71 !important; /* Visa blue */
   font-size: 0.9rem;
   letter-spacing: 0.5px;
   line-height: 1;
@@ -2100,8 +2064,7 @@ input[type="number"] {
 }
 
 .network-logo--visa::first-letter {
-  color: #f7b600 !important;
-  /* Visa gold flick on V */
+  color: #f7b600 !important; /* Visa gold flick on V */
 }
 
 .network-logo--mastercard {
@@ -2127,13 +2090,11 @@ input[type="number"] {
 .network-logo--mastercard .circle--orange {
   background: #eb001b;
   right: 0;
-  mix-blend-mode: color-burn;
-  /* Classic Mastercard overlap */
+  mix-blend-mode: color-burn; /* Classic Mastercard overlap */
 }
 
 .network-logo--amex {
-  background: #007bc1 !important;
-  /* Amex blue box */
+  background: #007bc1 !important; /* Amex blue box */
   color: #ffffff !important;
   padding: 3px 5px;
   border-radius: 2px;
@@ -2461,8 +2422,7 @@ input[type="number"] {
 }
 
 .grid-area-hero {
-  order: 1;
-  /* Result first on mobile */
+  order: 1; /* Result first on mobile */
 }
 
 .grid-area-top {
@@ -2476,23 +2436,16 @@ input[type="number"] {
 @media (min-width: 1024px) {
   .cardpin-grid {
     grid-template-columns: 1.6fr 1fr;
-    align-items: start;
-    /* Prevents height stretching and keeps columns naturally aligned */
+    align-items: start; /* Prevents height stretching and keeps columns naturally aligned */
   }
-
   .grid-area-top {
-    order: 1;
-    /* Settings top on desktop */
+    order: 1; /* Settings top on desktop */
   }
-
   .grid-area-hero {
-    order: 2;
-    /* Result in middle on desktop */
+    order: 2; /* Result in middle on desktop */
   }
-
   .grid-area-bottom {
-    order: 3;
-    /* Input strip bottom on desktop */
+    order: 3; /* Input strip bottom on desktop */
   }
 }
 
