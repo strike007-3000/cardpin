@@ -56,6 +56,7 @@
   /* Animation */
   --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --bg-header: rgba(249, 249, 250, 0.95);
 }
 
 .dark {
@@ -67,6 +68,7 @@
   --border-color: #2e2e30;
   --border-focus: #3b82f6;
   --color-primary: #60a5fa;
+  --bg-header: rgba(26, 26, 27, 0.95);
 }
   
 /* Enhanced gradients */
@@ -135,7 +137,7 @@ header {
 }
 
 .scrolled-header {
-  background: rgba(249, 249, 250, 0.95);
+  background: var(--bg-header);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   padding: 12px 0;
@@ -1900,6 +1902,80 @@ input[type="number"] {
   border-left: 3.5px solid #06b6d4 !important;
 }
 
+/* Card Visual Gradients & Designs (Dark overrides) */
+.dark .card-theme-amex-gold { 
+  background: linear-gradient(135deg, #2b2512 0%, #151208 100%) !important;
+  color: #f3e5ab !important;
+  border-left: 3.5px solid #d4af37 !important;
+}
+.dark .card-theme-amex-platinum { 
+  background: linear-gradient(135deg, #2d2d30 0%, #1e1e1e 100%) !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #94a3b8 !important;
+}
+.dark .card-theme-amex-green { 
+  background: linear-gradient(135deg, #0d2b18 0%, #05140b 100%) !important;
+  color: #dcfce7 !important;
+  border-left: 3.5px solid #10b981 !important;
+}
+.dark .card-theme-n26-metal,
+.dark .card-theme-revolut-metal { 
+  background: linear-gradient(135deg, #252830 0%, #121418 100%) !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #475569 !important;
+}
+.dark .card-theme-n26-standard { 
+  background: linear-gradient(135deg, #1b263b 0%, #0d131e 100%) !important;
+  color: #e2e8f0 !important;
+  border-left: 3.5px solid #3b82f6 !important;
+}
+.dark .card-theme-dkb { 
+  background: linear-gradient(135deg, #072d4a 0%, #031625 100%) !important;
+  color: #e0f2fe !important;
+  border-left: 3.5px solid #00a4e8 !important;
+}
+.dark .card-theme-deutsche-bank { 
+  background: linear-gradient(135deg, #091e3a 0%, #040f1d 100%) !important;
+  color: #dbeafe !important;
+  border-left: 3.5px solid #002fbe !important;
+}
+.dark .card-theme-commerzbank { 
+  background: linear-gradient(135deg, #3d2a09 0%, #1e1504 100%) !important;
+  color: #fef3c7 !important;
+  border-left: 3.5px solid #ffd700 !important;
+}
+.dark .card-theme-barclays { 
+  background: linear-gradient(135deg, #06312a 0%, #031815 100%) !important;
+  color: #ccfbf1 !important;
+  border-left: 3.5px solid #00aeef !important;
+}
+.dark .card-theme-hanseatic { 
+  background: linear-gradient(135deg, #3b0d0d 0%, #1d0606 100%) !important;
+  color: #fed7d7 !important;
+  border-left: 3.5px solid #ff0000 !important;
+}
+.dark .card-theme-advanzia { 
+  background: linear-gradient(135deg, #3b1b06 0%, #1d0e03 100%) !important;
+  color: #ffedd5 !important;
+  border-left: 3.5px solid #ff9800 !important;
+}
+.dark .card-theme-fallback-visa { 
+  background: linear-gradient(135deg, #091a3a 0%, #040d1d 100%) !important;
+  color: #dbeafe !important;
+  border-left: 3.5px solid #4f46e5 !important;
+}
+.dark .card-theme-fallback-mastercard { 
+  background: linear-gradient(135deg, #3a1506 0%, #1d0a03 100%) !important;
+  color: #ffedd5 !important;
+  border-left: 3.5px solid #ea580c !important;
+}
+.dark .card-theme-fallback-amex { 
+  background: linear-gradient(135deg, #063138 0%, #03181c 100%) !important;
+  color: #cffafe !important;
+  border-left: 3.5px solid #06b6d4 !important;
+}
+
+
 /* Card Stack Collapsed Row */
 .wallet-card--collapsed {
   display: flex;
@@ -1933,7 +2009,8 @@ input[type="number"] {
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: currentColor !important;
+  opacity: 0.7;
   width: 120px;
   flex-shrink: 0;
   text-align: left;
@@ -1942,7 +2019,7 @@ input[type="number"] {
 .wallet-card__collapsed-row .card-name-display {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #ffffff !important;
+  color: currentColor !important;
   flex-grow: 1;
   text-align: left;
   text-shadow: none;
