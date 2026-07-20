@@ -1,26 +1,34 @@
-/* Enhanced CardPin Design System - Option 1 (Dieter Rams Industrial) */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+
+
 :root {
   --font-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: var(--font-primary);
+  
+  /* Light theme */
   --bg-base: #f9f9fa;
   --bg-surface: #ffffff;
   --bg-card: #f4f4f5;
+  
+  /* Dark theme */
+  --dark-bg-base: #1a1a1b;
+  --dark-bg-surface: #2d2d2e;
+  --dark-bg-card: #1f1f1f;
+  --dark-text-main: #ffffff;
+  --dark-text-muted: #a1a1aa;
+  
   --border-color: #e4e4e7;
   --border-focus: #18181b;
   --color-primary: #2563eb;
   --color-accent: #ea580c;
   --color-danger: #ef4444;
-  --color-primary-semi: rgba(37, 99, 235, 0.08);
   --text-main: #18181b;
   --text-muted: #71717a;
   --text-inverse: #ffffff;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --shadow-panel: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
-  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.05);
-  --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
-  --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   
   /* Premium color palette */
   --color-fintech-blue: #3b82f6;
@@ -28,15 +36,43 @@
   --color-fintech-green: #10b981;
   --color-fintech-orange: #f59e0b;
   --color-fintech-red: #ef4444;
+
+  /* Gradients */
+  --gradient-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  --gradient-card-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+
+  /* Shadow states */
+  --shadow-panel: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.05);
   
-  /* Enhanced gradients */
-  --gradient-card-bg: #ffffff;
-  --gradient-card-hover: #fafafa;
-  --gradient-primary: none;
-  --gradient-secondary: none;
-  --gradient-accent: none;
+  /* Animation */
+  --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --bg-header: rgba(249, 249, 250, 0.95);
 }
 
+.dark {
+  --bg-base: var(--dark-bg-base);
+  --bg-surface: var(--dark-bg-surface);
+  --bg-card: var(--dark-bg-card);
+  --text-main: var(--dark-text-main);
+  --text-muted: var(--dark-text-muted);
+  --border-color: #2e2e30;
+  --border-focus: #3b82f6;
+  --color-primary: #60a5fa;
+  --bg-header: rgba(26, 26, 27, 0.95);
+}
+  
+/* Enhanced gradients */
+/* The rest of the CSS remains unchanged */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -101,7 +137,7 @@ header {
 }
 
 .scrolled-header {
-  background: rgba(249, 249, 250, 0.95);
+  background: var(--bg-header);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
   padding: 12px 0;
@@ -205,7 +241,7 @@ select,
 input {
   width: 100%;
   min-height: 48px;
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   color: var(--text-main);
@@ -228,14 +264,14 @@ select {
 
 select:hover,
 input:hover {
-  background-color: #fafafa;
+  background-color: var(--bg-card);
   border-color: #a1a1aa;
 }
 
 select:focus,
 input:focus {
   border-color: var(--border-focus);
-  background-color: #ffffff;
+  background-color: var(--bg-surface);
   box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.08);
 }
 
@@ -267,13 +303,14 @@ label.btn:focus-within {
 }
 
 .btn--primary {
-  background: #ffffff;
+  background: var(--color-primary);
   border-color: transparent;
-  color: #000000;
+  color: var(--text-inverse);
 }
 
 .btn--primary:hover {
-  background: #f4f4f5;
+  background: var(--color-primary);
+  opacity: 0.95;
   transform: translateY(-0.5px);
 }
 
@@ -456,36 +493,7 @@ a:hover {
   color: #c4b5fd;
 }
 
-/* Enhanced alternatives container */
-.alternatives-container {
-  display: grid;
-  gap: 12px;
-  margin-top: 28px;
-}
 
-.alt-card {
-  position: relative;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.015) !important;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: var(--radius-sm);
-  padding: 16px 18px;
-  z-index: 1;
-  transition: all var(--transition-fast);
-}
-
-.alt-card:hover {
-  background: rgba(255, 255, 255, 0.025) !important;
-  border-color: rgba(167, 139, 250, 0.15);
-}
-
-.alt-card-bar {
-  position: absolute;
-  top: 0; left: 0; bottom: 0;
-  background: rgba(167, 139, 250, 0.06);
-  z-index: -1;
-  transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-}
 
 /* Enhanced form layout */
 .search-fields {
@@ -604,90 +612,9 @@ a:hover {
 }
 
 /* Enhanced footer */
-.site-footer {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-top: 48px;
-  padding-top: 24px;
-  text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
-}
 
-/* Enhanced card theme classes */
-.card-theme-amex-gold {
-  --card-border-color: #f59e0b;
-  --card-text-color: #f59e0b;
-}
 
-.card-theme-amex-platinum {
-  --card-border-color: #ffffff;
-  --card-text-color: #ffffff;
-}
 
-.card-theme-amex-green {
-  --card-border-color: #10b981;
-  --card-text-color: #10b981;
-}
-
-.card-theme-n26-metal {
-  --card-border-color: #8b5cf6;
-  --card-text-color: #8b5cf6;
-}
-
-.card-theme-n26-standard {
-  --card-border-color: #3b82f6;
-  --card-text-color: #3b82f6;
-}
-
-.card-theme-dkb {
-  --card-border-color: #ef4444;
-  --card-text-color: #ef4444;
-}
-
-.card-theme-deutsche-bank {
-  --card-border-color: #f59e0b;
-  --card-text-color: #f59e0b;
-}
-
-.card-theme-commerzbank {
-  --card-border-color: #3b82f6;
-  --card-text-color: #3b82f6;
-}
-
-.card-theme-barclays {
-  --card-border-color: #10b981;
-  --card-text-color: #10b981;
-}
-
-.card-theme-hanseatic {
-  --card-border-color: #8b5cf6;
-  --card-text-color: #8b5cf6;
-}
-
-.card-theme-advanzia {
-  --card-border-color: #ef4444;
-  --card-text-color: #ef4444;
-}
-
-.card-theme-revolut-metal {
-  --card-border-color: #f59e0b;
-  --card-text-color: #f59e0b;
-}
-
-.card-theme-fallback-visa {
-  --card-border-color: #3b82f6;
-  --card-text-color: #3b82f6;
-}
-
-.card-theme-fallback-mastercard {
-  --card-border-color: #ef4444;
-  --card-text-color: #ef4444;
-}
-
-.card-theme-fallback-amex {
-  --card-border-color: #10b981;
-  --card-text-color: #10b981;
-}
 
 /* Enhanced animation effects */
 @keyframes fadeInUp {
@@ -1200,7 +1127,7 @@ input[type="number"] {
 .spend-input-wrapper {
   display: flex;
   align-items: center;
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   padding: 0 14px;
@@ -1519,7 +1446,7 @@ input[type="number"] {
 
 .wallet-card {
   appearance: none;
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 12px;
   box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.05);
@@ -1838,7 +1765,7 @@ input[type="number"] {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   padding: 12px;
-  background: #ffffff;
+  background: var(--bg-card);
   cursor: pointer;
   transition: border-color 0.2s, background-color 0.2s;
   display: flex;
@@ -1851,7 +1778,7 @@ input[type="number"] {
 
 .catalog-card-item:hover {
   border-color: var(--color-primary);
-  background-color: #fafafa;
+  background-color: var(--bg-surface);
 }
 
 .catalog-card-info {
@@ -1890,7 +1817,7 @@ input[type="number"] {
 .search-input-field {
   width: 100%;
   padding: 10px 14px;
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
   color: var(--text-main);
@@ -1975,6 +1902,80 @@ input[type="number"] {
   border-left: 3.5px solid #06b6d4 !important;
 }
 
+/* Card Visual Gradients & Designs (Dark overrides) */
+.dark .card-theme-amex-gold { 
+  background: linear-gradient(135deg, #2b2512 0%, #151208 100%) !important;
+  color: #f3e5ab !important;
+  border-left: 3.5px solid #d4af37 !important;
+}
+.dark .card-theme-amex-platinum { 
+  background: linear-gradient(135deg, #2d2d30 0%, #1e1e1e 100%) !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #94a3b8 !important;
+}
+.dark .card-theme-amex-green { 
+  background: linear-gradient(135deg, #0d2b18 0%, #05140b 100%) !important;
+  color: #dcfce7 !important;
+  border-left: 3.5px solid #10b981 !important;
+}
+.dark .card-theme-n26-metal,
+.dark .card-theme-revolut-metal { 
+  background: linear-gradient(135deg, #252830 0%, #121418 100%) !important;
+  color: #cbd5e1 !important;
+  border-left: 3.5px solid #475569 !important;
+}
+.dark .card-theme-n26-standard { 
+  background: linear-gradient(135deg, #1b263b 0%, #0d131e 100%) !important;
+  color: #e2e8f0 !important;
+  border-left: 3.5px solid #3b82f6 !important;
+}
+.dark .card-theme-dkb { 
+  background: linear-gradient(135deg, #072d4a 0%, #031625 100%) !important;
+  color: #e0f2fe !important;
+  border-left: 3.5px solid #00a4e8 !important;
+}
+.dark .card-theme-deutsche-bank { 
+  background: linear-gradient(135deg, #091e3a 0%, #040f1d 100%) !important;
+  color: #dbeafe !important;
+  border-left: 3.5px solid #002fbe !important;
+}
+.dark .card-theme-commerzbank { 
+  background: linear-gradient(135deg, #3d2a09 0%, #1e1504 100%) !important;
+  color: #fef3c7 !important;
+  border-left: 3.5px solid #ffd700 !important;
+}
+.dark .card-theme-barclays { 
+  background: linear-gradient(135deg, #06312a 0%, #031815 100%) !important;
+  color: #ccfbf1 !important;
+  border-left: 3.5px solid #00aeef !important;
+}
+.dark .card-theme-hanseatic { 
+  background: linear-gradient(135deg, #3b0d0d 0%, #1d0606 100%) !important;
+  color: #fed7d7 !important;
+  border-left: 3.5px solid #ff0000 !important;
+}
+.dark .card-theme-advanzia { 
+  background: linear-gradient(135deg, #3b1b06 0%, #1d0e03 100%) !important;
+  color: #ffedd5 !important;
+  border-left: 3.5px solid #ff9800 !important;
+}
+.dark .card-theme-fallback-visa { 
+  background: linear-gradient(135deg, #091a3a 0%, #040d1d 100%) !important;
+  color: #dbeafe !important;
+  border-left: 3.5px solid #4f46e5 !important;
+}
+.dark .card-theme-fallback-mastercard { 
+  background: linear-gradient(135deg, #3a1506 0%, #1d0a03 100%) !important;
+  color: #ffedd5 !important;
+  border-left: 3.5px solid #ea580c !important;
+}
+.dark .card-theme-fallback-amex { 
+  background: linear-gradient(135deg, #063138 0%, #03181c 100%) !important;
+  color: #cffafe !important;
+  border-left: 3.5px solid #06b6d4 !important;
+}
+
+
 /* Card Stack Collapsed Row */
 .wallet-card--collapsed {
   display: flex;
@@ -2008,7 +2009,8 @@ input[type="number"] {
   font-weight: 700;
   letter-spacing: 0.8px;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.6) !important;
+  color: currentColor !important;
+  opacity: 0.7;
   width: 120px;
   flex-shrink: 0;
   text-align: left;
@@ -2017,7 +2019,7 @@ input[type="number"] {
 .wallet-card__collapsed-row .card-name-display {
   font-size: 0.82rem;
   font-weight: 600;
-  color: #ffffff !important;
+  color: currentColor !important;
   flex-grow: 1;
   text-align: left;
   text-shadow: none;
@@ -2129,7 +2131,7 @@ input[type="number"] {
   max-width: 110px;
   min-height: 32px !important;
   padding: 0 8px;
-  background: #ffffff;
+  background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 4px;
 }
@@ -2478,6 +2480,3 @@ input[type="number"] {
   flex: 0.8;
   min-width: 80px;
 }
-
-
-
