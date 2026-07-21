@@ -3,8 +3,10 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { recommendBestCard } from "@cardpin/engine";
 import type { Card, CountryDataset } from "@cardpin/engine";
-import { getFxRate, needsFxRates, rewardLabel, rewardAmount, cleanExplanation } from "../lib/utils";
+import { getFxRate, rewardLabel, rewardAmount, cleanExplanation } from "../lib/utils";
+import { cn } from "../lib/utils";
 import type { CardCalc } from "../lib/utils";
+import { useFxRates } from "../lib/use-fx-rates";
 import MainLayout from "../components/MainLayout";
 import NavigationBar from "../components/NavigationBar";
 import CountryAudienceSelector from "../components/CountryAudienceSelector";
@@ -12,6 +14,8 @@ import InputStrip from "../components/InputStrip";
 import ResultHero from "../components/ResultHero";
 import WalletManager from "../components/WalletManager";
 import StatusBanner from "../components/StatusBanner";
+import WelcomeBanner from "../components/WelcomeBanner";
+import DevPanel from "../components/DevPanel";
 
 function normalizeSpend(raw: string) {
   const parsed = Number(raw);
@@ -31,13 +35,11 @@ export default function CardPinCalculator() {
   const [error, setError] = useState<string | null>(null);
   const [audience, setAudience] = useState<"consumer" | "business">("consumer");
 
+  const [spendCurrency, setSpendCurrency] = useState<string>("EUR");
   const [showWelcome, setShowWelcome] = useState<boolean | null>(null);
   const [showFullInstructions, setShowFullInstructions] = useState<boolean>(false);
 
-  // FX & Spend Caps States
-  const [spendCurrency, setSpendCurrency] = useState<string>("EUR");
-  const [fxRates, setFxRates] = useState<Record<string, number>>({ eur: 1, usd: 1.08, gbp: 0.85, chf: 0.94 });
-  const [fxStatus, setFxStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
+  const { fxRates, fxStatus } = useFxRates(spendCurrency);
   const [cardMonthlySpends, setCardMonthlySpends] = useState<Record<string, number>>({});
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
@@ -95,48 +97,7 @@ export default function CardPinCalculator() {
   }, [dataset]);
 
   // Fetch live FX rates only when a non-EUR transaction needs them.
-  useEffect(() => {
-    if (!needsFxRates(spendCurrency)) {
-      setFxStatus("idle");
-      return;
-    }
 
-    setFxStatus("loading");
-
-    async function fetchFXRates() {
-      const cached = sessionStorage.getItem("cardpin:fx_rates");
-      if (cached) {
-        try {
-          const rates = JSON.parse(cached);
-          if (!getFxRate(rates, spendCurrency)) throw new Error("Cached rate unavailable");
-          setFxRates(rates);
-          setFxStatus("ready");
-          return;
-        } catch (e) {
-          // ignore cache parse failure
-        }
-      }
-
-      try {
-        const res = await fetch("https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json");
-        if (!res.ok) throw new Error("Failed to fetch rates");
-        const data = await res.json();
-        if (data && data.eur) {
-          const rates = { eur: 1, ...data.eur };
-          if (!getFxRate(rates, spendCurrency)) throw new Error("Selected rate unavailable");
-          setFxRates(rates);
-          setFxStatus("ready");
-          sessionStorage.setItem("cardpin:fx_rates", JSON.stringify(rates));
-          return;
-        }
-        throw new Error("Invalid rates response");
-      } catch (err) {
-        console.warn("FX rates unavailable");
-        setFxStatus("error");
-      }
-    }
-    fetchFXRates();
-  }, [spendCurrency]);
 
   function handleOpenCatalog() {
     catalogDialogRef.current?.showModal();
@@ -292,10 +253,7 @@ export default function CardPinCalculator() {
         throw new Error(result.error || "Failed to update data");
       }
 
-      setDevStatus({ type: "success", message: "Saved, validated, and compiled successfully! Reloading..." });
-      setTimeout(() => {
-        window.location.reload();
-      }, 1500);
+      setDevStatus({ type: "success", message: "Saved, validated, and compiled successfully." });
     } catch (err: any) {
       setDevStatus({ type: "error", message: err.message });
     }
@@ -436,62 +394,12 @@ export default function CardPinCalculator() {
           navigationBar={<NavigationBar isScrolled={isScrolled} />}
           welcomeBanner={
             showWelcome === true && (
-              <section className="welcome-banner">
-                <div className="welcome-banner-summary">
-                  <div className="welcome-banner-left">
-                    <span className="welcome-icon">💡</span>
-                    <span>
-                      Select cards in your wallet &rarr; search merchant &rarr; find best rewards.
-                    </span>
-                    <button
-                      type="button"
-                      className="learn-more-btn"
-                      onClick={() => setShowFullInstructions(!showFullInstructions)}
-                    >
-                      {showFullInstructions ? "Hide details" : "How it works"}
-                    </button>
-                  </div>
-                  <button
-                    type="button"
-                    className="dismiss-btn"
-                    onClick={handleDismissWelcome}
-                    aria-label="Dismiss guide"
-                  >
-                    &times;
-                  </button>
-                </div>
-
-                {showFullInstructions && (
-                  <div className="welcome-banner-details">
-                    <div className="welcome-details-grid">
-                      <div>
-                        <h3>1. Select Owned Cards</h3>
-                        <p>
-                          Choose country and audience, then select cards in the wallet. Your cards are stored in your browser&apos;s local storage.
-                        </p>
-                      </div>
-                      <div>
-                        <h3>2. Search & Compare</h3>
-                        <p>
-                          Enter a merchant name or choose a category. Enter your spend amount to calculate reward net value.
-                        </p>
-                      </div>
-                      <div>
-                        <h3>3. Separated Rewards</h3>
-                        <p>
-                          Cashback, points, and miles are separated, not aggregated, since their ultimate value depends on redemption methods.
-                        </p>
-                      </div>
-                      <div>
-                        <h3>Community Sourced</h3>
-                        <p>
-                          Data is community-driven. Unsupported cards/rewards are intentionally omitted instead of guessed. Verify terms with your issuer.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                )}
-              </section>
+              <WelcomeBanner
+                showWelcome={showWelcome}
+                showFullInstructions={showFullInstructions}
+                setShowFullInstructions={setShowFullInstructions}
+                onDismiss={handleDismissWelcome}
+              />
             )
           }
           countryAudienceSelector={
@@ -545,82 +453,18 @@ export default function CardPinCalculator() {
         />
       )}
 
-      {isDevMode && (
-        <button className="dev-floating-btn" onClick={() => setShowDevPanel(true)}>
-          🔧 Dev Tools
-        </button>
-      )}
-
       {showDevPanel && (
-        <div className="modal-overlay" onClick={() => setShowDevPanel(false)}>
-          <div className="dev-panel" onClick={(e) => e.stopPropagation()}>
-            <div className="dev-panel-header">
-              <h3>Developer Data Manager</h3>
-              <button className="dev-close-btn" onClick={() => setShowDevPanel(false)}>&times;</button>
-            </div>
-            <div className="dev-panel-body">
-              <div className="dev-flex-row">
-                <div className="dev-flex-col">
-                  <label htmlFor="dev-country" className="dev-label">Country</label>
-                  <select
-                    id="dev-country"
-                    value={devCountry}
-                    onChange={(e) => setDevCountry(e.target.value)}
-                    className="dev-select"
-                  >
-                    <option value="be">Belgium (BE)</option>
-                    <option value="de">Germany (DE)</option>
-                    <option value="nl">Netherlands (NL)</option>
-                  </select>
-                </div>
-                <div className="dev-flex-col">
-                  <label htmlFor="dev-datatype" className="dev-label">Data Type</label>
-                  <select
-                    id="dev-datatype"
-                    value={devDataType}
-                    onChange={(e) => setDevDataType(e.target.value)}
-                    className="dev-select"
-                  >
-                    <option value="issuers">Issuers</option>
-                    <option value="cards">Cards</option>
-                    <option value="merchants">Merchants</option>
-                    <option value="rewardRules">Reward Rules</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="dev-flex-col">
-                <label htmlFor="dev-json" className="dev-label">
-                  Paste JSON Array or Object
-                </label>
-                <textarea
-                  id="dev-json"
-                  className="dev-panel-textarea"
-                  value={devJson}
-                  onChange={(e) => setDevJson(e.target.value)}
-                  placeholder={`Example:\n{\n  "id": "new-item",\n  "name": "New Item"\n}`}
-                />
-              </div>
-
-              {devStatus && (
-                <div
-                  className={`dev-status-msg dev-status-msg--${devStatus.type}`}
-                >
-                  {devStatus.message}
-                </div>
-              )}
-
-              <button
-                type="button"
-                onClick={handleMergeSubmit}
-                disabled={devStatus?.type === "loading"}
-                className="dev-submit-btn"
-              >
-                Merge & Recompile Datasets
-              </button>
-            </div>
-          </div>
-        </div>
+        <DevPanel
+          country={country}
+          setCountry={setCountry}
+          dataType={devDataType}
+          setDataType={setDevDataType}
+          devJson={devJson}
+          setDevJson={setDevJson}
+          devStatus={devStatus}
+          onMerge={handleMergeSubmit}
+          onClose={() => setShowDevPanel(false)}
+        />
       )}
     </>
   );

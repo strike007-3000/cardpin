@@ -1,5 +1,12 @@
 import { describe, expect, it } from "vitest";
-import { getFxRate, needsFxRates, orderCardsForWalletStack } from "./utils";
+import { cn, getFxRate, needsFxRates, orderCardsForWalletStack } from "./utils";
+
+describe("cn", () => {
+  it("combines class names and ignores falsy values", () => {
+    expect(cn("btn", false && "active", "btn-primary", undefined, null, "px-4")).toBe("btn btn-primary px-4");
+  });
+});
+
 
 describe("needsFxRates", () => {
   it("does not request rates for euro transactions", () => {

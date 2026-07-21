@@ -37,7 +37,7 @@ export default function StatusBanner({
 }: StatusBannerProps) {
   if (error) {
     return (
-      <div className="card error-card">
+      <div className="card error-card" role="status">
         <h2>Error</h2>
         <p>{error}</p>
       </div>
@@ -46,7 +46,7 @@ export default function StatusBanner({
 
   if (ownedCardsLength === 0) {
     return (
-      <div className="card empty-state">
+      <div className="card empty-state" role="status">
         <CreditCardPlaceholder />
         <strong>No cards in your wallet.</strong>
         <p>
@@ -66,7 +66,7 @@ export default function StatusBanner({
 
   if (!hasSearch) {
     return (
-      <div className="card empty-state">
+      <div className="card empty-state" role="status">
         <CreditCardPlaceholder />
         <strong>Ready to search.</strong>
         <p>
@@ -92,7 +92,7 @@ export default function StatusBanner({
 
   if (!bestResultExists) {
     return (
-      <div className="card empty-state empty-state--left">
+      <div className="card empty-state empty-state--left" role="status">
         <strong>No matching reward rules found.</strong>
         <p>
           Unsupported cards or rewards are intentionally omitted rather than assumed or guessed.

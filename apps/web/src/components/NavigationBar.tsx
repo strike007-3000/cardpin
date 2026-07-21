@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import Logo from "../app/logo";
 
 interface NavigationBarProps {
