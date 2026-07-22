@@ -174,8 +174,14 @@ Refactored the previously monolithic `CardPinCalculator` page into five modular,
 - `WalletManager` (sidecar wallet setups and imports)
 - `StatusBanner` (unified state handlers for errors and empty/locked calculator states)
 
+### Data-Anchored Storytelling User Journey
+CardPin features a 3-stage progression that balances instant in-store decision-making with narrative transparency:
+- **Stage 1: Context Setting (`InputStrip`)**: Purchase parameters with quick spend presets (€10, €50, €100, €500) and currency/FX selection.
+- **Stage 2: Recommendation Rationale (`ResultHero`)**: Instant recommendation display alongside plain-English story rationale explaining reward multipliers and FX fee offsets.
+- **Stage 3: Portfolio Opportunity Story (`WalletManager`)**: Unowned catalog card recommendations highlighted with exact comparative return deltas.
+
 ### Apple Wallet-Inspired Card Stack
-Owned cards use a stable vertical stack with a consistent visible header for every collapsed card and one fully expanded selected card. Selecting a collapsed card moves it to the front without rotation, absolute positioning, manual height calculations, or scattered z-index rules. Selected-card settings stay attached to the stack, while import, export, and clear actions live in a compact wallet-options menu.
+Owned cards use a stable vertical stack with a consistent visible header for every collapsed card and one fully expanded selected card. Selecting a collapsed card moves it to the front cleanly. Selected-card settings (monthly spend input and removal) are integrated directly inside the active card shell, while import, export, and clear actions live in a compact wallet-options menu.
 
 ### Accessible, Responsive Workflow
 CardPin uses keyboard-visible focus states, semantic selectable cards, an accessible native card-catalog dialog, and touch-friendly actions. On small screens, wallet spacing is compressed so the purchase search remains close to the selected cards. Search controls stay disabled until a card is selected and provide a direct route to the catalog.
