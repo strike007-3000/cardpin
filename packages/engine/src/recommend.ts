@@ -313,7 +313,7 @@ export function recommendBestCard(input: RecommendationInput): RecommendationOut
       card =>
         !ownedCardIds.has(card.id) &&
         card.country.toUpperCase() === country.toUpperCase() &&
-        (!audience || (card.audience ?? "consumer") === audience)
+        (card.audience ?? "consumer") === (audience ?? "consumer")
     );
 
     const unownedResults: CardResult[] = unownedCards.map(card =>
