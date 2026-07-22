@@ -55,27 +55,21 @@ export default function WelcomeBanner({
         <div className="welcome-banner-details">
           <div className="welcome-details-grid">
             <div>
-              <h3>1. Select Owned Cards</h3>
+              <h3>1. Stage 1: Context Setting</h3>
               <p>
-                Choose country and audience, then select cards in the wallet. Your cards are stored in your browser&apos;s local storage.
+                Select your owned cards, specify transaction currency, merchant category, and transaction amount to anchor the reward calculation.
               </p>
             </div>
             <div>
-              <h3>2. Search & Compare</h3>
+              <h3>2. Stage 2: Recommendation Rationale</h3>
               <p>
-                Enter a merchant name or choose a category. Enter your spend amount to calculate reward net value.
+                View your instant <strong>Tap This Card Now</strong> recommendation alongside plain-English story rationale explaining net return math and fee offsets.
               </p>
             </div>
             <div>
-              <h3>3. Minimum Spend & Caps</h3>
+              <h3>3. Stage 3: Portfolio Opportunity Story</h3>
               <p>
-                Rule eligibility automatically validates minimum spend thresholds (<code style={{ fontSize: "0.8em" }}>minSpend</code>) and monthly earning caps before recommending a card.
-              </p>
-            </div>
-            <div>
-              <h3>4. Portfolio Unlock</h3>
-              <p>
-                CardPin evaluates un-owned cards in your active country dataset and highlights recommended new cards to unlock higher net rewards.
+                CardPin calculates un-owned catalog cards and highlights your next best unlock opportunity with exact comparative return deltas.
               </p>
             </div>
             <div>
