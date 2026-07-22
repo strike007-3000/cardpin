@@ -1981,6 +1981,7 @@ input[type="number"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 46px;
   padding: 0 20px !important;
   color: inherit !important;
 }
@@ -2041,18 +2042,69 @@ input[type="number"] {
 }
 
 .network-logo--visa {
-  font-family: "Cinzel", "Times New Roman", Times, serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-style: italic;
-  font-weight: 800;
-  color: #1a1f71 !important; /* Visa blue */
-  font-size: 0.9rem;
-  letter-spacing: 0.5px;
+  font-weight: 900;
+  color: #ffffff !important;
+  background: #1a1f71;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-size: 0.72rem;
+  letter-spacing: 0.8px;
   line-height: 1;
-  transform: skewX(-12deg);
+  transform: skewX(-8deg);
+  display: inline-flex;
+  align-items: center;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .network-logo--visa::first-letter {
-  color: #f7b600 !important; /* Visa gold flick on V */
+  color: #f7b600 !important;
+}
+
+/* Inline Card Config inside Expanded Wallet Card */
+.wallet-card__inline-config {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  width: 100%;
+}
+
+.inline-spend-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.inline-spend-field label {
+  font-size: 0.72rem;
+  color: inherit;
+  opacity: 0.85;
+  margin-bottom: 0 !important;
+}
+
+.card-remove-icon-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: inherit;
+  opacity: 0.7;
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.card-remove-icon-btn:hover {
+  opacity: 1;
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #ef4444;
 }
 
 .network-logo--mastercard {
