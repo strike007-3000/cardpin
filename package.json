@@ -1,7 +1,7 @@
 {
   "name": "cardpin",
   "private": true,
-  "version": "1.2.11",
+  "version": "1.2.14",
   "packageManager": "pnpm@9.0.0",
   "workspaces": [
     "apps/*",

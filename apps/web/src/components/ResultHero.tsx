@@ -29,21 +29,23 @@ export default function ResultHero({
         <div className="result-header">
           <div>
             <span className="badge">Best Card</span>
-            <h2>{bestResult.card.name}</h2>
+            <h2 style={{ marginTop: "0.25rem" }}>{bestResult.card.name}</h2>
             <p className="card-meta">
               {bestResult.card.network.toUpperCase()} · {bestResult.label}
             </p>
           </div>
           <div className="val-display">
             <div className="val-amount">{rewardAmount(bestResult)}</div>
-            <div className="val-label">Expected reward</div>
+            <div className="val-label">Net return</div>
           </div>
         </div>
 
-        <div className="result-grid">
+        <div className="result-grid" style={{ marginTop: "1rem" }}>
           <div>
             <h3>Why this card</h3>
-            <p className="result-explanation">{cleanExplanation(bestResult.rec.explanation)}</p>
+            <p className="result-explanation" style={{ lineHeight: 1.5 }}>
+              {cleanExplanation(bestResult.rec.explanation)}
+            </p>
           </div>
           <div>
             <h3>Spend calculation</h3>
@@ -68,8 +70,29 @@ export default function ResultHero({
           <span>Verified {bestResult.rule?.source.verifiedAt ?? bestResult.card.sourceProof?.verifiedAt ?? "unknown"}</span>
         </div>
 
+        {bestResult.rec.unownedUnlockCard && (
+          <div className="unlock-banner" style={{ marginTop: "1.25rem", padding: "1rem", borderRadius: "8px", background: "var(--bg-surface-elevated, rgba(99, 102, 241, 0.08))", border: "1px solid var(--border-color, rgba(99, 102, 241, 0.25))" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+              <span className="badge" style={{ background: "var(--accent, #6366f1)", color: "#fff", fontSize: "0.75rem", padding: "0.15rem 0.5rem", borderRadius: "4px" }}>
+                Next Card to Unlock
+              </span>
+              <span style={{ fontWeight: 700, color: "var(--accent-success, #22c55e)", fontSize: "0.95rem" }}>
+                {bestResult.rec.unownedUnlockCard.rewardType === "points"
+                  ? `+${bestResult.rec.unownedUnlockCard.estimatedValue.toFixed(0)} points`
+                  : bestResult.rec.unownedUnlockCard.rewardType === "miles"
+                  ? `+${bestResult.rec.unownedUnlockCard.estimatedValue.toFixed(0)} miles`
+                  : `+EUR ${(bestResult.rec.unownedUnlockCard.convertedValue - bestResult.netValue).toFixed(2)} extra`}
+              </span>
+            </div>
+            <h4 style={{ margin: "0.4rem 0 0.2rem 0", fontSize: "1rem", fontWeight: 700 }}>{bestResult.rec.unownedUnlockCard.card.name}</h4>
+            <p style={{ margin: 0, fontSize: "0.85rem", opacity: 0.9, lineHeight: 1.4 }}>
+              {bestResult.rec.unownedUnlockCard.explanation}
+            </p>
+          </div>
+        )}
+
         {alternatives.length > 0 && (
-          <div className="alternatives-container">
+          <div className="alternatives-container" style={{ marginTop: "1.25rem" }}>
             <h3>Alternatives</h3>
             {alternatives.map((result) => {
               const bestValue = bestResult ? bestResult.netValue : 0;

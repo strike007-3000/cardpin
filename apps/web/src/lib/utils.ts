@@ -1,5 +1,21 @@
-export function cn(...inputs: string[]) {
-  return inputs.filter(Boolean).join(" ");
+import type { Card } from "@cardpin/engine";
+import type { recommendBestCard } from "@cardpin/engine";
+
+export type CardCalc = {
+  card: Card;
+  rule: ReturnType<typeof recommendBestCard>["bestRule"];
+  rec: ReturnType<typeof recommendBestCard>;
+  rewardType: ReturnType<typeof recommendBestCard>["rewardType"];
+  grossValue: number;
+  fxFee: number;
+  netValue: number;
+  label: string;
+};
+
+import { clsx, type ClassValue } from "clsx";
+
+export function cn(...inputs: ClassValue[]) {
+  return clsx(inputs);
 }
 
 export function needsFxRates(currency: string) {
@@ -19,19 +35,6 @@ export function orderCardsForWalletStack<T extends { id: string }>(cards: T[], a
   return [...cards.filter((card) => card.id !== activeCardId), activeCard];
 }
 
-import type { Card, recommendBestCard } from "@cardpin/engine";
-
-export type CardCalc = {
-  card: Card;
-  rule: ReturnType<typeof recommendBestCard>["bestRule"];
-  rec: ReturnType<typeof recommendBestCard>;
-  rewardType: ReturnType<typeof recommendBestCard>["rewardType"];
-  grossValue: number;
-  fxFee: number;
-  netValue: number;
-  label: string;
-};
-
 export function rewardLabel(result: CardCalc) {
   if (!result.rule) return "No reward rule";
   if (result.rewardType === "cashback_percentage") return `${(result.rule.rewardValue * 100).toFixed(1)}% cashback`;
@@ -47,6 +50,7 @@ export function rewardAmount(result: CardCalc) {
   if (result.rewardType === "miles") return `${result.grossValue.toFixed(0)} miles`;
   return `EUR ${result.netValue.toFixed(2)}`;
 }
+
 export function cleanExplanation(explanation: string) {
   if (explanation.startsWith('Fallback rule "')) {
     const match = explanation.match(/Fallback rule "([^"]+)" matched for card ([^.]+)(.*)/);

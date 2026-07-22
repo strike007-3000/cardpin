@@ -155,7 +155,13 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
-## Production Features (v1.2.9)
+## Production Features (v1.2.13)
+
+### Minimum Spend Threshold Evaluation
+To prevent recommending rules on transactions that do not qualify for reward tiers, the recommendation engine dynamically validates purchase amounts against `conditions.minSpend` defined in dataset rules. If a purchase falls below a rule's minimum threshold, rewards are zeroed out for that rule.
+
+### Card Portfolio Optimization & "Next Card to Unlock" Recommendations
+CardPin evaluates un-owned cards matching the user's active country dataset alongside their wallet. When an un-owned card yields higher net rewards than the user's current wallet (or when no cards are selected), CardPin displays a **Next Card to Unlock** banner in the dashboard showing the calculated extra reward benefit.
 
 ### Redesigned Single-Screen Dashboard Layout
 Reorganized the primary calculator interface into a single-screen responsive utility. On desktop, the result hero card is positioned at the top-left, transaction parameters entry input strip at the bottom-left, and the wallet manager resides in a sidecar column on the right. On mobile, the vertical flow prioritizes calculation results at the top, followed by transaction inputs, with wallet management stacked cleanly at the bottom.
@@ -168,8 +174,14 @@ Refactored the previously monolithic `CardPinCalculator` page into five modular,
 - `WalletManager` (sidecar wallet setups and imports)
 - `StatusBanner` (unified state handlers for errors and empty/locked calculator states)
 
+### Data-Anchored Storytelling User Journey
+CardPin features a 3-stage progression that balances instant in-store decision-making with narrative transparency:
+- **Stage 1: Context Setting (`InputStrip`)**: Purchase parameters with quick spend presets (€10, €50, €100, €500) and currency/FX selection.
+- **Stage 2: Recommendation Rationale (`ResultHero`)**: Instant recommendation display alongside plain-English story rationale explaining reward multipliers and FX fee offsets.
+- **Stage 3: Portfolio Opportunity Story (`WalletManager`)**: Unowned catalog card recommendations highlighted with exact comparative return deltas.
+
 ### Apple Wallet-Inspired Card Stack
-Owned cards use a stable vertical stack with a consistent visible header for every collapsed card and one fully expanded selected card. Selecting a collapsed card moves it to the front without rotation, absolute positioning, manual height calculations, or scattered z-index rules. Selected-card settings stay attached to the stack, while import, export, and clear actions live in a compact wallet-options menu.
+Owned cards use a stable vertical stack with a consistent visible header for every collapsed card and one fully expanded selected card. Selecting a collapsed card moves it to the front cleanly. Selected-card settings (monthly spend input and removal) are integrated directly inside the active card shell, while import, export, and clear actions live in a compact wallet-options menu.
 
 ### Accessible, Responsive Workflow
 CardPin uses keyboard-visible focus states, semantic selectable cards, an accessible native card-catalog dialog, and touch-friendly actions. On small screens, wallet spacing is compressed so the purchase search remains close to the selected cards. Search controls stay disabled until a card is selected and provide a direct route to the catalog.

@@ -1,14 +1,12 @@
-"use client";
-
-import React from "react";
+import type { ReactNode } from "react";
 
 interface MainLayoutProps {
-  navigationBar: React.ReactNode;
-  welcomeBanner?: React.ReactNode;
-  countryAudienceSelector: React.ReactNode;
-  resultHeroOrStatus: React.ReactNode;
-  inputStrip: React.ReactNode;
-  walletManager: React.ReactNode;
+  navigationBar: ReactNode;
+  welcomeBanner?: ReactNode;
+  countryAudienceSelector: ReactNode;
+  resultHeroOrStatus: ReactNode;
+  inputStrip: ReactNode;
+  walletManager: ReactNode;
 }
 
 export default function MainLayout({
@@ -24,7 +22,7 @@ export default function MainLayout({
       {navigationBar}
       <main className="flow-layout-stacked">
         {welcomeBanner}
-        
+
         <div className="cardpin-grid">
           <div className="cardpin-left-col">
             <div className="grid-area-top">

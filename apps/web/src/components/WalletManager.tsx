@@ -181,6 +181,38 @@ export default function WalletManager({
                             <CardNetworkLogo network={card.network} />
                           </span>
                         </span>
+                        <div className="wallet-card__inline-config" onClick={(e) => e.stopPropagation()}>
+                          <div className="inline-spend-field">
+                            <label htmlFor={`monthly-spend-${card.id}`}>Spent this month:</label>
+                            <div className="spend-input-wrapper spend-input-wrapper--small">
+                              <span className="currency-prefix">EUR</span>
+                              <input
+                                id={`monthly-spend-${card.id}`}
+                                aria-label={`Spent this month on ${card.name}`}
+                                type="number"
+                                min="0"
+                                value={cardMonthlySpends[card.id] || ""}
+                                onChange={(e) => handleUpdateMonthlySpend(card.id, Number(e.target.value) || 0)}
+                                placeholder="0"
+                              />
+                            </div>
+                          </div>
+                          <button
+                            type="button"
+                            className="card-remove-icon-btn"
+                            title="Remove from wallet"
+                            aria-label={`Remove ${card.name} from wallet`}
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleToggleCard(card.id);
+                            }}
+                          >
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+                              <polyline points="3 6 5 6 21 6" />
+                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                            </svg>
+                          </button>
+                        </div>
                       </>
                     ) : (
                       <span className="wallet-card__collapsed-row">
@@ -193,38 +225,6 @@ export default function WalletManager({
                 );
               })}
             </div>
-
-            {activeCard && (
-              <div className="card-config-box">
-                <div className="card-config-header">
-                  <span className="card-config-title">
-                    Selected Card Settings
-                  </span>
-                  <button
-                    type="button"
-                    className="text-action text-action--danger"
-                    onClick={() => handleToggleCard(activeCard.id)}
-                  >
-                    Remove from Wallet
-                  </button>
-                </div>
-                <div className="card-config-spend-row">
-                  <label htmlFor={`monthly-spend-${activeCard.id}`} className="card-config-label">Spent this month:</label>
-                  <div className="spend-input-wrapper spend-input-wrapper--small">
-                    <span className="currency-prefix">EUR</span>
-                    <input
-                      id={`monthly-spend-${activeCard.id}`}
-                      aria-label={`Spent this month on ${activeCard.name}`}
-                      type="number"
-                      min="0"
-                      value={cardMonthlySpends[activeCard.id] || ""}
-                      onChange={(e) => handleUpdateMonthlySpend(activeCard.id, Number(e.target.value) || 0)}
-                      placeholder="0"
-                    />
-                  </div>
-                </div>
-              </div>
-            )}
           </>
         )}
 

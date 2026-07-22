@@ -33,6 +33,8 @@ export default function InputStrip({
   handleSpendBlur,
   disabled,
 }: InputStripProps) {
+  const presets = ["10", "50", "100", "500"];
+
   return (
     <div className={`card input-strip-card ${disabled ? "input-strip-card--disabled" : ""}`}>
       <fieldset className="search-fields" disabled={disabled} style={{ border: "none", padding: 0, margin: 0 }}>
@@ -64,7 +66,7 @@ export default function InputStrip({
             </select>
           </div>
 
-          <div className="form-group" style={{ flex: "1.5" }}>
+          <div className="form-group" style={{ flex: "1.5", minWidth: 0 }}>
             <label htmlFor="spend-input">Spend Amount</label>
             <div className="spend-input-wrapper">
               <span className="currency-prefix">{spendCurrency}</span>
@@ -77,6 +79,26 @@ export default function InputStrip({
                 onBlur={handleSpendBlur}
                 onChange={(event) => setSpendInput(event.target.value)}
               />
+            </div>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.25rem", marginTop: "0.35rem" }}>
+              {presets.map((amt) => (
+                <button
+                  key={amt}
+                  type="button"
+                  onClick={() => setSpendInput(amt)}
+                  style={{
+                    padding: "0.15rem 0.45rem",
+                    fontSize: "0.72rem",
+                    borderRadius: "4px",
+                    border: "1px solid var(--border-color)",
+                    background: spendInput === amt ? "var(--bg-surface-elevated, rgba(56, 189, 248, 0.15))" : "transparent",
+                    color: spendInput === amt ? "var(--accent)" : "var(--text-muted)",
+                    cursor: "pointer",
+                  }}
+                >
+                  {spendCurrency === "EUR" ? "€" : spendCurrency === "USD" ? "$" : ""}{amt}
+                </button>
+              ))}
             </div>
           </div>
 

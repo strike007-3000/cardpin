@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CardPin - Journey Design Canvas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+      --accent-purple: #818cf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      padding: 2rem;
+      line-height: 1.5;
+    }
+
+    header {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 1.5rem;
+    }
+
+    h1 { font-size: 1.875rem; font-weight: 700; color: #fff; margin-bottom: 0.5rem; }
+    p.subtitle { color: var(--text-muted); font-size: 1rem; max-width: 800px; }
+
+    .nav-tabs {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .tab-btn {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      padding: 0.6rem 1.25rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .tab-btn:hover { color: #fff; border-color: var(--accent-blue); }
+    .tab-btn.active {
+      background: var(--accent-blue);
+      color: #0f172a;
+      border-color: var(--accent-blue);
+    }
+
+    .canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .perspective-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .perspective-card.highlight {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.15);
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.25rem 0.65rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-data { background: rgba(56, 189, 248, 0.2); color: var(--accent-blue); }
+    .badge-action { background: rgba(34, 197, 94, 0.2); color: var(--accent-green); }
+    .badge-story { background: rgba(129, 140, 248, 0.2); color: var(--accent-purple); }
+
+    .stage-box {
+      background: #0f172a;
+      border: 1px dashed var(--card-border);
+      border-radius: 8px;
+      padding: 1rem;
+    }
+
+    .stage-title {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .math-pill {
+      font-family: monospace;
+      background: #1e293b;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      color: var(--accent-blue);
+    }
+
+    .hero-card-preview {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+      border: 1px solid #4338ca;
+      border-radius: 10px;
+      padding: 1rem;
+      color: #fff;
+    }
+
+    .net-reward {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+
+    .unlock-strip {
+      background: rgba(234, 179, 8, 0.1);
+      border-left: 3px solid #eab308;
+      padding: 0.65rem;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.85rem;
+    }
+
+    ul.summary-list {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+    ul.summary-list li { margin-bottom: 0.4rem; padding-left: 1rem; position: relative; }
+    ul.summary-list li::before { content: "•"; position: absolute; left: 0; color: var(--accent-blue); }
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>CardPin Journey Design Canvas</h1>
+    <p class="subtitle">
+      Comparative view of 3 journey perspectives for optimizing CardPin's user flow: 
+      <strong>Data-Focused</strong> (Detailed math & transparency), 
+      <strong>Action-Focused</strong> (Instant tap & low friction), and 
+      <strong>Storytelling</strong> (Guided narrative & context).
+    </p>
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="filterPerspective('all')">All Perspectives</button>
+      <button class="tab-btn" onclick="filterPerspective('data')">Data-Focused</button>
+      <button class="tab-btn" onclick="filterPerspective('action')">Action-Focused</button>
+      <button class="tab-btn" onclick="filterPerspective('story')">Storytelling</button>
+    </div>
+  </header>
+
+  <main class="canvas-grid">
+
+    <!-- Data-Focused Perspective -->
+    <div class="perspective-card highlight" id="card-data">
+      <div>
+        <span class="badge badge-data">1. Data-Focused Design</span>
+        <h2 style="font-size: 1.25rem; margin-top: 0.4rem;">Analytical & Formula-First</h2>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 1: Context Setting</div>
+        <p style="font-size: 0.9rem; margin-bottom: 0.4rem;">Dense inputs with immediate fee & FX toggles.</p>
+        <span class="math-pill">FX Rate: 1 EUR = 1.08 USD (0.5% fee)</span>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 2: Recommendation & Math</div>
+        <div class="hero-card-preview">
+          <div style="font-size: 0.8rem; opacity: 0.8;">Primary Owned Card</div>
+          <div style="font-weight: 700; font-size: 1.1rem; margin-bottom: 0.5rem;">Visa Signature Rewards</div>
+          <div class="net-reward">+€14.75 Net Return</div>
+          <p style="font-size: 0.75rem; opacity: 0.8; margin-top: 0.3rem;">
+            Math: (€420 × 3.5%) - €0.00 FX = €14.70 net
+          </p>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 3: Opportunity Cost & Unlock</div>
+        <div class="unlock-strip">
+          <strong>Catalog Opportunity:</strong> Unlock <em>Mastercard World Elite</em> for an extra <strong>+€9.10</strong> on this transaction.
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--card-border); padding-top: 0.8rem;">
+        <div style="font-size: 0.8rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem;">Key Advantages:</div>
+        <ul class="summary-list">
+          <li>Complete transparency into net rewards & fees</li>
+          <li>Builds trust for reward power users</li>
+          <li>Seamlessly integrates opportunity cost calculation</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Action-Focused Perspective -->
+    <div class="perspective-card" id="card-action">
+      <div>
+        <span class="badge badge-action">2. Action-Focused Design</span>
+        <h2 style="font-size: 1.25rem; margin-top: 0.4rem;">Instant-Tap & Minimalist</h2>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 1: Quick Search</div>
+        <p style="font-size: 0.9rem;">Auto-focused merchant search with quick spend presets (€10, €50, €100).</p>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 2: Instant Tap Advice</div>
+        <div class="hero-card-preview" style="background: linear-gradient(135deg, #065f46 0%, #047857 100%); border-color: #10b981;">
+          <div style="font-size: 0.8rem; opacity: 0.9; font-weight: 700; text-transform: uppercase;">TAP THIS CARD NOW</div>
+          <div style="font-weight: 700; font-size: 1.2rem; margin: 0.2rem 0;">Visa Signature</div>
+          <div style="font-size: 0.9rem;">3.5% Cashback at Delhaize</div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 3: Wallet Quick Select</div>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Horizontal card carousel showing alternative wallet cards ranked by payout.</p>
+      </div>
+
+      <div style="border-top: 1px solid var(--card-border); padding-top: 0.8rem;">
+        <div style="font-size: 0.8rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem;">Key Advantages:</div>
+        <ul class="summary-list">
+          <li>Ideal for fast 2-second in-store decisions</li>
+          <li>Zero cognitive overload for casual spenders</li>
+          <li>Mobile-first touch targets</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Storytelling Perspective -->
+    <div class="perspective-card" id="card-story">
+      <div>
+        <span class="badge badge-story">3. Storytelling Design</span>
+        <h2 style="font-size: 1.25rem; margin-top: 0.4rem;">Guided Narrative & Insights</h2>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 1: Spend Context</div>
+        <p style="font-size: 0.9rem;">Interactive step wizard: "Where are you paying today?"</p>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 2: Narrative Rationale</div>
+        <div class="hero-card-preview" style="background: linear-gradient(135deg, #3730a3 0%, #4338ca 100%); border-color: #6366f1;">
+          <p style="font-size: 0.85rem; line-height: 1.4;">
+            "Because you spend <strong>€420</strong> in foreign currency, your <strong>Visa Signature</strong> earns <strong>€14.75</strong> while avoiding a 2.5% FX fee penalty."
+          </p>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="stage-box">
+        <div class="stage-title">Stage 3: Unlock Journey</div>
+        <div class="unlock-strip" style="border-color: var(--accent-purple); background: rgba(129, 140, 248, 0.1);">
+          <strong>Portfolio Growth:</strong> You're missing out on €100+/year by not having a zero-FX grocery card.
+        </div>
+      </div>
+
+      <div style="border-top: 1px solid var(--card-border); padding-top: 0.8rem;">
+        <div style="font-size: 0.8rem; font-weight: 600; color: #fff; margin-bottom: 0.4rem;">Key Advantages:</div>
+        <ul class="summary-list">
+          <li>Educates users on reward optimization logic</li>
+          <li>Great for onboarding & non-expert users</li>
+          <li>High engagement narrative flow</li>
+        </ul>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function filterPerspective(type) {
+      const cards = {
+        data: document.getElementById('card-data'),
+        action: document.getElementById('card-action'),
+        story: document.getElementById('card-story')
+      };
+
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      if (type === 'all') {
+        Object.values(cards).forEach(c => c.style.display = 'flex');
+      } else {
+        Object.keys(cards).forEach(key => {
+          cards[key].style.display = (key === type) ? 'flex' : 'none';
+        });
+      }
+    }
+  </script>
+</body>
+</html>
