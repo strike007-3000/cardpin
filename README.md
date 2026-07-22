@@ -155,7 +155,13 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
-## Production Features (v1.2.9)
+## Production Features (v1.2.13)
+
+### Minimum Spend Threshold Evaluation
+To prevent recommending rules on transactions that do not qualify for reward tiers, the recommendation engine dynamically validates purchase amounts against `conditions.minSpend` defined in dataset rules. If a purchase falls below a rule's minimum threshold, rewards are zeroed out for that rule.
+
+### Card Portfolio Optimization & "Next Card to Unlock" Recommendations
+CardPin evaluates un-owned cards matching the user's active country dataset alongside their wallet. When an un-owned card yields higher net rewards than the user's current wallet (or when no cards are selected), CardPin displays a **Next Card to Unlock** banner in the dashboard showing the calculated extra reward benefit.
 
 ### Redesigned Single-Screen Dashboard Layout
 Reorganized the primary calculator interface into a single-screen responsive utility. On desktop, the result hero card is positioned at the top-left, transaction parameters entry input strip at the bottom-left, and the wallet manager resides in a sidecar column on the right. On mobile, the vertical flow prioritizes calculation results at the top, followed by transaction inputs, with wallet management stacked cleanly at the bottom.

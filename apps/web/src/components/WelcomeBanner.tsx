@@ -67,9 +67,15 @@ export default function WelcomeBanner({
               </p>
             </div>
             <div>
-              <h3>3. Separated Rewards</h3>
+              <h3>3. Minimum Spend & Caps</h3>
               <p>
-                Cashback, points, and miles are separated, not aggregated, since their ultimate value depends on redemption methods.
+                Rule eligibility automatically validates minimum spend thresholds (<code style={{ fontSize: "0.8em" }}>minSpend</code>) and monthly earning caps before recommending a card.
+              </p>
+            </div>
+            <div>
+              <h3>4. Portfolio Unlock</h3>
+              <p>
+                CardPin evaluates un-owned cards in your active country dataset and highlights recommended new cards to unlock higher net rewards.
               </p>
             </div>
             <div>
