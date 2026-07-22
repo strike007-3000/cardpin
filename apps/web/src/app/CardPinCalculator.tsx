@@ -267,6 +267,19 @@ export default function CardPinCalculator() {
     const convertedSpend = spendCurrency !== "EUR" ? spendAmount / rate : spendAmount;
     const isForeign = spendCurrency !== "EUR" || isForeignSpend;
 
+    const overallRec = recommendBestCard({
+      merchant: merchantQuery,
+      category: categoryQuery,
+      ownedCards,
+      country: country.toUpperCase(),
+      dataset,
+      spendAmount: convertedSpend,
+      isForeignSpend: isForeign,
+      cardMonthlySpends,
+      valuations: { points: 1, miles: 1 },
+      includeUnownedCards: true
+    });
+
     return ownedCards
       .map((card) => {
         const rec = recommendBestCard({
@@ -320,7 +333,10 @@ export default function CardPinCalculator() {
         return {
           card,
           rule,
-          rec,
+          rec: {
+            ...rec,
+            unownedUnlockCard: overallRec.unownedUnlockCard
+          },
           rewardType: rec.rewardType,
           grossValue: displayGross,
           fxFee: displayFxFee,

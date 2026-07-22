@@ -68,6 +68,21 @@ export default function ResultHero({
           <span>Verified {bestResult.rule?.source.verifiedAt ?? bestResult.card.sourceProof?.verifiedAt ?? "unknown"}</span>
         </div>
 
+        {bestResult.rec.unownedUnlockCard && (
+          <div className="unlock-banner" style={{ marginTop: "1rem", padding: "0.85rem 1rem", borderRadius: "8px", background: "rgba(99, 102, 241, 0.08)", border: "1px solid rgba(99, 102, 241, 0.25)" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.25rem" }}>
+              <span className="badge" style={{ background: "#6366f1", color: "#fff", fontSize: "0.75rem", padding: "0.15rem 0.5rem", borderRadius: "4px" }}>
+                Next Card to Unlock
+              </span>
+              <span style={{ fontWeight: 600, fontSize: "0.9rem" }}>
+                +EUR {(bestResult.rec.unownedUnlockCard.convertedValue - bestResult.netValue).toFixed(2)} extra reward
+              </span>
+            </div>
+            <h4 style={{ margin: "0.25rem 0", fontSize: "1rem", fontWeight: 600 }}>{bestResult.rec.unownedUnlockCard.card.name}</h4>
+            <p style={{ margin: 0, fontSize: "0.85rem", opacity: 0.85 }}>{bestResult.rec.unownedUnlockCard.explanation}</p>
+          </div>
+        )}
+
         {alternatives.length > 0 && (
           <div className="alternatives-container">
             <h3>Alternatives</h3>
