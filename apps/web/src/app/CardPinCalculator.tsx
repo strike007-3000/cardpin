@@ -253,7 +253,10 @@ export default function CardPinCalculator() {
         throw new Error(result.error || "Failed to update data");
       }
 
-      setDevStatus({ type: "success", message: "Saved, validated, and compiled successfully." });
+      setDevStatus({ type: "success", message: "Saved, validated, and compiled successfully. Reloading..." });
+      setTimeout(() => {
+        window.location.reload();
+      }, 1200);
     } catch (err: any) {
       setDevStatus({ type: "error", message: err.message });
     }
@@ -469,10 +472,34 @@ export default function CardPinCalculator() {
         />
       )}
 
+      {isDevMode && !showDevPanel && (
+        <button
+          type="button"
+          onClick={() => setShowDevPanel(true)}
+          style={{
+            position: "fixed",
+            bottom: "1rem",
+            right: "1rem",
+            zIndex: 50,
+            padding: "0.5rem 1rem",
+            borderRadius: "9999px",
+            background: "#2563eb",
+            color: "#ffffff",
+            fontWeight: 600,
+            fontSize: "0.875rem",
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+            border: "none",
+            cursor: "pointer"
+          }}
+        >
+          🔧 Dev Tools
+        </button>
+      )}
+
       {showDevPanel && (
         <DevPanel
-          country={country}
-          setCountry={setCountry}
+          country={devCountry}
+          setCountry={setDevCountry}
           dataType={devDataType}
           setDataType={setDevDataType}
           devJson={devJson}
