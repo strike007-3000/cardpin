@@ -13,6 +13,7 @@ export type RecommendationInput = {
     points?: number; // value of 1 point in currency (e.g. 0.01)
     miles?: number;  // value of 1 mile in currency (e.g. 0.01)
   };
+  audience?: "consumer" | "business"; // Filter cards by target audience
   includeUnownedCards?: boolean; // If true, evaluates un-owned cards in the dataset to find top unlocking recommendation
 };
 
@@ -221,7 +222,7 @@ function evaluateCardForSpend(
 }
 
 export function recommendBestCard(input: RecommendationInput): RecommendationOutput {
-  const { merchant, category, ownedCards, country, dataset, spendAmount, isForeignSpend, cardMonthlySpends, valuations, includeUnownedCards } = input;
+  const { merchant, category, ownedCards, country, dataset, spendAmount, isForeignSpend, cardMonthlySpends, valuations, audience, includeUnownedCards } = input;
   const spend = spendAmount ?? 100;
 
   const merchantQuery = safeLower(merchant);
@@ -309,7 +310,10 @@ export function recommendBestCard(input: RecommendationInput): RecommendationOut
 
   if (includeUnownedCards) {
     const unownedCards = dataset.cards.filter(
-      card => !ownedCardIds.has(card.id) && card.country.toUpperCase() === country.toUpperCase()
+      card =>
+        !ownedCardIds.has(card.id) &&
+        card.country.toUpperCase() === country.toUpperCase() &&
+        (!audience || (card.audience ?? "consumer") === audience)
     );
 
     const unownedResults: CardResult[] = unownedCards.map(card =>

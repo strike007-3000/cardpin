@@ -279,7 +279,7 @@ export default function CardPinCalculator() {
       spendAmount: convertedSpend,
       isForeignSpend: isForeign,
       cardMonthlySpends,
-      valuations: { points: 1, miles: 1 },
+      audience,
       includeUnownedCards: true
     });
 
@@ -294,17 +294,20 @@ export default function CardPinCalculator() {
           spendAmount: convertedSpend,
           isForeignSpend: isForeign,
           cardMonthlySpends,
-          valuations: { points: 1, miles: 1 }
+          audience
         });
         const rule = rec.bestRule;
         const fxFee = isForeign ? convertedSpend * (card.fxFeePercentage ?? 0) : 0;
         let grossValue = 0;
 
         const bgCap = rule?.cap ?? rule?.conditions?.cap;
+        const minSpend = rule?.conditions?.minSpend ?? 0;
         const monthlySpend = cardMonthlySpends[card.id] ?? 0;
 
         if (rule) {
-          if (bgCap !== undefined) {
+          if (minSpend > 0 && convertedSpend < minSpend) {
+            grossValue = 0;
+          } else if (bgCap !== undefined) {
             const earnedSoFar = monthlySpend * rule.rewardValue;
             const remainingReward = Math.max(0, bgCap - earnedSoFar);
             if (remainingReward === 0) {

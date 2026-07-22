@@ -75,7 +75,11 @@ export default function ResultHero({
                 Next Card to Unlock
               </span>
               <span style={{ fontWeight: 600, fontSize: "0.9rem" }}>
-                +EUR {(bestResult.rec.unownedUnlockCard.convertedValue - bestResult.netValue).toFixed(2)} extra reward
+                {bestResult.rec.unownedUnlockCard.rewardType === "points"
+                  ? `${bestResult.rec.unownedUnlockCard.estimatedValue.toFixed(0)} points`
+                  : bestResult.rec.unownedUnlockCard.rewardType === "miles"
+                  ? `${bestResult.rec.unownedUnlockCard.estimatedValue.toFixed(0)} miles`
+                  : `+EUR ${(bestResult.rec.unownedUnlockCard.convertedValue - bestResult.netValue).toFixed(2)} extra reward`}
               </span>
             </div>
             <h4 style={{ margin: "0.25rem 0", fontSize: "1rem", fontWeight: 600 }}>{bestResult.rec.unownedUnlockCard.card.name}</h4>
