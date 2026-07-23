@@ -1,6 +1,45 @@
 {
   "rewardRules": [
     {
+      "id": "amex-classic-be-points",
+      "cardId": "amex-classic-be",
+      "country": "BE",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-classic/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "shrey"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "amex-gold-be-points",
+      "cardId": "amex-gold-be",
+      "country": "BE",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-gold/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "shrey"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "amex-platinum-be-points",
+      "cardId": "amex-platinum-be",
+      "country": "BE",
+      "rewardType": "points",
+      "rewardValue": 1,
+      "source": {
+        "sourceUrl": "https://www.americanexpress.com/be/fr/cartes/carte-platinum/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "shrey"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
       "id": "beobank-brussels-airlines-altitude-miles",
       "cardId": "beobank-brussels-airlines-altitude",
       "country": "BE",
