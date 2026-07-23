@@ -1,6 +1,12 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  CountryIssuersJsonSchema,
+  CountryCardsJsonSchema,
+  CountryMerchantsJsonSchema,
+  CountryRewardRulesJsonSchema
+} from "../packages/schemas/src/index.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -181,12 +187,18 @@ function main() {
   const rewardRules = rewardRulesList.sort((a, b) => a.id.localeCompare(b.id));
   const merchants: any[] = [];
 
+  // Validate against Zod schemas prior to writing
+  CountryIssuersJsonSchema.parse({ issuers });
+  CountryCardsJsonSchema.parse({ cards });
+  CountryMerchantsJsonSchema.parse({ merchants });
+  CountryRewardRulesJsonSchema.parse({ rewardRules });
+
   fs.writeFileSync(path.join(US_DIR, "issuers.json"), JSON.stringify({ issuers }, null, 2) + "\n");
   fs.writeFileSync(path.join(US_DIR, "cards.json"), JSON.stringify({ cards }, null, 2) + "\n");
   fs.writeFileSync(path.join(US_DIR, "merchants.json"), JSON.stringify({ merchants }, null, 2) + "\n");
   fs.writeFileSync(path.join(US_DIR, "reward_rules.json"), JSON.stringify({ rewardRules }, null, 2) + "\n");
 
-  console.log(`[import-us-csv] Ingested ${issuers.length} issuers, ${cards.length} cards, and ${rewardRules.length} reward rules into data/us/`);
+  console.log(`[import-us-csv] Ingested and validated ${issuers.length} issuers, ${cards.length} cards, and ${rewardRules.length} reward rules into data/us/`);
 }
 
 main();
