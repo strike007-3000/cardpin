@@ -1,11 +1,10 @@
-import type { Card } from "@cardpin/engine";
-import type { recommendBestCard } from "@cardpin/engine";
+import type { Card, RewardRule, RecommendationOutput } from "@cardpin/engine";
 
 export type CardCalc = {
   card: Card;
-  rule: ReturnType<typeof recommendBestCard>["bestRule"];
-  rec: ReturnType<typeof recommendBestCard>;
-  rewardType: ReturnType<typeof recommendBestCard>["rewardType"];
+  rule: RewardRule | null;
+  rec: RecommendationOutput;
+  rewardType: RecommendationOutput["rewardType"];
   grossValue: number;
   fxFee: number;
   netValue: number;
@@ -65,3 +64,15 @@ export function cleanExplanation(explanation: string) {
   }
   return explanation;
 }
+
+export function formatRelativeDate(dateStr?: string) {
+  if (!dateStr) return "recently";
+  const date = new Date(dateStr);
+  if (isNaN(date.getTime())) return dateStr;
+  const now = new Date();
+  const diffMonths = (now.getFullYear() - date.getFullYear()) * 12 + (now.getMonth() - date.getMonth());
+  if (diffMonths <= 0) return "this month";
+  if (diffMonths === 1) return "1 month ago";
+  return `${diffMonths} months ago`;
+}
+

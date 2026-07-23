@@ -15,6 +15,8 @@ interface InputStripProps {
   setSpendInput: (val: string) => void;
   spendCurrency: string;
   setSpendCurrency: (val: string) => void;
+  isForeignSpend: boolean;
+  setIsForeignSpend: (val: boolean) => void;
   categoriesList: string[];
   handleSpendBlur: () => void;
   disabled: boolean;
@@ -29,6 +31,8 @@ export default function InputStrip({
   setSpendInput,
   spendCurrency,
   setSpendCurrency,
+  isForeignSpend,
+  setIsForeignSpend,
   categoriesList,
   handleSpendBlur,
   disabled,
@@ -114,8 +118,28 @@ export default function InputStrip({
               <option value="GBP">GBP (£)</option>
               <option value="CHF">CHF (₣)</option>
               <option value="JPY">JPY (¥)</option>
+              <option value="CAD">CAD ($)</option>
+              <option value="AUD">AUD ($)</option>
+              <option value="SEK">SEK (kr)</option>
+              <option value="NOK">NOK (kr)</option>
+              <option value="DKK">DKK (kr)</option>
+              <option value="PLN">PLN (zł)</option>
+              <option value="CZK">CZK (Kč)</option>
             </select>
           </div>
+        </div>
+
+        <div style={{ marginTop: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <input
+            id="foreign-spend-checkbox"
+            type="checkbox"
+            checked={isForeignSpend}
+            onChange={(e) => setIsForeignSpend(e.target.checked)}
+            style={{ width: "16px", height: "16px", cursor: "pointer" }}
+          />
+          <label htmlFor="foreign-spend-checkbox" style={{ fontSize: "0.85rem", cursor: "pointer", userSelect: "none" }}>
+            ✈️ Spending abroad / Foreign transaction (applies FX fee if non-zero)
+          </label>
         </div>
       </fieldset>
     </div>

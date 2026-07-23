@@ -90,19 +90,5 @@ export default function StatusBanner({
     );
   }
 
-  if (!bestResultExists) {
-    return (
-      <div className="card empty-state empty-state--left" role="status">
-        <strong>No matching reward rules found.</strong>
-        <p>
-          Unsupported cards or rewards are intentionally omitted rather than assumed or guessed.
-        </p>
-        <p>
-          Please verify terms with your issuer before relying on any benefit.
-        </p>
-      </div>
-    );
-  }
-
   return null;
 }
