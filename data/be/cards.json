@@ -343,6 +343,25 @@
       }
     },
     {
+      "id": "buyway-mastercard",
+      "name": "Buyway Mastercard",
+      "issuerId": "buyway",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "lastUpdated": "2026-07-23",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.buyway.be/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "shrey"
+      }
+    },
+    {
       "id": "cbc-credit-card",
       "name": "CBC Credit Card",
       "issuerId": "cbc",

@@ -22,6 +22,10 @@
       "name": "BNP Paribas Fortis"
     },
     {
+      "id": "buyway",
+      "name": "Buyway Personal Finance"
+    },
+    {
       "id": "cbc",
       "name": "CBC Banque"
     },
@@ -392,6 +396,25 @@
         "verifiedBy": "community-editor"
       },
       "lastUpdated": "2026-06-14"
+    },
+    {
+      "id": "buyway-mastercard",
+      "name": "Buyway Mastercard",
+      "issuerId": "buyway",
+      "country": "BE",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0.02,
+      "currency": "EUR",
+      "rewardRules": [],
+      "source": "official-product-page",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.buyway.be/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "shrey"
+      },
+      "lastUpdated": "2026-07-23"
     },
     {
       "id": "cbc-credit-card",
