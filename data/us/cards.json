@@ -1,0 +1,3626 @@
+{
+  "cards": [
+    {
+      "id": "aaa-daily-advantage",
+      "name": "AAA Daily Advantage",
+      "issuerId": "comenity",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aaa-daily-advantage-base-cashback",
+        "aaa-daily-advantage-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.ace.aaa.com/financial/aaa-credit-card.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aaa-travel-advantage",
+      "name": "AAA Travel Advantage",
+      "issuerId": "comenity",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aaa-travel-advantage-base-cashback",
+        "aaa-travel-advantage-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.ace.aaa.com/financial/aaa-credit-card.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aadvantage-business-world-elite",
+      "name": "AAdvantage Business World Elite",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aadvantage-business-world-elite-base-cashback",
+        "aadvantage-business-world-elite-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.aa.com/credit-cards/citi-business-card-american-airlines-direct/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aadvantage-executive",
+      "name": "AAdvantage Executive",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 595,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aadvantage-executive-base-cashback",
+        "aadvantage-executive-welcome-offer-10000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.aa.com/citi-executive-card-american-airlines-direct/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aadvantage-globe",
+      "name": "AAdvantage Globe",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 350,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aadvantage-globe-base-cashback",
+        "aadvantage-globe-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.aa.com/credit-cards/citi-globe-card-american-airlines-direct/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aadvantage-mileup",
+      "name": "AAdvantage MileUp",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aadvantage-mileup-base-cashback",
+        "aadvantage-mileup-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.aa.com/citi-mileup-card-american-airlines-direct/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aadvantage-platinum-select-world-elite",
+      "name": "AAdvantage Platinum Select World Elite",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aadvantage-platinum-select-world-elite-base-cashback",
+        "aadvantage-platinum-select-world-elite-welcome-offer-3500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.aa.com/credit-cards/citi-platinum-card-american-airlines-direct/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aarp-essential-rewards",
+      "name": "AARP Essential Rewards",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aarp-essential-rewards-base-cashback",
+        "aarp-essential-rewards-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.aarp.org/membership/benefits/finance/aarp-essential-rewards-mastercard-from-barclays/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aarp-travel-rewards",
+      "name": "AARP Travel Rewards",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aarp-travel-rewards-base-cashback",
+        "aarp-travel-rewards-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.aarp.org/membership/benefits/finance/aarp-travel-rewards-mastercard-from-barclays/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "active-cash",
+      "name": "Active Cash",
+      "issuerId": "wells-fargo",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "active-cash-base-cashback",
+        "active-cash-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.wellsfargo.com/active-cash-credit-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aer-lingus-signature",
+      "name": "Aer Lingus Signature",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aer-lingus-signature-base-cashback",
+        "aer-lingus-signature-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/avios/aer-lingus",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "aeroplan",
+      "name": "Aeroplan",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "aeroplan-base-cashback",
+        "aeroplan-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/aircanada/aeroplan",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "air-france-klm",
+      "name": "Air France KLM",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 89,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "air-france-klm-base-cashback",
+        "air-france-klm-welcome-offer-3000",
+        "air-france-klm-welcome-offer-2000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://wwws.airfrance.us/information/flyingblue/carte-bancaire-partenaire",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "altitude-connect",
+      "name": "Altitude Connect",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "altitude-connect-base-cashback",
+        "altitude-connect-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.usbank.com/credit-cards/altitude-connect-visa-signature-credit-card.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "altitude-go",
+      "name": "Altitude Go",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "altitude-go-base-cashback",
+        "altitude-go-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.usbank.com/credit-cards/altitude-go-visa-signature-credit-card.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "amazon-business",
+      "name": "Amazon Business",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "amazon-business-base-cashback",
+        "amazon-business-welcome-offer-0"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/amazon-business-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "amazon-prime",
+      "name": "Amazon Prime",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "amazon-prime-base-cashback",
+        "amazon-prime-welcome-offer-0"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.amazon.com/dp/BT00LN946S",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "amazon-prime-store-card",
+      "name": "Amazon Prime Store Card",
+      "issuerId": "synchrony",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "amazon-prime-store-card-base-cashback",
+        "amazon-prime-store-card-welcome-offer-0"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.amazon.com/Synchrony-Bank-Amazon-com-Store-Card/dp/B008A0GNA8",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "amtrak-guest-rewards",
+      "name": "Amtrak Guest Rewards",
+      "issuerId": "fnbo",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "amtrak-guest-rewards-base-cashback",
+        "amtrak-guest-rewards-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.amtrak.com/Apply",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "amtrak-guest-rewards-preferred",
+      "name": "Amtrak Guest Rewards Preferred",
+      "issuerId": "fnbo",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "amtrak-guest-rewards-preferred-base-cashback",
+        "amtrak-guest-rewards-preferred-welcome-offer-2000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.amtrak.com/Apply",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ana-card-usa-plus",
+      "name": "ANA Card USA Plus",
+      "issuerId": "first",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 85,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ana-card-usa-plus-base-cashback",
+        "ana-card-usa-plus-welcome-offer-0"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.anacardusa.com/en/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "at-t-points-plus",
+      "name": "AT&T Points Plus",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "at-t-points-plus-base-cashback",
+        "at-t-points-plus-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.att.com/deals/att-points-plus-citi/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "atmos-rewards-ascent",
+      "name": "Atmos Rewards Ascent",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "atmos-rewards-ascent-base-cashback",
+        "atmos-rewards-ascent-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.alaskaair.com/atmosrewards/content/credit-cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "atmos-rewards-business",
+      "name": "Atmos Rewards Business",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "atmos-rewards-business-base-cashback",
+        "atmos-rewards-business-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.alaskaair.com/atmosrewards/content/credit-cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "atmos-rewards-summit",
+      "name": "Atmos Rewards Summit",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 395,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "atmos-rewards-summit-base-cashback",
+        "atmos-rewards-summit-welcome-offer-6000",
+        "atmos-rewards-summit-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.alaskaair.com/atmosrewards/content/credit-cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "attune",
+      "name": "Attune",
+      "issuerId": "wells-fargo",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "attune-base-cashback",
+        "attune-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.wellsfargo.com/attune-world-elite-mastercard-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "autograph",
+      "name": "Autograph",
+      "issuerId": "wells-fargo",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "autograph-base-cashback",
+        "autograph-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.wellsfargo.com/autograph-visa-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "autograph-journey",
+      "name": "Autograph Journey",
+      "issuerId": "wells-fargo",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "autograph-journey-base-cashback",
+        "autograph-journey-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.wellsfargo.com/autograph-journey-visa-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "avianca-lifemiles",
+      "name": "Avianca LifeMiles",
+      "issuerId": "first",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "avianca-lifemiles-base-cashback",
+        "avianca-lifemiles-welcome-offer-4500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.lifemiles.com/discover/landing-page/avianca-lifemiles-creditcard",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "avianca-lifemiles-elite",
+      "name": "Avianca LifeMiles Elite",
+      "issuerId": "first",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 250,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "avianca-lifemiles-elite-base-cashback",
+        "avianca-lifemiles-elite-welcome-offer-4500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.lifemiles.com/discover/landing-page/avianca-lifemiles-creditcard",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "best-western-rewards",
+      "name": "Best Western Rewards",
+      "issuerId": "fnbo",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "best-western-rewards-base-cashback",
+        "best-western-rewards-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bestwestern.com/en_US/offers/hotel-discounts/best-western-rewards-visa.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "best-western-rewards-premium",
+      "name": "Best Western Rewards Premium",
+      "issuerId": "fnbo",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 89,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "best-western-rewards-premium-base-cashback",
+        "best-western-rewards-premium-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bestwestern.com/en_US/offers/hotel-discounts/best-western-rewards-visa.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "blue-business-cash",
+      "name": "Blue Business Cash",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "blue-business-cash-base-cashback",
+        "blue-business-cash-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/en-us/business/credit-cards/blue-business-cash/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "blue-business-plus",
+      "name": "Blue Business Plus",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "blue-business-plus-base-cashback",
+        "blue-business-plus-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-blue-business-plus-credit-card-amex/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "blue-cash-everyday",
+      "name": "Blue Cash Everyday",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "blue-cash-everyday-base-cashback",
+        "blue-cash-everyday-welcome-offer-2000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-everyday/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "blue-cash-preferred",
+      "name": "Blue Cash Preferred",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "blue-cash-preferred-base-cashback",
+        "blue-cash-preferred-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/blue-cash-preferred/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "blue-cash-preferred-morgan-stanley",
+      "name": "Blue Cash Preferred (Morgan Stanley)",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "blue-cash-preferred-morgan-stanley-base-cashback",
+        "blue-cash-preferred-morgan-stanley-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://us.etrade.com/l/morgan-stanley-blue-cash-preferred",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "breeze",
+      "name": "Breeze",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 89,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "breeze-base-cashback",
+        "breeze-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/breeze-airways/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "british-airways-signature",
+      "name": "British Airways Signature",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "british-airways-signature-base-cashback",
+        "british-airways-signature-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/avios/british-airways",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-advantage-customized-cash",
+      "name": "Business Advantage Customized Cash",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-advantage-customized-cash-base-cashback",
+        "business-advantage-customized-cash-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/cash-rewards-business-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-advantage-travel-rewards",
+      "name": "Business Advantage Travel Rewards",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-advantage-travel-rewards-base-cashback",
+        "business-advantage-travel-rewards-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/travel-rewards-business-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-advantage-unlimited-cash",
+      "name": "Business Advantage Unlimited Cash",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-advantage-unlimited-cash-base-cashback",
+        "business-advantage-unlimited-cash-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/unlimited-cash-rewards-business-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-altitude-connect",
+      "name": "Business Altitude Connect",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-altitude-connect-base-cashback",
+        "business-altitude-connect-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-altitude-connect-world-elite-mastercard.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-altitude-power",
+      "name": "Business Altitude Power",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 195,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-altitude-power-base-cashback",
+        "business-altitude-power-welcome-offer-10000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-altitude-power-world-elite-mastercard.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-gold",
+      "name": "Business Gold",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 375,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-gold-base-cashback",
+        "business-gold-welcome-offer-15000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-gold-card-amex/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-green",
+      "name": "Business Green",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-green-base-cashback",
+        "business-green-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-green-card-amex/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-leverage",
+      "name": "Business Leverage",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-leverage-base-cashback",
+        "business-leverage-welcome-offer-7500"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-leverage-rewards-credit-card.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-platinum",
+      "name": "Business Platinum",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 695,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-platinum-base-cashback",
+        "business-platinum-welcome-offer-20000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/american-express-business-platinum-credit-card-amex/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "business-triple-cash-rewards",
+      "name": "Business Triple Cash Rewards",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "business-triple-cash-rewards-base-cashback",
+        "business-triple-cash-rewards-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.usbank.com/business-banking/business-credit-cards/business-triple-cash-back-credit-card.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "cardless-qatar-infinite",
+      "name": "Cardless Qatar Infinite",
+      "issuerId": "first",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 499,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "cardless-qatar-infinite-base-cashback",
+        "cardless-qatar-infinite-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://qatarairways.cardless.com/compare",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "cardless-qatar-signature",
+      "name": "Cardless Qatar Signature",
+      "issuerId": "first",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "cardless-qatar-signature-base-cashback",
+        "cardless-qatar-signature-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://qatarairways.cardless.com/compare",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "carnival-world-mastercard",
+      "name": "Carnival World Mastercard",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "carnival-world-mastercard-base-cashback",
+        "carnival-world-mastercard-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/carnival-world-mastercard/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "cash",
+      "name": "Cash",
+      "issuerId": "td",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "cash-base-cashback",
+        "cash-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.td.com/us/en/personal-banking/credit-cards/cash-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "cathay-pacific",
+      "name": "Cathay Pacific",
+      "issuerId": "synchrony",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "cathay-pacific-base-cashback",
+        "cathay-pacific-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://pay.cathaypacific.com/en_US/offers/uscreditcard.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "choice-privileges",
+      "name": "Choice Privileges",
+      "issuerId": "wells-fargo",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "choice-privileges-base-cashback",
+        "choice-privileges-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.wellsfargo.com/wells-fargo-choice-privileges-credit-cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "choice-privileges-select",
+      "name": "Choice Privileges Select",
+      "issuerId": "wells-fargo",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "choice-privileges-select-base-cashback",
+        "choice-privileges-select-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.wellsfargo.com/wells-fargo-choice-privileges-credit-cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "custom-cash",
+      "name": "Custom Cash",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "custom-cash-base-cashback",
+        "custom-cash-welcome-offer-1500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.citi.com/credit-cards/citi-custom-cash-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "customized-cash-rewards",
+      "name": "Customized Cash Rewards",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "customized-cash-rewards-base-cashback",
+        "customized-cash-rewards-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/credit-cards/products/cash-back-credit-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "delta-skymiles-blue",
+      "name": "Delta SkyMiles Blue",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "delta-skymiles-blue-base-cashback",
+        "delta-skymiles-blue-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-blue-american-express-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "delta-skymiles-gold",
+      "name": "Delta SkyMiles Gold",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 150,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "delta-skymiles-gold-base-cashback",
+        "delta-skymiles-gold-welcome-offer-5000",
+        "delta-skymiles-gold-welcome-offer-2000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-gold-american-express-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "delta-skymiles-gold-business",
+      "name": "Delta SkyMiles Gold Business",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 150,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "delta-skymiles-gold-business-base-cashback",
+        "delta-skymiles-gold-business-welcome-offer-6000",
+        "delta-skymiles-gold-business-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/en-us/business/credit-cards/delta-skymiles-gold/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "delta-skymiles-platinum",
+      "name": "Delta SkyMiles Platinum",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 350,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "delta-skymiles-platinum-base-cashback",
+        "delta-skymiles-platinum-welcome-offer-6000",
+        "delta-skymiles-platinum-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-platinum-american-express-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "delta-skymiles-platinum-business",
+      "name": "Delta SkyMiles Platinum Business",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 350,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "delta-skymiles-platinum-business-base-cashback",
+        "delta-skymiles-platinum-business-welcome-offer-8000",
+        "delta-skymiles-platinum-business-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/en-us/business/credit-cards/delta-skymiles-platinum/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "delta-skymiles-reserve",
+      "name": "Delta SkyMiles Reserve",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 650,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "delta-skymiles-reserve-base-cashback",
+        "delta-skymiles-reserve-welcome-offer-9000",
+        "delta-skymiles-reserve-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/delta-skymiles-reserve-american-express-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "delta-skymiles-reserve-business",
+      "name": "Delta SkyMiles Reserve Business",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 550,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "delta-skymiles-reserve-business-base-cashback",
+        "delta-skymiles-reserve-business-welcome-offer-15000",
+        "delta-skymiles-reserve-business-welcome-offer-10000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/en-us/business/credit-cards/delta-skymiles-reserve/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "discover-it",
+      "name": "Discover It",
+      "issuerId": "discover",
+      "country": "US",
+      "network": "discover",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "discover-it-base-cashback",
+        "discover-it-welcome-offer-0"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.discover.com/credit-cards/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "disney",
+      "name": "Disney",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "disney-base-cashback",
+        "disney-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/rewards-credit-cards/disney/rewards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "disney-premier",
+      "name": "Disney Premier",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 49,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "disney-premier-base-cashback",
+        "disney-premier-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/rewards-credit-cards/disney/premier",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "double-cash",
+      "name": "Double Cash",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "double-cash-base-cashback",
+        "double-cash-welcome-offer-1500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.citi.com/credit-cards/citi-double-cash-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "double-up",
+      "name": "Double Up",
+      "issuerId": "td",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "double-up-base-cashback",
+        "double-up-welcome-offer-1500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.td.com/us/en/personal-banking/credit-cards/double-up-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "emirates-skywards-premium-world-elite",
+      "name": "Emirates Skywards Premium World Elite",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 499,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "emirates-skywards-premium-world-elite-base-cashback",
+        "emirates-skywards-premium-world-elite-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/emirates-skywards-premium-world-elite-mastercard/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "emirates-skywards-rewards-world-elite",
+      "name": "Emirates Skywards Rewards World Elite",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "emirates-skywards-rewards-world-elite-base-cashback",
+        "emirates-skywards-rewards-world-elite-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/emirates-skywards-rewards-world-elite-mastercard/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "everyday",
+      "name": "Everyday",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "everyday-base-cashback"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://global.americanexpress.com/card-benefits/view-all/amex-everyday",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "everyday-preferred",
+      "name": "Everyday Preferred",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "everyday-preferred-base-cashback"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/amex-everyday-preferred/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "expedia-one-key",
+      "name": "Expedia One Key",
+      "issuerId": "wells-fargo",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "expedia-one-key-base-cashback",
+        "expedia-one-key-welcome-offer-1000",
+        "expedia-one-key-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.expedia.com/one-key-cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "free-spirit",
+      "name": "Free Spirit",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 79,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "free-spirit-base-cashback",
+        "free-spirit-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/credit-cards/products/spirit-airlines-credit-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "freedom-flex",
+      "name": "Freedom Flex",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "freedom-flex-base-cashback",
+        "freedom-flex-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom/flex",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "freedom-unlimited",
+      "name": "Freedom Unlimited",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "freedom-unlimited-base-cashback",
+        "freedom-unlimited-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/cash-back-credit-cards/freedom/unlimited",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "frontier-airlines-world",
+      "name": "Frontier Airlines World",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 89,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "frontier-airlines-world-base-cashback",
+        "frontier-airlines-world-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/frontier-airlines-world-mastercard/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "gemini",
+      "name": "Gemini",
+      "issuerId": "web-bank",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "gemini-base-cashback",
+        "gemini-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.gemini.com/credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "gold",
+      "name": "Gold",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 350,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "gold-base-cashback",
+        "gold-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/gold-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "green",
+      "name": "Green",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 150,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "green-base-cashback",
+        "green-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/green/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "hawaiian-airlines-world-elite",
+      "name": "Hawaiian Airlines World Elite",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "hawaiian-airlines-world-elite-base-cashback",
+        "hawaiian-airlines-world-elite-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/credit-card/hawaiian-airlines/child/hawaiian-hcl-inflight-landing-page/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "hawaiian-airlines-world-elite-business",
+      "name": "Hawaiian Airlines World Elite Business",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "hawaiian-airlines-world-elite-business-base-cashback",
+        "hawaiian-airlines-world-elite-business-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/credit-card/hawaiian-airlines/combo-app/hawaiian-bha-boh---combo-app/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "hilton-honors",
+      "name": "Hilton Honors",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "hilton-honors-base-cashback",
+        "hilton-honors-welcome-offer-2000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.hilton.com/en/hilton-honors/credit-cards/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "hilton-honors-aspire",
+      "name": "Hilton Honors Aspire",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 550,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "hilton-honors-aspire-base-cashback",
+        "hilton-honors-aspire-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.hilton.com/en/hilton-honors/credit-cards/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "hilton-honors-business",
+      "name": "Hilton Honors Business",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 175,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "hilton-honors-business-base-cashback",
+        "hilton-honors-business-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.hilton.com/en/hilton-honors/credit-cards/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "hilton-honors-surpass",
+      "name": "Hilton Honors Surpass",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "hilton-honors-surpass-base-cashback",
+        "hilton-honors-surpass-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.hilton.com/en/hilton-honors/credit-cards/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "iberia-signature",
+      "name": "Iberia Signature",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "iberia-signature-base-cashback",
+        "iberia-signature-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/avios/iberia",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ihg-premier",
+      "name": "IHG Premier",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ihg-premier-base-cashback",
+        "ihg-premier-welcome-offer-6000",
+        "ihg-premier-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/ihg-rewards-club/premier",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ihg-premier-business",
+      "name": "IHG Premier Business",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ihg-premier-business-base-cashback",
+        "ihg-premier-business-welcome-offer-9000",
+        "ihg-premier-business-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/IHG/business-premier",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ihg-traveler",
+      "name": "IHG Traveler",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ihg-traveler-base-cashback",
+        "ihg-traveler-welcome-offer-4000",
+        "ihg-traveler-welcome-offer-2000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/ihg-rewards-club/traveler",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ink-business-cash",
+      "name": "Ink Business Cash",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ink-business-cash-base-cashback",
+        "ink-business-cash-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/ink/cash",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ink-business-preferred",
+      "name": "Ink Business Preferred",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ink-business-preferred-base-cashback",
+        "ink-business-preferred-welcome-offer-8000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/ink/business-preferred",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ink-business-premier",
+      "name": "Ink Business Premier",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 195,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ink-business-premier-base-cashback",
+        "ink-business-premier-welcome-offer-10000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/ink/premier",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ink-business-unlimited",
+      "name": "Ink Business Unlimited",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ink-business-unlimited-base-cashback",
+        "ink-business-unlimited-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/ink/unlimited",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "jetblue",
+      "name": "JetBlue",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "jetblue-base-cashback",
+        "jetblue-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/jetblue-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "jetblue-business",
+      "name": "JetBlue Business",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "jetblue-business-base-cashback",
+        "jetblue-business-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/jetblue-business-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "jetblue-plus",
+      "name": "JetBlue Plus",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "jetblue-plus-base-cashback",
+        "jetblue-plus-welcome-offer-1000",
+        "jetblue-plus-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/jetblue-plus-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "jetblue-premier",
+      "name": "JetBlue Premier",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 499,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "jetblue-premier-base-cashback",
+        "jetblue-premier-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/jetblue-premier-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "latam-airlines",
+      "name": "LATAM Airlines",
+      "issuerId": "first",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "latam-airlines-base-cashback",
+        "latam-airlines-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://latampass.latam.com/en_us/earn-miles/latam-airlines-credit-cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "latam-airlines-world-elite",
+      "name": "LATAM Airlines World Elite",
+      "issuerId": "first",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "latam-airlines-world-elite-base-cashback",
+        "latam-airlines-world-elite-welcome-offer-3500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://latampass.latam.com/en_us/earn-miles/latam-airlines-credit-cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "lufthansa-miles-more",
+      "name": "Lufthansa Miles & More",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 89,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "lufthansa-miles-more-base-cashback",
+        "lufthansa-miles-more-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/lufthansa-miles-more-world-elite-mastercard",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "marriott-bonvoy-bevy",
+      "name": "Marriott Bonvoy Bevy",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 250,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "marriott-bonvoy-bevy-base-cashback",
+        "marriott-bonvoy-bevy-welcome-offer-7000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-bevy/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "marriott-bonvoy-bold",
+      "name": "Marriott Bonvoy Bold",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "marriott-bonvoy-bold-base-cashback",
+        "marriott-bonvoy-bold-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/bold",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "marriott-bonvoy-boundless",
+      "name": "Marriott Bonvoy Boundless",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "marriott-bonvoy-boundless-base-cashback",
+        "marriott-bonvoy-boundless-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/boundless",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "marriott-bonvoy-bountiful",
+      "name": "Marriott Bonvoy Bountiful",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 250,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "marriott-bonvoy-bountiful-base-cashback",
+        "marriott-bonvoy-bountiful-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/marriott-bonvoy/bountiful",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "marriott-bonvoy-brilliant",
+      "name": "Marriott Bonvoy Brilliant",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 650,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "marriott-bonvoy-brilliant-base-cashback",
+        "marriott-bonvoy-brilliant-welcome-offer-8000",
+        "marriott-bonvoy-brilliant-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/marriott-bonvoy-brilliant/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "marriott-bonvoy-business",
+      "name": "Marriott Bonvoy Business",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 125,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "marriott-bonvoy-business-base-cashback"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/business/business-credit-cards/amex-marriott-bonvoy-business-credit-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "pathfinder",
+      "name": "Pathfinder",
+      "issuerId": "penfed",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "pathfinder-base-cashback",
+        "pathfinder-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.penfed.org/credit-cards/pathfinder-rewards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "platinum",
+      "name": "Platinum",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 895,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "platinum-base-cashback",
+        "platinum-welcome-offer-8000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.americanexpress.com/us/credit-cards/card/platinum/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "platinum-morgan-stanley",
+      "name": "Platinum (Morgan Stanley)",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 895,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "platinum-morgan-stanley-base-cashback",
+        "platinum-morgan-stanley-welcome-offer-8000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://us.etrade.com/l/morgan-stanley-platinum",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "platinum-plus",
+      "name": "Platinum Plus",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "platinum-plus-base-cashback",
+        "platinum-plus-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/smallbusiness/credit-cards/products/platinum-plus-business-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "platinum-rewards",
+      "name": "Platinum Rewards",
+      "issuerId": "penfed",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "platinum-rewards-base-cashback",
+        "platinum-rewards-welcome-offer-1500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.penfed.org/credit-cards/platinum-rewards-visa",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "platinum-schwab",
+      "name": "Platinum (Schwab)",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 895,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "platinum-schwab-base-cashback",
+        "platinum-schwab-welcome-offer-8000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.schwab.com/credit-cards/platinum-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "power-cash-rewards",
+      "name": "Power Cash Rewards",
+      "issuerId": "penfed",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "power-cash-rewards-base-cashback",
+        "power-cash-rewards-welcome-offer-1500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.penfed.org/credit-cards/power-cash-rewards-visa",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "premium-rewards",
+      "name": "Premium Rewards",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "premium-rewards-base-cashback",
+        "premium-rewards-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-credit-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "premium-rewards-elite",
+      "name": "Premium Rewards Elite",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 550,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "premium-rewards-elite-base-cashback",
+        "premium-rewards-elite-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/credit-cards/products/premium-rewards-elite-credit-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "quicksilver",
+      "name": "Quicksilver",
+      "issuerId": "capital-one",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "quicksilver-base-cashback",
+        "quicksilver-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.capitalone.com/credit-cards/quicksilver/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "rakuten",
+      "name": "Rakuten",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "rakuten-base-cashback",
+        "rakuten-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.rakuten.com/american-express-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "sapphire-preferred",
+      "name": "Sapphire Preferred",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "sapphire-preferred-base-cashback",
+        "sapphire-preferred-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/rewards-credit-cards/sapphire/preferred",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "sapphire-reserve",
+      "name": "Sapphire Reserve",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 795,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "sapphire-reserve-base-cashback",
+        "sapphire-reserve-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/rewards-credit-cards/sapphire/reserve",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "sapphire-reserve-business",
+      "name": "Sapphire Reserve Business",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 795,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "sapphire-reserve-business-base-cashback",
+        "sapphire-reserve-business-welcome-offer-20000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/sapphire/reserve",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "savor",
+      "name": "Savor",
+      "issuerId": "capital-one",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "savor-base-cashback",
+        "savor-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.capitalone.com/credit-cards/savor/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "schwab-investor",
+      "name": "Schwab Investor",
+      "issuerId": "american-express",
+      "country": "US",
+      "network": "amex",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "schwab-investor-base-cashback",
+        "schwab-investor-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.schwab.com/public/schwab/investing/accounts_products/credit_cards",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "shopper-cash-rewards",
+      "name": "Shopper Cash Rewards",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "shopper-cash-rewards-base-cashback",
+        "shopper-cash-rewards-welcome-offer-2000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.usbank.com/credit-cards/shopper-cash-rewards-visa-signature-credit-card.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "signify-business-cash",
+      "name": "Signify Business Cash",
+      "issuerId": "wells-fargo",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "signify-business-cash-base-cashback",
+        "signify-business-cash-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.wellsfargo.com/business-credit-cards/signify-business-cash-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "skypass",
+      "name": "Skypass",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "skypass-base-cashback",
+        "skypass-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.skypassvisa.com/credit/visaSignatureCard.do",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "skypass-blue",
+      "name": "Skypass Blue",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "skypass-blue-base-cashback",
+        "skypass-blue-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.skypassvisa.com/credit/visaSkyBlueCard.do",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "skypass-business",
+      "name": "Skypass Business",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "skypass-business-base-cashback",
+        "skypass-business-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.skypassvisa.com/credit/visaBusinessCard.do",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "skypass-select",
+      "name": "Skypass Select",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 450,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "skypass-select-base-cashback",
+        "skypass-select-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.skypassvisa.com/credit/visaSelectCard.do",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "smartly",
+      "name": "Smartly",
+      "issuerId": "us-bank",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "smartly-base-cashback"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.usbank.com/credit-cards/bank-smartly-visa-signature-credit-card.html",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "southwest-performance-business",
+      "name": "Southwest Performance Business",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 299,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "southwest-performance-business-base-cashback",
+        "southwest-performance-business-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/southwest/performance-business",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "southwest-plus",
+      "name": "Southwest Plus",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "southwest-plus-base-cashback",
+        "southwest-plus-welcome-offer-1000",
+        "southwest-plus-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/southwest/plus",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "southwest-premier",
+      "name": "Southwest Premier",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 149,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "southwest-premier-base-cashback",
+        "southwest-premier-welcome-offer-2000",
+        "southwest-premier-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/southwest/premier",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "southwest-premier-business",
+      "name": "Southwest Premier Business",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 149,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "southwest-premier-business-base-cashback",
+        "southwest-premier-business-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/southwest/premier-business",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "southwest-priority",
+      "name": "Southwest Priority",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 229,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "southwest-priority-base-cashback",
+        "southwest-priority-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/southwest/priority",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "spark-1-5-cash-select",
+      "name": "Spark 1.5% Cash Select",
+      "issuerId": "capital-one",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "spark-1-5-cash-select-base-cashback",
+        "spark-1-5-cash-select-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.capitalone.com/small-business/credit-cards/spark-cash-select",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "strata",
+      "name": "Strata",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "strata-base-cashback",
+        "strata-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.citi.com/credit-cards/citi-strata-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "strata-elite",
+      "name": "Strata Elite",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 595,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "strata-elite-base-cashback",
+        "strata-elite-welcome-offer-6000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.citi.com/credit-cards/citi-strata-elite-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "strata-premier",
+      "name": "Strata Premier",
+      "issuerId": "citi",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "strata-premier-base-cashback",
+        "strata-premier-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.citi.com/credit-cards/citi-strata-premier-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "travel-rewards",
+      "name": "Travel Rewards",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "travel-rewards-base-cashback",
+        "travel-rewards-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/credit-cards/products/travel-rewards-credit-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "united-business",
+      "name": "United Business",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 150,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "united-business-base-cashback",
+        "united-business-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.theexplorercard.com/business-rewards-cards/business-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "united-club",
+      "name": "United Club",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 695,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "united-club-base-cashback",
+        "united-club-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.theexplorercard.com/rewards-cards/club-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "united-club-business",
+      "name": "United Club Business",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 695,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "united-club-business-base-cashback",
+        "united-club-business-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.theexplorercard.com/business-rewards-cards/club-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "united-explorer",
+      "name": "United Explorer",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 150,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "united-explorer-base-cashback",
+        "united-explorer-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.theexplorercard.com/rewards-cards/explorer-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "united-gateway",
+      "name": "United Gateway",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "united-gateway-base-cashback",
+        "united-gateway-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.theexplorercard.com/rewards-cards/gateway-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "united-quest",
+      "name": "United Quest",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 350,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "united-quest-base-cashback",
+        "united-quest-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.theexplorercard.com/rewards-cards/quest-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "unlimited-cash-rewards",
+      "name": "Unlimited Cash Rewards",
+      "issuerId": "bank-of-america",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "unlimited-cash-rewards-base-cashback",
+        "unlimited-cash-rewards-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.bankofamerica.com/credit-cards/products/unlimited-cash-back-credit-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "upromise",
+      "name": "Upromise",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "upromise-base-cashback",
+        "upromise-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/upromise-world-mastercard/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "venture-business",
+      "name": "Venture Business",
+      "issuerId": "capital-one",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "venture-business-base-cashback",
+        "venture-business-welcome-offer-30000",
+        "venture-business-welcome-offer-7500"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.capitalone.com/small-business/credit-cards/venture-business/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "venture-rewards",
+      "name": "Venture Rewards",
+      "issuerId": "capital-one",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "venture-rewards-base-cashback",
+        "venture-rewards-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.capitalone.com/credit-cards/venture/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "venture-x",
+      "name": "Venture X",
+      "issuerId": "capital-one",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 395,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "venture-x-base-cashback",
+        "venture-x-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.capitalone.com/credit-cards/venture-x/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ventureone",
+      "name": "VentureOne",
+      "issuerId": "capital-one",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ventureone-base-cashback",
+        "ventureone-welcome-offer-500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.capitalone.com/credit-cards/ventureone/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "ventureone-business",
+      "name": "VentureOne Business",
+      "issuerId": "capital-one",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "ventureone-business-base-cashback",
+        "ventureone-business-welcome-offer-4500"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.capitalone.com/small-business/credit-cards/ventureone-business/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "verizon-visa",
+      "name": "Verizon Visa",
+      "issuerId": "synchrony",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "verizon-visa-base-cashback",
+        "verizon-visa-welcome-offer-0",
+        "verizon-visa-welcome-offer-1500"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.verizon.com/financial-services/verizon-visa-card/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "virgin-red-rewards",
+      "name": "Virgin Red Rewards",
+      "issuerId": "synchrony",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 99,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "virgin-red-rewards-base-cashback",
+        "virgin-red-rewards-welcome-offer-4000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.virgin.com/en-us/virgin-red/rewards-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "walmart-onepay-cashrewards",
+      "name": "Walmart OnePay CashRewards",
+      "issuerId": "synchrony",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "walmart-onepay-cashrewards-base-cashback",
+        "walmart-onepay-cashrewards-welcome-offer-75"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.walmart.com/cp/onepay-cashrewards-mastercard/9569366376",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "world-of-hyatt",
+      "name": "World of Hyatt",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "world-of-hyatt-base-cashback",
+        "world-of-hyatt-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/travel-credit-cards/world-of-hyatt-credit-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "world-of-hyatt-business",
+      "name": "World of Hyatt Business",
+      "issuerId": "chase",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 199,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "world-of-hyatt-business-base-cashback",
+        "world-of-hyatt-business-welcome-offer-5000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://creditcards.chase.com/business-credit-cards/world-of-hyatt/hyatt-business-card",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "wyndham-rewards-earner",
+      "name": "Wyndham Rewards Earner",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "wyndham-rewards-earner-base-cashback",
+        "wyndham-rewards-earner-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.wyndhamrewardscreditcard.com/#earner",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "wyndham-rewards-earner-business",
+      "name": "Wyndham Rewards Earner Business",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 95,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "wyndham-rewards-earner-business-base-cashback",
+        "wyndham-rewards-earner-business-welcome-offer-3000"
+      ],
+      "source": "community",
+      "audience": "business",
+      "sourceProof": {
+        "sourceUrl": "https://www.wyndhamrewardscreditcard.com/#earnerbusiness",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "wyndham-rewards-earner-plus",
+      "name": "Wyndham Rewards Earner Plus",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "visa",
+      "annualFee": 75,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "wyndham-rewards-earner-plus-base-cashback",
+        "wyndham-rewards-earner-plus-welcome-offer-1000"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://www.wyndhamrewardscreditcard.com/#earnerplus",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    },
+    {
+      "id": "xbox",
+      "name": "Xbox",
+      "issuerId": "barclays",
+      "country": "US",
+      "network": "mastercard",
+      "annualFee": 0,
+      "fxFeePercentage": 0,
+      "currency": "USD",
+      "rewardRules": [
+        "xbox-base-cashback",
+        "xbox-welcome-offer-0"
+      ],
+      "source": "community",
+      "audience": "consumer",
+      "sourceProof": {
+        "sourceUrl": "https://cards.barclaycardus.com/banking/cards/xbox-mastercard/",
+        "verifiedAt": "2026-07-23",
+        "verifiedBy": "community"
+      },
+      "lastUpdated": "2026-07-23"
+    }
+  ]
+}
