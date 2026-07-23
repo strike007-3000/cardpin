@@ -40,6 +40,11 @@ function parseCSVLine(line: string): string[] {
   return result;
 }
 
+function isMilesCurrency(curr: string): boolean {
+  const milesCurrencies = ["DELTA", "UNITED", "AMERICAN_AIRLINES", "ALASKA", "SOUTHWEST", "JETBLUE", "HAWAIIAN", "AVIANCA", "EMIRATES", "VIRGIN_ATLANTIC"];
+  return milesCurrencies.includes(curr.toUpperCase());
+}
+
 function main() {
   if (!fs.existsSync(CSV_PATH)) {
     throw new Error(`CSV file not found at ${CSV_PATH}`);
@@ -78,12 +83,14 @@ function main() {
     }
 
     const rawName = rowObj.name || "Unknown Card";
-    const cardId = toKebabCase(rawName);
+    const rawCardId = rowObj.cardId ? rowObj.cardId.slice(0, 6) : "";
+    const cardId = toKebabCase(`${issuerId}-${rawName}${rawCardId ? "-" + rawCardId : ""}`);
     const network = toKebabCase(rowObj.network || "visa");
     const isBusiness = rowObj.isBusiness === "true";
     const annualFee = parseFloat(rowObj.annualFee) || 0;
     const universalCashbackPercent = parseFloat(rowObj.universalCashbackPercent) || 0;
     const cardUrl = rowObj.url && rowObj.url.startsWith("https://") ? rowObj.url : "https://github.com/andenacitelli/credit-card-bonuses-api";
+    const currencyRaw = (rowObj.currency || "USD").toUpperCase();
 
     if (!cardsMap.has(cardId)) {
       cardsMap.set(cardId, {
@@ -109,19 +116,21 @@ function main() {
 
     const cardRef = cardsMap.get(cardId);
 
-    // 1. Base cashback rule if universalCashbackPercent > 0
-    const baseRuleId = toKebabCase(`${cardId}-base-cashback`);
+    // 1. Base rule (omitting category so it acts as true fallback rule in evaluateCardForSpend)
+    const baseRuleId = toKebabCase(`${cardId}-base-rule`);
     if (universalCashbackPercent > 0 && !seenRuleIds.has(baseRuleId)) {
       seenRuleIds.add(baseRuleId);
       cardRef.rewardRules.push(baseRuleId);
+
+      const isCash = currencyRaw === "USD";
+      const isMiles = isMilesCurrency(currencyRaw);
 
       rewardRulesList.push({
         id: baseRuleId,
         cardId,
         country: "US",
-        category: "fallback",
-        rewardType: "cashback_percentage",
-        rewardValue: universalCashbackPercent / 100,
+        rewardType: isCash ? "cashback_percentage" : isMiles ? "miles" : "points",
+        rewardValue: isCash ? universalCashbackPercent / 100 : universalCashbackPercent,
         conditions: {},
         source: {
           sourceUrl: cardUrl,
@@ -136,7 +145,6 @@ function main() {
     const offerAmount = parseFloat(rowObj.offerAmount) || 0;
     const offerSpend = parseFloat(rowObj.offerSpend) || 0;
     const offerUrl = rowObj.offerUrl && rowObj.offerUrl.startsWith("https://") ? rowObj.offerUrl : cardUrl;
-    const currencyRaw = (rowObj.currency || "USD").toUpperCase();
 
     if (offerAmount > 0 && offerSpend > 0) {
       const offerRuleId = toKebabCase(`${cardId}-welcome-offer-${Math.round(offerSpend)}`);
@@ -145,12 +153,13 @@ function main() {
         cardRef.rewardRules.push(offerRuleId);
 
         const isCash = currencyRaw === "USD";
+        const isMiles = isMilesCurrency(currencyRaw);
+
         rewardRulesList.push({
           id: offerRuleId,
           cardId,
           country: "US",
-          category: "fallback",
-          rewardType: isCash ? "fixed_cashback" : "points",
+          rewardType: isCash ? "fixed_cashback" : isMiles ? "miles" : "points",
           rewardValue: offerAmount,
           conditions: {
             minSpend: offerSpend

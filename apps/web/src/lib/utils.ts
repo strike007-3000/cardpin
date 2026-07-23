@@ -38,8 +38,7 @@ export function rewardLabel(result: CardCalc) {
   if (!result.rule) return "No reward rule";
   if (result.rewardType === "cashback_percentage") return `${(result.rule.rewardValue * 100).toFixed(1)}% cashback`;
   if (result.rewardType === "fixed_cashback") {
-    const currency = result.card?.currency || "EUR";
-    return `${currency} ${result.rule.rewardValue.toFixed(2)} per transaction`;
+    return `EUR ${result.rule.rewardValue.toFixed(2)} per transaction`;
   }
   if (result.rewardType === "points") return `${result.rule.rewardValue}x points`;
   if (result.rewardType === "miles") return `${result.rule.rewardValue}x miles`;
@@ -48,13 +47,11 @@ export function rewardLabel(result: CardCalc) {
 
 export function rewardAmount(result: CardCalc) {
   if (!result.rule) {
-    const currency = result.card?.currency || "EUR";
-    return `${currency} 0.00`;
+    return "EUR 0.00";
   }
   if (result.rewardType === "points") return `${result.grossValue.toFixed(0)} points`;
   if (result.rewardType === "miles") return `${result.grossValue.toFixed(0)} miles`;
-  const currency = result.card?.currency || "EUR";
-  return `${currency} ${result.netValue.toFixed(2)}`;
+  return `EUR ${result.netValue.toFixed(2)}`;
 }
 
 export function cleanExplanation(explanation: string) {
