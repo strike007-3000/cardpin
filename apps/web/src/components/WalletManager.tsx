@@ -147,12 +147,26 @@ export default function WalletManager({
                 const issuerName = dataset?.issuers.find((issuer) => issuer.id === card.issuerId)?.name || "";
                 const isActive = activeCardId === card.id;
 
+                const cardRules = dataset?.rewardRules.filter((r) => r.cardId === card.id) ?? [];
+                const monthlySpend = cardMonthlySpends[card.id] ?? 0;
+                const isCapExhausted = cardRules.some((rule) => {
+                  const cap = rule.cap ?? rule.conditions?.cap;
+                  return cap !== undefined && monthlySpend * rule.rewardValue >= cap;
+                });
+
                 return (
-                  <button
-                    type="button"
+                  <div
                     key={card.id}
+                    role="button"
+                    tabIndex={0}
                     className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : "wallet-card--collapsed"}`}
                     onClick={() => setActiveCardId(card.id)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        setActiveCardId(card.id);
+                      }
+                    }}
                     aria-pressed={isActive}
                     aria-label={isActive ? `${card.name}, selected` : `Select ${card.name}`}
                   >
@@ -161,6 +175,11 @@ export default function WalletManager({
                       <>
                         <span className="wallet-card__topline">
                           <span className="card-issuer-name">{issuerName}</span>
+                          {isCapExhausted && (
+                            <span style={{ background: "#ef4444", color: "#fff", fontSize: "0.7rem", fontWeight: 700, padding: "0.1rem 0.4rem", borderRadius: "9999px" }}>
+                              ⚠️ CAP REACHED
+                            </span>
+                          )}
                           <svg className="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: "16px", height: "16px", opacity: 0.8 }}>
                             <path d="M5 17a8 8 0 0 1 0-10" />
                             <path d="M9 19a12 12 0 0 1 0-14" />
@@ -218,10 +237,15 @@ export default function WalletManager({
                       <span className="wallet-card__collapsed-row">
                         <span className="card-issuer-name">{issuerName}</span>
                         <span className="card-name-display">{card.name}</span>
+                        {isCapExhausted && (
+                          <span style={{ background: "#ef4444", color: "#fff", fontSize: "0.65rem", fontWeight: 700, padding: "0.05rem 0.35rem", borderRadius: "9999px" }}>
+                            ⚠️ CAP
+                          </span>
+                        )}
                         <CardNetworkLogo network={card.network} />
                       </span>
                     )}
-                  </button>
+                  </div>
                 );
               })}
             </div>

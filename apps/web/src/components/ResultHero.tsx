@@ -1,8 +1,8 @@
 "use client";
 
 import React from "react";
-import type { Card } from "@cardpin/engine";
 import type { CardCalc } from "../lib/utils";
+import { formatRelativeDate } from "../lib/utils";
 
 interface ResultHeroProps {
   bestResult: CardCalc;
@@ -12,6 +12,7 @@ interface ResultHeroProps {
   cleanExplanation: (explanation: string) => string;
   rewardLabel: (result: CardCalc) => string;
   alternatives: CardCalc[];
+  cardMonthlySpends?: Record<string, number>;
 }
 
 export default function ResultHero({
@@ -22,16 +23,21 @@ export default function ResultHero({
   cleanExplanation,
   rewardLabel,
   alternatives,
+  cardMonthlySpends = {},
 }: ResultHeroProps) {
+  const isFallbackCard = !bestResult.rule;
+
   return (
     <section className="recommendation-area result-hero-section">
       <div className="result-box result-hero-box">
         <div className="result-header">
           <div>
-            <span className="badge">Best Card</span>
+            <span className="badge" style={isFallbackCard ? { background: "var(--bg-surface-elevated, #374151)", color: "#f3f4f6" } : undefined}>
+              {isFallbackCard ? "Best Base Card" : "Best Card"}
+            </span>
             <h2 style={{ marginTop: "0.25rem" }}>{bestResult.card.name}</h2>
             <p className="card-meta">
-              {bestResult.card.network.toUpperCase()} · {bestResult.label}
+              {bestResult.card.network.toUpperCase()} · {isFallbackCard ? "No specific bonus rule" : bestResult.label}
             </p>
           </div>
           <div className="val-display">
@@ -44,7 +50,11 @@ export default function ResultHero({
           <div>
             <h3>Why this card</h3>
             <p className="result-explanation" style={{ lineHeight: 1.5 }}>
-              {cleanExplanation(bestResult.rec.explanation)}
+              {isFallbackCard
+                ? isForeignSpend && (bestResult.card.fxFeePercentage ?? 0) > 0
+                  ? `No matching bonus reward rules found. ${bestResult.card.name} was chosen as your best base card for lowest fees (${(bestResult.card.fxFeePercentage! * 100).toFixed(1)}% FX fee).`
+                  : `No matching bonus reward rules found. ${bestResult.card.name} was selected as your default base card.`
+                : cleanExplanation(bestResult.rec.explanation)}
             </p>
           </div>
           <div>
@@ -67,7 +77,9 @@ export default function ResultHero({
               Card source
             </a>
           )}
-          <span>Verified {bestResult.rule?.source.verifiedAt ?? bestResult.card.sourceProof?.verifiedAt ?? "unknown"}</span>
+          <span>
+            Verified {formatRelativeDate(bestResult.rule?.source.verifiedAt ?? bestResult.card.sourceProof?.verifiedAt)}
+          </span>
         </div>
 
         {bestResult.rec.unownedUnlockCard && (
@@ -97,11 +109,27 @@ export default function ResultHero({
             {alternatives.map((result) => {
               const bestValue = bestResult ? bestResult.netValue : 0;
               const percentage = bestValue > 0 ? Math.min(100, Math.max(0, (result.netValue / bestValue) * 100)) : 0;
+              
+              const rule = result.rule;
+              const cap = rule?.cap ?? rule?.conditions?.cap;
+              const minSpend = rule?.conditions?.minSpend ?? 0;
+              const monthlySpend = cardMonthlySpends[result.card.id] ?? 0;
+              const isCapReached = cap !== undefined && (monthlySpend * (rule?.rewardValue ?? 0)) >= cap;
+              const isMinSpendNotMet = minSpend > 0 && spendAmount < minSpend;
+
+              let reasonTag = "";
+              if (isCapReached) reasonTag = "⚠️ Cap reached";
+              else if (isMinSpendNotMet) reasonTag = `⚠️ Min spend €${minSpend} not met`;
+              else if (!rule) reasonTag = "No bonus rule";
+
               return (
                 <div className="alt-card" key={result.card.id}>
                   <div className="alt-card-bar" style={{ width: `${percentage}%` }} />
                   <span className="alt-name">{result.card.name}</span>
-                  <span className="alt-value">{result.rule ? rewardAmount(result) : "No sourced reward"}</span>
+                  <span className="alt-value">
+                    {reasonTag ? <span style={{ opacity: 0.75, fontSize: "0.8rem", marginRight: "6px" }}>{reasonTag}</span> : null}
+                    {result.rule ? rewardAmount(result) : "€0.00"}
+                  </span>
                 </div>
               );
             })}

@@ -155,7 +155,28 @@ Requirements:
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
 
-## Production Features (v1.2.13)
+## Production Features (v1.2.15)
+
+### Modular Custom-Hook Architecture
+Refactored `CardPinCalculator` into specialized, typed custom React hooks (`useWalletDataset` and `useDevTools`). Separated dataset loading, wallet synchronization, catalog search, monthly spend calculations, and dev tools panel management from presentation components, ensuring high maintainability, strict type safety, and zero lint warnings.
+
+### Always-Available Recommendation Engine & Fallback Cards
+Eliminated blank and generic "No recommendation" error states during search. When a search query produces no matching bonus rules for the user's owned cards, CardPin dynamically falls back to recommending the best base card (e.g. lowest FX fee card for foreign transactions or standard base reward card) and displays clear fallback rationale.
+
+### Transparent Rule Disqualification Tags
+Alternative cards in the comparison list now display explicit disqualification tags when applicable:
+- ⚠️ **Cap Reached**: Indicates a card's monthly reward cap has been exhausted.
+- ⚠️ **Min Spend €X Not Met**: Highlights when a purchase amount falls below a rule's minimum threshold.
+- ℹ️ **No Bonus Rule**: Indicates standard base reward terms apply.
+
+### Explicit Foreign Transaction Controls & Expanded Multi-Currency Support
+Added an explicit **"✈️ Spending abroad / Foreign transaction"** toggle to the input strip so users can signal foreign spend regardless of currency. Expanded currency selection support to include **EUR, USD, GBP, CHF, JPY, CAD, AUD, SEK, NOK, DKK, PLN, CZK**.
+
+### Wallet Reward Cap Exhaustion Warnings
+Wallet cards in the wallet manager feature real-time cap exhaustion alerts (`⚠️ CAP REACHED` / `⚠️ CAP`) whenever a user's configured monthly spend reaches the card's reward cap limits.
+
+### Human-Readable Source Verification Timestamps
+Verification dates for card terms and reward rules are formatted into human-readable relative time (e.g., *"Verified 2 months ago"* or *"Verified this month"*) for clearer data freshness context.
 
 ### Minimum Spend Threshold Evaluation
 To prevent recommending rules on transactions that do not qualify for reward tiers, the recommendation engine dynamically validates purchase amounts against `conditions.minSpend` defined in dataset rules. If a purchase falls below a rule's minimum threshold, rewards are zeroed out for that rule.
@@ -167,32 +188,29 @@ CardPin evaluates un-owned cards matching the user's active country dataset alon
 Reorganized the primary calculator interface into a single-screen responsive utility. On desktop, the result hero card is positioned at the top-left, transaction parameters entry input strip at the bottom-left, and the wallet manager resides in a sidecar column on the right. On mobile, the vertical flow prioritizes calculation results at the top, followed by transaction inputs, with wallet management stacked cleanly at the bottom.
 
 ### Decomposed Component Architecture
-Refactored the previously monolithic `CardPinCalculator` page into five modular, typed components:
+Refactored the `CardPinCalculator` page into modular, typed components:
 - `CountryAudienceSelector` (compact top bar controls)
-- `InputStrip` (integrated purchase parameters row)
-- `ResultHero` (high-density recommendation display)
-- `WalletManager` (sidecar wallet setups and imports)
-- `StatusBanner` (unified state handlers for errors and empty/locked calculator states)
+- `InputStrip` (integrated purchase parameters row with foreign spend toggle)
+- `ResultHero` (high-density recommendation display with fallback support)
+- `WalletManager` (sidecar wallet setups with cap alerts and imports/exports)
+- `StatusBanner` (unified state handlers for empty/pre-search states)
 
 ### Data-Anchored Storytelling User Journey
 CardPin features a 3-stage progression that balances instant in-store decision-making with narrative transparency:
-- **Stage 1: Context Setting (`InputStrip`)**: Purchase parameters with quick spend presets (€10, €50, €100, €500) and currency/FX selection.
-- **Stage 2: Recommendation Rationale (`ResultHero`)**: Instant recommendation display alongside plain-English story rationale explaining reward multipliers and FX fee offsets.
+- **Stage 1: Context Setting (`InputStrip`)**: Purchase parameters with quick spend presets (€10, €50, €100, €500), currency selection, and foreign transaction toggle.
+- **Stage 2: Recommendation Rationale (`ResultHero`)**: Instant recommendation display alongside plain-English story rationale explaining reward multipliers, FX fee offsets, or base card fallbacks.
 - **Stage 3: Portfolio Opportunity Story (`WalletManager`)**: Unowned catalog card recommendations highlighted with exact comparative return deltas.
 
 ### Apple Wallet-Inspired Card Stack
 Owned cards use a stable vertical stack with a consistent visible header for every collapsed card and one fully expanded selected card. Selecting a collapsed card moves it to the front cleanly. Selected-card settings (monthly spend input and removal) are integrated directly inside the active card shell, while import, export, and clear actions live in a compact wallet-options menu.
 
 ### Accessible, Responsive Workflow
-CardPin uses keyboard-visible focus states, semantic selectable cards, an accessible native card-catalog dialog, and touch-friendly actions. On small screens, wallet spacing is compressed so the purchase search remains close to the selected cards. Search controls stay disabled until a card is selected and provide a direct route to the catalog.
+CardPin uses keyboard-visible focus states, semantic selectable cards with proper `role="button"` accessibility, an accessible native card-catalog dialog, and touch-friendly actions. On small screens, wallet spacing is compressed so the purchase search remains close to the selected cards. Search controls stay disabled until a card is selected and provide a direct route to the catalog.
 
 The interface uses the operating system font stack to avoid a render-blocking third-party font request. Live exchange rates are fetched only after a non-EUR currency is selected. Recommendations wait for a valid selected-currency rate, preventing missing or malformed rates from silently treating foreign spend as EUR.
 
 ### Offline-First PWA (Progressive Web App)
 CardPin is configured as a fully installable PWA. A Service Worker (`sw.js`) caches the application shell and country datasets (`/data/*.json`) locally. EUR recommendations work offline; foreign-currency recommendations also work when a valid rate is available in the session cache.
-
-### Multi-Currency FX Conversions
-Users can select transaction currencies (EUR, USD, GBP, CHF, JPY) in Step 3. When a non-EUR currency is selected, CardPin fetches live rates from the Fawaz Ahmed Exchange Rates API, converts the transaction value into the card's native currency, calculates the reward value, deducts the card's specific foreign transaction fee, and shows the net outcome. Fetch requests are cached in `sessionStorage` to prevent redundant network calls.
 
 ### Earning Caps & Monthly Budget Tracking
 To prevent recommending cards that have reached their monthly reward limits, users can input their *Spent this month* value inside each card mockup. The recommendation engine dynamically tracks this against the card rule's `cap` (or `conditions.cap`) and applies fallback rates or zero points/miles on the portion of the purchase exceeding the limit.
