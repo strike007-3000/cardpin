@@ -162,7 +162,7 @@ export default function CardPinCalculator() {
         const netValue =
           rule?.rewardType === "cashback_percentage" || rule?.rewardType === "fixed_cashback"
             ? Math.max(0, grossValue - fxFee)
-            : grossValue;
+            : grossValue - fxFee;
 
         const displayGross = grossValue;
         const displayNet = netValue;

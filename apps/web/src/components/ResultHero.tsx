@@ -115,7 +115,11 @@ export default function ResultHero({
               const minSpend = rule?.conditions?.minSpend ?? 0;
               const monthlySpend = cardMonthlySpends[result.card.id] ?? 0;
               const isCapReached = cap !== undefined && (monthlySpend * (rule?.rewardValue ?? 0)) >= cap;
-              const isMinSpendNotMet = minSpend > 0 && spendAmount < minSpend;
+              
+              // Evaluate minimum spend threshold against base currency spend
+              const rate = isForeignSpend ? result.fxFee / (spendAmount * (result.card.fxFeePercentage || 1)) : 1;
+              const convertedSpend = isForeignSpend && result.fxFee > 0 ? spendAmount - result.fxFee : spendAmount;
+              const isMinSpendNotMet = minSpend > 0 && convertedSpend < minSpend;
 
               let reasonTag = "";
               if (isCapReached) reasonTag = "⚠️ Cap reached";
