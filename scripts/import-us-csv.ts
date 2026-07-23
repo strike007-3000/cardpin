@@ -51,7 +51,7 @@ function main() {
   }
 
   const csvContent = fs.readFileSync(CSV_PATH, "utf-8");
-  const lines = csvContent.split(/\r?\n/).filter((line) => line.trim().length > 0);
+  const lines = csvContent.split(/\r?\n/).filter((line: string) => line.trim().length > 0);
   if (lines.length === 0) {
     throw new Error("CSV file is empty");
   }

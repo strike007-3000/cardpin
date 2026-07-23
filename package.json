@@ -18,6 +18,7 @@
     "compile:data": "tsx scripts/compile-datasets.ts"
   },
   "devDependencies": {
+    "@types/node": "^22.10.1",
     "pnpm": "10.34.4",
     "tsx": "^4.19.0",
     "turbo": "^2.4.0",
