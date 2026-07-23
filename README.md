@@ -38,6 +38,7 @@ data/<country>/*.json
 | `data/be/` | Belgium dataset |
 | `data/de/` | Germany dataset |
 | `data/nl/` | Netherlands dataset |
+| `data/us/` | United States dataset |
 | `scripts/compile-datasets.ts` | Dataset validation and static bundle generation |
 
 ## Local Setup

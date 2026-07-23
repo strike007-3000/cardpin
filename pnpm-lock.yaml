@@ -15,6 +15,9 @@ importers:
 
   .:
     devDependencies:
+      '@types/node':
+        specifier: ^22.10.1
+        version: 22.19.21
       pnpm:
         specifier: 10.34.4
         version: 10.34.4

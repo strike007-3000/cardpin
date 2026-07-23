@@ -1,0 +1,68 @@
+{
+  "issuers": [
+    {
+      "id": "american-express",
+      "name": "AMERICAN EXPRESS"
+    },
+    {
+      "id": "bank-of-america",
+      "name": "BANK OF AMERICA"
+    },
+    {
+      "id": "barclays",
+      "name": "BARCLAYS"
+    },
+    {
+      "id": "capital-one",
+      "name": "CAPITAL ONE"
+    },
+    {
+      "id": "chase",
+      "name": "CHASE"
+    },
+    {
+      "id": "citi",
+      "name": "CITI"
+    },
+    {
+      "id": "comenity",
+      "name": "COMENITY"
+    },
+    {
+      "id": "discover",
+      "name": "DISCOVER"
+    },
+    {
+      "id": "first",
+      "name": "FIRST"
+    },
+    {
+      "id": "fnbo",
+      "name": "FNBO"
+    },
+    {
+      "id": "penfed",
+      "name": "PENFED"
+    },
+    {
+      "id": "synchrony",
+      "name": "SYNCHRONY"
+    },
+    {
+      "id": "td",
+      "name": "TD"
+    },
+    {
+      "id": "us-bank",
+      "name": "US BANK"
+    },
+    {
+      "id": "web-bank",
+      "name": "WEB BANK"
+    },
+    {
+      "id": "wells-fargo",
+      "name": "WELLS FARGO"
+    }
+  ]
+}
