@@ -38,6 +38,7 @@ data/<country>/*.json
 | `data/be/` | Belgium dataset |
 | `data/de/` | Germany dataset |
 | `data/nl/` | Netherlands dataset |
+| `data/us/` | United States dataset |
 | `scripts/compile-datasets.ts` | Dataset validation and static bundle generation |
 
 ## Local Setup
@@ -119,7 +120,7 @@ pnpm compile:data
 
 ## Adding Data
 
-CardPin currently has datasets for Belgium (`data/be/`), Germany (`data/de/`), and the Netherlands (`data/nl/`). Each dataset contains:
+CardPin currently has datasets for Belgium (`data/be/`), Germany (`data/de/`), Netherlands (`data/nl/`), and United States (`data/us/`). Each dataset contains:
 
 - `issuers.json`
 - `cards.json`
@@ -154,6 +155,20 @@ Requirements:
 - `verifiedAt` must be the date you checked the source.
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
+
+## Production Features (v1.2.16)
+
+### United States Dataset Ingestion (`data/us/`)
+Expanded CardPin dataset coverage to include **166 US credit cards**, **16 major issuers** (Chase, American Express, Citi, Capital One, Bank of America, U.S. Bank, Discover, Wells Fargo, etc.), and **345 welcome bonus & reward rules**.
+
+### Automated CSV Data Import Pipeline
+Introduced a node-based CSV import runner (`scripts/import-us-csv.ts`) to ingest bulk credit card data dumps, map raw card attributes to Zod schemas with unique kebab-case IDs (`${issuerId}-${rawName}-${rawCardId}`), and validate generated JSON entities against `CountryCardsJsonSchema`, `CountryIssuersJsonSchema`, and `CountryRewardRulesJsonSchema` prior to writing to disk. Run `pnpm compile:data` as a follow-up step to bundle the dataset for the frontend app.
+
+### Uncategorized Base Earning Fallbacks
+Universal base reward rules are kept uncategorized (`!r.category`) so that the recommendation engine (`recommendBestCard()`) matches them as general fallback rules for all transaction categories when no category-specific bonus rules apply.
+
+### Loyalty Program & Non-Cash Base Units (`points` and `miles`)
+Base reward rates accurately distinguish cash earnings (`cashback_percentage`) from loyalty points (`points`) and airline miles (`miles`) for rewards programs (Delta SkyMiles, Chase Ultimate Rewards, Amex Membership Rewards, Hilton Honors, Marriott Bonvoy, etc.).
 
 ## Production Features (v1.2.15)
 

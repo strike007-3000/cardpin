@@ -52,6 +52,7 @@ export default function CountryAudienceSelector({
             <option value="be">BE (Belgium)</option>
             <option value="de">DE (Germany)</option>
             <option value="nl">NL (Netherlands)</option>
+            <option value="us">US (United States)</option>
           </select>
         </div>
       </div>
