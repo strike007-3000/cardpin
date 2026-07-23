@@ -7,6 +7,7 @@ import { formatRelativeDate } from "../lib/utils";
 interface ResultHeroProps {
   bestResult: CardCalc;
   spendAmount: number;
+  spendCurrency: string;
   isForeignSpend: boolean;
   rewardAmount: (result: CardCalc) => string;
   cleanExplanation: (explanation: string) => string;
@@ -18,6 +19,7 @@ interface ResultHeroProps {
 export default function ResultHero({
   bestResult,
   spendAmount,
+  spendCurrency,
   isForeignSpend,
   rewardAmount,
   cleanExplanation,
@@ -60,7 +62,7 @@ export default function ResultHero({
           <div>
             <h3>Spend calculation</h3>
             <p className="result-calculation">
-              EUR {spendAmount.toFixed(2)} spend · {rewardLabel(bestResult)}
+              {spendCurrency} {spendAmount.toFixed(2)} spend · {rewardLabel(bestResult)}
               {isForeignSpend ? ` · EUR ${bestResult.fxFee.toFixed(2)} FX fee` : ""}
             </p>
           </div>

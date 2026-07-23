@@ -232,6 +232,7 @@ export default function CardPinCalculator() {
       <ResultHero
         bestResult={bestResult}
         spendAmount={spendAmount}
+        spendCurrency={spendCurrency}
         isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
         rewardAmount={rewardAmount}
         cleanExplanation={cleanExplanation}
