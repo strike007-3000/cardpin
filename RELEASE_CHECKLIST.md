@@ -1,4 +1,4 @@
-# CardPin Release Checklist (v1.2.1)
+# CardPin Release Checklist (v1.2.16)
 
 This checklist outlines the steps required to validate, deploy, and tag a release of CardPin.
 
@@ -51,7 +51,7 @@ After building locally or deploying to a preview environment, verify the followi
    * Click the "&times;" dismiss button. Verify the banner disappears.
    * Refresh the page. Verify the banner remains dismissed (preference saved in `localStorage`).
 3. **Country & Audience Selection**:
-   * Switch between Belgium and Germany. Verify cards and catalog reload.
+   * Switch between Belgium, Germany, Netherlands, and United States. Verify cards and catalog reload.
    * Switch between Personal and Business. Verify business-only cards are loaded.
 4. **Card Catalog Modal**:
    * Click **+ Add Cards**. Check that the searchable modal catalog opens.
@@ -81,7 +81,7 @@ After building locally or deploying to a preview environment, verify the followi
 
 ## 4. Known Limitations
 
-* **Country Coverage**: Supports Belgium (BE), Germany (DE), and Netherlands (NL).
+* **Country Coverage**: Supports Belgium (BE), Germany (DE), Netherlands (NL), and United States (US).
 * **Valuations**: Points/miles are valued at a static valuation of `1` (1 cent per point/mile) for simplicity; dynamic sliders are not implemented.
 * **Architecture**: Fully static, local-only calculations. No user account syncing, transaction tracking, or server integrations.
 
