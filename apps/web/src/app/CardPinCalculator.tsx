@@ -77,6 +77,23 @@ export default function CardPinCalculator() {
     setShowWelcome(!dismissed);
   }, []);
 
+  useEffect(() => {
+    switch (country.toLowerCase()) {
+      case "us":
+        setSpendCurrency("USD");
+        break;
+      case "in":
+        setSpendCurrency("INR");
+        break;
+      case "sg":
+        setSpendCurrency("SGD");
+        break;
+      default:
+        setSpendCurrency("EUR");
+        break;
+    }
+  }, [country]);
+
   const spendAmount = normalizeSpend(spendInput);
 
   function handleDismissWelcome() {

@@ -204,7 +204,7 @@ export default function WalletManager({
                           <div className="inline-spend-field">
                             <label htmlFor={`monthly-spend-${card.id}`}>Spent this month:</label>
                             <div className="spend-input-wrapper spend-input-wrapper--small">
-                              <span className="currency-prefix">EUR</span>
+                              <span className="currency-prefix">{card.currency || "EUR"}</span>
                               <input
                                 id={`monthly-spend-${card.id}`}
                                 aria-label={`Spent this month on ${card.name}`}

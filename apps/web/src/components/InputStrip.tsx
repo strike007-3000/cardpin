@@ -6,6 +6,29 @@ function formatCategory(category: string) {
   return category.replaceAll("-", " ");
 }
 
+function getCurrencySymbol(curr: string): string {
+  switch (curr.toUpperCase()) {
+    case "USD":
+    case "CAD":
+    case "AUD":
+      return "$";
+    case "EUR":
+      return "€";
+    case "GBP":
+      return "£";
+    case "INR":
+      return "₹";
+    case "SGD":
+      return "S$";
+    case "JPY":
+      return "¥";
+    case "CHF":
+      return "₣";
+    default:
+      return `${curr} `;
+  }
+}
+
 interface InputStripProps {
   merchantQuery: string;
   setMerchantQuery: (q: string) => void;
@@ -100,7 +123,7 @@ export default function InputStrip({
                     cursor: "pointer",
                   }}
                 >
-                  {spendCurrency === "EUR" ? "€" : spendCurrency === "USD" ? "$" : ""}{amt}
+                  {getCurrencySymbol(spendCurrency)}{amt}
                 </button>
               ))}
             </div>
