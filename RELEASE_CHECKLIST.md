@@ -35,7 +35,7 @@ CardPin is a static-first application deployed to Cloudflare Pages. Use the foll
 * **Build Output Directory**: `apps/web/out`
 * **Root Directory**: (Leave blank or set to project root `/`)
 * **Environment Variables**:
-  * `NODE_VERSION`: `20`
+  * `NODE_VERSION`: `24`
   * `PNPM_VERSION`: `10.34.4`
   
 *Note: If for any reason the root build script does not compile the datasets, you can use `pnpm compile:data && pnpm build` as a fallback build command.*
