@@ -28,3 +28,7 @@ Thumbs.db
 graphify-out/
 .aider*
 .clinerules/Agents.MD
+
+# Local package-manager and agent metadata
+.pnpm-store/
+.zcode/
