@@ -28,4 +28,4 @@ CardPin's data is sourced from publicly available information including official
 - **verifiedAt**: The date the information was last checked
 - **verifiedBy**: The contributor who verified the information
 
-If you believe any data in CardPin is incorrect, please [open an issue](https://github.com/cardpin/cardpin/issues) or submit a pull request with corrected data and a valid source link.
+If you believe any data in CardPin is incorrect, please [open an issue](https://github.com/strike007-3000/cardpin/issues) or submit a pull request with corrected data and a valid source link.

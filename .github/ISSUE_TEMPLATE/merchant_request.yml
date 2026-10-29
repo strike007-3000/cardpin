@@ -20,6 +20,7 @@ body:
         - "NL (Netherlands)"
         - "FR (France)"
         - "DE (Germany)"
+        - "US (United States)"
         - "GB (United Kingdom)"
         - "Multiple / All"
     validations:

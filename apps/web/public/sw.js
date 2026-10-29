@@ -1,10 +1,11 @@
-const CACHE_NAME = "cardpin-v1.2.6";
+const CACHE_NAME = "cardpin-v1.2.18";
 const ASSETS = [
   "/",
   "/favicon.ico",
   "/data/be.json",
   "/data/de.json",
-  "/data/nl.json"
+  "/data/nl.json",
+  "/data/us.json"
 ];
 
 self.addEventListener("install", (event) => {

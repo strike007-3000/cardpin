@@ -2,13 +2,15 @@
 
 ## Architecture
 
-CardPin is a **fully static, client-side application** with no backend, no authentication, no database, and no server-side processing. All data is stored in static JSON files served over HTTP. User preferences (owned cards, country selection) are stored exclusively in the browser's `localStorage`.
+CardPin is a **fully static, client-side application** with no backend, no authentication, no database, and no server-side processing. All data is stored in static JSON files served over HTTP. User preferences (owned cards, country selection, monthly spend per card, points/miles valuation, banner dismissal) are stored exclusively in the browser's `localStorage`. Exchange rates are cached in `sessionStorage`.
 
 CardPin does not:
 - Collect, transmit, or store any personal data
 - Use cookies, analytics, or telemetry
-- Make any API calls to external services
+- Send any user data, wallet choices or spend amounts to any server
 - Process any financial transactions
+
+The only external request is a read-only fetch of public currency exchange rates (a static JSON file on the jsDelivr CDN, overridable with `NEXT_PUBLIC_FX_API_URL`). It happens only when the user picks a spend currency different from the country's base currency, and it carries no user data.
 
 ## Reporting a Vulnerability
 
