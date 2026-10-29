@@ -242,12 +242,16 @@
 .catalog-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-auto-rows: max-content;
   gap: 14px;
-  max-height: 55vh;
-  overflow-y: auto;
   padding: 8px 4px;
   margin-top: 16px;
 }
+/* One scroll container (the body) so rows are never sized against a clipped, shrinking grid */
+.catalog-panel { overflow: hidden; }
+.catalog-panel .dev-panel-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.catalog-panel .dev-panel-header { flex: 0 0 auto; }
+.catalog-card-item { min-width: 0; }
 .catalog-card-item:hover {
   border-color: var(--color-primary);
   background-color: var(--bg-surface);
