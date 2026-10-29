@@ -48,17 +48,18 @@ export default function StatusBanner({
     return (
       <div className="card empty-state" role="status">
         <CreditCardPlaceholder />
-        <strong>No cards in your wallet.</strong>
-        <p>
-          Add some cards to your wallet to start comparing and optimizing rewards.
-        </p>
+        <strong>Find the best card in 2 steps</strong>
+        <ol className="onboarding-steps">
+          <li>Pick your country and audience below.</li>
+          <li>Add the cards you own. Everything stays in your browser.</li>
+        </ol>
         <button
           type="button"
           className="btn btn--primary"
           onClick={handleOpenCatalog}
           style={{ marginTop: "12px" }}
         >
-          Add a Card
+          Add your cards
         </button>
       </div>
     );
@@ -70,7 +71,7 @@ export default function StatusBanner({
         <CreditCardPlaceholder />
         <strong>Ready to search.</strong>
         <p>
-          Enter a merchant or choose a category above to find the optimal card to use.
+          Enter a merchant or choose a category to find the optimal card to use.
         </p>
       </div>
     );

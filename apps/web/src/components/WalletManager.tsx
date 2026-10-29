@@ -76,6 +76,8 @@ function getCardThemeClass(issuerId: string, network: string) {
 }
 
 interface WalletManagerProps {
+  pointValue: number;
+  setPointValue: (v: number) => void;
   country: string;
   ownedCardIds: string[];
   ownedCards: Card[];
@@ -99,6 +101,8 @@ interface WalletManagerProps {
 }
 
 export default function WalletManager({
+  pointValue,
+  setPointValue,
   country,
   ownedCardIds,
   ownedCards,
@@ -142,6 +146,15 @@ export default function WalletManager({
           </div>
         ) : (
           <>
+            <label style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", textTransform: "none", marginBottom: "0.75rem" }}>
+              1 point / mile ≈
+              <select value={pointValue} onChange={(e) => setPointValue(Number(e.target.value))} style={{ width: "auto" }}>
+                <option value={0.005}>0.5¢</option>
+                <option value={0.01}>1¢</option>
+                <option value={0.015}>1.5¢</option>
+                <option value={0.02}>2¢</option>
+              </select>
+            </label>
             <div className="wallet-stack">
               {orderCardsForWalletStack(ownedCards, activeCardId).map((card) => {
                 const issuerName = dataset?.issuers.find((issuer) => issuer.id === card.issuerId)?.name || "";
@@ -204,7 +217,7 @@ export default function WalletManager({
                           <div className="inline-spend-field">
                             <label htmlFor={`monthly-spend-${card.id}`}>Spent this month:</label>
                             <div className="spend-input-wrapper spend-input-wrapper--small">
-                              <span className="currency-prefix">{card.currency || "EUR"}</span>
+                              <span className="currency-prefix">{card.currency}</span>
                               <input
                                 id={`monthly-spend-${card.id}`}
                                 aria-label={`Spent this month on ${card.name}`}
@@ -317,6 +330,7 @@ export default function WalletManager({
                 ref={catalogSearchRef}
                 type="text"
                 className="search-input-field"
+                aria-label="Search cards by name or issuer"
                 placeholder="Search by card name or issuer..."
                 value={catalogSearch}
                 onChange={(e) => setCatalogSearch(e.target.value)}
@@ -343,7 +357,7 @@ export default function WalletManager({
                         <span className="catalog-card-issuer">{issuerName}</span>
                         <span className="catalog-card-name">{card.name}</span>
                         <span className="catalog-card-meta">
-                          {card.network.toUpperCase()} · Fee: EUR {card.annualFee} · FX: {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}%
+                          {card.network.toUpperCase()} · Fee: {card.currency} {card.annualFee} · FX: {((card.fxFeePercentage ?? 0) * 100).toFixed(1)}%
                         </span>
                       </div>
                       <span className={`catalog-card-badge ${isSelected ? "catalog-card-badge--selected" : ""}`}>

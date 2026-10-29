@@ -18,6 +18,8 @@ CardPin is static-first:
 - No telemetry or analytics
 - Browser-only preferences via `localStorage`
 
+The only network request the app makes at runtime is a read-only fetch of public exchange rates (jsDelivr CDN), and only when you choose a spend currency different from the country's base currency. No wallet, spend or merchant data is ever sent.
+
 Data starts as country-scoped JSON files under `data/`. The compile script validates schemas and relationships, then writes static bundles to `apps/web/public/data/`. The Next.js app fetches those JSON bundles and runs the TypeScript recommendation engine locally in the browser.
 
 ```text
@@ -32,7 +34,7 @@ data/<country>/*.json
 
 | Path | Purpose |
 | --- | --- |
-| `apps/web/` | Next.js frontend configured for static export |
+| `apps/web/` | Next.js frontend configured for static export (also holds the PWA `manifest.json` and `sw.js`, and the local dev-tools server `dev.ts`) |
 | `packages/engine/` | Pure TypeScript recommendation engine |
 | `packages/schemas/` | Zod schemas for datasets |
 | `data/be/` | Belgium dataset |
@@ -40,12 +42,18 @@ data/<country>/*.json
 | `data/nl/` | Netherlands dataset |
 | `data/us/` | United States dataset |
 | `scripts/compile-datasets.ts` | Dataset validation and static bundle generation |
+| `scripts/format-datasets.ts` | Sorts and formats dataset JSON |
+| `scripts/check-stale.ts` | Lists reward rules not re-verified in 180 days |
+| `scripts/check-links.ts` | Checks every source URL in every dataset |
+| `scripts/import-us-csv.ts` | Bulk CSV importer used for the US dataset |
+| `design/` | Journey design canvas (see `design/README.md`) |
+| `.github/` | CI workflow, issue templates, PR template, CODEOWNERS |
 
 ## Local Setup
 
 ### Prerequisites
 
-- **Node.js**: Version `20` (LTS is recommended. A `.nvmrc` is provided).
+- **Node.js**: Version `24` (the version CI runs; a `.nvmrc` is provided).
 - **Corepack**: Required to manage the package manager version automatically.
 
 ### Installation & Development
@@ -53,16 +61,16 @@ data/<country>/*.json
 This project uses the package manager declared in `package.json`:
 
 ```json
-"packageManager": "pnpm@9.0.0"
+"packageManager": "pnpm@10.34.4"
 ```
 
 To set up the project locally:
 
-1. Ensure you are using Node.js 20 (e.g. run `nvm use` if using NVM).
+1. Ensure you are using Node.js 24 (e.g. run `nvm use` if using NVM).
 2. Enable Corepack and activate the configured `pnpm` version:
    ```bash
    corepack enable
-   corepack prepare pnpm@9.0.0 --activate
+   corepack prepare pnpm@10.34.4 --activate
    ```
 3. Install dependencies:
    ```bash
@@ -91,6 +99,8 @@ Run the following commands to validate the data and build the application:
 
 - **Format Datasets**: `pnpm format:data` (alphabetizes data collections and applies standard spacing)
 - **Validate Datasets**: `pnpm validate:data` (checks schema rules, duplicates, relational integrity, and formatting)
+- **List Stale Rules**: `pnpm check:stale [days]` (reward rules not re-verified in 180 days by default)
+- **Check Source Links**: `npx tsx scripts/check-links.ts` (requests every source URL; slow on the US dataset)
 - **TypeScript Typecheck**: `pnpm typecheck`
 - **Lint Codebase**: `pnpm lint`
 - **Run Unit Tests**: `pnpm test`
@@ -120,7 +130,7 @@ pnpm compile:data
 
 ## Adding Data
 
-CardPin currently has datasets for Belgium (`data/be/`), Germany (`data/de/`), Netherlands (`data/nl/`), and United States (`data/us/`). Each dataset contains:
+CardPin currently has datasets for Belgium (`data/be/`, 31 cards), Germany (`data/de/`, 31), Netherlands (`data/nl/`, 18), and United States (`data/us/`, 166). The US dataset has no merchants yet, so US recommendations work by category. Each dataset contains:
 
 - `issuers.json`
 - `cards.json`
@@ -129,11 +139,11 @@ CardPin currently has datasets for Belgium (`data/be/`), Germany (`data/de/`), N
 
 To add an issuer, edit the relevant `issuers.json` file and use a stable lowercase kebab-case `id`.
 
-To add a card, edit the relevant `cards.json` file, reference an existing `issuerId`, use the correct uppercase country code, and include source proof for card terms where the schema requires it.
+To add a card, edit the relevant `cards.json` file, reference an existing `issuerId`, use the correct uppercase country code, and include source proof for card terms where the schema requires it. Cards default to `currency: "EUR"`; set `currency` (3-letter uppercase code, e.g. `USD`) for any other currency, since fees and rewards are shown in the card's own currency.
 
-To add a merchant, edit the relevant `merchants.json` file and use existing category names where possible so reward rules continue to match predictably.
+To add a merchant, edit the relevant `merchants.json` file and use categories from the registry in `packages/schemas/src/index.ts` (`groceries`, `travel`, `dining`, `fuel`, `utilities`, `online-shopping`, `transport`, `entertainment`, `fallback`) so reward rules continue to match predictably.
 
-To add a reward rule, edit the relevant `reward_rules.json` file and reference an existing `cardId`. Do not guess reward rates. Every reward rule must be backed by an official public source.
+To add a reward rule, edit the relevant `reward_rules.json` file and reference an existing `cardId`. Reward types are `cashback_percentage`, `fixed_cashback`, `points` and `miles`; caps and minimum spend go in `cap` / `conditions`. Do not guess reward rates. Every reward rule must be backed by an official public source.
 
 ## Source Attribution
 
@@ -155,6 +165,31 @@ Requirements:
 - `verifiedAt` must be the date you checked the source.
 - `verifiedBy` must identify the contributor who verified the source.
 - Reward rates, fees, exclusions, caps, and eligibility rules must be copied from official sources, not inferred from marketing summaries.
+
+## Production Features (v1.2.18)
+
+Version history below is documented per release; the latest release is first.
+
+### Points & Miles Valuation
+Points and miles are converted to currency before cards are compared, so a `1x points` card no longer outranks a `5%` cashback card just because the raw number is bigger. The wallet panel has a **1 point / mile ≈** selector (0.5¢, 1¢, 1.5¢, 2¢; default 1¢) that is saved in `localStorage` (`cardpin:point_value`) and passed to `recommendBestCard({ valuations })`. The result still displays raw points or miles; only ranking and "Next Card to Unlock" use the converted value.
+
+### Per-Country Base Currency
+Rewards are calculated in the country's own currency: **USD for the United States, EUR for Belgium, Germany and the Netherlands** (`baseCurrencyFor()` in `apps/web/src/lib/utils.ts`). Spend entered in any other currency is converted to the base currency, and a card is treated as foreign spend only when the spend currency differs from the base. Reward amounts, FX fees, annual fees and the catalog all show the card's own `currency` instead of a fixed "EUR". `getFxRate(rates, currency, base)` returns units of `currency` per 1 unit of `base`; the rates API is still quoted per EUR.
+
+### Monthly Caps Reset Automatically
+"Spent this month" is stored per calendar month under `cardpin:monthly_spend:<YYYY-MM>:<cardId>` (local time), so caps and the `⚠️ CAP REACHED` flag reset on the 1st. Values saved under the old unscoped key are ignored.
+
+### Annual Fee on "Next Card to Unlock"
+The unlock banner shows the card's annual fee (or "No annual fee") and, when the card beats your current best on this purchase, roughly how many purchases like it are needed to cover the fee (`breakEvenPurchases()`).
+
+### "Amex Not Accepted?" Fallback
+When the best card is on the `amex` network, the result shows the best alternative on another network and its value, since Amex is often refused at European terminals.
+
+### Dark Mode & Offline Shell
+A floating toggle switches between light and dark themes (saved in `localStorage`). The service worker precaches the app shell and the `be`, `de`, `nl` and `us` datasets; its cache name tracks the app version so releases refresh cached data.
+
+### Mobile Merchant Suggestions
+The merchant field uses a custom suggestion list (up to 8 matches, 44px tap targets) instead of the native `<datalist>`, whose popup could not be styled or positioned on phones. It is a `combobox`/`listbox`; arrow-key navigation is not implemented yet.
 
 ## Production Features (v1.2.16)
 
@@ -212,7 +247,7 @@ Refactored the `CardPinCalculator` page into modular, typed components:
 
 ### Data-Anchored Storytelling User Journey
 CardPin features a 3-stage progression that balances instant in-store decision-making with narrative transparency:
-- **Stage 1: Context Setting (`InputStrip`)**: Purchase parameters with quick spend presets (€10, €50, €100, €500), currency selection, and foreign transaction toggle.
+- **Stage 1: Context Setting (`InputStrip`)**: Purchase parameters with quick spend presets (10, 50, 100, 500 in the selected currency), currency selection, and foreign transaction toggle.
 - **Stage 2: Recommendation Rationale (`ResultHero`)**: Instant recommendation display alongside plain-English story rationale explaining reward multipliers, FX fee offsets, or base card fallbacks.
 - **Stage 3: Portfolio Opportunity Story (`WalletManager`)**: Unowned catalog card recommendations highlighted with exact comparative return deltas.
 
@@ -222,13 +257,13 @@ Owned cards use a stable vertical stack with a consistent visible header for eve
 ### Accessible, Responsive Workflow
 CardPin uses keyboard-visible focus states, semantic selectable cards with proper `role="button"` accessibility, an accessible native card-catalog dialog, and touch-friendly actions. On small screens, wallet spacing is compressed so the purchase search remains close to the selected cards. Search controls stay disabled until a card is selected and provide a direct route to the catalog.
 
-The interface uses the operating system font stack to avoid a render-blocking third-party font request. Live exchange rates are fetched only after a non-EUR currency is selected. Recommendations wait for a valid selected-currency rate, preventing missing or malformed rates from silently treating foreign spend as EUR.
+The interface uses the operating system font stack to avoid a render-blocking third-party font request. Live exchange rates are fetched only after a currency other than the country's base currency is selected. Recommendations wait for a valid selected-currency rate, preventing missing or malformed rates from silently treating foreign spend as base-currency spend.
 
 ### Offline-First PWA (Progressive Web App)
-CardPin is configured as a fully installable PWA. A Service Worker (`sw.js`) caches the application shell and country datasets (`/data/*.json`) locally. EUR recommendations work offline; foreign-currency recommendations also work when a valid rate is available in the session cache.
+CardPin is configured as a fully installable PWA. A Service Worker (`sw.js`) caches the application shell and country datasets (`/data/*.json`) locally. Base-currency recommendations work offline; foreign-currency recommendations also work when a valid rate is available in the session cache.
 
 ### Earning Caps & Monthly Budget Tracking
-To prevent recommending cards that have reached their monthly reward limits, users can input their *Spent this month* value inside each card mockup. The recommendation engine dynamically tracks this against the card rule's `cap` (or `conditions.cap`) and applies fallback rates or zero points/miles on the portion of the purchase exceeding the limit.
+To prevent recommending cards that have reached their monthly reward limits, users can input their *Spent this month* value (reset automatically each calendar month) inside each card mockup. The recommendation engine dynamically tracks this against the card rule's `cap` (or `conditions.cap`) and applies fallback rates or zero points/miles on the portion of the purchase exceeding the limit.
 
 ### Automated Link Scanner
 To verify that database reference URLs remain active, run the link scanner utility:
@@ -240,7 +275,7 @@ This utility parallel-scans all reference URLs inside the datasets to identify b
 ### Local Developer Data Manager
 To easily merge or update data without manual text editing:
 1. Run the local dev server: `pnpm dev`
-2. Open `http://localhost:3000/?dev=true`
+2. Open `http://localhost:3000/?dev=true` (`pnpm dev` also starts a local-only helper server on port 3001 that writes to `data/`)
 3. Click **🔧 Dev Tools** at the bottom-right corner to open the bulk importer modal. You can paste raw JSON arrays or objects and click **Merge & Recompile Datasets** to write, format, validate, and compile changes to disk automatically.
 
 ## Disclaimer

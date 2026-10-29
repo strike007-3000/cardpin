@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo, useRef } from "react";
 import type { CountryDataset } from "@cardpin/engine";
+import { monthKey } from "./utils";
 
 export function useWalletDataset(country: string, audience: "consumer" | "business") {
   const [dataset, setDataset] = useState<CountryDataset | null>(null);
@@ -48,7 +49,7 @@ export function useWalletDataset(country: string, audience: "consumer" | "busine
     if (typeof window !== "undefined" && dataset) {
       const spends: Record<string, number> = {};
       dataset.cards.forEach((card) => {
-        const saved = localStorage.getItem(`cardpin:monthly_spend:${card.id}`);
+        const saved = localStorage.getItem(`cardpin:monthly_spend:${monthKey()}:${card.id}`);
         if (saved) {
           spends[card.id] = Number(saved) || 0;
         }
@@ -101,7 +102,7 @@ export function useWalletDataset(country: string, audience: "consumer" | "busine
   function handleUpdateMonthlySpend(cardId: string, value: number) {
     const updated = { ...cardMonthlySpends, [cardId]: value };
     setCardMonthlySpends(updated);
-    localStorage.setItem(`cardpin:monthly_spend:${cardId}`, String(value));
+    localStorage.setItem(`cardpin:monthly_spend:${monthKey()}:${cardId}`, String(value));
   }
 
   function handleOpenCatalog() {

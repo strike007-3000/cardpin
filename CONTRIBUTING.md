@@ -6,7 +6,7 @@ Thank you for helping improve CardPin. This project is a static-first, privacy-f
 
 ### Prerequisites
 
-- **Node.js**: Version `20` (LTS is recommended. A `.nvmrc` is provided).
+- **Node.js**: Version `24` (the version CI runs; a `.nvmrc` is provided).
 - **Corepack**: Required to manage the package manager version automatically.
 
 ### Installation & Development
@@ -14,16 +14,16 @@ Thank you for helping improve CardPin. This project is a static-first, privacy-f
 This project uses the package manager declared in `package.json`:
 
 ```json
-"packageManager": "pnpm@9.0.0"
+"packageManager": "pnpm@10.34.4"
 ```
 
 To set up the project locally:
 
-1. Ensure you are using Node.js 20.
+1. Ensure you are using Node.js 24.
 2. Enable Corepack and activate the configured `pnpm` version:
    ```bash
    corepack enable
-   corepack prepare pnpm@9.0.0 --activate
+   corepack prepare pnpm@10.34.4 --activate
    ```
 3. Install dependencies:
    ```bash
@@ -42,6 +42,8 @@ Run the following commands to validate the data and build the application:
 
 - **Format Datasets**: `pnpm format:data` (automatically alphabetizes dataset files by ID and standardizes spacing)
 - **Validate Datasets**: `pnpm validate:data` (checks schemas, relational integrity, formatting, and duplicate IDs)
+- **List Stale Rules**: `pnpm check:stale [days]` (rules not re-verified in 180 days by default)
+- **Check Source Links**: `npx tsx scripts/check-links.ts` (requests every source URL in every dataset)
 - **Compile Datasets**: `pnpm compile:data` (performs validation and compiles to static JSON bundles)
 - **TypeScript Typecheck**: `pnpm typecheck`
 - **Lint Codebase**: `pnpm lint`
@@ -63,7 +65,9 @@ corepack pnpm build
 Country datasets live under `data/<country>/`. CardPin currently includes:
 
 - `data/be/`
+- `data/de/`
 - `data/nl/`
+- `data/us/` (166 cards, no merchants yet; contributions of US merchants are welcome)
 
 Each country dataset contains:
 
@@ -72,7 +76,13 @@ Each country dataset contains:
 - `merchants.json`
 - `reward_rules.json`
 
-Use stable lowercase kebab-case IDs. Use uppercase ISO country codes in data fields. Keep merchant categories consistent so existing reward rules continue to match.
+Use stable lowercase kebab-case IDs. Use uppercase ISO country codes in data fields. Keep merchant categories consistent so existing reward rules continue to match; categories must come from the registry in `packages/schemas/src/index.ts`. Cards default to `currency: "EUR"`, so set `currency` (e.g. `USD`) for any other currency.
+
+## Easiest First Contributions
+
+- Run `pnpm check:stale` to list reward rules not re-verified in 180 days. Re-check one against its source, then bump `verifiedAt` and `verifiedBy`.
+- Use the **Report wrong data** link in the app's result card; it opens a prefilled issue.
+- Add a missing merchant to `merchants.json` (name, country, categories). No code needed.
 
 ## Data Verification Standards
 
@@ -132,8 +142,10 @@ Keep code changes aligned with the static architecture:
 - Recommendation logic belongs in `packages/engine/`.
 - Data schemas belong in `packages/schemas/`.
 - Web UI belongs in `apps/web/`.
-- Avoid external API calls, telemetry, account systems, or server-only features.
+- Avoid new external API calls, telemetry, account systems, or server-only features. The only allowed runtime request is the read-only exchange-rate fetch in `apps/web/src/lib/use-fx-rates.ts`.
 - Add or update tests for recommendation behavior changes.
+- Rewards are calculated in the country's base currency (`baseCurrencyFor()` in `apps/web/src/lib/utils.ts`): USD for `US`, EUR otherwise. Do not hard-code currency codes in the UI; use the card's `currency`.
+- Update the docs (`README.md`, `RELEASE_CHECKLIST.md`) and bump the version in `package.json` and `apps/web/package.json` when behavior changes.
 
 ## Pull Request Checklist
 

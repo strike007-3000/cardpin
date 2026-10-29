@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const repoRoot = path.resolve(__dirname, "..");
 
-const targetDirs = ["be", "de", "nl"];
+const targetDirs = fs.readdirSync(path.join(repoRoot, "data"), { withFileTypes: true }).filter((d) => d.isDirectory()).map((d) => d.name);
 
 async function checkUrl(url: string): Promise<{ success: boolean; status?: number; error?: string }> {
   try {

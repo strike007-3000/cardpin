@@ -1,0 +1,232 @@
+/* Restructured CSS to clean up CardPinCalculator inline styles */
+.spend-input-wrapper--small {
+  max-width: 110px;
+  min-height: 32px !important;
+  padding: 0 8px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+}
+.spend-input-wrapper--small .currency-prefix {
+  font-size: 0.72rem;
+  margin-right: 6px;
+}
+.spend-input-wrapper--small input {
+  padding: 4px 0 !important;
+  font-size: 0.8rem !important;
+  min-height: auto !important;
+}
+.empty-state p {
+  margin-top: 6px;
+  font-size: 0.9rem;
+}
+.result-explanation,
+.result-calculation {
+  font-size: 0.9rem !important;
+  line-height: 1.5;
+  color: var(--text-main);
+}
+.alternatives-container h3 {
+  margin-top: 12px !important;
+  margin-bottom: 8px;
+}
+.dev-flex-row {
+  display: flex;
+  gap: 12px;
+}
+.dev-flex-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.dev-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.dev-select {
+  padding: 8px !important;
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 4px !important;
+  color: var(--text-main) !important;
+  min-height: auto !important;
+  font-size: 0.9rem !important;
+}
+.dev-status-msg {
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+.dev-submit-btn {
+  padding: 12px;
+  background-color: var(--color-primary);
+  color: var(--text-inverse);
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+}
+.dev-submit-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+.catalog-card-item {
+  border-radius: var(--radius-md);
+  padding: 12px;
+  background: var(--bg-card);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: inherit;
+  text-align: left;
+  border: 1px solid var(--border-color);
+  background-color: transparent;
+  transition: all 0.2s;
+}
+.catalog-card-item--selected {
+  border: 1px solid var(--color-primary) !important;
+  background-color: rgba(167, 139, 250, 0.05) !important;
+}
+.catalog-card-meta {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.catalog-card-badge {
+  font-size: 0.8rem;
+  padding: 5px 8px;
+  border-radius: 4px;
+  background: var(--border-color);
+  font-weight: bold;
+  background-color: var(--border-color);
+  color: var(--text-main);
+  transition: all 0.2s;
+}
+.catalog-card-badge--selected {
+  background-color: var(--color-primary) !important;
+  color: var(--text-inverse) !important;
+}
+/* Redesigned Grid Container and Fintech Utilities Styles */
+.compact-controls-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  background: var(--bg-surface);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-color);
+}
+.compact-control-group {
+  display: flex;
+  align-items: center;
+}
+.select-wrapper-compact {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--color-primary);
+}
+.compact-select {
+  background: transparent;
+  border: none;
+  color: var(--text-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 4px 20px 4px 4px;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+}
+.compact-select:focus-visible {
+  outline: 2px solid var(--color-primary);
+}
+.segmented-control--compact {
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2px;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+}
+.segmented-control--compact button {
+  padding: 4px 10px;
+  font-size: 0.82rem;
+  border-radius: 4px;
+}
+/* Redesigned single-screen layout and fintech utility styles */
+.cardpin-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+.cardpin-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.grid-area-bottom {
+  order: 1; /* Inputs first: you type, then read the answer */
+}
+.grid-area-hero {
+  order: 2;
+}
+.grid-area-top {
+  order: 3;
+}
+@media (min-width: 1024px) {
+  .cardpin-grid {
+    grid-template-columns: 1.6fr 1fr;
+    align-items: start; /* Prevents height stretching and keeps columns naturally aligned */
+  }
+  .grid-area-top {
+    order: 1; /* Settings top on desktop */
+  }
+  .grid-area-bottom {
+    order: 2;
+  }
+  .grid-area-hero {
+    order: 3;
+  }
+}
+.input-strip-card {
+  padding: 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+}
+.input-strip-card--disabled {
+  opacity: 0.6;
+}
+.input-strip-row .form-group {
+  margin-bottom: 0 !important;
+}
+.input-strip-row .form-group:nth-child(1) {
+  flex: 2;
+  min-width: 140px;
+}
+.input-strip-row .form-group:nth-child(2) {
+  flex: 2;
+  min-width: 140px;
+}
+.input-strip-row .form-group:nth-child(3) {
+  flex: 1.2;
+  min-width: 100px;
+}
+.input-strip-row .form-group:nth-child(4) {
+  flex: 0.8;
+  min-width: 80px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

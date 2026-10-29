@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { cn, getFxRate, needsFxRates, orderCardsForWalletStack } from "./utils";
+import { baseCurrencyFor, breakEvenPurchases, monthKey, cn, getFxRate, needsFxRates, orderCardsForWalletStack } from "./utils";
 
 describe("cn", () => {
   it("combines class names and ignores falsy values", () => {
@@ -65,7 +65,7 @@ describe("rewardLabel", () => {
   });
 
   it("formats fixed cashback", () => {
-    const calc = { rule: { rewardValue: 1.5 }, rewardType: "fixed_cashback" } as unknown as CardCalc;
+    const calc = { card: { currency: "EUR" }, rule: { rewardValue: 1.5 }, rewardType: "fixed_cashback" } as unknown as CardCalc;
     expect(rewardLabel(calc)).toBe("EUR 1.50 per transaction");
   });
 
@@ -82,12 +82,12 @@ describe("rewardLabel", () => {
 
 describe("rewardAmount", () => {
   it("returns zero for missing rules", () => {
-    const calc = { rule: null } as unknown as CardCalc;
-    expect(rewardAmount(calc)).toBe("EUR 0.00");
+    const calc = { card: { currency: "USD" }, rule: null } as unknown as CardCalc;
+    expect(rewardAmount(calc)).toBe("USD 0.00");
   });
 
   it("returns net value for cashback", () => {
-    const calc = { rule: {}, rewardType: "cashback_percentage", netValue: 12.34 } as unknown as CardCalc;
+    const calc = { card: { currency: "EUR" }, rule: {}, rewardType: "cashback_percentage", netValue: 12.34 } as unknown as CardCalc;
     expect(rewardAmount(calc)).toBe("EUR 12.34");
   });
 
@@ -103,7 +103,37 @@ describe("cleanExplanation", () => {
   });
 
   it("formats fallback rules cleanly", () => {
-    expect(cleanExplanation('Fallback rule "base-points" matched for card amex-gold')).toBe("Earns rewards on general spending rewards under your amex-gold terms.");
+    expect(cleanExplanation('Fallback rule "base-points" matched for card amex-gold')).toBe("amex-gold earns its standard rate on this purchase.");
   });
 });
 
+
+describe("monthKey", () => {
+  it("zero-pads the local month", () => {
+    expect(monthKey(new Date(2026, 0, 31))).toBe("2026-01");
+    expect(monthKey(new Date(2026, 10, 1))).toBe("2026-11");
+  });
+});
+
+describe("breakEvenPurchases", () => {
+  it("rounds up and returns null when there is nothing to compare", () => {
+    expect(breakEvenPurchases(95, 0.5)).toBe(190);
+    expect(breakEvenPurchases(0, 0.5)).toBeNull();
+    expect(breakEvenPurchases(95, 0)).toBeNull();
+  });
+});
+
+describe("base currency", () => {
+  it("uses USD for the US and EUR elsewhere", () => {
+    expect(baseCurrencyFor("us")).toBe("USD");
+    expect(baseCurrencyFor("BE")).toBe("EUR");
+  });
+
+  it("quotes rates against the base currency", () => {
+    const rates = { eur: 1, usd: 1.25, gbp: 0.5 };
+    expect(getFxRate(rates, "USD", "USD")).toBe(1);
+    expect(getFxRate(rates, "EUR", "USD")).toBe(0.8);
+    expect(getFxRate(rates, "GBP", "USD")).toBe(0.4);
+    expect(getFxRate({ eur: 1 }, "EUR", "USD")).toBeNull();
+  });
+});

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { recommendBestCard } from "@cardpin/engine";
-import { getFxRate, rewardLabel, rewardAmount, cleanExplanation } from "../lib/utils";
+import { baseCurrencyFor, getFxRate, rewardLabel, rewardAmount, cleanExplanation } from "../lib/utils";
 import type { CardCalc } from "../lib/utils";
 import { useFxRates } from "../lib/use-fx-rates";
 import { useWalletDataset } from "../lib/use-wallet-dataset";
@@ -31,11 +31,13 @@ export default function CardPinCalculator() {
   const [spendInput, setSpendInput] = useState<string>("50");
   const [isForeignSpend, setIsForeignSpend] = useState<boolean>(false);
   const [spendCurrency, setSpendCurrency] = useState<string>("EUR");
+  const baseCurrency = baseCurrencyFor(country);
+  const [pointValue, setPointValue] = useState<number>(0.01);
   const [showWelcome, setShowWelcome] = useState<boolean | null>(null);
   const [showFullInstructions, setShowFullInstructions] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const { fxRates, fxStatus } = useFxRates(spendCurrency);
+  const { fxRates, fxStatus } = useFxRates(spendCurrency, baseCurrency);
   const walletDataset = useWalletDataset(country, audience);
   const devTools = useDevTools();
 
@@ -65,6 +67,11 @@ export default function CardPinCalculator() {
   } = walletDataset;
 
   useEffect(() => {
+    const saved = Number(localStorage.getItem("cardpin:point_value"));
+    if (saved > 0) setPointValue(saved);
+  }, []);
+
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
@@ -78,20 +85,7 @@ export default function CardPinCalculator() {
   }, []);
 
   useEffect(() => {
-    switch (country.toLowerCase()) {
-      case "us":
-        setSpendCurrency("USD");
-        break;
-      case "in":
-        setSpendCurrency("INR");
-        break;
-      case "sg":
-        setSpendCurrency("SGD");
-        break;
-      default:
-        setSpendCurrency("EUR");
-        break;
-    }
+    setSpendCurrency(baseCurrencyFor(country));
   }, [country]);
 
   const spendAmount = normalizeSpend(spendInput);
@@ -113,10 +107,10 @@ export default function CardPinCalculator() {
   const cardResults: CardCalc[] = useMemo(() => {
     if (!dataset || !ownedCards.length) return [];
 
-    const rate = getFxRate(fxRates, spendCurrency);
+    const rate = getFxRate(fxRates, spendCurrency, baseCurrency);
     if (rate === null) return [];
-    const convertedSpend = spendCurrency !== "EUR" ? spendAmount / rate : spendAmount;
-    const isForeign = spendCurrency !== "EUR" || isForeignSpend;
+    const convertedSpend = spendCurrency !== baseCurrency ? spendAmount / rate : spendAmount;
+    const isForeign = spendCurrency !== baseCurrency || isForeignSpend;
 
     const overallRec = recommendBestCard({
       merchant: merchantQuery,
@@ -129,6 +123,7 @@ export default function CardPinCalculator() {
       cardMonthlySpends,
       audience,
       includeUnownedCards: true,
+      valuations: { points: pointValue, miles: pointValue },
     });
 
     return ownedCards
@@ -143,6 +138,7 @@ export default function CardPinCalculator() {
           isForeignSpend: isForeign,
           cardMonthlySpends,
           audience,
+          valuations: { points: pointValue, miles: pointValue },
         });
         const rule = rec.bestRule;
         const fxFee = isForeign ? convertedSpend * (card.fxFeePercentage ?? 0) : 0;
@@ -176,10 +172,9 @@ export default function CardPinCalculator() {
           }
         }
 
-        const netValue =
-          rule?.rewardType === "cashback_percentage" || rule?.rewardType === "fixed_cashback"
-            ? Math.max(0, grossValue - fxFee)
-            : grossValue - fxFee;
+        // Points/miles are valued in currency so they sort fairly against cashback.
+        const unitValue = rule?.rewardType === "points" || rule?.rewardType === "miles" ? pointValue : 1;
+        const netValue = Math.max(0, grossValue * unitValue - fxFee);
 
         const displayGross = grossValue;
         const displayNet = netValue;
@@ -220,11 +215,15 @@ export default function CardPinCalculator() {
     cardMonthlySpends,
     fxRates,
     spendCurrency,
+    baseCurrency,
     audience,
+    pointValue,
   ]);
 
+  const merchantNames = useMemo(() => dataset?.merchants.map((m) => m.name).sort() ?? [], [dataset]);
+
   const hasSearch = merchantQuery.trim() !== "" || categoryQuery !== "";
-  const isFxRateMissing = getFxRate(fxRates, spendCurrency) === null;
+  const isFxRateMissing = getFxRate(fxRates, spendCurrency, baseCurrency) === null;
   // Best result is top rule-matching card, or fallback to top base card if no specific rule matched
   const bestResult = cardResults.find((result) => result.rule) ?? cardResults[0] ?? null;
   const alternatives = cardResults.filter((result) => result.card.id !== bestResult?.card.id).slice(0, 4);
@@ -250,7 +249,7 @@ export default function CardPinCalculator() {
         bestResult={bestResult}
         spendAmount={spendAmount}
         spendCurrency={spendCurrency}
-        isForeignSpend={spendCurrency !== "EUR" || isForeignSpend}
+        isForeignSpend={spendCurrency !== baseCurrency || isForeignSpend}
         rewardAmount={rewardAmount}
         cleanExplanation={cleanExplanation}
         rewardLabel={rewardLabel}
@@ -281,7 +280,7 @@ export default function CardPinCalculator() {
         <MainLayout
           navigationBar={<NavigationBar isScrolled={isScrolled} />}
           welcomeBanner={
-            showWelcome === true && (
+            showWelcome === true && ownedCards.length > 0 && !hasSearch && (
               <WelcomeBanner
                 showWelcome={showWelcome}
                 showFullInstructions={showFullInstructions}
@@ -300,7 +299,7 @@ export default function CardPinCalculator() {
           }
           resultHeroOrStatus={resultHeroOrStatusElement}
           inputStrip={
-            <InputStrip
+            ownedCards.length === 0 ? null : <InputStrip
               merchantQuery={merchantQuery}
               setMerchantQuery={setMerchantQuery}
               categoryQuery={categoryQuery}
@@ -312,12 +311,18 @@ export default function CardPinCalculator() {
               isForeignSpend={isForeignSpend}
               setIsForeignSpend={setIsForeignSpend}
               categoriesList={categoriesList}
+              merchantNames={merchantNames}
               handleSpendBlur={handleSpendBlur}
               disabled={ownedCards.length === 0}
             />
           }
           walletManager={
             <WalletManager
+              pointValue={pointValue}
+              setPointValue={(v) => {
+                setPointValue(v);
+                localStorage.setItem("cardpin:point_value", String(v));
+              }}
               country={country}
               ownedCardIds={ownedCardIds}
               ownedCards={ownedCards}
