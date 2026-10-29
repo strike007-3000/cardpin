@@ -8,9 +8,9 @@
   --bg-card: #f4f4f5;
   
   /* Dark theme */
-  --dark-bg-base: #1a1a1b;
-  --dark-bg-surface: #2d2d2e;
-  --dark-bg-card: #1f1f1f;
+  --dark-bg-base: #000000;
+  --dark-bg-surface: #111113;
+  --dark-bg-card: #0a0a0b;
   --dark-text-main: #ffffff;
   --dark-text-muted: #a1a1aa;
   
@@ -57,10 +57,10 @@
   --bg-card: var(--dark-bg-card);
   --text-main: var(--dark-text-main);
   --text-muted: var(--dark-text-muted);
-  --border-color: #2e2e30;
+  --border-color: #27272a;
   --border-focus: #3b82f6;
   --color-primary: #60a5fa;
-  --bg-header: rgba(26, 26, 27, 0.95);
+  --bg-header: rgba(0, 0, 0, 0.95);
 }
 /* Enhanced gradients */
 /* The rest of the CSS remains unchanged */
