@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 function formatCategory(category: string) {
   return category.replaceAll("-", " ");
@@ -63,27 +63,54 @@ export default function InputStrip({
   disabled,
 }: InputStripProps) {
   const presets = ["10", "50", "100", "500"];
+  const [open, setOpen] = useState(false);
+  const q = merchantQuery.trim().toLowerCase();
+  // Custom list: the native datalist popup can't be styled or positioned on phones.
+  const suggestions = q
+    ? merchantNames.filter((n) => n.toLowerCase().includes(q) && n.toLowerCase() !== q).slice(0, 8)
+    : [];
 
   return (
     <div className={`card input-strip-card ${disabled ? "input-strip-card--disabled" : ""}`}>
       <fieldset className="search-fields" disabled={disabled} style={{ border: "none", padding: 0, margin: 0 }}>
         <div className="form-row input-strip-row">
-          <div className="form-group">
+          <div className="form-group" style={{ position: "relative" }}>
             <label htmlFor="merchant-input">Merchant</label>
             <input
               id="merchant-input"
               type="text"
               placeholder="Carrefour, Q8, Booking.com"
-              list="merchant-suggestions"
+              role="combobox"
+              aria-expanded={open && suggestions.length > 0}
+              aria-controls="merchant-suggestions"
+              aria-autocomplete="list"
               autoComplete="off"
               value={merchantQuery}
-              onChange={(event) => setMerchantQuery(event.target.value)}
+              onChange={(event) => {
+                setMerchantQuery(event.target.value);
+                setOpen(true);
+              }}
+              onFocus={() => setOpen(true)}
+              onBlur={() => setOpen(false)}
             />
-            <datalist id="merchant-suggestions">
-              {merchantNames.map((name) => (
-                <option key={name} value={name} />
-              ))}
-            </datalist>
+            {open && suggestions.length > 0 && (
+              <ul id="merchant-suggestions" role="listbox" className="merchant-suggestions">
+                {suggestions.map((name) => (
+                  <li
+                    key={name}
+                    role="option"
+                    aria-selected={false}
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                      setMerchantQuery(name);
+                      setOpen(false);
+                    }}
+                  >
+                    {name}
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           <div className="form-group">
