@@ -2,7 +2,7 @@
 
 import React from "react";
 import type { CardCalc } from "../lib/utils";
-import { formatRelativeDate } from "../lib/utils";
+import { breakEvenPurchases, formatRelativeDate } from "../lib/utils";
 
 interface ResultHeroProps {
   bestResult: CardCalc;
@@ -28,6 +28,11 @@ export default function ResultHero({
   cardMonthlySpends = {},
 }: ResultHeroProps) {
   const isFallbackCard = !bestResult.rule;
+  const unlock = bestResult.rec.unownedUnlockCard;
+  const unlockFee = unlock?.card.annualFee ?? 0;
+  const breakEven = unlock ? breakEvenPurchases(unlockFee, unlock.convertedValue - bestResult.netValue) : null;
+  // Amex is often refused at the terminal in Europe, so offer the best alternative on another network.
+  const nonAmexAlt = bestResult.card.network === "amex" ? alternatives.find((r) => r.card.network !== "amex") : undefined;
 
   return (
     <section className="recommendation-area result-hero-section" aria-live="polite">
@@ -48,6 +53,12 @@ export default function ResultHero({
           </div>
         </div>
 
+        {nonAmexAlt && (
+          <p style={{ margin: "0.75rem 0 0", fontSize: "0.9rem" }}>
+            Amex not accepted? Use <strong>{nonAmexAlt.card.name}</strong> ({rewardAmount(nonAmexAlt)}).
+          </p>
+        )}
+
         <div className="result-grid" style={{ marginTop: "1rem" }}>
           <div>
             <h3>Why this card</h3>
@@ -63,7 +74,7 @@ export default function ResultHero({
             <h3>Spend calculation</h3>
             <p className="result-calculation">
               {spendCurrency} {spendAmount.toFixed(2)} spend · {rewardLabel(bestResult)}
-              {isForeignSpend ? ` · EUR ${bestResult.fxFee.toFixed(2)} FX fee` : ""}
+              {isForeignSpend ? ` · ${bestResult.card.currency} ${bestResult.fxFee.toFixed(2)} FX fee` : ""}
             </p>
           </div>
         </div>
@@ -103,13 +114,18 @@ export default function ResultHero({
                   : bestResult.rec.unownedUnlockCard.rewardType === "miles"
                   ? `+${bestResult.rec.unownedUnlockCard.estimatedValue.toFixed(0)} miles`
                   : bestResult.rewardType === "points" || bestResult.rewardType === "miles"
-                  ? `≈ EUR ${bestResult.rec.unownedUnlockCard.convertedValue.toFixed(2)} back`
-                  : `+EUR ${Math.max(0, bestResult.rec.unownedUnlockCard.convertedValue - bestResult.netValue).toFixed(2)} extra`}
+                  ? `≈ ${bestResult.rec.unownedUnlockCard.card.currency} ${bestResult.rec.unownedUnlockCard.convertedValue.toFixed(2)} back`
+                  : `+${bestResult.rec.unownedUnlockCard.card.currency} ${Math.max(0, bestResult.rec.unownedUnlockCard.convertedValue - bestResult.netValue).toFixed(2)} extra`}
               </span>
             </div>
             <h4 style={{ margin: "0.4rem 0 0.2rem 0", fontSize: "1rem", fontWeight: 700 }}>{bestResult.rec.unownedUnlockCard.card.name}</h4>
             <p style={{ margin: 0, fontSize: "0.85rem", opacity: 0.9, lineHeight: 1.4 }}>
               {bestResult.rec.unownedUnlockCard.explanation}
+            </p>
+            <p style={{ margin: "0.4rem 0 0", fontSize: "0.85rem", fontWeight: 600 }}>
+              {unlockFee
+                ? `Annual fee: ${unlock?.card.currency} ${unlockFee}/yr${breakEven ? ` · ~${breakEven} purchases like this to cover it` : ""}`
+                : "No annual fee"}
             </p>
           </div>
         )}

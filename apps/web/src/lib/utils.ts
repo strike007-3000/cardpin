@@ -17,14 +17,22 @@ export function cn(...inputs: ClassValue[]) {
   return clsx(inputs);
 }
 
-export function needsFxRates(currency: string) {
-  return currency.toUpperCase() !== "EUR";
+// Rewards are computed in the country's own currency; rates are quoted per 1 EUR.
+export function baseCurrencyFor(country: string) {
+  return country.toLowerCase() === "us" ? "USD" : "EUR";
 }
 
-export function getFxRate(rates: Record<string, number>, currency: string) {
-  if (!needsFxRates(currency)) return 1;
+export function needsFxRates(currency: string, base = "EUR") {
+  return currency.toUpperCase() !== base.toUpperCase();
+}
+
+// Units of `currency` per 1 unit of `base`, or null when a rate is missing.
+export function getFxRate(rates: Record<string, number>, currency: string, base = "EUR") {
+  if (!needsFxRates(currency, base)) return 1;
   const rate = rates[currency.toLowerCase()];
-  return Number.isFinite(rate) && rate > 0 ? rate : null;
+  const baseRate = base.toUpperCase() === "EUR" ? 1 : rates[base.toLowerCase()];
+  if (!(Number.isFinite(rate) && rate > 0 && Number.isFinite(baseRate) && baseRate > 0)) return null;
+  return rate / baseRate;
 }
 
 export function orderCardsForWalletStack<T extends { id: string }>(cards: T[], activeCardId: string | null) {
@@ -38,7 +46,7 @@ export function rewardLabel(result: CardCalc) {
   if (!result.rule) return "No reward rule";
   if (result.rewardType === "cashback_percentage") return `${(result.rule.rewardValue * 100).toFixed(1)}% cashback`;
   if (result.rewardType === "fixed_cashback") {
-    return `EUR ${result.rule.rewardValue.toFixed(2)} per transaction`;
+    return `${result.card.currency} ${result.rule.rewardValue.toFixed(2)} per transaction`;
   }
   if (result.rewardType === "points") return `${result.rule.rewardValue}x points`;
   if (result.rewardType === "miles") return `${result.rule.rewardValue}x miles`;
@@ -47,11 +55,11 @@ export function rewardLabel(result: CardCalc) {
 
 export function rewardAmount(result: CardCalc) {
   if (!result.rule) {
-    return "EUR 0.00";
+    return `${result.card.currency} 0.00`;
   }
   if (result.rewardType === "points") return `${result.grossValue.toFixed(0)} points`;
   if (result.rewardType === "miles") return `${result.grossValue.toFixed(0)} miles`;
-  return `EUR ${result.netValue.toFixed(2)}`;
+  return `${result.card.currency} ${result.netValue.toFixed(2)}`;
 }
 
 export function cleanExplanation(explanation: string) {
@@ -76,3 +84,14 @@ export function formatRelativeDate(dateStr?: string) {
   return `${diffMonths} months ago`;
 }
 
+
+// Caps are monthly, so storage keys roll over on the 1st (local time).
+export function monthKey(date = new Date()) {
+  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}`;
+}
+
+// How many purchases like this one it takes for the extra reward to cover the annual fee.
+export function breakEvenPurchases(annualFee: number, extraPerPurchase: number) {
+  if (annualFee <= 0 || extraPerPurchase <= 0) return null;
+  return Math.ceil(annualFee / extraPerPurchase);
+}

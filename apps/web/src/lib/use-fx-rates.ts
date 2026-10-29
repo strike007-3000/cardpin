@@ -16,12 +16,12 @@ const DEFAULT_FX_RATES: Record<string, number> = {
 
 const FX_API_URL = process.env.NEXT_PUBLIC_FX_API_URL || "https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/eur.json";
 
-export function useFxRates(spendCurrency: string): UseFxRatesResult {
+export function useFxRates(spendCurrency: string, baseCurrency = "EUR"): UseFxRatesResult {
   const [fxRates, setFxRates] = useState<Record<string, number>>(DEFAULT_FX_RATES);
   const [fxStatus, setFxStatus] = useState<"idle" | "loading" | "ready" | "error">("idle");
 
   useEffect(() => {
-    if (!needsFxRates(spendCurrency)) {
+    if (!needsFxRates(spendCurrency, baseCurrency)) {
       setFxStatus("idle");
       return;
     }
@@ -33,7 +33,7 @@ export function useFxRates(spendCurrency: string): UseFxRatesResult {
       if (cached) {
         try {
           const rates = JSON.parse(cached);
-          if (!getFxRate(rates, spendCurrency)) throw new Error("Cached rate unavailable");
+          if (!getFxRate(rates, spendCurrency, baseCurrency)) throw new Error("Cached rate unavailable");
           setFxRates(rates);
           setFxStatus("ready");
           return;
@@ -48,7 +48,7 @@ export function useFxRates(spendCurrency: string): UseFxRatesResult {
         const data = await res.json();
         if (data && data.eur) {
           const rates = { eur: 1, ...data.eur };
-          if (!getFxRate(rates, spendCurrency)) throw new Error("Selected rate unavailable");
+          if (!getFxRate(rates, spendCurrency, baseCurrency)) throw new Error("Selected rate unavailable");
           setFxRates(rates);
           setFxStatus("ready");
           sessionStorage.setItem("cardpin:fx_rates", JSON.stringify(rates));
@@ -61,7 +61,7 @@ export function useFxRates(spendCurrency: string): UseFxRatesResult {
       }
     }
     fetchFXRates();
-  }, [spendCurrency]);
+  }, [spendCurrency, baseCurrency]);
 
-  return { fxRates, fxStatus, isFxRateMissing: getFxRate(fxRates, spendCurrency) === null };
+  return { fxRates, fxStatus, isFxRateMissing: getFxRate(fxRates, spendCurrency, baseCurrency) === null };
 }
