@@ -317,6 +317,7 @@ export default function WalletManager({
                 ref={catalogSearchRef}
                 type="text"
                 className="search-input-field"
+                aria-label="Search cards by name or issuer"
                 placeholder="Search by card name or issuer..."
                 value={catalogSearch}
                 onChange={(e) => setCatalogSearch(e.target.value)}

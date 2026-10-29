@@ -15,7 +15,8 @@
     "test": "turbo run test",
     "format:data": "tsx scripts/format-datasets.ts",
     "validate:data": "tsx scripts/compile-datasets.ts --validate-only",
-    "compile:data": "tsx scripts/compile-datasets.ts"
+    "compile:data": "tsx scripts/compile-datasets.ts",
+    "check:stale": "tsx scripts/check-stale.ts"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",

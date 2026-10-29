@@ -1,5 +1,12 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "../styles/base.css";
+import "../styles/result-and-forms.css";
+import "../styles/welcome-and-inputs.css";
+import "../styles/dev-panel.css";
+import "../styles/wallet.css";
+import "../styles/layout.css";
+import "../styles/redesign.css";
 import Logo from "./logo";
 
 export const metadata: Metadata = {

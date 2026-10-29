@@ -58,12 +58,8 @@ export function cleanExplanation(explanation: string) {
   if (explanation.startsWith('Fallback rule "')) {
     const match = explanation.match(/Fallback rule "([^"]+)" matched for card ([^.]+)(.*)/);
     if (match) {
-      const [, ruleName, cardName, rest] = match;
-      const cleanRule = ruleName
-        .replaceAll("-", " ")
-        .replace("points", "rewards")
-        .replace("base", "general spending");
-      return `Earns rewards on ${cleanRule} under your ${cardName} terms.${rest}`;
+      const [, , cardName, rest] = match;
+      return `${cardName} earns its standard rate on this purchase${rest || "."}`;
     }
   }
   return explanation;

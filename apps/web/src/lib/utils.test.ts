@@ -103,7 +103,7 @@ describe("cleanExplanation", () => {
   });
 
   it("formats fallback rules cleanly", () => {
-    expect(cleanExplanation('Fallback rule "base-points" matched for card amex-gold')).toBe("Earns rewards on general spending rewards under your amex-gold terms.");
+    expect(cleanExplanation('Fallback rule "base-points" matched for card amex-gold')).toBe("amex-gold earns its standard rate on this purchase.");
   });
 });
 

@@ -41,6 +41,7 @@ interface InputStripProps {
   isForeignSpend: boolean;
   setIsForeignSpend: (val: boolean) => void;
   categoriesList: string[];
+  merchantNames: string[];
   handleSpendBlur: () => void;
   disabled: boolean;
 }
@@ -57,6 +58,7 @@ export default function InputStrip({
   isForeignSpend,
   setIsForeignSpend,
   categoriesList,
+  merchantNames,
   handleSpendBlur,
   disabled,
 }: InputStripProps) {
@@ -72,9 +74,16 @@ export default function InputStrip({
               id="merchant-input"
               type="text"
               placeholder="Carrefour, Q8, Booking.com"
+              list="merchant-suggestions"
+              autoComplete="off"
               value={merchantQuery}
               onChange={(event) => setMerchantQuery(event.target.value)}
             />
+            <datalist id="merchant-suggestions">
+              {merchantNames.map((name) => (
+                <option key={name} value={name} />
+              ))}
+            </datalist>
           </div>
 
           <div className="form-group">

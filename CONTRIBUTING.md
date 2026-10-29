@@ -63,6 +63,7 @@ corepack pnpm build
 Country datasets live under `data/<country>/`. CardPin currently includes:
 
 - `data/be/`
+- `data/de/`
 - `data/nl/`
 
 Each country dataset contains:
@@ -73,6 +74,12 @@ Each country dataset contains:
 - `reward_rules.json`
 
 Use stable lowercase kebab-case IDs. Use uppercase ISO country codes in data fields. Keep merchant categories consistent so existing reward rules continue to match.
+
+## Easiest First Contributions
+
+- Run `pnpm check:stale` to list reward rules not re-verified in 180 days. Re-check one against its source, then bump `verifiedAt` and `verifiedBy`.
+- Use the **Report wrong data** link in the app's result card; it opens a prefilled issue.
+- Add a missing merchant to `merchants.json` (name, country, categories). No code needed.
 
 ## Data Verification Standards
 

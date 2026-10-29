@@ -1,0 +1,293 @@
+:root {
+  --font-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-primary);
+  
+  /* Light theme */
+  --bg-base: #f9f9fa;
+  --bg-surface: #ffffff;
+  --bg-card: #f4f4f5;
+  
+  /* Dark theme */
+  --dark-bg-base: #1a1a1b;
+  --dark-bg-surface: #2d2d2e;
+  --dark-bg-card: #1f1f1f;
+  --dark-text-main: #ffffff;
+  --dark-text-muted: #a1a1aa;
+  
+  --border-color: #e4e4e7;
+  --border-focus: #18181b;
+  --color-primary: #2563eb;
+  --color-accent: #ea580c;
+  --color-danger: #ef4444;
+  --text-main: #18181b;
+  --text-muted: #71717a;
+  --text-inverse: #ffffff;
+  
+  /* Premium color palette */
+  --color-fintech-blue: #3b82f6;
+  --color-fintech-purple: #8b5cf6;
+  --color-fintech-green: #10b981;
+  --color-fintech-orange: #f59e0b;
+  --color-fintech-red: #ef4444;
+
+  /* Gradients */
+  --gradient-card-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.01) 100%);
+  --gradient-card-hover: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%);
+  --gradient-primary: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  --gradient-secondary: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  --gradient-accent: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+
+  /* Shadow states */
+  --shadow-panel: 0 10px 30px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --shadow-card-hover: 0 4px 12px rgba(0, 0, 0, 0.05);
+  
+  /* Animation */
+  --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  --bg-header: rgba(249, 249, 250, 0.95);
+}
+.dark {
+  --bg-base: var(--dark-bg-base);
+  --bg-surface: var(--dark-bg-surface);
+  --bg-card: var(--dark-bg-card);
+  --text-main: var(--dark-text-main);
+  --text-muted: var(--dark-text-muted);
+  --border-color: #2e2e30;
+  --border-focus: #3b82f6;
+  --color-primary: #60a5fa;
+  --bg-header: rgba(26, 26, 27, 0.95);
+}
+/* Enhanced gradients */
+/* The rest of the CSS remains unchanged */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--bg-base);
+  background-attachment: fixed;
+  color: var(--text-main);
+  font-family: var(--font-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  font-size: 16px;
+  min-height: 100vh;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 24px 48px;
+}
+/* Enhanced header styling */
+header {
+  margin-bottom: 32px;
+  text-align: center;
+  transition: all var(--transition-normal);
+}
+.logo-header {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+.logo-header svg {
+  height: 32px;
+  width: auto;
+}
+.brand-name {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.5vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--text-main);
+  margin: 0;
+}
+.subtitle {
+  color: var(--text-muted);
+  font-size: 1rem;
+  margin-bottom: 24px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+}
+.scrolled-header {
+  background: var(--bg-header);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  padding: 12px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  margin-bottom: 0;
+}
+.scrolled-header .logo-header {
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+.scrolled-header .brand-name {
+  font-size: 1.3rem;
+}
+.scrolled-header .subtitle {
+  display: none;
+}
+/* Enhanced card styling */
+.card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  padding: 28px;
+  transition: all var(--transition-normal), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  backdrop-filter: blur(20px) saturate(180%);
+}
+.card:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: var(--shadow-card-hover);
+}
+/* Enhanced step card styling */
+.step-card {
+  min-width: 0;
+  scroll-margin-top: 16px;
+}
+/* Enhanced typography */
+h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 3vw, 2.75rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 16px;
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 18px;
+}
+h3 {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+}
+/* Enhanced form elements */
+.form-row {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+.form-group {
+  min-width: 0;
+}
+label {
+  color: var(--text-muted);
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+select,
+input {
+  width: 100%;
+  min-height: 48px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font: inherit;
+  font-size: 0.95rem;
+  outline: none;
+  padding: 10px 14px;
+  transition: all var(--transition-fast);
+}
+select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(0,0,0,0.5)' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 14px;
+  padding-right: 36px !important;
+  cursor: pointer;
+}
+select:hover,
+input:hover {
+  background-color: var(--bg-card);
+  border-color: #a1a1aa;
+}
+select:focus,
+input:focus {
+  border-color: var(--border-focus);
+  background-color: var(--bg-surface);
+  box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.08);
+}
+/* Enhanced button styling */
+button:focus-visible,
+.btn:focus-visible,
+.catalog-card-item:focus-visible,
+.wallet-card:focus-visible,
+label.btn:focus-within {
+  outline: 2px solid rgba(255, 255, 255, 0.3);
+  outline-offset: 2px;
+}
+.btn {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 6px;
+  color: var(--text-main);
+  cursor: pointer;
+  display: inline-flex;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  justify-content: center;
+  min-height: 40px;
+  padding: 8px 16px;
+  transition: all var(--transition-fast);
+}
+.btn--primary {
+  background: var(--color-primary);
+  border-color: transparent;
+  color: var(--text-inverse);
+}
+.btn--primary:hover {
+  background: var(--color-primary);
+  opacity: 0.95;
+  transform: translateY(-0.5px);
+}
+/* Enhanced card list styling */
+.card-item.selected {
+  border-color: var(--color-primary);
+  box-shadow: inset 0 0 0 1px rgba(88, 166, 255, 0.35);
+}
+/* Enhanced checkbox styling */
+/* Enhanced card info */
+.card-info {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+.card-name,
+.alt-name {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+.card-meta,
+.val-label {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}

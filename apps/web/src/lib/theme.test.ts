@@ -1,11 +1,13 @@
-import { readFileSync } from "fs";
+import { readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import { describe, expect, it } from "vitest";
 
-describe("CSS variables in globals.css", () => {
+describe("CSS variables in the global stylesheets", () => {
   it("defines core fintech colors and gradients", () => {
-    const cssPath = join(__dirname, "../app/globals.css");
-    const content = readFileSync(cssPath, "utf-8");
+    const stylesDir = join(__dirname, "../styles");
+    const content = readdirSync(stylesDir)
+      .map((f) => readFileSync(join(stylesDir, f), "utf-8"))
+      .join("\n");
 
     expect(content).toContain("--color-fintech-blue: #3b82f6;");
     expect(content).toContain("--color-fintech-purple: #8b5cf6;");

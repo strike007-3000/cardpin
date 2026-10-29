@@ -32,3 +32,6 @@ graphify-out/
 # Local package-manager and agent metadata
 .pnpm-store/
 .zcode/
+
+# local preview config
+.claude/

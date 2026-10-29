@@ -223,6 +223,8 @@ export default function CardPinCalculator() {
     audience,
   ]);
 
+  const merchantNames = useMemo(() => dataset?.merchants.map((m) => m.name).sort() ?? [], [dataset]);
+
   const hasSearch = merchantQuery.trim() !== "" || categoryQuery !== "";
   const isFxRateMissing = getFxRate(fxRates, spendCurrency) === null;
   // Best result is top rule-matching card, or fallback to top base card if no specific rule matched
@@ -281,7 +283,7 @@ export default function CardPinCalculator() {
         <MainLayout
           navigationBar={<NavigationBar isScrolled={isScrolled} />}
           welcomeBanner={
-            showWelcome === true && (
+            showWelcome === true && ownedCards.length > 0 && !hasSearch && (
               <WelcomeBanner
                 showWelcome={showWelcome}
                 showFullInstructions={showFullInstructions}
@@ -300,7 +302,7 @@ export default function CardPinCalculator() {
           }
           resultHeroOrStatus={resultHeroOrStatusElement}
           inputStrip={
-            <InputStrip
+            ownedCards.length === 0 ? null : <InputStrip
               merchantQuery={merchantQuery}
               setMerchantQuery={setMerchantQuery}
               categoryQuery={categoryQuery}
@@ -312,6 +314,7 @@ export default function CardPinCalculator() {
               isForeignSpend={isForeignSpend}
               setIsForeignSpend={setIsForeignSpend}
               categoriesList={categoriesList}
+              merchantNames={merchantNames}
               handleSpendBlur={handleSpendBlur}
               disabled={ownedCards.length === 0}
             />

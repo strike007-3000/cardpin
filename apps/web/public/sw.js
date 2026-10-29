@@ -1,4 +1,4 @@
-const CACHE_NAME = "cardpin-v1.2.5";
+const CACHE_NAME = "cardpin-v1.2.6";
 const ASSETS = [
   "/",
   "/favicon.ico",
@@ -31,6 +31,22 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET") return;
+
+  // Pages go network-first so a deploy is never hidden behind a stale cached shell.
+  if (event.request.mode === "navigate") {
+    event.respondWith(
+      fetch(event.request)
+        .then((res) => {
+          if (res.ok) {
+            const copy = res.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          }
+          return res;
+        })
+        .catch(() => caches.match(event.request).then((hit) => hit || caches.match("/")))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(event.request).then((cachedResponse) => {
