@@ -1,6 +1,6 @@
 :root {
-  --font-primary: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-display: var(--font-primary);
+  --font-primary: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-display: var(--font-manrope), var(--font-primary);
   
   /* Light theme */
   --bg-base: #f9f9fa;
@@ -17,11 +17,21 @@
   --border-color: #e4e4e7;
   --border-focus: #18181b;
   --color-primary: #2563eb;
-  --color-accent: #ea580c;
+  --color-primary-solid: #2563eb; /* filled controls: stays dark enough for white text in both themes */
+  --color-accent: #c2410c;
   --color-danger: #ef4444;
   --text-main: #18181b;
-  --text-muted: #71717a;
+  --text-muted: #63636c;
   --text-inverse: #ffffff;
+  --text-quiet: #52525b;
+  --danger-text: #b91c1c;
+  --danger-solid: #b91c1c;
+  --success-text: #15803d;
+  --link-hover: #1d4ed8;
+  --color-indigo: #4f46e5;
+  --bg-highlight: rgba(56, 189, 248, 0.15);
+  --bg-unlock: rgba(99, 102, 241, 0.08);
+  --bg-muted-badge: #374151;
   
   /* Premium color palette */
   --color-fintech-blue: #3b82f6;
@@ -60,6 +70,12 @@
   --border-color: #27272a;
   --border-focus: #3b82f6;
   --color-primary: #60a5fa;
+  --color-primary-solid: #1d4ed8;
+  --text-quiet: #d4d4d8;
+  --danger-text: #fca5a5;
+  --danger-solid: #dc2626;
+  --success-text: #4ade80;
+  --link-hover: #93c5fd;
   --bg-header: rgba(0, 0, 0, 0.95);
 }
 /* Enhanced gradients */
@@ -87,14 +103,13 @@ body {
 /* Enhanced header styling */
 header {
   margin-bottom: 32px;
-  text-align: center;
-  transition: all var(--transition-normal);
+  text-align: left;
 }
 .logo-header {
   align-items: center;
   display: flex;
   gap: 12px;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 12px;
 }
 .logo-header svg {
@@ -114,8 +129,8 @@ header {
   font-size: 1rem;
   margin-bottom: 24px;
   max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 0;
   line-height: 1.5;
   letter-spacing: -0.01em;
 }
@@ -203,7 +218,7 @@ label {
 select,
 input {
   width: 100%;
-  min-height: 48px;
+  min-height: 44px;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-sm);
@@ -220,8 +235,25 @@ select {
   background-repeat: no-repeat;
   background-position: right 14px center;
   background-size: 14px;
-  padding-right: 36px !important;
+  padding-right: 36px;
   cursor: pointer;
+}
+/* the chevron is a data-URI, so the dark theme needs its own light stroke */
+.dark select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='rgba(255,255,255,0.6)' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3E%3C/svg%3E");
+}
+.dark .compact-select {
+  background-image: none;
+}
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  min-height: 0;
+  padding: 0;
+  cursor: pointer;
+}
+button {
+  min-height: 44px;
 }
 select:hover,
 input:hover {
@@ -255,17 +287,18 @@ label.btn:focus-within {
   font-size: 0.88rem;
   font-weight: 500;
   justify-content: center;
-  min-height: 40px;
+  min-height: 44px;
+  min-width: 44px;
   padding: 8px 16px;
   transition: all var(--transition-fast);
 }
 .btn--primary {
-  background: var(--color-primary);
+  background: var(--color-primary-solid);
   border-color: transparent;
   color: var(--text-inverse);
 }
 .btn--primary:hover {
-  background: var(--color-primary);
+  background: var(--color-primary-solid);
   opacity: 0.95;
   transform: translateY(-0.5px);
 }
@@ -290,4 +323,11 @@ label.btn:focus-within {
 .val-label {
   font-size: 0.875rem;
   color: var(--text-muted);
+}
+
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
 }

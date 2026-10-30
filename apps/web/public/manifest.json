@@ -4,8 +4,8 @@
   "description": "Privacy-first card rewards recommendations",
   "start_url": "/?utm_source=pwa",
   "display": "standalone",
-  "background_color": "#0d1117",
-  "theme_color": "#58a6ff",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "orientation": "portrait-primary",
   "icons": [
     {

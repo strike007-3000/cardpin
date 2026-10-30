@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import type { Card, CountryDataset } from "@cardpin/engine";
 import { orderCardsForWalletStack } from "../lib/utils";
+import { WarnIcon } from "./Icons";
 
 function WalletIcon() {
   return (
@@ -75,6 +76,113 @@ function getCardThemeClass(issuerId: string, network: string) {
   return "card-theme-fallback-amex";
 }
 
+function CapBadge({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="cap-badge">
+      <WarnIcon /> {children}
+    </span>
+  );
+}
+
+interface WalletCardProps {
+  card: Card;
+  issuerName: string;
+  isActive: boolean;
+  isCapExhausted: boolean;
+  monthlySpend: number;
+  onSelect: () => void;
+  onSpendChange: (value: number) => void;
+  onRemove: () => void;
+}
+
+function WalletCard({ card, issuerName, isActive, isCapExhausted, monthlySpend, onSelect, onSpendChange, onRemove }: WalletCardProps) {
+  // Only the collapsed row is a control; the expanded card holds its own input and delete button.
+  const Wrapper: React.ElementType = isActive ? "div" : "button";
+  return (
+        <Wrapper
+                    className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : "wallet-card--collapsed"}`}
+          {...(isActive
+            ? { role: "group", "aria-label": `${card.name}, selected` }
+            : { type: "button", onClick: onSelect, "aria-label": `Select ${card.name}` })}
+        >
+          <span className="card-texture" aria-hidden="true" />
+          {isActive ? (
+            <>
+              <span className="wallet-card__topline">
+                <span className="card-issuer-name">{issuerName}</span>
+                {isCapExhausted && (
+                  <span className="cap-badge">
+                    <WarnIcon /> Cap reached
+                  </span>
+                )}
+                <svg className="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <path d="M5 17a8 8 0 0 1 0-10" />
+                  <path d="M9 19a12 12 0 0 1 0-14" />
+                  <path d="M13 21a16 16 0 0 1 0-18" />
+                </svg>
+              </span>
+              <span className="wallet-card__middle">
+                <span className="card-chip" aria-hidden="true" />
+                <span className="card-number-embossed">
+                  •••• •••• •••• {getCardLastFour(card.id)}
+                </span>
+              </span>
+              <span className="wallet-card__details">
+                <span className="wallet-card__bottom-row">
+                  <span className="card-holder-info">
+                    <span className="card-name-display">{card.name}</span>
+                  </span>
+                  <CardNetworkLogo network={card.network} />
+                </span>
+              </span>
+              <div className="wallet-card__inline-config">
+                <div className="inline-spend-field">
+                  <label htmlFor={`monthly-spend-${card.id}`}>Spent this month:</label>
+                  <div className="spend-input-wrapper spend-input-wrapper--small">
+                    <span className="currency-prefix">{card.currency}</span>
+                    <input
+                      id={`monthly-spend-${card.id}`}
+                      aria-label={`Spent this month on ${card.name}`}
+                      className="bare-input"
+                      type="number"
+                      min="0"
+                      value={monthlySpend || ""}
+                      onChange={(e) => onSpendChange(Number(e.target.value) || 0)}
+                      placeholder="0"
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  className="card-remove-icon-btn"
+                  title="Remove from wallet"
+                  aria-label={`Remove ${card.name} from wallet`}
+                  onClick={onRemove}
+                >
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
+                    <polyline points="3 6 5 6 21 6" />
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                  </svg>
+                </button>
+              </div>
+            </>
+          ) : (
+            <span className="wallet-card__collapsed-row">
+              <span className="card-issuer-name">{issuerName}</span>
+              <span className="card-name-display">{card.name}</span>
+              {isCapExhausted && (
+                <span className="cap-badge">
+                  <WarnIcon /> Cap
+                </span>
+              )}
+              <CardNetworkLogo network={card.network} />
+            </span>
+          )}
+        </Wrapper>
+
+  );
+}
+
 interface WalletManagerProps {
   pointValue: number;
   setPointValue: (v: number) => void;
@@ -124,6 +232,28 @@ export default function WalletManager({
   catalogSearchRef,
 }: WalletManagerProps) {
   const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
+  const menuRef = useRef<HTMLDetailsElement>(null);
+
+  // <details> has no built-in dismissal: close on Escape (and return focus) or a click outside.
+  useEffect(() => {
+    const menu = menuRef.current;
+    if (!menu) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && menu.open) {
+        menu.open = false;
+        menu.querySelector("summary")?.focus();
+      }
+    };
+    const onPointer = (e: PointerEvent) => {
+      if (menu.open && !menu.contains(e.target as Node)) menu.open = false;
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, []);
 
   return (
     <>
@@ -132,8 +262,8 @@ export default function WalletManager({
           <div className="step-icon-wrapper">
             <WalletIcon />
           </div>
-          <div className="step-title-block" style={{ width: "100%" }}>
-            <div className="section-title-row" style={{ gap: "12px", justifyContent: "space-between", width: "100%" }}>
+          <div className="step-title-block step-title-block--full">
+            <div className="section-title-row wallet-title-row">
               <h2>Your Wallet</h2>
               <span className="quiet-pill">{ownedCards.length} in wallet</span>
             </div>
@@ -146,9 +276,9 @@ export default function WalletManager({
           </div>
         ) : (
           <>
-            <label style={{ display: "flex", alignItems: "center", gap: "0.5rem", fontSize: "0.85rem", textTransform: "none", marginBottom: "0.75rem" }}>
+            <label className="point-value-field">
               1 point / mile ≈
-              <select value={pointValue} onChange={(e) => setPointValue(Number(e.target.value))} style={{ width: "auto" }}>
+              <select value={pointValue} onChange={(e) => setPointValue(Number(e.target.value))}>
                 <option value={0.005}>0.5¢</option>
                 <option value={0.01}>1¢</option>
                 <option value={0.015}>1.5¢</option>
@@ -157,108 +287,24 @@ export default function WalletManager({
             </label>
             <div className="wallet-stack">
               {orderCardsForWalletStack(ownedCards, activeCardId).map((card) => {
-                const issuerName = dataset?.issuers.find((issuer) => issuer.id === card.issuerId)?.name || "";
-                const isActive = activeCardId === card.id;
-
                 const cardRules = dataset?.rewardRules.filter((r) => r.cardId === card.id) ?? [];
                 const monthlySpend = cardMonthlySpends[card.id] ?? 0;
                 const isCapExhausted = cardRules.some((rule) => {
                   const cap = rule.cap ?? rule.conditions?.cap;
                   return cap !== undefined && monthlySpend * rule.rewardValue >= cap;
                 });
-
                 return (
-                  <div
+                  <WalletCard
                     key={card.id}
-                    role="button"
-                    tabIndex={0}
-                    className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : "wallet-card--collapsed"}`}
-                    onClick={() => setActiveCardId(card.id)}
-                    onKeyDown={(e) => {
-                      if (e.key === "Enter" || e.key === " ") {
-                        e.preventDefault();
-                        setActiveCardId(card.id);
-                      }
-                    }}
-                    aria-pressed={isActive}
-                    aria-label={isActive ? `${card.name}, selected` : `Select ${card.name}`}
-                  >
-                    <span className="card-texture" aria-hidden="true" />
-                    {isActive ? (
-                      <>
-                        <span className="wallet-card__topline">
-                          <span className="card-issuer-name">{issuerName}</span>
-                          {isCapExhausted && (
-                            <span style={{ background: "#ef4444", color: "#fff", fontSize: "0.7rem", fontWeight: 700, padding: "0.1rem 0.4rem", borderRadius: "9999px" }}>
-                              ⚠️ CAP REACHED
-                            </span>
-                          )}
-                          <svg className="contactless-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ width: "16px", height: "16px", opacity: 0.8 }}>
-                            <path d="M5 17a8 8 0 0 1 0-10" />
-                            <path d="M9 19a12 12 0 0 1 0-14" />
-                            <path d="M13 21a16 16 0 0 1 0-18" />
-                          </svg>
-                        </span>
-                        <span className="wallet-card__middle">
-                          <span className="card-chip" aria-hidden="true" />
-                          <span className="card-number-embossed">
-                            •••• •••• •••• {getCardLastFour(card.id)}
-                          </span>
-                        </span>
-                        <span className="wallet-card__details">
-                          <span className="wallet-card__bottom-row">
-                            <span className="card-holder-info">
-                              <span className="card-name-display">{card.name}</span>
-                            </span>
-                            <CardNetworkLogo network={card.network} />
-                          </span>
-                        </span>
-                        <div className="wallet-card__inline-config" onClick={(e) => e.stopPropagation()}>
-                          <div className="inline-spend-field">
-                            <label htmlFor={`monthly-spend-${card.id}`}>Spent this month:</label>
-                            <div className="spend-input-wrapper spend-input-wrapper--small">
-                              <span className="currency-prefix">{card.currency}</span>
-                              <input
-                                id={`monthly-spend-${card.id}`}
-                                aria-label={`Spent this month on ${card.name}`}
-                                type="number"
-                                min="0"
-                                value={cardMonthlySpends[card.id] || ""}
-                                onChange={(e) => handleUpdateMonthlySpend(card.id, Number(e.target.value) || 0)}
-                                placeholder="0"
-                              />
-                            </div>
-                          </div>
-                          <button
-                            type="button"
-                            className="card-remove-icon-btn"
-                            title="Remove from wallet"
-                            aria-label={`Remove ${card.name} from wallet`}
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleToggleCard(card.id);
-                            }}
-                          >
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" width="14" height="14">
-                              <polyline points="3 6 5 6 21 6" />
-                              <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                            </svg>
-                          </button>
-                        </div>
-                      </>
-                    ) : (
-                      <span className="wallet-card__collapsed-row">
-                        <span className="card-issuer-name">{issuerName}</span>
-                        <span className="card-name-display">{card.name}</span>
-                        {isCapExhausted && (
-                          <span style={{ background: "#ef4444", color: "#fff", fontSize: "0.65rem", fontWeight: 700, padding: "0.05rem 0.35rem", borderRadius: "9999px" }}>
-                            ⚠️ CAP
-                          </span>
-                        )}
-                        <CardNetworkLogo network={card.network} />
-                      </span>
-                    )}
-                  </div>
+                    card={card}
+                    issuerName={dataset?.issuers.find((issuer) => issuer.id === card.issuerId)?.name || ""}
+                    isActive={activeCardId === card.id}
+                    isCapExhausted={isCapExhausted}
+                    monthlySpend={monthlySpend}
+                    onSelect={() => setActiveCardId(card.id)}
+                    onSpendChange={(value) => handleUpdateMonthlySpend(card.id, value)}
+                    onRemove={() => handleToggleCard(card.id)}
+                  />
                 );
               })}
             </div>
@@ -274,8 +320,8 @@ export default function WalletManager({
             + Add Cards
           </button>
 
-          <details className="wallet-menu">
-            <summary className="wallet-menu__trigger" role="button" aria-label="Wallet options">•••</summary>
+          <details className="wallet-menu" ref={menuRef}>
+            <summary className="wallet-menu__trigger" aria-label="Wallet options">•••</summary>
             <div className="wallet-menu__popover">
               {ownedCardIds.length > 0 && (
                 <>

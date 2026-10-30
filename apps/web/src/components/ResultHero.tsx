@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { WarnIcon } from "./Icons";
 import type { CardCalc } from "../lib/utils";
 import { breakEvenPurchases, formatRelativeDate } from "../lib/utils";
 
@@ -39,10 +40,10 @@ export default function ResultHero({
       <div className="result-box result-hero-box">
         <div className="result-header">
           <div>
-            <span className="badge" style={isFallbackCard ? { background: "var(--bg-surface-elevated, #374151)", color: "#f3f4f6" } : undefined}>
+            <span className={`badge ${isFallbackCard ? "badge--neutral" : ""}`}>
               {isFallbackCard ? "Best Base Card" : "Best Card"}
             </span>
-            <h2 style={{ marginTop: "0.25rem" }}>{bestResult.card.name}</h2>
+            <h2>{bestResult.card.name}</h2>
             <p className="card-meta">
               {bestResult.card.network.toUpperCase()} · {isFallbackCard ? "No specific bonus rule" : bestResult.label}
             </p>
@@ -54,15 +55,15 @@ export default function ResultHero({
         </div>
 
         {nonAmexAlt && (
-          <p style={{ margin: "0.75rem 0 0", fontSize: "0.9rem" }}>
+          <p className="result-note">
             Amex not accepted? Use <strong>{nonAmexAlt.card.name}</strong> ({rewardAmount(nonAmexAlt)}).
           </p>
         )}
 
-        <div className="result-grid" style={{ marginTop: "1rem" }}>
+        <div className="result-grid">
           <div>
             <h3>Why this card</h3>
-            <p className="result-explanation" style={{ lineHeight: 1.5 }}>
+            <p className="result-explanation">
               {isFallbackCard
                 ? isForeignSpend && (bestResult.card.fxFeePercentage ?? 0) > 0
                   ? `No matching bonus reward rules found. ${bestResult.card.name} was chosen as your best base card for lowest fees (${(bestResult.card.fxFeePercentage! * 100).toFixed(1)}% FX fee).`
@@ -103,12 +104,12 @@ export default function ResultHero({
         </div>
 
         {bestResult.rec.unownedUnlockCard && (
-          <div className="unlock-banner" style={{ marginTop: "1.25rem", padding: "1rem", borderRadius: "8px", background: "var(--bg-surface-elevated, rgba(99, 102, 241, 0.08))", border: "1px solid var(--border-color, rgba(99, 102, 241, 0.25))" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
-              <span className="badge unlock-tag" style={{ fontSize: "0.75rem", padding: "0.15rem 0.5rem", borderRadius: "4px" }}>
+          <div className="unlock-banner">
+            <div className="unlock-banner-head">
+              <span className="badge unlock-tag">
                 Next Card to Unlock
               </span>
-              <span className="unlock-amount" style={{ fontWeight: 700, fontSize: "0.95rem" }}>
+              <span className="unlock-amount">
                 {bestResult.rec.unownedUnlockCard.rewardType === "points"
                   ? `+${bestResult.rec.unownedUnlockCard.estimatedValue.toFixed(0)} points`
                   : bestResult.rec.unownedUnlockCard.rewardType === "miles"
@@ -118,11 +119,11 @@ export default function ResultHero({
                   : `+${bestResult.rec.unownedUnlockCard.card.currency} ${Math.max(0, bestResult.rec.unownedUnlockCard.convertedValue - bestResult.netValue).toFixed(2)} extra`}
               </span>
             </div>
-            <h4 style={{ margin: "0.4rem 0 0.2rem 0", fontSize: "1rem", fontWeight: 700 }}>{bestResult.rec.unownedUnlockCard.card.name}</h4>
-            <p style={{ margin: 0, fontSize: "0.85rem", opacity: 0.9, lineHeight: 1.4 }}>
+            <h4>{bestResult.rec.unownedUnlockCard.card.name}</h4>
+            <p>
               {bestResult.rec.unownedUnlockCard.explanation}
             </p>
-            <p style={{ margin: "0.4rem 0 0", fontSize: "0.85rem", fontWeight: 600 }}>
+            <p className="unlock-fee">
               {unlockFee
                 ? `Annual fee: ${unlock?.card.currency} ${unlockFee}/yr${breakEven ? ` · ~${breakEven} purchases like this to cover it` : ""}`
                 : "No annual fee"}
@@ -131,7 +132,7 @@ export default function ResultHero({
         )}
 
         {alternatives.length > 0 && (
-          <div className="alternatives-container" style={{ marginTop: "1.25rem" }}>
+          <div className="alternatives-container">
             <h3>Alternatives</h3>
             {alternatives.map((result) => {
               const bestValue = bestResult ? bestResult.netValue : 0;
@@ -148,9 +149,9 @@ export default function ResultHero({
               const convertedSpend = isForeignSpend && result.fxFee > 0 ? spendAmount - result.fxFee : spendAmount;
               const isMinSpendNotMet = minSpend > 0 && convertedSpend < minSpend;
 
-              let reasonTag = "";
-              if (isCapReached) reasonTag = "⚠️ Cap reached";
-              else if (isMinSpendNotMet) reasonTag = `⚠️ Min spend €${minSpend} not met`;
+              let reasonTag: React.ReactNode = "";
+              if (isCapReached) reasonTag = <><WarnIcon /> Cap reached</>;
+              else if (isMinSpendNotMet) reasonTag = <><WarnIcon /> Min spend €{minSpend} not met</>;
               else if (!rule) reasonTag = "No bonus rule";
 
               return (
@@ -158,7 +159,7 @@ export default function ResultHero({
                   <div className="alt-card-bar" style={{ width: `${percentage}%` }} />
                   <span className="alt-name">{result.card.name}</span>
                   <span className="alt-value">
-                    {reasonTag ? <span style={{ opacity: 0.75, fontSize: "0.8rem", marginRight: "6px" }}>{reasonTag}</span> : null}
+                    {reasonTag ? <span className="alt-reason">{reasonTag}</span> : null}
                     {result.rule ? rewardAmount(result) : "€0.00"}
                   </span>
                 </div>

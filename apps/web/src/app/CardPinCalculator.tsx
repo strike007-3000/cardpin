@@ -15,6 +15,7 @@ import ResultHero from "../components/ResultHero";
 import WalletManager from "../components/WalletManager";
 import StatusBanner from "../components/StatusBanner";
 import WelcomeBanner from "../components/WelcomeBanner";
+import { WrenchIcon } from "../components/Icons";
 import DevPanel from "../components/DevPanel";
 
 function normalizeSpend(raw: string) {
@@ -352,23 +353,9 @@ export default function CardPinCalculator() {
         <button
           type="button"
           onClick={() => devTools.setShowDevPanel(true)}
-          style={{
-            position: "fixed",
-            bottom: "1rem",
-            right: "1rem",
-            zIndex: 50,
-            padding: "0.5rem 1rem",
-            borderRadius: "9999px",
-            background: "#2563eb",
-            color: "#ffffff",
-            fontWeight: 600,
-            fontSize: "0.875rem",
-            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
-            border: "none",
-            cursor: "pointer",
-          }}
+          className="dev-fab"
         >
-          🔧 Dev Tools
+          <WrenchIcon /> Dev Tools
         </button>
       )}
 

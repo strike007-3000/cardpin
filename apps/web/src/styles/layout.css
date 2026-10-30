@@ -1,20 +1,19 @@
 /* Restructured CSS to clean up CardPinCalculator inline styles */
 .spend-input-wrapper--small {
   max-width: 110px;
-  min-height: 32px !important;
+  min-height: 44px;
   padding: 0 8px;
   background: var(--bg-surface);
   border: 1px solid var(--border-color);
   border-radius: 4px;
 }
 .spend-input-wrapper--small .currency-prefix {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   margin-right: 6px;
 }
-.spend-input-wrapper--small input {
-  padding: 4px 0 !important;
-  font-size: 0.8rem !important;
-  min-height: auto !important;
+.spend-input-wrapper--small .bare-input {
+  padding: 4px 0;
+  font-size: 0.8rem;
 }
 .empty-state p {
   margin-top: 6px;
@@ -22,12 +21,12 @@
 }
 .result-explanation,
 .result-calculation {
-  font-size: 0.9rem !important;
+  font-size: 0.9rem;
   line-height: 1.5;
   color: var(--text-main);
 }
 .alternatives-container h3 {
-  margin-top: 12px !important;
+  margin-top: 12px;
   margin-bottom: 8px;
 }
 .dev-flex-row {
@@ -45,13 +44,12 @@
   color: var(--text-muted);
 }
 .dev-select {
-  padding: 8px !important;
-  background: var(--bg-surface) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 4px !important;
-  color: var(--text-main) !important;
-  min-height: auto !important;
-  font-size: 0.9rem !important;
+  padding: 8px 36px 8px 8px;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  color: var(--text-main);
+  font-size: 0.9rem;
 }
 .dev-status-msg {
   padding: 10px 14px;
@@ -88,9 +86,9 @@
   background-color: transparent;
   transition: all 0.2s;
 }
-.catalog-card-item--selected {
-  border: 1px solid var(--color-primary) !important;
-  background-color: rgba(167, 139, 250, 0.05) !important;
+.catalog-card-item.catalog-card-item--selected {
+  border: 1px solid var(--color-primary);
+  background-color: rgba(167, 139, 250, 0.05);
 }
 .catalog-card-meta {
   font-size: 0.75rem;
@@ -108,8 +106,8 @@
   transition: all 0.2s;
 }
 .catalog-card-badge--selected {
-  background-color: var(--color-primary) !important;
-  color: var(--text-inverse) !important;
+  background-color: var(--color-primary-solid);
+  color: var(--text-inverse);
 }
 /* Redesigned Grid Container and Fintech Utilities Styles */
 .compact-controls-strip {
@@ -122,8 +120,11 @@
   padding: 8px 12px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border-color);
+  flex-wrap: wrap;
+  row-gap: 8px;
 }
 .compact-control-group {
+  flex: none;
   display: flex;
   align-items: center;
 }
@@ -143,9 +144,17 @@
   cursor: pointer;
   outline: none;
   border-radius: 4px;
+  min-width: 0;
 }
 .compact-select:focus-visible {
   outline: 2px solid var(--color-primary);
+}
+.segmented-control {
+  flex: none;
+}
+.segmented-control button {
+  white-space: nowrap;
+  padding-inline: 10px;
 }
 .segmented-control--compact {
   gap: 2px;
@@ -204,29 +213,170 @@
 .input-strip-card--disabled {
   opacity: 0.6;
 }
+/* Input strip: 4 fields that wrap. Basis sets the first-row split; min-width stops a field collapsing. */
 .input-strip-row .form-group {
-  margin-bottom: 0 !important;
+  flex: 1 1 9rem;
+  min-width: 0;
 }
-.input-strip-row .form-group:nth-child(1) {
-  flex: 2;
+.input-strip-row .form-group--merchant,
+.input-strip-row .form-group--category {
+  flex-basis: 100%;
   min-width: 140px;
 }
-.input-strip-row .form-group:nth-child(2) {
-  flex: 2;
-  min-width: 140px;
-}
-.input-strip-row .form-group:nth-child(3) {
-  flex: 1.2;
+.input-strip-row .form-group--spend {
   min-width: 100px;
 }
-.input-strip-row .form-group:nth-child(4) {
-  flex: 0.8;
+.input-strip-row .form-group--currency {
   min-width: 80px;
 }
+.form-group--merchant {
+  position: relative;
+}
+@media (min-width: 641px) {
+  .input-strip-row .form-group--merchant,
+  .input-strip-row .form-group--category {
+    flex-basis: 8rem;
+  }
+  .input-strip-row .form-group--spend {
+    flex: 2 1 11rem;
+  }
+  .input-strip-row .form-group--currency {
+    flex: 1 1 7rem;
+  }
+}
+.spend-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.35rem;
+}
+.preset-chip {
+  padding: 0.15rem 0.45rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.preset-chip--active {
+  background: var(--bg-highlight);
+  color: var(--color-primary);
+}
+.checkbox-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+.checkbox-field label {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  text-transform: none;
+  font-size: 0.85rem;
+  margin-bottom: 0;
+  cursor: pointer;
+  user-select: none;
+}
+.merchant-suggestions {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 20;
+  margin: 4px 0 0;
+  padding: 4px;
+  list-style: none;
+  max-height: 240px;
+  overflow-y: auto;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+.merchant-suggestions li {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+.merchant-suggestions li:hover,
+.merchant-suggestions li[aria-selected="true"] {
+  background: var(--bg-highlight);
+}
+.wallet-title-row {
+  gap: 12px;
+  justify-content: space-between;
+  width: 100%;
+}
+.step-title-block--full {
+  width: 100%;
+}
+.point-value-field {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  text-transform: none;
+  margin-bottom: 0.75rem;
+}
+.point-value-field select {
+  width: auto;
+}
+.btn--spaced {
+  margin-top: 12px;
+}
+.dev-fab {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 50;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: var(--color-primary-solid);
+  color: var(--text-inverse);
+  font-weight: 600;
+  font-size: 0.875rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: none;
+  cursor: pointer;
+}
+main {
+  padding-bottom: 5rem;
+}
+footer {
+  padding-bottom: 5rem;
+}
+/* Reduced motion: drop movement and spinning, keep fades and colour changes so state is still visible */
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
+  *,
+  *::before,
+  *::after {
+    animation: none;
+    scroll-behavior: auto;
+  }
+  .wallet-card,
+  .wallet-card:hover,
+  .btn--primary:hover,
+  .card-item:active {
+    transform: none;
+  }
+  .wallet-card,
+  .alt-card-bar {
+    transition-property: opacity, background-color, border-color, box-shadow, width;
+    transition-duration: 0.15s;
+  }
+  .loading-container::before {
+    animation: loading-pulse 1.6s ease-in-out infinite;
+    border-top-color: var(--color-primary);
+  }
+  @keyframes loading-pulse {
+    50% {
+      opacity: 0.35;
+    }
   }
 }

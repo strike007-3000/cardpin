@@ -6,8 +6,11 @@ import "../styles/welcome-and-inputs.css";
 import "../styles/dev-panel.css";
 import "../styles/wallet.css";
 import "../styles/layout.css";
-import "../styles/redesign.css";
+import { Inter, Manrope } from "next/font/google";
 import Logo from "./logo";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 
 export const metadata: Metadata = {
   title: "CardPin — Open-Source Card Rewards Optimizer",
@@ -22,9 +25,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${manrope.variable}`} suppressHydrationWarning>
       <head>
-        <meta name="theme-color" content="#9f7aea" />
+        <meta name="theme-color" content="#f9f9fa" media="(prefers-color-scheme: light)" />
+        <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -46,9 +50,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').then(function(reg) {
-                    console.log('ServiceWorker registration successful');
-                  }, function(err) {
+                  navigator.serviceWorker.register('/sw.js').then(null, function(err) {
                     console.error('ServiceWorker registration failed: ', err);
                   });
                 });
