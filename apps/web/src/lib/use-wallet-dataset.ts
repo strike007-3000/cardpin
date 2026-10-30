@@ -29,8 +29,13 @@ export function useWalletDataset(country: string, audience: "consumer" | "busine
 
         const saved = localStorage.getItem(`cardpin:owned_cards:${country}`);
         if (saved) {
-          const parsed = JSON.parse(saved) as string[];
-          setOwnedCardIds(parsed.filter((id) => data.cards.some((card) => card.id === id)));
+          // A corrupt or hand-edited entry must not take the whole dataset down with it.
+          let parsed: unknown = [];
+          try {
+            parsed = JSON.parse(saved);
+          } catch {}
+          const ids = Array.isArray(parsed) ? parsed : [];
+          setOwnedCardIds(ids.filter((id) => data.cards.some((card) => card.id === id)));
         } else {
           setOwnedCardIds([]);
         }
@@ -126,8 +131,13 @@ export function useWalletDataset(country: string, audience: "consumer" | "busine
 
   function handleImportWallet(e: React.ChangeEvent<HTMLInputElement>) {
     const fileReader = new FileReader();
-    if (e.target.files && e.target.files[0]) {
-      fileReader.readAsText(e.target.files[0], "UTF-8");
+    const input = e.target;
+    if (input.files && input.files[0]) {
+      fileReader.readAsText(input.files[0], "UTF-8");
+      // reset so re-importing the same file fires onChange again
+      fileReader.onloadend = () => {
+        input.value = "";
+      };
       fileReader.onload = (event) => {
         try {
           const parsed = JSON.parse(event.target?.result as string);

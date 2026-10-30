@@ -5,7 +5,7 @@ import React from "react";
 function CreditCardPlaceholder() {
   return (
     <div className="placeholder-card-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ width: "100%", height: "100%" }}>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="5" width="20" height="14" rx="2" ry="2" />
         <line x1="2" y1="10" x2="22" y2="10" />
         <line x1="6" y1="15" x2="12" y2="15" />
@@ -55,9 +55,8 @@ export default function StatusBanner({
         </ol>
         <button
           type="button"
-          className="btn btn--primary"
+          className="btn btn--primary btn--spaced"
           onClick={handleOpenCatalog}
-          style={{ marginTop: "12px" }}
         >
           Add your cards
         </button>

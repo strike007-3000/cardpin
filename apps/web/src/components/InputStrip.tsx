@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import { PlaneIcon } from "./Icons";
 
 function formatCategory(category: string) {
   return category.replaceAll("-", " ");
@@ -64,6 +65,7 @@ export default function InputStrip({
 }: InputStripProps) {
   const presets = ["10", "50", "100", "500"];
   const [open, setOpen] = useState(false);
+  const [highlight, setHighlight] = useState(-1);
   const q = merchantQuery.trim().toLowerCase();
   // Custom list: the native datalist popup can't be styled or positioned on phones.
   const suggestions = q
@@ -72,9 +74,9 @@ export default function InputStrip({
 
   return (
     <div className={`card input-strip-card ${disabled ? "input-strip-card--disabled" : ""}`}>
-      <fieldset className="search-fields" disabled={disabled} style={{ border: "none", padding: 0, margin: 0 }}>
+      <fieldset className="search-fields" disabled={disabled}>
         <div className="form-row input-strip-row">
-          <div className="form-group" style={{ position: "relative" }}>
+          <div className="form-group form-group--merchant">
             <label htmlFor="merchant-input">Merchant</label>
             <input
               id="merchant-input"
@@ -83,23 +85,42 @@ export default function InputStrip({
               role="combobox"
               aria-expanded={open && suggestions.length > 0}
               aria-controls="merchant-suggestions"
+              aria-activedescendant={open && highlight >= 0 ? `merchant-option-${highlight}` : undefined}
               aria-autocomplete="list"
               autoComplete="off"
               value={merchantQuery}
               onChange={(event) => {
                 setMerchantQuery(event.target.value);
+                setHighlight(-1);
                 setOpen(true);
+              }}
+              onKeyDown={(e) => {
+                if (!open || suggestions.length === 0) return;
+                if (e.key === "ArrowDown") {
+                  e.preventDefault();
+                  setHighlight((highlight + 1) % suggestions.length);
+                } else if (e.key === "ArrowUp") {
+                  e.preventDefault();
+                  setHighlight((highlight - 1 + suggestions.length) % suggestions.length);
+                } else if (e.key === "Enter" && highlight >= 0) {
+                  e.preventDefault();
+                  setMerchantQuery(suggestions[highlight]);
+                  setOpen(false);
+                } else if (e.key === "Escape") {
+                  setOpen(false);
+                }
               }}
               onFocus={() => setOpen(true)}
               onBlur={() => setOpen(false)}
             />
             {open && suggestions.length > 0 && (
               <ul id="merchant-suggestions" role="listbox" className="merchant-suggestions">
-                {suggestions.map((name) => (
+                {suggestions.map((name, i) => (
                   <li
                     key={name}
+                    id={`merchant-option-${i}`}
                     role="option"
-                    aria-selected={false}
+                    aria-selected={i === highlight}
                     onMouseDown={(e) => {
                       e.preventDefault();
                       setMerchantQuery(name);
@@ -113,7 +134,7 @@ export default function InputStrip({
             )}
           </div>
 
-          <div className="form-group">
+          <div className="form-group form-group--category">
             <label htmlFor="category-select">Category</label>
             <select
               id="category-select"
@@ -129,12 +150,13 @@ export default function InputStrip({
             </select>
           </div>
 
-          <div className="form-group" style={{ flex: "1.5", minWidth: 0 }}>
+          <div className="form-group form-group--spend">
             <label htmlFor="spend-input">Spend Amount</label>
             <div className="spend-input-wrapper">
               <span className="currency-prefix">{spendCurrency}</span>
               <input
                 id="spend-input"
+                className="bare-input"
                 inputMode="decimal"
                 type="number"
                 min="0"
@@ -143,21 +165,13 @@ export default function InputStrip({
                 onChange={(event) => setSpendInput(event.target.value)}
               />
             </div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.25rem", marginTop: "0.35rem" }}>
+            <div className="spend-presets">
               {presets.map((amt) => (
                 <button
                   key={amt}
                   type="button"
+                  className={`preset-chip ${spendInput === amt ? "preset-chip--active" : ""}`}
                   onClick={() => setSpendInput(amt)}
-                  style={{
-                    padding: "0.15rem 0.45rem",
-                    fontSize: "0.72rem",
-                    borderRadius: "4px",
-                    border: "1px solid var(--border-color)",
-                    background: spendInput === amt ? "var(--bg-surface-elevated, rgba(56, 189, 248, 0.15))" : "transparent",
-                    color: spendInput === amt ? "var(--accent)" : "var(--text-muted)",
-                    cursor: "pointer",
-                  }}
                 >
                   {getCurrencySymbol(spendCurrency)}{amt}
                 </button>
@@ -165,7 +179,7 @@ export default function InputStrip({
             </div>
           </div>
 
-          <div className="form-group" style={{ flex: "0.8" }}>
+          <div className="form-group form-group--currency">
             <label htmlFor="currency-select">Currency</label>
             <select
               id="currency-select"
@@ -188,16 +202,15 @@ export default function InputStrip({
           </div>
         </div>
 
-        <div style={{ marginTop: "0.75rem", display: "flex", alignItems: "center", gap: "0.5rem" }}>
+        <div className="checkbox-field">
           <input
             id="foreign-spend-checkbox"
             type="checkbox"
             checked={isForeignSpend}
             onChange={(e) => setIsForeignSpend(e.target.checked)}
-            style={{ width: "16px", height: "16px", cursor: "pointer" }}
           />
-          <label htmlFor="foreign-spend-checkbox" style={{ fontSize: "0.85rem", cursor: "pointer", userSelect: "none" }}>
-            ✈️ Spending abroad / Foreign transaction (applies FX fee if non-zero)
+          <label htmlFor="foreign-spend-checkbox">
+            <PlaneIcon /> Spending abroad / Foreign transaction (applies FX fee if non-zero)
           </label>
         </div>
       </fieldset>

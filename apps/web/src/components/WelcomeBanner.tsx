@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { BulbIcon } from "./Icons";
 
 interface WelcomeBannerProps {
   showWelcome: boolean | null;
@@ -29,7 +30,7 @@ export default function WelcomeBanner({
     <section className="welcome-banner">
       <div className="welcome-banner-summary">
         <div className="welcome-banner-left">
-          <span className="welcome-icon">💡</span>
+          <span className="welcome-icon"><BulbIcon /></span>
           <span>
             Select cards in your wallet &rarr; search merchant &rarr; find best rewards.
           </span>
