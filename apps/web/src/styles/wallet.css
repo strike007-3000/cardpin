@@ -653,3 +653,8 @@
   height: 16px;
   opacity: 0.8;
 }
+.wallet-menu__popover button:focus-visible,
+.wallet-menu__popover label:focus-within {
+  outline: 2px solid var(--color-primary);
+  outline-offset: -2px;
+}

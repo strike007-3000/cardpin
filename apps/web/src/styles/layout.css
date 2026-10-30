@@ -171,10 +171,11 @@
 /* Redesigned single-screen layout and fintech utility styles */
 .cardpin-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 .cardpin-left-col {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -226,7 +227,8 @@
   min-width: 0;
 }
 .input-strip-row .form-group--merchant,
-.input-strip-row .form-group--category {
+.input-strip-row .form-group--category,
+.input-strip-row .form-group--spend {
   flex-basis: 100%;
   min-width: 140px;
 }
@@ -258,6 +260,7 @@
   margin-top: 0.35rem;
 }
 .preset-chip {
+  min-width: 44px;
   padding: 0.15rem 0.45rem;
   font-size: 0.75rem;
   border-radius: 4px;

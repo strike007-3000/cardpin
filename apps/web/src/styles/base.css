@@ -246,8 +246,9 @@ select {
   background-image: none;
 }
 input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  flex: none;
+  width: 24px;
+  height: 24px;
   min-height: 0;
   padding: 0;
   cursor: pointer;
@@ -264,7 +265,7 @@ select:focus,
 input:focus {
   border-color: var(--border-focus);
   background-color: var(--bg-surface);
-  box-shadow: 0 0 0 3px rgba(24, 24, 27, 0.08);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--border-focus) 28%, transparent);
 }
 /* Enhanced button styling */
 button:focus-visible,
