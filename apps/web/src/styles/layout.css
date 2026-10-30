@@ -214,6 +214,13 @@
   opacity: 0.6;
 }
 /* Input strip: 4 fields that wrap. Basis sets the first-row split; min-width stops a field collapsing. */
+.input-strip-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
 .input-strip-row .form-group {
   flex: 1 1 9rem;
   min-width: 0;

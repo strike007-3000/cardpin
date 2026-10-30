@@ -89,20 +89,27 @@ interface WalletCardProps {
   issuerName: string;
   isActive: boolean;
   isCapExhausted: boolean;
+  focusOnMount: boolean;
   monthlySpend: number;
   onSelect: () => void;
   onSpendChange: (value: number) => void;
   onRemove: () => void;
 }
 
-function WalletCard({ card, issuerName, isActive, isCapExhausted, monthlySpend, onSelect, onSpendChange, onRemove }: WalletCardProps) {
+function WalletCard({ card, issuerName, isActive, isCapExhausted, focusOnMount, monthlySpend, onSelect, onSpendChange, onRemove }: WalletCardProps) {
   // Only the collapsed row is a control; the expanded card holds its own input and delete button.
   const Wrapper: React.ElementType = isActive ? "div" : "button";
+  const ref = useRef<HTMLDivElement & HTMLButtonElement>(null);
+  // Selecting swaps the focused <button> for a <div> (a fresh mount), so move focus to the expanded card and Tab continues from it.
+  useEffect(() => {
+    if (isActive && focusOnMount) ref.current?.focus();
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
         <Wrapper
+          ref={ref}
                     className={`wallet-card ${getCardThemeClass(card.id, card.network)} ${isActive ? "wallet-card--active" : "wallet-card--collapsed"}`}
           {...(isActive
-            ? { role: "group", "aria-label": `${card.name}, selected` }
+            ? { role: "group", tabIndex: -1, "aria-label": `${card.name}, selected` }
             : { type: "button", onClick: onSelect, "aria-label": `Select ${card.name}` })}
         >
           <span className="card-texture" aria-hidden="true" />
@@ -233,6 +240,7 @@ export default function WalletManager({
 }: WalletManagerProps) {
   const activeCard = ownedCards.find((c) => c.id === activeCardId) || null;
   const menuRef = useRef<HTMLDetailsElement>(null);
+  const justSelected = useRef<string | null>(null);
 
   // <details> has no built-in dismissal: close on Escape (and return focus) or a click outside.
   useEffect(() => {
@@ -300,8 +308,12 @@ export default function WalletManager({
                     issuerName={dataset?.issuers.find((issuer) => issuer.id === card.issuerId)?.name || ""}
                     isActive={activeCardId === card.id}
                     isCapExhausted={isCapExhausted}
+                    focusOnMount={justSelected.current === card.id}
                     monthlySpend={monthlySpend}
-                    onSelect={() => setActiveCardId(card.id)}
+                    onSelect={() => {
+                      justSelected.current = card.id;
+                      setActiveCardId(card.id);
+                    }}
                     onSpendChange={(value) => handleUpdateMonthlySpend(card.id, value)}
                     onRemove={() => handleToggleCard(card.id)}
                   />
