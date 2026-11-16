@@ -84,7 +84,7 @@
   text-align: left;
   border: 1px solid var(--border-color);
   background-color: transparent;
-  transition: all 0.2s;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, opacity 0.2s, transform 0.2s;
 }
 .catalog-card-item.catalog-card-item--selected {
   border: 1px solid var(--color-primary);
@@ -103,7 +103,7 @@
   font-weight: bold;
   background-color: var(--border-color);
   color: var(--text-main);
-  transition: all 0.2s;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, opacity 0.2s, transform 0.2s;
 }
 .catalog-card-badge--selected {
   background-color: var(--color-primary-solid);

@@ -369,6 +369,8 @@ export default function WalletManager({
       {/* Catalog Dialog */}
       <dialog
         ref={catalogDialogRef}
+        // Light-dismiss (Esc + backdrop click) natively; the onClick below covers browsers without closedby.
+        {...{ closedby: "any" }}
         className="catalog-dialog"
         aria-labelledby="catalog-title"
         onClick={(event) => {
