@@ -38,6 +38,7 @@
   width: 90%;
   max-width: 600px;
   max-height: 90vh;
+  max-height: 90dvh;
   overflow-y: auto;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -90,9 +91,27 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
 }
 .dev-close-btn:hover {
   background: rgba(0, 0, 0, 0.05);
   color: var(--text-main);
+}
+/* Fade the catalog dialog in and out; display/overlay must be discrete so the exit is visible */
+@media (prefers-reduced-motion: no-preference) {
+  .catalog-dialog,
+  .catalog-dialog::backdrop {
+    opacity: 0;
+    transition: opacity 0.2s, display 0.2s allow-discrete, overlay 0.2s allow-discrete;
+  }
+  .catalog-dialog[open],
+  .catalog-dialog[open]::backdrop {
+    opacity: 1;
+  }
+  @starting-style {
+    .catalog-dialog[open],
+    .catalog-dialog[open]::backdrop {
+      opacity: 0;
+    }
+  }
 }

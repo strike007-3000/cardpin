@@ -27,7 +27,7 @@
   padding: 12px 18px;
   position: relative;
   text-align: left;
-  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1), padding 0.45s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.45s, border-color 0.45s, box-shadow 0.45s, opacity 0.45s, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
   user-select: none;
   width: 100%;
 }
@@ -576,7 +576,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease, transform 0.2s ease;
 }
 .dark .card-remove-icon-btn {
   border-color: rgba(252, 165, 165, 0.55);
@@ -644,6 +644,7 @@
     width: 100%;
     max-width: 100%;
     max-height: 85vh;
+    max-height: 85dvh;
     margin: 0;
     border-radius: 20px 20px 0 0;
   }

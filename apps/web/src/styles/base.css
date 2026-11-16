@@ -60,8 +60,11 @@
   --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   --bg-header: rgba(249, 249, 250, 0.95);
+  /* Theme is class-driven (see DarkModeToggle), so the browser UI follows the class, not the OS */
+  color-scheme: light;
 }
 .dark {
+  color-scheme: dark;
   --bg-base: var(--dark-bg-base);
   --bg-surface: var(--dark-bg-surface);
   --bg-card: var(--dark-bg-card);
@@ -94,6 +97,13 @@ body {
   -webkit-font-smoothing: antialiased;
   font-size: 16px;
   min-height: 100vh;
+  min-height: 100dvh;
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3 {
+  text-wrap: balance;
 }
 .container {
   max-width: 1200px;
@@ -163,7 +173,7 @@ header {
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   padding: 28px;
-  transition: all var(--transition-normal), border-color var(--transition-fast), box-shadow var(--transition-fast);
+  transition: background-color var(--transition-normal), color var(--transition-normal), border-color var(--transition-fast), box-shadow var(--transition-fast);
   backdrop-filter: blur(20px) saturate(180%);
 }
 .card:hover {
@@ -227,7 +237,7 @@ input {
   font-size: 0.95rem;
   outline: none;
   padding: 10px 14px;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
 }
 select {
   appearance: none;
@@ -244,6 +254,41 @@ select {
 }
 .dark .compact-select {
   background-image: none;
+}
+/* Customizable select (Chrome/Edge 135+, Safari 27+). Others keep the styled native select above. */
+@supports (appearance: base-select) {
+  select:not(.compact-select),
+  select:not(.compact-select)::picker(select) {
+    appearance: base-select;
+  }
+  select:not(.compact-select) {
+    background-image: none;
+    padding-right: 14px;
+  }
+  select:not(.compact-select)::picker-icon {
+    color: var(--text-muted);
+  }
+  select:not(.compact-select)::picker(select) {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-panel);
+    color: var(--text-main);
+    padding: 4px;
+  }
+  select:not(.compact-select) option {
+    border-radius: 6px;
+    cursor: pointer;
+    min-height: 44px;
+    padding: 10px 12px;
+  }
+  select:not(.compact-select) option:hover,
+  select:not(.compact-select) option:focus-visible {
+    background: var(--bg-card);
+  }
+  select:not(.compact-select) option::checkmark {
+    color: var(--color-primary);
+  }
 }
 input[type="checkbox"] {
   flex: none;
@@ -291,7 +336,7 @@ label.btn:focus-within {
   min-height: 44px;
   min-width: 44px;
   padding: 8px 16px;
-  transition: all var(--transition-fast);
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast), transform var(--transition-fast);
 }
 .btn--primary {
   background: var(--color-primary-solid);
